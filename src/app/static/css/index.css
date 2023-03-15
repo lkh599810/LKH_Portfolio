@@ -1,0 +1,390 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+#banner{
+    width:100%;
+    height: 1000px;
+    /*background:pink;*/
+    background: url(../images/black_cover2.png); /*background-image할때는 url안에 "" 넣어줘야하는데, 이렇게 적어도 됨*/
+    background-size:cover;
+
+
+}
+
+header{ /*header는 태그기때문에 그냥 잡아줘도됨*/
+    /*width:1140px;*/
+    height: 72px;
+    /*background: aliceblue;*/
+    margin: 0 auto; /*중앙으로 갖고오고싶은 요소는 이렇게..margin 0 auto가 안먹는 애들은 width가 100%짜리들*/
+    display: flex;
+    justify-content: space-between;
+    padding: 0 65px;
+    /*background: rgba(0,0,0,0.3);*/
+}
+
+#logo{
+    font-size:24px;
+    /*border: 1px solid red;*/
+    line-height: 72px;
+    color: azure;
+}
+
+.nav{
+    /*border: 1px solid red;*/
+    display: flex; /*자식요소들 옆으로붙이기*/
+    align-items: center; /*세로정렬*/
+    width: 470px;
+    justify-content: space-between;
+    color: azure;
+}
+
+.nav li{
+    cursor:pointer;
+    list-style: none;
+    text-decoration: none;
+
+}
+.title_name_wrap {
+    overflow: hidden;
+    height: 188.33px;
+    margin-top: 150px;
+}
+
+.title_name{
+    margin-top:50px;
+    text-align:center;
+    color:white;
+    font-size:48px;
+    font-weight: bold;
+    transform: translate(0,100%);
+    transition: all 1.8s;
+}
+
+.meaningless-line{
+    width: 580px;
+    height: 3px;
+    background-color: azure;
+    display: block; /*inline block : inline 요소도 있으면서도 block요소도 가지고잇는*/
+    margin:25px auto 0 auto;
+
+}
+
+.banner-description{
+    color:white;
+    margin-top:50px;
+    text-align: center;
+    font-size:20px;
+    line-height: 35px;
+}
+
+.invitation{
+
+    display: flex;/*inline요소는 margin이랑 padding이랑 안먹음 그래서 block으로 바꿔줌*/
+    justify-content: center;
+    margin: 20px auto 0 auto;
+    width: 300px;
+    height: 150px;
+    border-radius: 10px;
+    outline:none;
+    border:none; /*button: outline이랑 border none 해줘야함.*/
+    background: white;
+    color:black;
+    font-size:16px;
+
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+
+
+}
+.invitation > img{
+    margin: 0 auto;
+    align-self: center;
+    width:90%;
+    height: 80%;
+}
+
+
+
+
+#container > section{
+    width: 100%;
+}
+#aboutMe{
+
+    background: #D6DDF3;
+    margin-top: 0px;
+    padding: 100px 0 100px 0;
+
+
+}
+
+.aboutMe-inner{
+    width:90%;
+    height: 90%;
+    margin: 0 auto 0 auto;
+    text-align: center;
+}
+
+.myInfo{
+    border-radius: 40px;
+    background: #212529;
+    height: 90%;
+    width: 100%;
+    margin: 10px auto;
+    padding: 2% 0 2% 0;
+}
+
+
+.skills-inner{
+    width:1076px;
+    margin: 50px auto 0 auto;
+    text-align: center;
+    position: relative;
+}
+
+
+.title{
+    font-size: 35px;
+    font-weight: bold;
+    margin: 40px auto 15px auto;
+    display: inline-block;
+    padding-bottom:10px;
+    border-bottom: 1px solid #333;
+}
+
+
+.skills_wrap {
+    margin-top: 50px;
+    height: 700px; display: flex; flex-wrap: wrap;
+    justify-content: space-between;
+}
+.skills-inner .title{
+    font-size: 30px;
+    font-weight: bold;
+    border-bottom: 1px solid azure;
+    margin: 50px auto 0 auto;
+    display: inline-block;
+    padding-bottom:10px;
+    border-bottom: 1px solid #333;
+}
+
+.skills_wrap > section {
+    width: 36%;
+    height: 39%;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 5px 5px 16px rgba(0,0,0,0.3);
+    position: relative;
+}
+.skills_wrap > section:nth-child(1) {
+    margin-top: 50px;
+}
+.skills_wrap > section:nth-child(2) {
+    margin-top: 50px;
+}
+.skills_wrap > section:nth-child(3) {
+    margin-top: auto;
+}
+.skills_wrap > section:nth-child(4) {
+    margin-top: auto;
+}
+.center_cir {
+    position: absolute; top: 44.5%; left: 50%;
+    width: 290px; height: 145px;
+    background: #fff; transform: translateX(-50%);
+    box-shadow: 5px 5px 16px rgba(0,0,0,0.3);
+}
+
+/*.cr1 { top: 44.5%; left: 50%; border-radius: 145px 145px 0 0; }*/
+/*.cr2 { top: 63%; left: 50%; border-radius: 0 0 145px 145px; }*/
+
+.cr1 { top: 44.5%; left: 50%; border-radius: 145px 145px 0 0; }
+.cr2 { top: 63%; left: 50%; border-radius: 0 0 145px 145px; }
+
+.skills_wrap > section > span {
+    position: absolute; top: -35px; left: 16px;
+    display: inline-block; border-bottom: 2px solid;
+    padding-bottom: 3px;
+    font-weight: bold;
+}
+.skills_wrap > section > img { position: absolute; z-index: 9;}
+
+
+/**programming language**/
+.java { top: 114px; left: 40px; width: 130px; height: 125px;}
+.python { top: 125px; left: 228px; width: 110px; height: 120px;}
+.lang_js {top: 20px; left: 148px; width: 86px; height: 100px;}
+/**programming language**/
+
+/**database**/
+.mysql {     top: 42px;    left: 38px;    width: 160px;    height: 120px;}
+.mariadb {    top: 101px;    left: 142px;    width: 150px;    height: 109px;  }
+/**database**/
+
+
+/**frontend**/
+.html { top: 35px; left: 20px; width: 86px; height: 109px;}
+.css { top: 20px; left: 150px; width: 86px; height: 109px;}
+.js {top: 35px; left: 280px; width: 86px; height: 109px;}
+.jsp {bottom: 25px; left: 100px; width: 70px; height: 112px;}
+.jquery {bottom: 26px; left: 197px; width: 102px; height: 101px;}
+/**frontend**/
+
+
+/**backend**/
+.flask { top: 140px; left: 160px; width: 70px; height: 70px;}
+.spring {top: 37px; left: 228px; width: 110px; height: 75px;}
+.springboot {top: 53px; left: 40px; width: 140px; height: 55px;}
+/**backend**/
+
+/**deployment and others**/
+.center_cir > img{
+    position: absolute;
+}
+
+.github{top: 70px;left: 49px;width: 55px;height: 55px;}
+.git{top: 5px;left: 100px;width: 75px;height: 75px;}
+.jenkins{ top: 66px;left: 183px;width: 65px;height: 65px;}
+.docker{top: 20px; left: 48px; width: 70px; height: 70px;}
+.aws{top: 38px; left: 141px; width: 105px; height: 57px;}
+/**deployment and others**/
+
+/**devops**/
+.center_cir >span{
+    position: absolute;
+    top: -34px;left: 87px;width: 120px;
+    font-weight: bold;
+
+}
+
+#skills{
+    height: 1100px;
+    background: rgb(143,188,219);
+    margin-top: -50px;
+}
+#archiving{
+    height: 575px;
+    text-align: center;
+    background: #1D809F;
+}
+
+#projects{
+
+    background: #03001C;
+    height: 450px;
+}
+
+/*archiving section시작*/
+
+#archiving .title{
+    margin-top: 30px;
+    color:white;
+}
+
+.archiving-inner{
+    margin: 0 auto;
+    width: 1076px;
+    height: 327px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.archiving-inner > section{
+    margin-top: 50px;
+    background-color: white;
+    width: 400px;
+    height: 100%;
+    border-radius: 20px;
+    text-align: left;
+    padding:32px;
+}
+
+
+.arch-sec1 img{
+    width: 192px;
+    height: 42px;
+    text-align:left;
+}
+.archiving-inner > section a{
+    display:block;
+    margin: 20px auto 20px auto;
+    text-decoration: none;
+}
+.archiving-inner{
+    list-style: none;
+}
+.github_ul{
+    margin:10px 0 20px 20px;
+
+}
+
+.github_ul li{
+    margin-bottom: 5px;
+}
+
+.arch-sec2 img{
+    width:42px;
+    height:42px;
+    text-align:left;
+}
+
+.project-aboutMe-inner{
+
+    width:1076px;
+    /*height: 980px;*/
+    margin: 0 auto;
+    text-align: center;
+    padding: 60px 0;
+
+}
+
+#projects .title{
+    color:white;
+    font-size: 48px;
+}
+
+
+
+.project_wrapper{
+    margin-top: 20px;
+}
+
+
+.project_sec{
+    width: 100%;
+    height: 100%;
+    background:white;
+    border-radius: 30px;
+    padding: 10px 10px 10px 10px;
+}
+
+.project_commentary{
+    height: 23px;
+    margin:10px 0 32px 0;
+}
+
+
+
+.more2{
+    display: block;/*inline요소는 margin이랑 padding이랑 안먹음 그래서 block으로 바꿔줌*/
+
+    margin: 70px auto 0 auto;
+    width: 400px;
+    height: 80px;
+    border-radius: 9px;
+    outline:none;
+    border:none; /*button: outline이랑 border none 해줘야함.*/
+    background: whitesmoke;
+    color:black;
+    font-size:27px;
+    cursor: pointer;
+    box-shadow: 5px 5px 10px rgb(0 0 0 / 37%);
+    transition: all 0.6s;
+}
+
+.more2:hover { transform: scale(1.05); }

@@ -1,0 +1,374 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+html,body{
+    height: 100%;
+    width: 100%;
+}
+
+header{
+    width: 100%;
+    background:white;
+    height: 10%;
+    border:1px solid black;
+    align-items: center;
+    /*position: fixed;*/
+    /*top:0;*/
+    /*left:0;*/
+
+
+}
+.top_btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #fff;
+    z-index: 99;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+}
+.top_btn > img{
+    width: 50%;
+    height: 50%;
+    align-self: center;
+}
+.containers{
+    width: 100%;
+    height: 89%;
+    display: flex;
+
+    justify-content: space-around;
+
+}
+
+
+
+.containers section:hover {
+    filter: grayscale(0%);
+}
+
+
+.tosel_lab_banner{
+    width: 20%;
+    height: 100%;
+    filter: grayscale(100%);
+    background: url(../images/TOSEL_LAB_Banner.png) center;
+    background-size: cover;
+    transition: all 0.3s;
+    cursor: pointer;
+        border: 1px solid;
+
+
+}
+
+.refactor_banner{
+    margin-top: 0px;
+    width: 20%;
+    height: 100%;
+    filter: grayscale(60%);
+    background: url(../images/refactor_banner.png) center;
+    background-size: cover;
+    transition: all 0.3s;
+    cursor: pointer;
+    border: 1px solid;
+}
+.SSO_banner{
+    width: 20%;
+    height: 100%;
+    filter: grayscale(100%);
+    background: url(../images/SSO_Banner.png);
+    background-size: cover;
+    transition: all 0.3s;
+    cursor: pointer;
+    border: 1px solid;
+
+
+}
+
+.tosel_mall_banner{
+    width: 20%;
+    height: 100%;
+    filter: grayscale(100%);
+    background: url(../images/TOSELMALL_Banner.png);
+    background-size: cover;
+    transition: all 0.3s;
+    cursor: pointer;
+        border: 1px solid;
+
+}
+
+
+
+.CARD24_banner{
+    width: 20%;
+    height: 100%;
+    filter: grayscale(100%);
+    background: url(../images/CARD24_Banner.png);
+    background-size: cover;
+    transition: all 0.3s;
+    cursor: pointer;
+    border: 1px solid;
+}
+
+
+.containers > section {
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.tosel_lab_platform_sec {
+    width: 100%;
+    /*height: 2000px;*/
+    background: #BCCEF8;
+
+}
+.about_tosel_lab{
+
+    width: 100%;
+    height: 100%;
+}
+.tosel_lab_platform_img{
+    width: 100%;
+    height: 450px;
+    background: url(../images/tosel_lab_platform_image.png);
+    background-size:cover;
+    background-position: center;
+    margin: 0 auto;
+}
+
+
+.tosel_lab_platform_script{
+    width: 75%;
+    height: 30%;
+    margin: 20px auto;
+}
+
+
+
+
+
+
+
+/* Sub Project Section */
+
+#sub_projects_wrap {
+    width: 1010px;
+    margin: 0 auto 0 auto;
+
+
+}
+#sub_projects_wrap > section {
+    width: 100%; height: 650px;
+    margin-bottom: 150px; display: flex; justify-content: space-around;
+}
+#sub_projects_wrap > section:last-child { height: 100px!important; margin-bottom: 0px!important;}
+.slide_wrap {
+    width: 380px; height: 100%;
+    /*border: 1px solid;*/
+}
+.project_explain_wrap {
+    width: 400px; height: 100%;
+    /*border: 1px solid red;*/
+}
+.project_explain_wrap > p {margin-top: 20px; font-size: 13px; }
+#carouselExampleIndicators1{ height: 100%;}
+#carouselExampleIndicators2{ height: 100%;}
+#carouselExampleIndicators3{ height: 100%;}
+#carouselExampleIndicators4{ height: 100%;}
+#carouselExampleIndicators5{ height: 100%;}
+#carouselExampleIndicators6{ height: 100%;}
+#carouselExampleIndicators7{ height: 100%;}
+
+
+.carousel-inner { height: 100%; }
+.carousel-item { height: 100%; }
+.w-100 { height: 100%; }
+
+
+#monthly_gradecard1 .w-100, #monthly_gradecard2 .w-100, #monthly_gradecard3 .w-100,#monthly_sixgrade .w-100,#monthly_check .w-100,#placement_intro .w-100,#placement_start .w-100,#placement_info .w-100,#placement_listening .w-100, #placement_reading .w-100,#placement_weakness .w-100,#placement_review .w-100,#daily_start .w-100, #daily_1 .w-100, #daily_2 .w-100, #daily_3 .w-100, #daily_4 .w-100, #daily_finish .w-100{
+                                height:auto!important;
+                                position:absolute;
+                                top:50%;
+                                transform: translateY(-50%);
+}
+#monthly_gradecard1,#monthly_gradecard2,#monthly_gradecard3,#monthly_sixgrade,#monthly_check{
+
+    background-color:white;
+    position: relative;
+
+}
+#placement_intro, #placement_start,#placement_info,#placement_listening,#placement_reading,#placement_weakness,#placement_review{
+    background-color:#E7F9FC;
+    position: relative;
+}
+
+
+
+#daily_start ,#daily_finish{
+    background-color: black;
+    position: relative;
+
+}
+#daily_start >img ,#daily_finish>img{
+     border-top:2px solid darkgreen;
+     border-bottom: 2px solid darkgreen;
+
+}
+
+#daily_1 , #daily_2 , #daily_3 , #daily_4{
+    background-color: #00AB8C;
+    position: relative;
+}
+
+
+.sub_title_parent{display: flex; justify-content: center;}
+.sub_title { text-align: center; font-size: 32px; margin:50px 0 60px 0; border-bottom: 2px solid; padding-bottom: 10px;}
+
+
+
+
+
+.detail_wrap {  margin-top: 50px; }
+.work_detail {
+    display: flex; align-items: center; margin-bottom: 31px;
+}
+.work_detail h6 {
+    font-size: 13px; font-weight: bold; width: 30%;
+    margin-bottom: 0!important;
+}
+.work_detail > span { font-size: 10px; width: 70%; font-weight: bold;}
+.skill_item_box { width: 70%; display: flex; flex-direction: column;}
+.skill_item_box > span { font-size: 10px; font-weight: bold;}
+
+
+/* Sub Project Section */
+
+
+
+
+
+
+
+
+
+
+.refactor_sec {
+    width: 100%;
+
+    background: #BAD7E9;
+}
+
+.about_refactor{
+    width: 100%;
+    margin-top: 40px;
+    display: block;
+    justify-content: center;
+
+    /*border: 1px solid;*/
+
+
+}
+
+
+.refactor_slide{
+    margin: 0 auto;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+
+}
+
+
+#carouselExampleIndicators_refactor {
+    width: 100%;
+    height: 550px;
+}
+
+.sso_sec{
+    width: 100%;
+    height: 1300px;
+    background: #EDF0F3;
+}
+
+.about_sso{
+    width: 100%;
+
+}
+.sso_image{
+    margin: 10px auto;
+    width: 600px;
+    height: 550px;
+    display: flex;
+    justify-content: center;
+}
+.sso_image >img{
+    width: 90%;
+    height: 80%;
+
+}
+
+.mall_sec {
+    width: 100%;
+    height: 2000px;
+    background: #FFEDDA;
+}
+
+.mall_slide{
+    margin: 0 auto;
+    width: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*height: 80%;*/
+
+}
+
+
+#carouselExampleIndicators_mall {
+    width: 100%;
+    height: 790px;
+}
+
+.mall_description{
+    width: 850px;
+    margin: 0 auto;
+}
+
+.card_sec {
+    width: 100%;
+    height: 1400px;
+    background: #FFFDE1;
+}
+
+.card_slide{
+    margin: 0 auto;
+    width: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border:2px solid;
+
+}
+
+
+#carouselExampleIndicators_card {
+    width: 100%;
+    height: 500px;
+}
+
+.card_description{
+    width: 850px;
+    margin: 0 auto;
+}

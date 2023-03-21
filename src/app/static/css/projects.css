@@ -7,6 +7,16 @@
     font-family: 'Noto Sans KR', sans-serif;
 }
 
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    height: 100px;
+    width: 100px;
+    outline: black;
+    background-color: rgba(0, 0, 0, 0.3);
+    background-size: 100%, 100%;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
 html,body{
     height: 100%;
     width: 100%;
@@ -15,13 +25,27 @@ html,body{
 header{
     width: 100%;
     background:white;
-    height: 10%;
+    /*height: 10%;*/
     border:1px solid black;
     align-items: center;
     /*position: fixed;*/
     /*top:0;*/
     /*left:0;*/
 
+
+}
+
+.header_div{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.header_div >h1 {
+    margin: auto;
+    text-align: center;
 
 }
 .top_btn {
@@ -265,7 +289,7 @@ header{
 .refactor_sec {
     width: 100%;
 
-    background: #BAD7E9;
+    background: #FFE6E6;
 }
 
 .about_refactor{
@@ -290,6 +314,10 @@ header{
 
 }
 
+.refactor_script{
+    margin: 0 auto;
+    width: 80%;
+}
 
 #carouselExampleIndicators_refactor {
     width: 100%;
@@ -298,7 +326,7 @@ header{
 
 .sso_sec{
     width: 100%;
-    height: 1300px;
+    height: 1500px;
     background: #EDF0F3;
 }
 
@@ -319,10 +347,15 @@ header{
 
 }
 
+.sso_description{
+    width: 70%;
+    margin: 0 auto;
+}
+
 .mall_sec {
     width: 100%;
-    height: 2000px;
-    background: #FFEDDA;
+    height: 2100px;
+    background: #FFB085;
 }
 
 .mall_slide{

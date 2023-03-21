@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Intro</title>
     <link rel="stylesheet" href="/static/css/index.css">
     <!--폰트-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,6 +15,75 @@
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
 </head>
 <body>
+
+  <script>
+      function ProfileScroll(){
+            var offset=$('#aboutMe').offset();
+            $('.profile_btn').click(function (){
+                $('html').animate({scrollTop:offset.top},400);
+            })
+        }
+
+
+
+        $(document).ready(function (){
+            $(window).on('resize', function(){
+                ProfileScroll();
+            })
+            ProfileScroll();
+        });
+
+      function SkillsScroll(){
+            var offset2=$('#skills').offset();
+            $('.skills_btn').click(function (){
+                $('html').animate({scrollTop:offset2.top},400);
+            })
+        }
+
+
+
+        $(document).ready(function (){
+            $(window).on('resize', function(){
+                SkillsScroll();
+            })
+                SkillsScroll();
+        });
+
+      function ArchivingScroll(){
+            var offset3=$('#archiving').offset();
+            $('.archiving_btn').click(function (){
+                $('html').animate({scrollTop:offset3.top},400);
+            })
+        }
+
+
+
+        $(document).ready(function (){
+            $(window).on('resize', function(){
+                ArchivingScroll();
+            })
+                ArchivingScroll();
+        });
+
+      function ProjectsScroll(){
+            var offset4=$('#projects').offset();
+            $('.project_btn').click(function (){
+                $('html').animate({scrollTop:offset4.top},400);
+            })
+        }
+
+
+
+        $(document).ready(function (){
+            $(window).on('resize', function(){
+                ProjectsScroll();
+            })
+                ProjectsScroll();
+        });
+
+
+  </script>
+
   <div id="wrap">
     <div id="banner">
 
@@ -22,10 +91,10 @@
       <header>
           <h1 id="logo"><img src="/static/images/KH_LOGO.png" style="width: 63px; height: 33px; margin-top: 18px"></h1>
           <ul class="nav">
-              <li>Profile</li>
-              <li>Skills</li>
-              <li>Archiving</li>
-              <li>Projects</li>
+              <li class="profile_btn">Profile</li>
+              <li class="skills_btn">Skills</li>
+              <li class="archiving_btn">Archiving</li>
+              <li class="project_btn">Projects</li>
               <li></li>
           </ul>
       </header>
@@ -35,9 +104,9 @@
     <!--        보통 의미없는건 SPAN, span은 inline요소임-->
         <span class="meaningless-line"></span>
         <p class="banner-description"> 안녕하십니까?<br><br>커뮤니케이션에 자신 있는<br>리스크 관리에 유능한<br>맡은 바 책임은 끝까지 완수 해내는<br><br> 뚝심있는 백엔드 개발자 이강현 입니다.<br> 만나뵙게 되어 대단히 반갑습니다 :)<br><br>  </p>
-        <div class="invitation">
-            <img src="/static/images/invitation7.png">
-        </div>
+<!--        <div class="invitation">-->
+<!--            <img src="/static/images/index_scrolldown.png">-->
+<!--        </div>-->
     </div>
 
 
@@ -47,7 +116,7 @@
                 <div class="title">Profile</div>
 
                 <div class="myInfo">
-                                <img src="/static/images/aboutme7.png" style="width: 90%; height: 90%; margin: 25px auto;">
+                                <img src="/static/images/aboutme9.png" style="width: 90%; height: 90%; margin: 25px auto;">
 
 
                 </div>

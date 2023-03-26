@@ -24,19 +24,22 @@ html,body{
 
 header{
     width: 100%;
-    background:white;
-    /*height: 10%;*/
+    background:#03001C;
+    color:white;
     border:1px solid black;
     align-items: center;
-    /*position: fixed;*/
-    /*top:0;*/
-    /*left:0;*/
+    display: flex;
+    justify-content: space-between;
 
 
 }
+.header_left{
+    width: 200px;
+    height: 70px;
+}
 
 .header_div{
-    width: 100%;
+    width: 200px;
     height: 70px;
     display: flex;
     justify-content: center;
@@ -48,6 +51,26 @@ header{
     text-align: center;
 
 }
+.header_right{
+    width: 200px;
+    height:70px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header_right >div {
+    width: 40px;
+    height: 70px;
+    align-items: center;
+    display: inline-block;
+    vertical-align: middle;
+
+}
+.header_right >div >p{
+    margin: auto;
+    text-align: center;
+}
+
 .top_btn {
     position: fixed;
     bottom: 20px;
@@ -191,13 +214,16 @@ header{
 }
 
 
-.tosel_lab_platform_script >h5{
+.tosel_lab_platform_script >p{
     width: 83%;
     margin: 57px auto 0 auto;
     text-align: center;
     font-size: 14px;
     font-weight: bold;
     line-height: 25px;
+}
+span.highlight{
+    font-size: 18px;
 }
 
 .tosel_lab_platform_script >h3{
@@ -368,7 +394,7 @@ header{
 }
 
 .refactor_script_details >h4{
-        width: 80%; margin: 57px auto 0 auto; text-align: center; font-weight: bold; line-height: 40px;
+        width: 80%; margin: 5px auto 0 auto; text-align: center; font-weight: bold; line-height: 40px;
 
 }
 .refactor_script_details > h5{

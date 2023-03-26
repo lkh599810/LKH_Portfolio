@@ -8,7 +8,7 @@
 
 #banner{
     width:100%;
-    height: 880px;
+    height: 950px;
     /*background:pink;*/
     background: url(../images/black_cover2.png); /*background-image할때는 url안에 "" 넣어줘야하는데, 이렇게 적어도 됨*/
     background-size:cover;

@@ -131,8 +131,8 @@ header{ /*header는 태그기때문에 그냥 잡아줘도됨*/
 }
 
 .myInfo{
-    border-radius: 40px;
-    background: #212529;
+    border-radius: 20px;
+    background: #030e1c;
     height: 90%;
     width: 100%;
     margin: 10px auto;

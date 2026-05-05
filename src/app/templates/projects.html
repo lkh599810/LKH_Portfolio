@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!--favicon-->
     <link rel="icon" href="http://175.45.195.199/favicon.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="/static/css/projects.css">
          <!--폰트-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
      <!--폰트 끝-->
 
 
@@ -22,109 +23,114 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/css/projects.css">
     <title>Projects</title>
 </head>
 <body>
     <div class="top_btn"><img src="/static/images/btn_up.png"></div>
-    <header style=" background: #03001C; color: white;">
-        <div class="header_left"></div>
+    <header class="projects-header">
+        <a class="back-link" href="/">Portfolio</a>
         <div class="header_div">
+            <p>Project Case Studies</p>
             <h1>PROJECTS</h1>
         </div>
-        <div class="header_right">
-            <div></div>
-            <div class="header_icon">
-<!--                <img src="../static/images/aws.png">-->
-            </div>
-            <div></div>
+        <div class="project-header-actions">
+            <button type="button" class="control-btn lang-toggle">ENG</button>
+            <button type="button" class="control-btn theme-toggle">Dark</button>
+            <a class="home-link" href="/">Home</a>
         </div>
     </header>
 
-    <div class="containers">
-      <section class="tosel_lab_banner"></section>
-      <section class="refactor_banner"></section>
-      <section class="SSO_banner"></section>
-      <section class="tosel_mall_banner"></section>
-      <section class="CARD24_banner"></section>
+    <div class="project-hero">
+        <p class="eyebrow">Selected Work</p>
+        <h2>실제 서비스와 문제 해결 경험을 이미지와 함께 정리했습니다.</h2>
+        <p>각 카드를 선택하면 해당 프로젝트 상세 섹션으로 이동합니다.</p>
+    </div>
+
+    <div class="containers" aria-label="Project navigation">
+      <section class="project-nav-card tosel_lab_banner" data-target=".tosel_lab_platform_sec">
+          <span>01</span>
+          <h3>Tosel Lab Platform</h3>
+          <p>학습 콘텐츠 플랫폼</p>
+      </section>
+      <section class="project-nav-card refactor_banner" data-target=".refactor_sec">
+          <span>02</span>
+          <h3>Business Model Refactoring</h3>
+          <p>서비스 구조 개선</p>
+      </section>
+      <section class="project-nav-card SSO_banner" data-target=".sso_sec">
+          <span>03</span>
+          <h3>Tosel SSO</h3>
+          <p>통합 유저 관리</p>
+      </section>
+      <section class="project-nav-card tosel_mall_banner" data-target=".mall_sec">
+          <span>04</span>
+          <h3>Tosel 교재몰</h3>
+          <p>SCM / 쇼핑몰</p>
+      </section>
+      <section class="project-nav-card CARD24_banner" data-target=".card_sec">
+          <span>05</span>
+          <h3>CARD 24</h3>
+          <p>카드 추천 서비스</p>
+      </section>
     </div>
 
     <script>
-        function toselLabScroll(){
-            var offset = $('.tosel_lab_platform_sec').offset();
-            $('.tosel_lab_banner').click(function (){
-                $('html').animate({scrollTop: offset.top}, 10);
-            })
-        }
+        $(function () {
+            $('.project-nav-card').on('click', function () {
+                var target = $($(this).data('target'));
+                if (target.length) {
+                    $('html, body').animate({scrollTop: target.offset().top - 24}, 320);
+                }
+            });
 
+            var translations = {
+                ko: [
+                    ['.back-link', 'Portfolio'], ['.header_div p', 'Project Case Studies'], ['.home-link', 'Home'],
+                    ['.project-hero .eyebrow', 'Selected Work'],
+                    ['.project-hero h2', '실제 서비스와 문제 해결 경험을 이미지와 함께 정리했습니다.'],
+                    ['.project-hero p:last-child', '각 카드를 선택하면 해당 프로젝트 상세 섹션으로 이동합니다.'],
+                    ['.project-nav-card:eq(0) p', '학습 콘텐츠 플랫폼'], ['.project-nav-card:eq(1) p', '서비스 구조 개선'],
+                    ['.project-nav-card:eq(2) p', '통합 유저 관리'], ['.project-nav-card:eq(3) h3', 'Tosel 교재몰'],
+                    ['.project-nav-card:eq(3) p', 'SCM / 쇼핑몰'], ['.project-nav-card:eq(4) p', '카드 추천 서비스']
+                ],
+                en: [
+                    ['.back-link', 'Portfolio'], ['.header_div p', 'Project Case Studies'], ['.home-link', 'Home'],
+                    ['.project-hero .eyebrow', 'Selected Work'],
+                    ['.project-hero h2', 'Real services and problem-solving work organized with visual case studies.'],
+                    ['.project-hero p:last-child', 'Select a card to jump to the project detail section.'],
+                    ['.project-nav-card:eq(0) p', 'Learning content platform'], ['.project-nav-card:eq(1) p', 'Service architecture improvement'],
+                    ['.project-nav-card:eq(2) p', 'Integrated user management'], ['.project-nav-card:eq(3) h3', 'Tosel Book Mall'],
+                    ['.project-nav-card:eq(3) p', 'SCM / Commerce'], ['.project-nav-card:eq(4) p', 'Card recommendation service']
+                ]
+            };
 
-        function Refactor_Scroll(){
-            var offset2=$('.refactor_sec').offset();
-            $('.refactor_banner').click(function (){
-                $('html').animate({scrollTop:offset2.top},10);
-            })
-        }
-        function SSO_Scroll(){
-            var offset3=$('.sso_sec').offset();
-            $('.SSO_banner').click(function (){
-                $('html').animate({scrollTop:offset3.top},10);
-            })
-        }
+            function setLanguage(lang) {
+                (translations[lang] || translations.ko).forEach(function (item) {
+                    $(item[0]).text(item[1]);
+                });
+                $('html').attr('lang', lang === 'en' ? 'en' : 'ko');
+                $('.lang-toggle').text(lang === 'en' ? 'KOR' : 'ENG');
+                localStorage.setItem('portfolioLang', lang);
+            }
 
+            function setTheme(theme) {
+                $('body').toggleClass('dark-mode', theme === 'dark');
+                $('.theme-toggle').text(theme === 'dark' ? 'Light' : 'Dark');
+                localStorage.setItem('portfolioTheme', theme);
+            }
 
-        function Mall_Scroll(){
-            var offset4=$('.mall_sec').offset();
-            $('.tosel_mall_banner').click(function (){
-                $('html').animate({scrollTop:offset4.top},10);
-            })
-        }
+            $('.lang-toggle').on('click', function () {
+                setLanguage(localStorage.getItem('portfolioLang') === 'en' ? 'ko' : 'en');
+            });
 
+            $('.theme-toggle').on('click', function () {
+                setTheme($('body').hasClass('dark-mode') ? 'light' : 'dark');
+            });
 
-        function Card_Scroll(){
-            var offset5=$('.card_sec').offset();
-            $('.CARD24_banner').click(function (){
-                $('html').animate({scrollTop:offset5.top},10);
-            })
-        }
-
-
-
-        $(document).ready(function (){
-            $(window).on('resize', function(){
-                toselLabScroll();
-            })
-            toselLabScroll();
+            setLanguage(localStorage.getItem('portfolioLang') || 'ko');
+            setTheme(localStorage.getItem('portfolioTheme') || 'light');
         });
-
-        $(document).ready(function (){
-            $(window).on('resize', function(){
-                SSO_Scroll();
-            })
-            SSO_Scroll();
-        });
-
-        $(document).ready(function (){
-            $(window).on('resize', function(){
-                Refactor_Scroll();
-            })
-            Refactor_Scroll();
-        });
-
-         $(document).ready(function (){
-            $(window).on('resize', function(){
-                Mall_Scroll();
-            })
-            Mall_Scroll();
-        });
-
-        $(document).ready(function (){
-            $(window).on('resize', function(){
-                Card_Scroll();
-            })
-            Card_Scroll();
-        });
-
-
     </script>
 
     <div class="tosel_lab_platform_sec">
@@ -588,7 +594,6 @@
                         <span class="highlight">TOSEL Lab의 Digital Contents 중 하나인 Placement Test 입니다.<br><br>
                         학원에서 신규 원생의 적절한 학습 레벨을 평가하여 반 배치고사로 활용하는 컨텐츠로 기획하였습니다<br><br></span>
                         출제된 문항에 대한 응시자의 답변에 따라 다음문항의 난이도가 달라지는 Adaptive-Test 형태로 기획하였으며 유기적으로 출제된 다양한 문항 및 해당 문항의 정답여부를 통계화하고 분야별 레벨설정이 가능하게끔 Classification 알고리즘을 통해 구현하였습니다.
-                        <br><br>프로젝트를 진행하면서 Classification 및 Clustering등 머신러닝의 알고리즘들을 많이 공부하게 되었고 AI에 대해서도 관심이 생기게 되었습니다.
 
                     </p>
 

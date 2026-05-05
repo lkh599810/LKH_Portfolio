@@ -1,245 +1,383 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Intro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LKH Portfolio</title>
     <link rel="stylesheet" href="/static/css/index.css">
-    <!--폰트-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap" rel="stylesheet">
-     <!--폰트-->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
 </head>
 <body>
-
-  <script>
-      function ProfileScroll(){
-            var offset=$('#aboutMe').offset();
-            $('.profile_btn').click(function (){
-                $('html').animate({scrollTop:offset.top},400);
-            })
-        }
-
-
-
-        $(document).ready(function (){
-            $(window).on('resize', function(){
-                ProfileScroll();
-            })
-            ProfileScroll();
-        });
-
-      function SkillsScroll(){
-            var offset2=$('#skills').offset();
-            $('.skills_btn').click(function (){
-                $('html').animate({scrollTop:offset2.top},400);
-            })
-        }
-
-
-
-        $(document).ready(function (){
-            $(window).on('resize', function(){
-                SkillsScroll();
-            })
-                SkillsScroll();
-        });
-
-      function ArchivingScroll(){
-            var offset3=$('#archiving').offset();
-            $('.archiving_btn').click(function (){
-                $('html').animate({scrollTop:offset3.top},400);
-            })
-        }
-
-
-
-        $(document).ready(function (){
-            $(window).on('resize', function(){
-                ArchivingScroll();
-            })
-                ArchivingScroll();
-        });
-
-      function ProjectsScroll(){
-            var offset4=$('#projects').offset();
-            $('.project_btn').click(function (){
-                $('html').animate({scrollTop:offset4.top},400);
-            })
-        }
-
-
-
-        $(document).ready(function (){
-            $(window).on('resize', function(){
-                ProjectsScroll();
-            })
-                ProjectsScroll();
-        });
-
-
-  </script>
-
-  <div id="wrap">
-    <div id="banner">
-
-
-      <header>
-          <h1 id="logo"><img src="/static/images/KH_LOGO.png" style="width: 63px; height: 33px; margin-top: 18px"></h1>
-          <ul class="nav">
-              <li class="profile_btn">Profile</li>
-              <li class="skills_btn">Skills</li>
-              <li class="archiving_btn">Archiving</li>
-              <li class="project_btn">Projects</li>
-              <li></li>
-          </ul>
-      </header>
-        <div class="title_name_wrap">
-            <h1 class="title_name" >긍정의 알고리즘을 탑재한<br> 백엔드 개발자 이강현입니다</h1>
+<div id="wrap">
+    <header class="site-header">
+        <a class="logo" href="/">
+            <img src="/static/images/KH_LOGO.png" alt="KH logo">
+        </a>
+        <nav class="nav" aria-label="Portfolio navigation">
+            <button type="button" data-target="#aboutMe">Profile</button>
+            <button type="button" data-target="#skills">Skills</button>
+            <button type="button" data-target="#archiving">Archiving</button>
+            <button type="button" data-target="#projects">Projects</button>
+        </nav>
+        <div class="global-controls" aria-label="Display controls">
+            <button type="button" class="control-btn lang-toggle">ENG</button>
+            <button type="button" class="control-btn theme-toggle">Dark</button>
         </div>
-    <!--        보통 의미없는건 SPAN, span은 inline요소임-->
-        <span class="meaningless-line"></span>
-        <p class="banner-description"> 안녕하십니까?<br><br>커뮤니케이션에 자신 있는,<br>리스크 관리에 유능한,<br>맡은 바 책임은 끝까지 완수 해내는,<br><br> 뚝심있는 백엔드 개발자 이강현 입니다.<br> 만나뵙게 되어 대단히 반갑습니다 :)<br><br>  </p>
-<!--        <div class="invitation">-->
-<!--            <img src="/static/images/index_scrolldown.png">-->
-<!--        </div>-->
-    </div>
+    </header>
 
-
-    <div id="container">
-        <section id="aboutMe">
-            <div class="aboutMe-inner">
-                <div class="title">Profile</div>
-
-                <div class="myInfo">
-                                <img src="/static/images/aboutme9.png" style="width: 90%; height: 90%; margin: 25px auto;">
-
-
+    <main>
+        <section id="banner" class="hero">
+            <div class="hero-copy">
+                <p class="eyebrow">Backend Developer Portfolio</p>
+                <h1>서비스의 흐름을 설계하고<br>문제를 끝까지 해결하는 개발자</h1>
+                <p class="hero-description">
+                    Flask, Spring Boot, Database, DevOps 경험을 바탕으로 실제 서비스 개발과 운영에 참여했습니다.
+                    기능 구현을 넘어 구조, 데이터, 배포 흐름까지 함께 고민합니다.
+                </p>
+                <div class="hero-actions">
+                    <a class="primary-link" href="/projects">프로젝트 보기</a>
+                    <button class="secondary-link" type="button" data-target="#skills">기술 스택</button>
                 </div>
-                <div class="notice"></div>
             </div>
-        </section>
-        <section id="skills">
-            <div class="skills-inner">
-                <div class="title">SKILLS</div>
-                <div class="skills_wrap">
-                    <section>
-                        <span>Programming Language</span>
-                        <img src="/static/images/java.png" class="java">
-                        <img src="/static/images/python_image.png" class="python">
-                        <img src="/static/images/js_image.png" class="lang_js" alt="">
-                    </section>
-                    <section>
-                        <span>Back-end</span>
-                        <img src="/static/images/flask.png" class="flask">
-                        <img src="/static/images/spring_image.png" class="spring">
-                        <img src="/static/images/springboot_image.png" class="springboot">
-                    </section>
-                    <section>
-                        <span>Database</span>
-                        <img src="/static/images/mysql.png" class="mysql">
-                        <img src="/static/images/mariadb.png" class="mariadb">
-                    </section>
-                    <section>
-                        <span>Front-end</span>
-                        <img src="/static/images/html_image.png" class="html">
-                        <img src="/static/images/css_image.png" class="css">
-                        <img src="/static/images/js_image.png" class="js">
-                        <img src="/static/images/jsp_image.png" class="jsp">
-                        <img src="/static/images/jQuery_image.png" class="jquery">
-                    </section>
-                </div>
-                <div class="center_cir cr1">
-                    <span>DevOps Stacks</span>
-                    <img src="/static/images/github.png" class="github">
-                    <img src="/static/images/git.png" class="git">
-                    <img src="/static/images/jenkins.png" class="jenkins">
-                </div>
-                <div class="center_cir cr2">
-
-                    <img src="/static/images/docker.png" class="docker">
-                    <img src="/static/images/aws.png" class="aws">
-                </div>
+            <div class="hero-panel" aria-label="Portfolio summary">
+                <span>Core Focus</span>
+                <strong>Backend · MSA · Data Flow</strong>
+                <p>실제 운영 서비스, 성적 처리 자동화, SSO, SCM 프로젝트 경험을 케이스 스터디 형태로 정리했습니다.</p>
             </div>
         </section>
 
-
-        <section id="archiving">
-            <div class="title">ARCHIVING</div>
-            <div class="archiving-inner">
-                <section class="arch-sec1">
-                    <img src="/static/images/git-hub.png" />
-                    <a href="https://github.com/lkh599810">https://github.com/lkh599810</a>
-
-                    <h4>Github 링크입니다.</h4>
-                    <ul class="github_ul">
-                        <li>개발을 처음 시작했을 때 부터 사용하던 Github입니다. </li>
-                        <li>프로젝트들이 모여있는 링크입니다. </li>
-                    </ul>
-                </section>
-
-                <section class="arch-sec2">
-                    <img src="/static/images/naverblog.png"  />
-                    <a href="https://blog.naver.com/lkh599810">https://blog.naver.com/lkh599810</a>
-
-                    <h4>네이버 블로그입니다.</h4>
-                    <ul class="github_ul">
-                        <li>개발을 처음 시작하면서부터 작성하기 시작했던 블로그입니다.</li>
-                        <li>공부했던 내용과 느낀 점 등을 기재하였습니다.</li>
-                        <li>일기 형식으로 편히 작성하였습니디.</li>
-                    </ul>
-                </section>
+        <section id="aboutMe" class="section profile-section">
+            <div class="section-heading">
+                <p class="eyebrow">Profile</p>
+                <h2>실무형 백엔드 개발자</h2>
+                <p>프로젝트의 기획, 개발, 소통, 배포 과정에 참여하며 서비스가 실제 사용자에게 닿는 흐름을 경험했습니다.</p>
             </div>
-        </section>
-
-
-
-        <section id="projects">
-                <div class="tosel-lab-platform">
-
-                </div>
-
-
-                <div class="project-aboutMe-inner">
-                    <div class="title">Projects</div>
-                        <div class="project_wrapper">
-                            <a class="go-projects" href="/projects"><button class="more2">프로젝트 바로가기 &nbsp; →</button></a>
+            <div class="profile-grid">
+                <div class="profile-image-card resume-card">
+                    <div class="resume-toolbar">
+                        <div>
+                            <span class="resume-kicker">Resume</span>
+                            <strong>이강현</strong>
                         </div>
-                 </div>
+                        <div class="resume-pager" aria-label="Resume page navigation">
+                            <button type="button" class="resume-arrow resume-prev" aria-label="Previous resume page">‹</button>
+                            <span class="resume-count">1 / 3</span>
+                            <button type="button" class="resume-arrow resume-next" aria-label="Next resume page">›</button>
+                        </div>
+                    </div>
+
+                    <div class="resume-pages">
+                        <article class="resume-page active">
+                            <div class="resume-hero">
+                                <img src="/static/images/증명사진_2023.jpg" alt="이강현 증명사진">
+                                <div>
+                                    <p class="resume-role">Backend Developer</p>
+                                    <h3>이강현</h3>
+                                    <p>연세대학교 미래캠퍼스 · 컴퓨터공학</p>
+                                </div>
+                            </div>
+                            <div class="resume-section">
+                                <h4>사용 언어</h4>
+                                <div class="resume-tags">
+                                    <span>C/C++</span>
+                                    <span>Python</span>
+                                    <span>Java</span>
+                                    <span>JavaScript</span>
+                                    <span>PHP</span>
+                                    <span>Kotlin</span>
+                                </div>
+                            </div>
+                            <div class="resume-section">
+                                <h4>기술 스택</h4>
+                                <div class="resume-stack-grid">
+                                    <div>
+                                        <strong>Back-end</strong>
+                                        <p>Flask, Spring Boot, Spring 4, Node.js</p>
+                                    </div>
+                                    <div>
+                                        <strong>Front-end</strong>
+                                        <p>HTML/CSS, JavaScript, jQuery, AJAX</p>
+                                    </div>
+                                    <div>
+                                        <strong>Database</strong>
+                                        <p>MariaDB, MySQL</p>
+                                    </div>
+                                    <div>
+                                        <strong>DevOps / Infrastructure</strong>
+                                        <p>Git/GitHub, Docker, Kubernetes, Jenkins, AWS EC2/RDS</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="resume-page">
+                            <div class="resume-section">
+                                <h4>(주) 에듀토셀</h4>
+                                <p class="resume-period">2021.10 ~ 2023.04</p>
+                                <ul class="resume-list">
+                                    <li>AI 기반 영어 학습 콘텐츠 플랫폼 기획 및 백엔드 개발</li>
+                                    <li>TOSEL Lab 메인 웹사이트 기획, DB 설계, 백엔드 개발</li>
+                                    <li>TOSEL SSO 통합 로그인 및 마이크로서비스 간 S2S API 설계</li>
+                                    <li>Monthly Test 성적 관리 서비스 DB 설계, 자동 채점 스크립트 구현, API 개발</li>
+                                    <li>Self Study, Voca Quiz, Placement Test 콘텐츠 DB 설계 및 API 개발</li>
+                                    <li>TOSEL 신규 SCM 시스템 및 Admin/ERP 기획, 프론트엔드/백엔드 개발</li>
+                                </ul>
+                            </div>
+                        </article>
+
+                        <article class="resume-page">
+                            <div class="resume-section">
+                                <h4>주식회사 앤서시스템</h4>
+                                <p class="resume-period">2023.05 ~ 2023.09</p>
+                                <ul class="resume-list">
+                                    <li>소프트웨어 백신 유지보수 및 기술지원</li>
+                                    <li>공공기관 고객사 환경별 백신 업데이트 및 프로그램 최적화</li>
+                                    <li>내부망, 폐쇄망, 외부망 환경의 네트워크 및 서버 장애 대응</li>
+                                    <li>Windows, Linux, CentOS 환경의 백신 관련 장애 대응 및 복구</li>
+                                </ul>
+                            </div>
+                            <div class="resume-section">
+                                <h4>넥셀시스템 주식회사</h4>
+                                <p class="resume-period">2025.02 ~ 2025.06</p>
+                                <ul class="resume-list">
+                                    <li>기존 웹사이트 전체 레이아웃 재정비 및 신규 페이지 구축</li>
+                                    <li>디자인 요소 및 인터랙션 개선을 통한 UI/UX 고도화</li>
+                                    <li>노후 DB 분석 및 Front-end 기반 정적 데이터 처리 구조 재설계</li>
+                                    <li>PHP 기반 레거시 서버 코드 리팩토링 및 응답 속도 개선</li>
+                                </ul>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="resume-bottom-pager" aria-label="Resume page navigation bottom">
+                        <button type="button" class="resume-arrow resume-prev" aria-label="Previous resume page">‹</button>
+                        <span class="resume-count">1 / 3</span>
+                        <button type="button" class="resume-arrow resume-next" aria-label="Next resume page">›</button>
+                    </div>
+                </div>
+                <div class="profile-summary">
+                    <article>
+                        <span>01</span>
+                        <h3>서비스 중심 개발</h3>
+                        <p>TOSEL Lab 플랫폼과 디지털 콘텐츠 프로젝트를 통해 사용자, 관리자, 데이터 흐름을 함께 고려했습니다.</p>
+                    </article>
+                    <article>
+                        <span>02</span>
+                        <h3>문제 해결 경험</h3>
+                        <p>성적 처리 자동화, 데이터 변환, 기존 서비스 구조 개선처럼 반복 업무와 병목을 줄이는 작업을 수행했습니다.</p>
+                    </article>
+                    <article>
+                        <span>03</span>
+                        <h3>협업과 운영</h3>
+                        <p>GitHub, Blog, Docker, AWS, Jenkins 기반의 개발/배포 흐름을 경험하고 기록했습니다.</p>
+                    </article>
+                </div>
+            </div>
         </section>
 
+        <section id="skills" class="section skills-section">
+            <div class="section-heading">
+                <p class="eyebrow">Skills</p>
+                <h2>기술 스택</h2>
+                <p>프로젝트에서 사용한 언어, 백엔드 프레임워크, 데이터베이스, 프론트엔드 및 DevOps 도구입니다.</p>
+            </div>
+            <div class="skills-grid">
+                <article class="skill-card">
+                    <h3>Programming Language</h3>
+                    <div class="skill-icons">
+                        <img src="/static/images/java.png" alt="Java">
+                        <img src="/static/images/python_image.png" alt="Python">
+                        <img src="/static/images/js_image.png" alt="JavaScript">
+                    </div>
+                </article>
+                <article class="skill-card">
+                    <h3>Back-end</h3>
+                    <div class="skill-icons">
+                        <img src="/static/images/flask.png" alt="Flask">
+                        <img src="/static/images/spring_image.png" alt="Spring">
+                        <img src="/static/images/springboot_image.png" alt="Spring Boot">
+                    </div>
+                </article>
+                <article class="skill-card">
+                    <h3>Database</h3>
+                    <div class="skill-icons">
+                        <img src="/static/images/mysql.png" alt="MySQL">
+                        <img src="/static/images/mariadb.png" alt="MariaDB">
+                    </div>
+                </article>
+                <article class="skill-card">
+                    <h3>Front-end</h3>
+                    <div class="skill-icons">
+                        <img src="/static/images/html_image.png" alt="HTML">
+                        <img src="/static/images/css_image.png" alt="CSS">
+                        <img src="/static/images/js_image.png" alt="JavaScript">
+                        <img src="/static/images/jsp_image.png" alt="JSP">
+                        <img src="/static/images/jQuery_image.png" alt="jQuery">
+                    </div>
+                </article>
+                <article class="skill-card wide">
+                    <h3>DevOps & Tools</h3>
+                    <div class="skill-icons">
+                        <img src="/static/images/github.png" alt="GitHub">
+                        <img src="/static/images/git.png" alt="Git">
+                        <img src="/static/images/jenkins.png" alt="Jenkins">
+                        <img src="/static/images/docker.png" alt="Docker">
+                        <img src="/static/images/aws.png" alt="AWS">
+                    </div>
+                </article>
+            </div>
+        </section>
 
+        <section id="archiving" class="section archive-section">
+            <div class="section-heading">
+                <p class="eyebrow">Archiving</p>
+                <h2>기록과 저장소</h2>
+            </div>
+            <div class="archive-grid">
+                <a class="archive-card" href="https://github.com/lkh599810" target="_blank" rel="noreferrer">
+                    <img src="/static/images/git-hub.png" alt="GitHub">
+                    <strong>GitHub</strong>
+                    <span>프로젝트 소스와 학습 기록을 정리한 저장소입니다.</span>
+                </a>
+                <a class="archive-card" href="https://blog.naver.com/lkh599810" target="_blank" rel="noreferrer">
+                    <img src="/static/images/naverblog.png" alt="Naver Blog">
+                    <strong>Naver Blog</strong>
+                    <span>개발 과정에서 학습한 내용과 문제 해결 과정을 기록했습니다.</span>
+                </a>
+            </div>
+        </section>
 
-
-    <footer></footer>
-
-  </div>
+        <section id="projects" class="section projects-section">
+            <div class="section-heading">
+                <p class="eyebrow">Projects</p>
+                <h2>대표 프로젝트</h2>
+                <p>실제 서비스와 학습 프로젝트를 이미지 중심 갤러리와 케이스 스터디 구조로 확인할 수 있습니다.</p>
+            </div>
+            <div class="project-preview-grid">
+                <article class="project-preview tosel">
+                    <span>Service Platform</span>
+                    <h3>TOSEL Lab Platform</h3>
+                </article>
+                <article class="project-preview refactor">
+                    <span>Architecture</span>
+                    <h3>Business Model Refactoring</h3>
+                </article>
+                <article class="project-preview sso">
+                    <span>Authentication</span>
+                    <h3>TOSEL SSO</h3>
+                </article>
+            </div>
+            <a class="primary-link project-link" href="/projects">전체 프로젝트 보기</a>
+        </section>
+    </main>
 </div>
-</body>
+
 <script>
-    $(document).ready(function (){
-        $('.title_name').css('transform', 'translate(0,0)');
+    $(function () {
+        $('[data-target]').on('click', function () {
+            var target = $($(this).data('target'));
+            if (target.length) {
+                $('html, body').animate({scrollTop: target.offset().top - 72}, 350);
+            }
+        });
+
+        var resumeIndex = 0;
+        var resumeTotal = $('.resume-page').length;
+
+        function showResumePage(nextIndex) {
+            resumeIndex = (nextIndex + resumeTotal) % resumeTotal;
+            $('.resume-page').removeClass('active').eq(resumeIndex).addClass('active');
+            $('.resume-count').text((resumeIndex + 1) + ' / ' + resumeTotal);
+        }
+
+        $('.resume-prev').on('click', function () {
+            showResumePage(resumeIndex - 1);
+        });
+
+        $('.resume-next').on('click', function () {
+            showResumePage(resumeIndex + 1);
+        });
+
+        var translations = {
+            ko: [
+                ['.nav button:eq(0)', 'Profile'], ['.nav button:eq(1)', 'Skills'], ['.nav button:eq(2)', 'Archiving'], ['.nav button:eq(3)', 'Projects'],
+                ['.hero .eyebrow', 'Backend Developer Portfolio'],
+                ['.hero h1', '서비스의 흐름을 설계하고<br>문제를 끝까지 해결하는 개발자', true],
+                ['.hero-description', 'Flask, Spring Boot, Database, DevOps 경험을 바탕으로 실제 서비스 개발과 운영에 참여했습니다. 기능 구현을 넘어 구조, 데이터, 배포 흐름까지 함께 고민합니다.'],
+                ['.primary-link:eq(0)', '프로젝트 보기'], ['.secondary-link', '기술 스택'],
+                ['.hero-panel span', 'Core Focus'], ['.hero-panel strong', 'Backend · MSA · Data Flow'],
+                ['.hero-panel p', '실제 운영 서비스, 성적 처리 자동화, SSO, SCM 프로젝트 경험을 케이스 스터디 형태로 정리했습니다.'],
+                ['#aboutMe .section-heading h2', '실무형 백엔드 개발자'],
+                ['#aboutMe .section-heading > p:last-child', '프로젝트의 기획, 개발, 소통, 배포 과정에 참여하며 서비스가 실제 사용자에게 닿는 흐름을 경험했습니다.'],
+                ['.resume-toolbar strong', '이강현'], ['.resume-role', 'Backend Developer'], ['.resume-hero h3', '이강현'],
+                ['.resume-hero p:last-child', '연세대학교 미래캠퍼스 · 컴퓨터공학'],
+                ['.resume-page:eq(0) .resume-section:eq(0) h4', '사용 언어'], ['.resume-page:eq(0) .resume-section:eq(1) h4', '기술 스택'],
+                ['.resume-page:eq(1) h4', '(주) 에듀토셀'], ['.resume-page:eq(2) .resume-section:eq(0) h4', '주식회사 앤서시스템'], ['.resume-page:eq(2) .resume-section:eq(1) h4', '넥셀시스템 주식회사'],
+                ['.profile-summary article:eq(0) h3', '서비스 중심 개발'], ['.profile-summary article:eq(0) p', 'TOSEL Lab 플랫폼과 디지털 콘텐츠 프로젝트를 통해 사용자, 관리자, 데이터 흐름을 함께 고려했습니다.'],
+                ['.profile-summary article:eq(1) h3', '문제 해결 경험'], ['.profile-summary article:eq(1) p', '성적 처리 자동화, 데이터 변환, 기존 서비스 구조 개선처럼 반복 업무와 병목을 줄이는 작업을 수행했습니다.'],
+                ['.profile-summary article:eq(2) h3', '협업과 운영'], ['.profile-summary article:eq(2) p', 'GitHub, Blog, Docker, AWS, Jenkins 기반의 개발/배포 흐름을 경험하고 기록했습니다.'],
+                ['#skills .section-heading h2', '기술 스택'], ['#skills .section-heading > p:last-child', '프로젝트에서 사용한 언어, 백엔드 프레임워크, 데이터베이스, 프론트엔드 및 DevOps 도구입니다.'],
+                ['#archiving .section-heading h2', '기록과 저장소'], ['.archive-card:eq(0) span', '프로젝트 소스와 학습 기록을 정리한 저장소입니다.'], ['.archive-card:eq(1) span', '개발 과정에서 학습한 내용과 문제 해결 과정을 기록했습니다.'],
+                ['#projects .section-heading h2', '대표 프로젝트'], ['#projects .section-heading > p:last-child', '실제 서비스와 학습 프로젝트를 이미지 중심 갤러리와 케이스 스터디 구조로 확인할 수 있습니다.'], ['.project-link', '전체 프로젝트 보기']
+            ],
+            en: [
+                ['.nav button:eq(0)', 'Profile'], ['.nav button:eq(1)', 'Skills'], ['.nav button:eq(2)', 'Archive'], ['.nav button:eq(3)', 'Projects'],
+                ['.hero .eyebrow', 'Backend Developer Portfolio'],
+                ['.hero h1', 'Designing service flows<br>and solving problems end-to-end', true],
+                ['.hero-description', 'I have contributed to real service development and operations with Flask, Spring Boot, databases, and DevOps. I care about structure, data flow, and deployment beyond feature delivery.'],
+                ['.primary-link:eq(0)', 'View Projects'], ['.secondary-link', 'Tech Stack'],
+                ['.hero-panel span', 'Core Focus'], ['.hero-panel strong', 'Backend · MSA · Data Flow'],
+                ['.hero-panel p', 'Case studies covering production services, score-processing automation, SSO, and SCM projects.'],
+                ['#aboutMe .section-heading h2', 'Practical Backend Developer'],
+                ['#aboutMe .section-heading > p:last-child', 'I have worked across planning, implementation, communication, and deployment so services can reach real users.'],
+                ['.resume-toolbar strong', 'Kanghyun Lee'], ['.resume-role', 'Backend Developer'], ['.resume-hero h3', 'Kanghyun Lee'],
+                ['.resume-hero p:last-child', 'Yonsei University Mirae Campus · Computer Engineering'],
+                ['.resume-page:eq(0) .resume-section:eq(0) h4', 'Languages'], ['.resume-page:eq(0) .resume-section:eq(1) h4', 'Tech Stack'],
+                ['.resume-page:eq(1) h4', 'Edutosel Co., Ltd.'], ['.resume-page:eq(2) .resume-section:eq(0) h4', 'Answer System Co., Ltd.'], ['.resume-page:eq(2) .resume-section:eq(1) h4', 'Nexel System Co., Ltd.'],
+                ['.profile-summary article:eq(0) h3', 'Service-Oriented Development'], ['.profile-summary article:eq(0) p', 'I considered user, admin, and data flows through TOSEL Lab and digital content projects.'],
+                ['.profile-summary article:eq(1) h3', 'Problem Solving'], ['.profile-summary article:eq(1) p', 'I reduced repetitive work and bottlenecks through score automation, data conversion, and service-structure improvements.'],
+                ['.profile-summary article:eq(2) h3', 'Collaboration & Operations'], ['.profile-summary article:eq(2) p', 'I experienced and documented development/deployment flows using GitHub, Blog, Docker, AWS, and Jenkins.'],
+                ['#skills .section-heading h2', 'Tech Stack'], ['#skills .section-heading > p:last-child', 'Languages, backend frameworks, databases, frontend tools, and DevOps tools used in projects.'],
+                ['#archiving .section-heading h2', 'Archive'], ['.archive-card:eq(0) span', 'Repository for project source code and study records.'], ['.archive-card:eq(1) span', 'Notes about development learnings and problem-solving processes.'],
+                ['#projects .section-heading h2', 'Featured Projects'], ['#projects .section-heading > p:last-child', 'Real services and learning projects organized as visual galleries and case studies.'], ['.project-link', 'View All Projects']
+            ]
+        };
+
+        function setLanguage(lang) {
+            var list = translations[lang] || translations.ko;
+            list.forEach(function (item) {
+                var target = $(item[0]);
+                if (item[2]) {
+                    target.html(item[1]);
+                } else {
+                    target.text(item[1]);
+                }
+            });
+            $('html').attr('lang', lang === 'en' ? 'en' : 'ko');
+            $('.lang-toggle').text(lang === 'en' ? 'KOR' : 'ENG');
+            localStorage.setItem('portfolioLang', lang);
+        }
+
+        function setTheme(theme) {
+            $('body').toggleClass('dark-mode', theme === 'dark');
+            $('.theme-toggle').text(theme === 'dark' ? 'Light' : 'Dark');
+            localStorage.setItem('portfolioTheme', theme);
+        }
+
+        $('.lang-toggle').on('click', function () {
+            setLanguage(localStorage.getItem('portfolioLang') === 'en' ? 'ko' : 'en');
+        });
+
+        $('.theme-toggle').on('click', function () {
+            setTheme($('body').hasClass('dark-mode') ? 'light' : 'dark');
+        });
+
+        setLanguage(localStorage.getItem('portfolioLang') || 'ko');
+        setTheme(localStorage.getItem('portfolioTheme') || 'light');
+        showResumePage(0);
     });
-
-
-    var hiddenElement=document.querySelector('.invitation');
-
-    window.addEventListener('scroll',function (){
-         var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-         if (scrollTop>240){
-              hiddenElement.style.opacity = 1;
-         }
-         else{
-                 hiddenElement.style.opacity = 0;
-
-         }
-
-    });
-
 </script>
+</body>
 </html>

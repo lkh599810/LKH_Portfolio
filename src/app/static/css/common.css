@@ -1,0 +1,331 @@
+/* index.html, projects.html 공통: 헤더, 모바일 메뉴, 푸터, 스크롤 진행 버튼 */
+
+html[lang="en"] [data-lang="ko"],
+html:not([lang="en"]) [data-lang="en"] {
+    display: none !important;
+}
+
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    width: 100%;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 0 6vw;
+    background: rgba(7, 17, 31, 0.82);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.logo img {
+    width: 63px;
+    height: auto;
+    display: block;
+}
+
+.site-nav {
+    display: flex;
+    gap: 10px;
+}
+
+.site-nav button,
+.site-nav a {
+    border: 0;
+    color: rgba(255, 255, 255, 0.82);
+    background: transparent;
+    padding: 10px 12px;
+    border-radius: 999px;
+    font: inherit;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.site-nav button:hover,
+.site-nav a:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.global-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.control-btn {
+    min-width: 58px;
+    height: 36px;
+    padding: 0 12px;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 999px;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+    font: inherit;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.control-btn:hover {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.menu-toggle {
+    display: none;
+    width: 40px;
+    height: 36px;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 10px;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+}
+
+.menu-toggle svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+    margin: 0 auto;
+}
+
+.nav-backdrop {
+    display: none;
+}
+
+.scroll-top {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 40;
+    width: 52px;
+    height: 52px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    color: var(--ink);
+    background: var(--white);
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: 0.2s ease;
+}
+
+body.dark-mode .scroll-top {
+    color: #ffffff;
+    background: #1c2b44;
+}
+
+.scroll-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+}
+
+.scroll-top-ring {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.scroll-top-ring circle {
+    fill: none;
+    stroke-width: 3;
+}
+
+.scroll-top-track {
+    stroke: var(--line);
+}
+
+.scroll-top-bar {
+    stroke: var(--blue);
+    stroke-linecap: round;
+}
+
+.scroll-top-arrow {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.site-footer {
+    padding: 48px 6vw 28px;
+    color: rgba(255, 255, 255, 0.72);
+    background: #07111f;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-inner {
+    width: min(1120px, 100%);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.footer-brand img {
+    width: 52px;
+    height: auto;
+}
+
+.footer-brand strong {
+    display: block;
+    color: #ffffff;
+    font-size: 18px;
+}
+
+.footer-brand p,
+.footer-copy {
+    margin: 0;
+    font-size: 14px;
+}
+
+.footer-contact a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.footer-contact a:hover {
+    text-decoration: underline;
+}
+
+.footer-links {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    padding: 8px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+    color: #ffffff;
+    font-size: 14px;
+    text-decoration: none;
+    transition: 0.2s ease;
+}
+
+.footer-links a:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.footer-copy {
+    width: min(1120px, 100%);
+    margin: 32px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 13px;
+}
+
+@media (max-width: 1199px) {
+    .site-nav {
+        gap: 2px;
+    }
+
+    .site-nav button,
+    .site-nav a {
+        padding: 8px 9px;
+    }
+}
+
+@media (max-width: 767px) {
+    .site-header {
+        height: 64px;
+        padding: 0 16px;
+        /* backdrop-filter가 있으면 fixed 메뉴가 헤더 기준으로 잡혀서 끔 */
+        backdrop-filter: none;
+        background: rgba(7, 17, 31, 0.96);
+    }
+
+    .global-controls {
+        margin-left: auto;
+    }
+
+    .control-btn {
+        min-width: 50px;
+        height: 34px;
+        padding: 0 10px;
+        font-size: 14px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .site-nav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 60;
+        width: min(78vw, 300px);
+        height: 100vh;
+        padding: 84px 20px 24px;
+        flex-direction: column;
+        gap: 4px;
+        background: #07111f;
+        border-left: 1px solid rgba(255, 255, 255, 0.12);
+        transform: translateX(100%);
+        transition: transform 0.25s ease;
+    }
+
+    .site-nav button,
+    .site-nav a {
+        width: 100%;
+        padding: 14px 16px;
+        border-radius: 10px;
+        text-align: left;
+        font-size: 16px;
+    }
+
+    body.nav-open .site-nav {
+        transform: none;
+    }
+
+    body.nav-open .nav-backdrop {
+        display: block;
+        position: fixed;
+        inset: 0;
+        z-index: 55;
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    body.nav-open .menu-toggle {
+        position: relative;
+        z-index: 61;
+    }
+
+    .scroll-top {
+        right: 16px;
+        bottom: 16px;
+        width: 46px;
+        height: 46px;
+    }
+
+    .site-footer {
+        padding: 40px 20px 24px;
+    }
+}

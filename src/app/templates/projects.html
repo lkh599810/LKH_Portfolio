@@ -118,21 +118,24 @@
             <div class="tosel_lab_platform_img"></div>
             <div class="tosel_lab_platform_script">
 
-                    <ul class="point-list" data-lang="ko">
-                        <li>20여 년 영어인증시험 TOSEL의 <span class="highlight">신규 학습 콘텐츠 플랫폼</span>.</li>
-                        <li>심사를 통과한 지정교육기관 원생에게 맞춤 진단 데이터·처방·콘텐츠를 제공해 영어 실력 향상을 지원.</li>
-                        <li><span class="highlight">2022년 8월 정식 출시된 상용 서비스</span>로, 기획부터 개발·배포·운영까지 주도적으로 참여.</li>
-                        <li>Monolithic 구조의 기존 TOSEL 사이트 리뉴얼을 고려해 Main Web Site + 4개 Digital Contents의 Microservices Architecture로 설계.</li>
-                    </ul>
-                    <ul class="point-list" data-lang="en">
-                        <li><span class="highlight">A new learning content platform</span> from TOSEL, an English proficiency test with 20 years of history.</li>
-                        <li>Provides personalized diagnostic data, prescriptions, and content to students of screened, designated institutions.</li>
-                        <li><span class="highlight">A commercial service launched in August 2022</span>; I led work from planning through development, deployment, and operations.</li>
-                        <li>Designed as a Microservices Architecture (main website + 4 digital contents), with the renewal of the monolithic TOSEL site in mind.</li>
-                    </ul>
+                    <p data-lang="ko">
+                        20여년간 영어인증능력 시험제도를 통해 입지를 다진 <span class="highlight"> TOSEL의 신규 학습컨텐츠 플랫폼입니다.</span>
+                        전국 학원들을 대상으로 심사과정을 거쳐 TOSEL Lab 지정교육기관을 선별하고,
+                        선별된 지정교육기관과 해당 기관의 원생들을 대상으로 맞춤식 진단 데이터 공유 및 처방과 컨텐츠 제공을 통하여
+                        해당 지정교육 기관의 원생들의 영어능력 성장을 돕도록 기획되었습니다.<br><br>
+                        <span class="highlight"> 2022년 8월 정식 출시된 서비스로, 개발부터 배포 및 운영까지 참여했습니다.<br>전국 교육기관과 학생들을 대상으로 제공된 실제 상용 서비스입니다.</span>
+                        <br><br> 서비스 초기 기획부터 개발, 소통 및 런칭까지 모든 프로세스에 주도적인 역할로 참여하였고
+                        기존에 Monolothic한 시험 웹사이트에 모든 기능이 몰려있던 TOSEL 사이트 리뉴얼까지 고려하여 TOSEL Lab Main Web Site 및 4개의 Digital Contents가 포함된 Microservices Architecture 방식의 플랫폼으로 설계하였습니다. &nbsp;<br><br>그럼 지금부터 제가 참여했던 TOSEL Lab Platform의 프로젝트들을 소개해드리겠습니다.
+                    </p>
+<p data-lang="en">
+                        This is <span class="highlight">TOSEL's new learning content platform</span>, built on 20 years of experience running an English proficiency test.
+                        Academies nationwide go through a screening process to become designated TOSEL Lab institutions, and the platform was designed to help their students grow
+                        by sharing personalized diagnostic data, prescriptions, and learning content.<br><br>
+                        <span class="highlight">It officially launched in August 2022, and I was involved from development through deployment and operations.<br>It was a real commercial service offered to educational institutions and students nationwide.</span>
+                        <br><br>I took a leading role in every stage, from initial planning through development, communication, and launch.
+                        Considering the renewal of the existing monolithic TOSEL test website, where every feature was concentrated, I designed the platform with a Microservices Architecture made up of the TOSEL Lab main website and four digital contents.<br><br>Below are the TOSEL Lab Platform projects I worked on.
+                    </p>
 <!--                    <h4 style="width: 83%; margin:0 auto; text-align: center;">지금부터 TOSEL Lab Platform의 Service를 소개해드리겠습니다.</h4>-->
-                <h3># SubProjects</h3>
-
             </div>
         </div>
 
@@ -143,6 +146,7 @@
         <!-- Sub Project Section -->
 
         <div id="sub_projects_wrap">
+            <p class="eyebrow">Sub Projects</p>
 
             <div class="sub_title_parent">
                 <h1 class="sub_title">TOSEL Lab Main website</h1>
@@ -199,16 +203,14 @@
                 </div>
                 <div class="project_explain_wrap">
                     <ul class="point-list" data-lang="ko">
-                        <li><span class="highlight">TOSEL Lab Platform Main website</span> (lab.tosel.co.kr) — 기관장·원생이 콘텐츠를 이용하는 진입점.</li>
-                        <li>타 업체와의 콘텐츠 협업을 고려해 <span class="highlight">CORS 통신</span>이 가능하도록 설계.</li>
-                        <li>심사 통과 기관만 이용 가능하며, 총 14종의 유저 타입에 맞춘 DB 설계 및 권한 부여 API 구축.</li>
-                        <li>복잡한 유저 권한 관리와 보안의 중요성을 체감.</li>
+                        <li>TOSEL Lab 공식 홈페이지 — 지정교육기관과 원생들이 학습 콘텐츠를 이용하는 웹사이트.</li>
+                        <li>프론트엔드 서버 및 API 서버가 서로 다른 서브도메인에서 운영되는 환경에서, Cross-Origin 요청을 처리하기 위한 <span class="highlight">CORS 허용 정책</span> 설정 및 API 연동.</li>
+                        <li>심사를 통과한 지정교육기관만 서비스를 이용할 수 있도록 구성하고, <span class="highlight">14종의 사용자 유형</span>에 따른 DB 설계 및 권한 관리 API 개발.</li>
                     </ul>
                     <ul class="point-list" data-lang="en">
-                        <li><span class="highlight">TOSEL Lab Platform Main website</span> (lab.tosel.co.kr) — the entry point where directors and students use the contents.</li>
-                        <li>Designed for <span class="highlight">CORS communication</span> to support planned content partnerships.</li>
-                        <li>Only screened institutions can use it; designed the DB and permission APIs for 14 user types.</li>
-                        <li>Learned firsthand the importance of complex permission management and security.</li>
+                        <li>The official TOSEL Lab website — where designated institutions and their students use learning content.</li>
+                        <li>Configured a <span class="highlight">CORS allow policy</span> and API integration to handle cross-origin requests, as the frontend and API servers run on different subdomains.</li>
+                        <li>Restricted the service to screened, designated institutions; designed the DB and built permission management APIs for <span class="highlight">14 user types</span>.</li>
                     </ul>
 
 

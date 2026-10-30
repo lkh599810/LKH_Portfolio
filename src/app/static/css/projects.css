@@ -229,8 +229,8 @@ a {
     font-weight: 800 !important;
 }
 
-.tosel_lab_platform_script .point-list {
-    margin-bottom: 36px;
+#sub_projects_wrap > .eyebrow + .sub_title_parent .sub_title {
+    margin-top: 0 !important;
 }
 
 span.highlight {

@@ -199,7 +199,6 @@ a {
 
 .tosel_lab_platform_script,
 .refactor_script,
-.refactor_script_details,
 .sso_description,
 .mall_description,
 .card_description {
@@ -214,41 +213,94 @@ a {
     box-shadow: var(--shadow);
 }
 
-.tosel_lab_platform_script p,
 .tosel_lab_platform_script h3,
-.refactor_script h3,
-.refactor_script_details h4,
-.refactor_script_details h5,
-.refactor_script_problems,
-.refactor_script_emphasizing,
-.sso_description h3,
-.sso_description h5,
-.mall_description h3,
-.mall_description h5,
-.card_description h2,
-.card_description h4,
-.card_description h5 {
-    width: 100% !important;
-    margin: 0 0 18px !important;
-    padding: 0 !important;
-    color: var(--ink) !important;
-    background: transparent !important;
-    text-align: left !important;
-    line-height: 1.75 !important;
+.sso_description h3 {
+    width: 100%;
+    margin: 0 0 18px;
+    color: var(--ink);
+    text-align: left;
+    line-height: 1.5;
 }
 
 .tosel_lab_platform_script h3,
 .sub_title,
-.sso_description h3,
-.card_description h2 {
+.sso_description h3 {
     font-size: 26px !important;
     font-weight: 800 !important;
+}
+
+.tosel_lab_platform_script .point-list {
+    margin-bottom: 36px;
 }
 
 span.highlight {
     color: var(--blue);
     font-size: inherit;
     font-weight: 800;
+}
+
+.refactor_script h3,
+.mall_description h3,
+.card_description h3 {
+    margin: 0 0 22px;
+    color: var(--ink);
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 1.5;
+}
+
+.refactor_script h4,
+.mall_description h4,
+.card_description h4 {
+    margin: 26px 0 10px;
+    color: var(--blue);
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+}
+
+.point-list {
+    margin: 0 0 8px;
+}
+
+.point-list li {
+    position: relative;
+    padding-left: 16px;
+    margin-bottom: 8px;
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.7;
+    word-break: keep-all;
+}
+
+.point-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.72em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--blue);
+}
+
+.point-list strong {
+    font-weight: 800;
+}
+
+.project-meta {
+    margin: 22px 0 0;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.project-meta + .project-meta {
+    margin-top: 0;
+    padding-top: 4px;
+    border-top: 0;
 }
 
 #sub_projects_wrap {
@@ -305,12 +357,6 @@ span.highlight {
     box-shadow: var(--shadow);
 }
 
-.project_explain_wrap > p {
-    margin-top: 0;
-    color: var(--ink);
-    font-size: 14px;
-    line-height: 1.75;
-}
 
 .detail_wrap {
     margin-top: 28px;
@@ -499,7 +545,6 @@ span.highlight {
     #sub_projects_wrap,
     .tosel_lab_platform_script,
     .refactor_script,
-    .refactor_script_details,
     .sso_description,
     .mall_description,
     .card_description,
@@ -517,7 +562,6 @@ span.highlight {
 
     .tosel_lab_platform_script,
     .refactor_script,
-    .refactor_script_details,
     .sso_description,
     .mall_description,
     .card_description,

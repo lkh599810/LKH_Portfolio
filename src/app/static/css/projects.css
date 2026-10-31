@@ -84,7 +84,7 @@ a {
     width: min(1180px, calc(100% - 40px));
     margin: -24px auto 72px;
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 14px;
 }
 
@@ -168,7 +168,11 @@ a {
 }
 
 .sarangmoa_banner {
-    background-image: url(../images/sarangmoa_main.jpg);
+    background-image: url(../images/sarangmoa_logo.jpg);
+}
+
+.laya_banner {
+    background-image: url(../images/laya_cost.jpg);
 }
 
 .tosel_lab_platform_sec,
@@ -178,7 +182,8 @@ a {
 .card_sec,
 .nexell_sec,
 .raise_sec,
-.sarangmoa_sec {
+.sarangmoa_sec,
+.laya_sec {
     width: 100%;
     height: auto !important;
     padding: 84px 0;
@@ -192,7 +197,8 @@ a {
 .card_sec > h1,
 .nexell_sec > h1,
 .raise_sec > h1,
-.sarangmoa_sec > h1 {
+.sarangmoa_sec > h1,
+.laya_sec > h1 {
     width: min(1120px, calc(100% - 40px)) !important;
     margin: 0 auto 36px !important;
     padding: 0 0 18px !important;
@@ -222,7 +228,8 @@ a {
 .card_description,
 .nexell_description,
 .raise_description,
-.sarangmoa_description {
+.sarangmoa_description,
+.laya_description {
     width: min(960px, calc(100% - 40px)) !important;
     height: auto !important;
     margin: 0 auto !important;
@@ -265,7 +272,8 @@ span.highlight {
 .card_description h3,
 .nexell_description h3,
 .raise_description h3,
-.sarangmoa_description h3 {
+.sarangmoa_description h3,
+.laya_description h3 {
     margin: 0 0 22px;
     color: var(--ink);
     font-size: 20px;
@@ -278,7 +286,8 @@ span.highlight {
 .card_description h4,
 .nexell_description h4,
 .raise_description h4,
-.sarangmoa_description h4 {
+.sarangmoa_description h4,
+.laya_description h4 {
     margin: 26px 0 10px;
     color: var(--blue);
     font-size: 15px;
@@ -478,6 +487,7 @@ span.highlight {
 .nexell_slide,
 .raise_slide,
 .sarangmoa_slide,
+.laya_slide,
 .sso_image {
     width: min(900px, calc(100% - 40px)) !important;
     height: auto !important;
@@ -491,7 +501,8 @@ span.highlight {
 #carouselExampleIndicators_card,
 #carouselExampleIndicators_nexell,
 #carouselExampleIndicators_raise,
-#carouselExampleIndicators_sarangmoa {
+#carouselExampleIndicators_sarangmoa,
+#carouselExampleIndicators_laya {
     width: 100% !important;
     height: 560px !important;
 }
@@ -533,7 +544,8 @@ span.highlight {
     #carouselExampleIndicators_card,
     #carouselExampleIndicators_nexell,
     #carouselExampleIndicators_raise,
-    #carouselExampleIndicators_sarangmoa {
+    #carouselExampleIndicators_sarangmoa,
+    #carouselExampleIndicators_laya {
         height: 500px !important;
     }
 }
@@ -567,7 +579,8 @@ span.highlight {
     .card_sec,
     .nexell_sec,
     .raise_sec,
-    .sarangmoa_sec {
+    .sarangmoa_sec,
+    .laya_sec {
         padding: 58px 0;
     }
 
@@ -578,7 +591,8 @@ span.highlight {
     .card_sec > h1,
     .nexell_sec > h1,
     .raise_sec > h1,
-    .sarangmoa_sec > h1 {
+    .sarangmoa_sec > h1,
+    .laya_sec > h1 {
         width: calc(100% - 32px) !important;
         font-size: 28px !important;
     }
@@ -593,12 +607,14 @@ span.highlight {
     .nexell_description,
     .raise_description,
     .sarangmoa_description,
+    .laya_description,
     .refactor_slide,
     .mall_slide,
     .card_slide,
     .nexell_slide,
     .raise_slide,
     .sarangmoa_slide,
+    .laya_slide,
     .sso_image {
         width: calc(100% - 32px) !important;
     }
@@ -616,6 +632,7 @@ span.highlight {
     .nexell_description,
     .raise_description,
     .sarangmoa_description,
+    .laya_description,
     .project_explain_wrap {
         padding: 22px !important;
         border-radius: 12px;
@@ -643,7 +660,8 @@ span.highlight {
     #carouselExampleIndicators_card,
     #carouselExampleIndicators_nexell,
     #carouselExampleIndicators_raise,
-    #carouselExampleIndicators_sarangmoa {
+    #carouselExampleIndicators_sarangmoa,
+    #carouselExampleIndicators_laya {
         height: 340px !important;
         border-radius: 12px;
     }

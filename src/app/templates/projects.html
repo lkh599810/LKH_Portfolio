@@ -42,6 +42,7 @@
             <button type="button" data-target=".nexell_sec">Nexell</button>
             <button type="button" data-target=".raise_sec">RAISE Lab</button>
             <button type="button" data-target=".sarangmoa_sec"><span data-lang="ko">사랑모아</span><span data-lang="en">SarangMoa</span></button>
+            <button type="button" data-target=".laya_sec">Reviewer Routing</button>
         </nav>
         <div class="global-controls" aria-label="Display controls">
             <button type="button" class="control-btn lang-toggle">ENG</button>
@@ -100,6 +101,11 @@
           <span>08</span>
           <h3><span data-lang="ko">연세 사랑모아</span><span data-lang="en">Yonsei SarangMoa</span></h3>
           <p><span data-lang="ko">기부·나눔 플랫폼</span><span data-lang="en">Donation &amp; sharing platform</span></p>
+      </section>
+      <section class="project-nav-card laya_banner" data-target=".laya_sec">
+          <span>09</span>
+          <h3>Adaptive Reviewer Routing</h3>
+          <p><span data-lang="ko">LLM 리뷰 비용 최적화</span><span data-lang="en">LLM review cost optimization</span></p>
       </section>
     </div>
 
@@ -1360,13 +1366,11 @@
                         <button type="button" data-bs-target="#carouselExampleIndicators_sarangmoa" data-bs-slide-to="8" aria-label="Slide 9"></button>
                         <button type="button" data-bs-target="#carouselExampleIndicators_sarangmoa" data-bs-slide-to="9" aria-label="Slide 10"></button>
                         <button type="button" data-bs-target="#carouselExampleIndicators_sarangmoa" data-bs-slide-to="10" aria-label="Slide 11"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators_sarangmoa" data-bs-slide-to="11" aria-label="Slide 12"></button>
                       </div>
                       <div class="carousel-inner">
                         <div class="carousel-item active">
-                          <img src="/static/images/sarangmoa_main.jpg" class="d-block w-100" alt="Main page">
-                        </div>
-                        <div class="carousel-item">
-                          <img src="/static/images/sarangmoa_main_sections.jpg" class="d-block w-100" alt="Main page good examples and monthly items">
+                          <img src="/static/images/sarangmoa_service.jpg" class="d-block w-100" alt="Donation service page">
                         </div>
                         <div class="carousel-item">
                           <img src="/static/images/sarangmoa_category.jpg" class="d-block w-100" alt="Donated items by category">
@@ -1375,13 +1379,16 @@
                           <img src="/static/images/sarangmoa_detail.jpg" class="d-block w-100" alt="Item detail">
                         </div>
                         <div class="carousel-item">
+                          <img src="/static/images/sarangmoa_goodex.jpg" class="d-block w-100" alt="Good examples of donations">
+                        </div>
+                        <div class="carousel-item">
+                          <img src="/static/images/sarangmoa_mypage.jpg" class="d-block w-100" alt="My page">
+                        </div>
+                        <div class="carousel-item">
                           <img src="/static/images/sarangmoa_payment.jpg" class="d-block w-100" alt="Payment method selection">
                         </div>
                         <div class="carousel-item">
                           <img src="/static/images/sarangmoa_apply.jpg" class="d-block w-100" alt="Donation application form">
-                        </div>
-                        <div class="carousel-item">
-                          <img src="/static/images/sarangmoa_mypage.jpg" class="d-block w-100" alt="My page">
                         </div>
                         <div class="carousel-item">
                           <img src="/static/images/sarangmoa_certificate.jpg" class="d-block w-100" alt="Volunteer certificate">
@@ -1394,6 +1401,9 @@
                         </div>
                         <div class="carousel-item">
                           <img src="/static/images/sarangmoa_manage_events.jpg" class="d-block w-100" alt="Event management page">
+                        </div>
+                        <div class="carousel-item">
+                          <img src="/static/images/sarangmoa_faq.jpg" class="d-block w-100" alt="FAQ page">
                         </div>
                       </div>
                       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators_sarangmoa" data-bs-slide="prev">
@@ -1444,8 +1454,92 @@
                     <li>Donation form with item image upload, my page with purchase/donation history, and volunteer certificate page.</li>
                 </ul>
 
-                <p class="project-meta">GitHub: <a href="https://github.com/lkh599810/Yonsei_SarangMoa">lkh599810/Yonsei_SarangMoa</a> · Django, SQLite, jQuery</p>
+                <p class="project-meta">Django, SQLite, jQuery</p>
                 <p class="project-meta"><span data-lang="ko">기간: 2024.11 ~ 2024.12 · 학교 프로젝트</span><span data-lang="en">Period: 2024.11 ~ 2024.12 · University project</span></p>
+            </div>
+        </section>
+    </div>
+
+
+    <div class="laya_sec">
+        <h1>Adaptive Reviewer Routing</h1>
+        <section class="about_laya">
+            <div class="laya_slide">
+                <div id="carouselExampleIndicators_laya" class="carousel slide" data-bs-ride="true">
+                      <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleIndicators_laya" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators_laya" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators_laya" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators_laya" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                      </div>
+                      <div class="carousel-inner">
+                        <div class="carousel-item active">
+                          <img src="/static/images/laya_overview.jpg" class="d-block w-100" alt="API cost reduced 40 to 42 percent with Laya routing">
+                        </div>
+                        <div class="carousel-item">
+                          <img src="/static/images/laya_flow.jpg" class="d-block w-100" alt="Review harness with a Laya decision step">
+                        </div>
+                        <div class="carousel-item">
+                          <img src="/static/images/laya_cost.jpg" class="d-block w-100" alt="API cost of five assignment strategies">
+                        </div>
+                        <div class="carousel-item">
+                          <img src="/static/images/laya_table.jpg" class="d-block w-100" alt="Full experiment results table">
+                        </div>
+                      </div>
+                      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators_laya" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                      </button>
+                      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators_laya" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                      </button>
+                    </div>
+            </div>
+            <div class="laya_description">
+                <h3 data-lang="ko">Laya decision model을 결합해 LLM 코드 리뷰 하네스의 API 비용을 최적화한 실험 프로젝트입니다.</h3>
+                <h3 data-lang="en">An experiment that cuts the API cost of an LLM code review harness by adding the Laya decision model.</h3>
+
+                <h4 data-lang="ko">배경</h4>
+                <h4 data-lang="en">Background</h4>
+                <ul class="point-list" data-lang="ko">
+                    <li>모든 커밋에 동일한 리뷰어(CA 일치 검토 · VA 보안 검토 · FA 형식 검토)와 고비용 모델을 호출하는 방식의 비용 부담.</li>
+                    <li>커밋 특성에 따라 필요한 검사만 선택하는 리뷰 하네스를 구성.</li>
+                </ul>
+                <ul class="point-list" data-lang="en">
+                    <li>Calling every reviewer (CA consistency, VA security, FA format) with an expensive model on every commit is costly.</li>
+                    <li>Built a review harness that picks only the checks each commit needs.</li>
+                </ul>
+
+                <h4 data-lang="ko">구현</h4>
+                <h4 data-lang="en">Implementation</h4>
+                <ul class="point-list" data-lang="ko">
+                    <li><span class="highlight">Laya 의사결정 모델</span>을 리뷰 하네스에 통합해 보안·형식 검토의 필요 여부를 판단하고, 확신도 0.7 미만이면 검사를 실행하는 보수적 호출 규칙 구현.</li>
+                    <li>변경 줄 수 기반 모델 등급 선택 (5줄 이하 small / 6줄 이상 strong).</li>
+                    <li>공개 커밋 기반 40개 사례와 240개 리뷰 답안 캐시로 고정 호출 · 규칙 기반 · Laya 2종 · 작은 LLM 라우터 5개 조건 비교.</li>
+                    <li>비용 · 호출 수 · 토큰 · CA 정답률/F1 · 처리시간을 함께 계측하는 실험 파이프라인 구성.</li>
+                </ul>
+                <ul class="point-list" data-lang="en">
+                    <li>Integrated the <span class="highlight">Laya decision model</span> to decide whether security and format reviews are needed, running the check whenever confidence is below 0.7.</li>
+                    <li>Picked the model tier by lines changed (≤5 small / ≥6 strong).</li>
+                    <li>Compared five strategies (fixed, rule-based, two Laya variants, small LLM router) on 40 public-commit cases with a shared cache of 240 review answers.</li>
+                    <li>Built an experiment pipeline tracking cost, calls, tokens, CA accuracy/F1, and latency together.</li>
+                </ul>
+
+                <h4 data-lang="ko">결과</h4>
+                <h4 data-lang="en">Results</h4>
+                <ul class="point-list" data-lang="ko">
+                    <li>고정 호출 기준선 대비 <span class="highlight">API 비용 40.4~42.1% 절감</span>, 리뷰어 호출 14.2~18.3% 감소 (v1 기준 $0.5534 → $0.3203, 120회 → 98회).</li>
+                    <li>보안 검토 대상 9건 모두에 보안 리뷰어 배정 유지.</li>
+                    <li>CA 정답률 97.5% → 92.5%, 처리시간 증가 등 비용과 판정 성능 사이의 교환관계를 정량화.</li>
+                </ul>
+                <ul class="point-list" data-lang="en">
+                    <li><span class="highlight">Cut API cost by 40.4–42.1%</span> and reviewer calls by 14.2–18.3% vs. the fixed baseline (v1: $0.5534 → $0.3203, 120 → 98 calls).</li>
+                    <li>Kept a security reviewer assigned to all 9 security-flagged cases.</li>
+                    <li>Quantified the trade-off: CA accuracy 97.5% → 92.5% and longer processing time.</li>
+                </ul>
+
+                <p class="project-meta"><span data-lang="ko">설계 참고: CodeAgent (EMNLP 2024) · 데이터: 공개 커밋 (Zenodo) · Python, LLM API</span><span data-lang="en">Design reference: CodeAgent (EMNLP 2024) · Data: public commits (Zenodo) · Python, LLM API</span></p>
             </div>
         </section>
     </div>

@@ -111,7 +111,7 @@
       <section class="project-nav-card talkie_banner" data-target=".talkie_sec">
           <span>10</span>
           <h3>TalkieBridge</h3>
-          <p><span data-lang="ko">빈티지 언어 모델 프롬프트 변환</span><span data-lang="en">Prompt rewriting for a vintage LM</span></p>
+          <p><span data-lang="ko">지식 공백 vs 추론 능력 실험</span><span data-lang="en">Knowledge gap vs. reasoning</span></p>
       </section>
     </div>
 
@@ -1551,8 +1551,8 @@
 
 
     <div class="talkie_sec">
-        <h1 data-lang="ko">TalkieBridge : 빈티지 언어 모델을 위한 프롬프트 변환</h1>
-        <h1 data-lang="en">TalkieBridge : Prompt Rewriting for a Vintage Language Model</h1>
+        <h1 data-lang="ko">TalkieBridge : 1930년의 언어 모델은 몰라서 틀릴까, 못 해서 틀릴까</h1>
+        <h1 data-lang="en">TalkieBridge : Does a 1930 Language Model Fail Because It Can't Reason, or Because It Doesn't Know?</h1>
         <section class="about_talkie">
             <div class="talkie_slide">
                 <div id="carouselExampleIndicators_talkie" class="carousel slide" data-bs-ride="true">
@@ -1587,48 +1587,59 @@
                     </div>
             </div>
             <div class="talkie_description">
-                <h3 data-lang="ko">1931년 이전 텍스트로만 학습된 언어 모델 Talkie-1930 앞에, 현대 용어를 기능 설명으로 바꿔 주는 전처리 계층을 만들고 효과를 측정했습니다.</h3>
-                <h3 data-lang="en">Built a preprocessing layer in front of Talkie-1930, a language model trained only on pre-1931 text, that rewrites modern terms into functional descriptions, and measured the effect.</h3>
+                <h3 data-lang="ko">LLM이 현대의 질문에 답하지 못하는 건 추론 능력이 부족해서일까, 그 시대의 지식이 없어서일까. 1930년 이전 텍스트로만 학습된 Talkie-1930으로 이 질문을 실험했습니다.</h3>
+                <h3 data-lang="en">When an LLM fails a modern question, is it missing reasoning or missing knowledge? I tested this with Talkie-1930, a model trained only on pre-1931 text.</h3>
 
-                <h4 data-lang="ko">배경</h4>
-                <h4 data-lang="en">Background</h4>
+                <h4 data-lang="ko">문제의식</h4>
+                <h4 data-lang="en">Question</h4>
                 <ul class="point-list" data-lang="ko">
-                    <li>Talkie에게 GPS의 쓸모를 물으면 GPS를 눈으로 보는 방향 계기처럼 설명함. 추론을 못 하는 게 아니라 단어를 모르는 문제.</li>
-                    <li>모델은 건드리지 않고, 질문 쪽에서 용어를 1930년에도 있던 말로 풀어 주면 답이 나아지는지 확인.</li>
+                    <li>Talkie에게 GPS의 쓸모를 물으면 GPS를 눈으로 보는 방향 계기처럼 설명함. 질문은 이해했지만 단어를 모르는 상황.</li>
+                    <li>모르는 현대 개념을 이미 아는 기초 개념으로 분해해 주면(GPS → "멀리 있는 송신기의 신호 시간을 비교해 위치를 추정하는 방법"), 모델이 과거에 학습한 전기 · 통신 · 기계 지식을 조합해 추론할 수 있는지 확인하고자 함.</li>
                 </ul>
                 <ul class="point-list" data-lang="en">
-                    <li>Asked what GPS is useful for, Talkie describes it as a direction instrument you look at. The problem is the unknown word, not reasoning.</li>
-                    <li>Kept the model untouched and tested whether rewriting the term in 1930-era words improves the answer.</li>
+                    <li>Asked what GPS is useful for, Talkie describes a direction instrument you look at. It understood the question but not the word.</li>
+                    <li>If an unknown modern concept is broken down into basic ones it already knows (GPS → "compares timed signals from distant transmitters to estimate position"), can the model combine its older knowledge of electricity, communication and machinery to reason?</li>
                 </ul>
 
-                <h4 data-lang="ko">구현</h4>
-                <h4 data-lang="en">Implementation</h4>
+                <h4 data-lang="ko">실험</h4>
+                <h4 data-lang="en">Experiment</h4>
                 <ul class="point-list" data-lang="ko">
-                    <li>6개 분야 100문항, <span class="highlight">현대 용어 사전 141개 · 기능 설명 사전 100개</span> 구축.</li>
-                    <li>용어 탐지 → 기능 설명 연결(소형 오토인코더로 후보 보강) → 문장 재작성 → 검증(용어 잔존 · 정답 누출 · 길이 검사, 실패 시 최대 2회 수정) 파이프라인.</li>
-                    <li>원문 · 사전 치환 · 길이만 맞춘 대조군 · 전체 파이프라인 · 검증 생략 5개 조건을 같은 문항으로 비교.</li>
-                    <li>Talkie 웹 API가 부하 시 응답을 거부해 초기 정확도가 0으로 나오던 문제 — 수집 실패와 무효 응답을 분리 기록하고, 재시도 · 응답 캐시 · 프롬프트 해시 검증 추가.</li>
-                    <li>서술형 답변은 조건명을 숨기고 A/B 순서를 섞어 LLM Judge로 블라인드 쌍 비교.</li>
+                    <li>모델은 그대로 두고 질문만 바꾸는 <span class="highlight">전처리 계층</span> 구현 — 용어 탐지 → 기능 설명 연결 → 문장 재작성 → 검증.</li>
+                    <li>6개 분야 100문항, 현대 용어 사전 141개 · 기능 설명 사전 100개 구축.</li>
+                    <li>효과의 원인을 가리기 위해 원문 · 사전 치환 · 길이만 맞춘 대조군 · 전체 파이프라인 · 검증 생략 5개 조건을 같은 문항으로 비교.</li>
+                    <li>객관식 정확도와, 조건명을 숨기고 A/B 순서를 섞은 서술형 블라인드 비교(LLM Judge) 두 가지로 평가.</li>
+                    <li>Talkie 웹 API가 부하 시 응답을 거부해 정확도가 0으로 나오던 문제 — 수집 실패와 무효 응답을 분리 기록하고 재시도 · 응답 캐시 · 프롬프트 해시 검증 추가.</li>
                 </ul>
                 <ul class="point-list" data-lang="en">
-                    <li>Built 100 questions across 6 domains, a <span class="highlight">141-entry modern term dictionary and 100 functional descriptions</span>.</li>
-                    <li>Pipeline: term detection → description mapping (small autoencoder for candidates) → rewrite → validation (leftover terms, answer leakage, length; up to 2 repairs).</li>
-                    <li>Compared five conditions on the same questions: raw, dictionary only, length-matched control, full pipeline, no validator.</li>
-                    <li>The Talkie web API rejected requests under load, so early accuracy came out as 0 — logged collection failures apart from invalid answers and added retries, a response cache, and prompt hash checks.</li>
-                    <li>Open-ended answers judged by an LLM in blind pairs, with condition names hidden and A/B order shuffled.</li>
+                    <li>Built a <span class="highlight">preprocessing layer</span> that changes only the question, not the model — term detection → description mapping → rewrite → validation.</li>
+                    <li>100 questions across 6 domains, a 141-entry modern term dictionary and 100 functional descriptions.</li>
+                    <li>Compared five conditions on the same questions to isolate the cause: raw, dictionary only, length-matched control, full pipeline, no validator.</li>
+                    <li>Evaluated with multiple-choice accuracy and blind open-ended comparison by an LLM judge (condition names hidden, A/B order shuffled).</li>
+                    <li>The Talkie web API rejected requests under load and accuracy came out as 0 — logged collection failures apart from invalid answers and added retries, a response cache and prompt hash checks.</li>
                 </ul>
 
                 <h4 data-lang="ko">결과</h4>
                 <h4 data-lang="en">Results</h4>
                 <ul class="point-list" data-lang="ko">
-                    <li>객관식은 모든 조건이 19~24%로 무작위 기준 25% 아래 → 차이를 잴 수 없는 과제로 판단하고 서술형으로 평가 전환.</li>
-                    <li>서술형 400쌍에서 <span class="highlight">원문 대비 79승 18패</span>, 길이 대조군 대비 88승 11패 (p&lt;0.001).</li>
-                    <li>사전 치환과는 45승 51패로 차이 없음 → 효과는 오토인코더 · 검증기보다 용어를 풀어 쓰는 것 자체에서 나온 것으로 분석.</li>
+                    <li>객관식 100문항에서는 변환해도 정확도 개선 없음 (원문 21%, 변환 19%, 모든 조건이 무작위 기준 25% 아래).</li>
+                    <li>서술형에서는 <span class="highlight">변환한 질문이 원문에 79승 18패 3무</span>, 길이만 맞춘 대조군에도 88승 11패로 앞섬 (p&lt;0.001).</li>
+                    <li>단순 사전 치환보다 낫지는 않았음 (45승 51패) — 효과는 용어를 기능으로 풀어 쓰는 것 자체에서 나옴.</li>
                 </ul>
                 <ul class="point-list" data-lang="en">
-                    <li>Multiple choice: every condition scored 19–24%, below the 25% random baseline, so evaluation moved to open-ended answers.</li>
-                    <li>Across 400 open-ended pairs, <span class="highlight">79 wins / 18 losses vs. raw</span> and 88 / 11 vs. the length control (p&lt;0.001).</li>
-                    <li>No difference vs. dictionary-only (45 / 51), so the gain comes from spelling out the term itself, not the autoencoder or validator.</li>
+                    <li>Multiple choice: no accuracy gain from rewriting (raw 21%, rewritten 19%; every condition below the 25% random baseline).</li>
+                    <li>Open-ended: <span class="highlight">rewritten questions beat raw 79–18 (3 ties)</span> and the length control 88–11 (p&lt;0.001).</li>
+                    <li>No better than plain dictionary substitution (45–51) — the gain comes from spelling out the function itself.</li>
+                </ul>
+
+                <h4 data-lang="ko">결론</h4>
+                <h4 data-lang="en">Takeaway</h4>
+                <ul class="point-list" data-lang="ko">
+                    <li>모델을 재학습하지 않고 입력 표현만 재구성해도, 지식이 제한된 LLM의 <span class="highlight">지식 격차 일부를 완화할 수 있는 가능성</span>을 관찰.</li>
+                    <li>다만 순수 추론 능력이 입증되거나 지식 부족과 추론 부족이 완전히 분리됐다고는 볼 수 없으며, 서술형 평가가 LLM Judge에 의존한다는 한계가 있음.</li>
+                </ul>
+                <ul class="point-list" data-lang="en">
+                    <li>Observed that restructuring only the input, with no retraining, can <span class="highlight">partly close the knowledge gap</span> of a knowledge-limited LLM.</li>
+                    <li>This does not prove pure reasoning ability or fully separate missing knowledge from missing reasoning, and the open-ended scores rely on an LLM judge.</li>
                 </ul>
 
                 <p class="project-meta">Python, OpenAI API, Talkie-1930</p>

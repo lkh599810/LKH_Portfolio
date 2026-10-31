@@ -1359,10 +1359,14 @@
                         <button type="button" data-bs-target="#carouselExampleIndicators_sarangmoa" data-bs-slide-to="7" aria-label="Slide 8"></button>
                         <button type="button" data-bs-target="#carouselExampleIndicators_sarangmoa" data-bs-slide-to="8" aria-label="Slide 9"></button>
                         <button type="button" data-bs-target="#carouselExampleIndicators_sarangmoa" data-bs-slide-to="9" aria-label="Slide 10"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators_sarangmoa" data-bs-slide-to="10" aria-label="Slide 11"></button>
                       </div>
                       <div class="carousel-inner">
                         <div class="carousel-item active">
                           <img src="/static/images/sarangmoa_main.jpg" class="d-block w-100" alt="Main page">
+                        </div>
+                        <div class="carousel-item">
+                          <img src="/static/images/sarangmoa_main_sections.jpg" class="d-block w-100" alt="Main page good examples and monthly items">
                         </div>
                         <div class="carousel-item">
                           <img src="/static/images/sarangmoa_category.jpg" class="d-block w-100" alt="Donated items by category">
@@ -1419,25 +1423,29 @@
                     <li>Recruits volunteers and issues volunteer points and certificates.</li>
                 </ul>
 
-                <h4 data-lang="ko">담당 구현</h4>
-                <h4 data-lang="en">My Part</h4>
+                <h4 data-lang="ko">주요 구현</h4>
+                <h4 data-lang="en">Key Features</h4>
                 <ul class="point-list" data-lang="ko">
                     <li>세션 기반 로그인·회원가입, 재학증명서 이미지 업로드를 통한 가입 인증.</li>
-                    <li><span class="highlight">관리자 페이지</span> — 유저 승인/반려, 기부 물품 승인·반려·취소 등 상품 상태 관리.</li>
+                    <li><span class="highlight">권한 등급별 접근 제어</span> — 미승인·승인 회원·관리자 3단계 권한을 설계해, 재학증명서 검증 후 관리자 승인을 받은 회원만 구매 가능하고 관리자 메뉴는 관리자 등급에만 노출.</li>
+                    <li><span class="highlight">기부 물품 상태 관리 워크플로우</span> — 신청 → 승인/반려 → 판매 완료 → 삭제로 이어지는 상태 전이를 설계하고, 승인·반려 취소 시 신청 상태로 되돌리는 관리자 검수 프로세스 구현.</li>
                     <li>공지사항·이벤트·좋은 사례 게시물 CRUD 관리 기능.</li>
                     <li>카테고리별 상품 조회 및 페이지네이션 JSON API (AJAX 연동).</li>
                     <li>결제 처리 — 구매 내역 저장 및 판매 완료 상태 변경, 마일리지 잔액 검증 후 차감하는 이벤트 응모.</li>
+                    <li>기부 신청(물품 이미지 업로드), 마이페이지 구매·기부 내역, 봉사활동 확인서 발급 페이지.</li>
                 </ul>
                 <ul class="point-list" data-lang="en">
                     <li>Session-based login and sign-up, verified with an uploaded enrollment certificate image.</li>
-                    <li><span class="highlight">Admin page</span> — approve/reject users and manage donated item status (approve, reject, cancel).</li>
+                    <li><span class="highlight">Role-based access control</span> — designed three permission levels (pending, approved member, admin); only members verified by enrollment certificate and approved by an admin can purchase, and admin menus are shown to admins only.</li>
+                    <li><span class="highlight">Donated item status workflow</span> — designed the state flow (requested → approved/rejected → sold → deleted) with an admin review process that can roll approvals or rejections back to requested.</li>
                     <li>CRUD management for notices, events, and good-example posts.</li>
                     <li>JSON API for category-filtered, paginated item listing (used via AJAX).</li>
                     <li>Payment handling — saves purchases and marks items sold; event entry that checks and deducts mileage.</li>
+                    <li>Donation form with item image upload, my page with purchase/donation history, and volunteer certificate page.</li>
                 </ul>
 
                 <p class="project-meta">GitHub: <a href="https://github.com/lkh599810/Yonsei_SarangMoa">lkh599810/Yonsei_SarangMoa</a> · Django, SQLite, jQuery</p>
-                <p class="project-meta"><span data-lang="ko">기간: 2024.11 ~ 2024.12 · 인원: 4 · 학교 팀 프로젝트</span><span data-lang="en">Period: 2024.11 ~ 2024.12 · Team: 4 · University team project</span></p>
+                <p class="project-meta"><span data-lang="ko">기간: 2024.11 ~ 2024.12 · 학교 프로젝트</span><span data-lang="en">Period: 2024.11 ~ 2024.12 · University project</span></p>
             </div>
         </section>
     </div>

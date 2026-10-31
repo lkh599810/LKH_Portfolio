@@ -167,13 +167,18 @@ a {
     background-image: url(../images/raise_env_corr.png);
 }
 
+.sarangmoa_banner {
+    background-image: url(../images/sarangmoa_main.jpg);
+}
+
 .tosel_lab_platform_sec,
 .refactor_sec,
 .sso_sec,
 .mall_sec,
 .card_sec,
 .nexell_sec,
-.raise_sec {
+.raise_sec,
+.sarangmoa_sec {
     width: 100%;
     height: auto !important;
     padding: 84px 0;
@@ -186,7 +191,8 @@ a {
 .mall_sec > h1,
 .card_sec > h1,
 .nexell_sec > h1,
-.raise_sec > h1 {
+.raise_sec > h1,
+.sarangmoa_sec > h1 {
     width: min(1120px, calc(100% - 40px)) !important;
     margin: 0 auto 36px !important;
     padding: 0 0 18px !important;
@@ -215,7 +221,8 @@ a {
 .mall_description,
 .card_description,
 .nexell_description,
-.raise_description {
+.raise_description,
+.sarangmoa_description {
     width: min(960px, calc(100% - 40px)) !important;
     height: auto !important;
     margin: 0 auto !important;
@@ -257,7 +264,8 @@ span.highlight {
 .mall_description h3,
 .card_description h3,
 .nexell_description h3,
-.raise_description h3 {
+.raise_description h3,
+.sarangmoa_description h3 {
     margin: 0 0 22px;
     color: var(--ink);
     font-size: 20px;
@@ -269,7 +277,8 @@ span.highlight {
 .mall_description h4,
 .card_description h4,
 .nexell_description h4,
-.raise_description h4 {
+.raise_description h4,
+.sarangmoa_description h4 {
     margin: 26px 0 10px;
     color: var(--blue);
     font-size: 15px;
@@ -468,6 +477,7 @@ span.highlight {
 .card_slide,
 .nexell_slide,
 .raise_slide,
+.sarangmoa_slide,
 .sso_image {
     width: min(900px, calc(100% - 40px)) !important;
     height: auto !important;
@@ -480,7 +490,8 @@ span.highlight {
 #carouselExampleIndicators_mall,
 #carouselExampleIndicators_card,
 #carouselExampleIndicators_nexell,
-#carouselExampleIndicators_raise {
+#carouselExampleIndicators_raise,
+#carouselExampleIndicators_sarangmoa {
     width: 100% !important;
     height: 560px !important;
 }
@@ -521,7 +532,8 @@ span.highlight {
     #carouselExampleIndicators_mall,
     #carouselExampleIndicators_card,
     #carouselExampleIndicators_nexell,
-    #carouselExampleIndicators_raise {
+    #carouselExampleIndicators_raise,
+    #carouselExampleIndicators_sarangmoa {
         height: 500px !important;
     }
 }
@@ -554,7 +566,8 @@ span.highlight {
     .mall_sec,
     .card_sec,
     .nexell_sec,
-    .raise_sec {
+    .raise_sec,
+    .sarangmoa_sec {
         padding: 58px 0;
     }
 
@@ -564,7 +577,8 @@ span.highlight {
     .mall_sec > h1,
     .card_sec > h1,
     .nexell_sec > h1,
-    .raise_sec > h1 {
+    .raise_sec > h1,
+    .sarangmoa_sec > h1 {
         width: calc(100% - 32px) !important;
         font-size: 28px !important;
     }
@@ -578,11 +592,13 @@ span.highlight {
     .card_description,
     .nexell_description,
     .raise_description,
+    .sarangmoa_description,
     .refactor_slide,
     .mall_slide,
     .card_slide,
     .nexell_slide,
     .raise_slide,
+    .sarangmoa_slide,
     .sso_image {
         width: calc(100% - 32px) !important;
     }
@@ -599,6 +615,7 @@ span.highlight {
     .card_description,
     .nexell_description,
     .raise_description,
+    .sarangmoa_description,
     .project_explain_wrap {
         padding: 22px !important;
         border-radius: 12px;
@@ -625,7 +642,8 @@ span.highlight {
     #carouselExampleIndicators_mall,
     #carouselExampleIndicators_card,
     #carouselExampleIndicators_nexell,
-    #carouselExampleIndicators_raise {
+    #carouselExampleIndicators_raise,
+    #carouselExampleIndicators_sarangmoa {
         height: 340px !important;
         border-radius: 12px;
     }

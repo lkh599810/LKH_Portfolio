@@ -43,6 +43,7 @@
             <button type="button" data-target=".raise_sec">RAISE Lab</button>
             <button type="button" data-target=".sarangmoa_sec"><span data-lang="ko">사랑모아</span><span data-lang="en">SarangMoa</span></button>
             <button type="button" data-target=".laya_sec">LLM Router</button>
+            <button type="button" data-target=".talkie_sec">TalkieBridge</button>
         </nav>
         <div class="global-controls" aria-label="Display controls">
             <button type="button" class="control-btn lang-toggle">ENG</button>
@@ -106,6 +107,11 @@
           <span>09</span>
           <h3>Adaptive LLM Router</h3>
           <p><span data-lang="ko">LLM 하네스 비용 최적화</span><span data-lang="en">LLM harness cost optimization</span></p>
+      </section>
+      <section class="project-nav-card talkie_banner" data-target=".talkie_sec">
+          <span>10</span>
+          <h3>TalkieBridge</h3>
+          <p><span data-lang="ko">빈티지 언어 모델 프롬프트 변환</span><span data-lang="en">Prompt rewriting for a vintage LM</span></p>
       </section>
     </div>
 
@@ -1369,13 +1375,13 @@
                       </div>
                       <div class="carousel-inner">
                         <div class="carousel-item active">
-                          <img src="/static/images/sarangmoa_detail.jpg" class="d-block w-100" alt="Item detail">
+                          <img src="/static/images/sarangmoa_category.jpg" class="d-block w-100" alt="Donated items by category">
                         </div>
                         <div class="carousel-item">
                           <img src="/static/images/sarangmoa_service.jpg" class="d-block w-100" alt="Donation service page">
                         </div>
                         <div class="carousel-item">
-                          <img src="/static/images/sarangmoa_category.jpg" class="d-block w-100" alt="Donated items by category">
+                          <img src="/static/images/sarangmoa_detail.jpg" class="d-block w-100" alt="Item detail">
                         </div>
                         <div class="carousel-item">
                           <img src="/static/images/sarangmoa_mypage.jpg" class="d-block w-100" alt="My page">
@@ -1539,6 +1545,94 @@
                 </ul>
 
                 <p class="project-meta">Python, Claude API, Laya</p>
+            </div>
+        </section>
+    </div>
+
+
+    <div class="talkie_sec">
+        <h1 data-lang="ko">TalkieBridge : 빈티지 언어 모델을 위한 프롬프트 변환</h1>
+        <h1 data-lang="en">TalkieBridge : Prompt Rewriting for a Vintage Language Model</h1>
+        <section class="about_talkie">
+            <div class="talkie_slide">
+                <div id="carouselExampleIndicators_talkie" class="carousel slide" data-bs-ride="true">
+                      <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleIndicators_talkie" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators_talkie" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators_talkie" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators_talkie" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                      </div>
+                      <div class="carousel-inner">
+                        <div class="carousel-item active">
+                          <img src="/static/images/talkie_structure.jpg" class="d-block w-100" alt="TalkieBridge system structure">
+                        </div>
+                        <div class="carousel-item">
+                          <img src="/static/images/talkie_example.jpg" class="d-block w-100" alt="Prompt rewrite example">
+                        </div>
+                        <div class="carousel-item">
+                          <img src="/static/images/talkie_judge.jpg" class="d-block w-100" alt="Blind pairwise comparison results">
+                        </div>
+                        <div class="carousel-item">
+                          <img src="/static/images/talkie_mcq.jpg" class="d-block w-100" alt="Multiple-choice accuracy">
+                        </div>
+                      </div>
+                      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators_talkie" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                      </button>
+                      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators_talkie" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                      </button>
+                    </div>
+            </div>
+            <div class="talkie_description">
+                <h3 data-lang="ko">1931년 이전 텍스트로만 학습된 언어 모델 Talkie-1930 앞에, 현대 용어를 기능 설명으로 바꿔 주는 전처리 계층을 만들고 효과를 측정했습니다.</h3>
+                <h3 data-lang="en">Built a preprocessing layer in front of Talkie-1930, a language model trained only on pre-1931 text, that rewrites modern terms into functional descriptions, and measured the effect.</h3>
+
+                <h4 data-lang="ko">배경</h4>
+                <h4 data-lang="en">Background</h4>
+                <ul class="point-list" data-lang="ko">
+                    <li>Talkie에게 GPS의 쓸모를 물으면 GPS를 눈으로 보는 방향 계기처럼 설명함. 추론을 못 하는 게 아니라 단어를 모르는 문제.</li>
+                    <li>모델은 건드리지 않고, 질문 쪽에서 용어를 1930년에도 있던 말로 풀어 주면 답이 나아지는지 확인.</li>
+                </ul>
+                <ul class="point-list" data-lang="en">
+                    <li>Asked what GPS is useful for, Talkie describes it as a direction instrument you look at. The problem is the unknown word, not reasoning.</li>
+                    <li>Kept the model untouched and tested whether rewriting the term in 1930-era words improves the answer.</li>
+                </ul>
+
+                <h4 data-lang="ko">구현</h4>
+                <h4 data-lang="en">Implementation</h4>
+                <ul class="point-list" data-lang="ko">
+                    <li>6개 분야 100문항, <span class="highlight">현대 용어 사전 141개 · 기능 설명 사전 100개</span> 구축.</li>
+                    <li>용어 탐지 → 기능 설명 연결(소형 오토인코더로 후보 보강) → 문장 재작성 → 검증(용어 잔존 · 정답 누출 · 길이 검사, 실패 시 최대 2회 수정) 파이프라인.</li>
+                    <li>원문 · 사전 치환 · 길이만 맞춘 대조군 · 전체 파이프라인 · 검증 생략 5개 조건을 같은 문항으로 비교.</li>
+                    <li>Talkie 웹 API가 부하 시 응답을 거부해 초기 정확도가 0으로 나오던 문제 — 수집 실패와 무효 응답을 분리 기록하고, 재시도 · 응답 캐시 · 프롬프트 해시 검증 추가.</li>
+                    <li>서술형 답변은 조건명을 숨기고 A/B 순서를 섞어 LLM Judge로 블라인드 쌍 비교.</li>
+                </ul>
+                <ul class="point-list" data-lang="en">
+                    <li>Built 100 questions across 6 domains, a <span class="highlight">141-entry modern term dictionary and 100 functional descriptions</span>.</li>
+                    <li>Pipeline: term detection → description mapping (small autoencoder for candidates) → rewrite → validation (leftover terms, answer leakage, length; up to 2 repairs).</li>
+                    <li>Compared five conditions on the same questions: raw, dictionary only, length-matched control, full pipeline, no validator.</li>
+                    <li>The Talkie web API rejected requests under load, so early accuracy came out as 0 — logged collection failures apart from invalid answers and added retries, a response cache, and prompt hash checks.</li>
+                    <li>Open-ended answers judged by an LLM in blind pairs, with condition names hidden and A/B order shuffled.</li>
+                </ul>
+
+                <h4 data-lang="ko">결과</h4>
+                <h4 data-lang="en">Results</h4>
+                <ul class="point-list" data-lang="ko">
+                    <li>객관식은 모든 조건이 19~24%로 무작위 기준 25% 아래 → 차이를 잴 수 없는 과제로 판단하고 서술형으로 평가 전환.</li>
+                    <li>서술형 400쌍에서 <span class="highlight">원문 대비 79승 18패</span>, 길이 대조군 대비 88승 11패 (p&lt;0.001).</li>
+                    <li>사전 치환과는 45승 51패로 차이 없음 → 효과는 오토인코더 · 검증기보다 용어를 풀어 쓰는 것 자체에서 나온 것으로 분석.</li>
+                </ul>
+                <ul class="point-list" data-lang="en">
+                    <li>Multiple choice: every condition scored 19–24%, below the 25% random baseline, so evaluation moved to open-ended answers.</li>
+                    <li>Across 400 open-ended pairs, <span class="highlight">79 wins / 18 losses vs. raw</span> and 88 / 11 vs. the length control (p&lt;0.001).</li>
+                    <li>No difference vs. dictionary-only (45 / 51), so the gain comes from spelling out the term itself, not the autoencoder or validator.</li>
+                </ul>
+
+                <p class="project-meta">Python, OpenAI API, Talkie-1930</p>
+                <p class="project-meta"><span data-lang="ko">학교 프로젝트 · 기계학습개론</span><span data-lang="en">University project · Intro to Machine Learning</span></p>
             </div>
         </section>
     </div>

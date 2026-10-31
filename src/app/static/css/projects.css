@@ -175,6 +175,10 @@ a {
     background-image: url(../images/laya_structure.jpg);
 }
 
+.talkie_banner {
+    background-image: url(../images/talkie_structure.jpg);
+}
+
 .tosel_lab_platform_sec,
 .refactor_sec,
 .sso_sec,
@@ -183,7 +187,8 @@ a {
 .nexell_sec,
 .raise_sec,
 .sarangmoa_sec,
-.laya_sec {
+.laya_sec,
+.talkie_sec {
     width: 100%;
     height: auto !important;
     padding: 84px 0;
@@ -198,7 +203,8 @@ a {
 .nexell_sec > h1,
 .raise_sec > h1,
 .sarangmoa_sec > h1,
-.laya_sec > h1 {
+.laya_sec > h1,
+.talkie_sec > h1 {
     width: min(1120px, calc(100% - 40px)) !important;
     margin: 0 auto 36px !important;
     padding: 0 0 18px !important;
@@ -229,7 +235,8 @@ a {
 .nexell_description,
 .raise_description,
 .sarangmoa_description,
-.laya_description {
+.laya_description,
+.talkie_description {
     width: min(960px, calc(100% - 40px)) !important;
     height: auto !important;
     margin: 0 auto !important;
@@ -273,7 +280,8 @@ span.highlight {
 .nexell_description h3,
 .raise_description h3,
 .sarangmoa_description h3,
-.laya_description h3 {
+.laya_description h3,
+.talkie_description h3 {
     margin: 0 0 22px;
     color: var(--ink);
     font-size: 20px;
@@ -287,7 +295,8 @@ span.highlight {
 .nexell_description h4,
 .raise_description h4,
 .sarangmoa_description h4,
-.laya_description h4 {
+.laya_description h4,
+.talkie_description h4 {
     margin: 26px 0 10px;
     color: var(--blue);
     font-size: 15px;
@@ -488,6 +497,7 @@ span.highlight {
 .raise_slide,
 .sarangmoa_slide,
 .laya_slide,
+.talkie_slide,
 .sso_image {
     width: min(900px, calc(100% - 40px)) !important;
     height: auto !important;
@@ -502,7 +512,8 @@ span.highlight {
 #carouselExampleIndicators_nexell,
 #carouselExampleIndicators_raise,
 #carouselExampleIndicators_sarangmoa,
-#carouselExampleIndicators_laya {
+#carouselExampleIndicators_laya,
+#carouselExampleIndicators_talkie {
     width: 100% !important;
     height: 560px !important;
 }
@@ -545,7 +556,8 @@ span.highlight {
     #carouselExampleIndicators_nexell,
     #carouselExampleIndicators_raise,
     #carouselExampleIndicators_sarangmoa,
-    #carouselExampleIndicators_laya {
+    #carouselExampleIndicators_laya,
+    #carouselExampleIndicators_talkie {
         height: 500px !important;
     }
 }
@@ -580,7 +592,8 @@ span.highlight {
     .nexell_sec,
     .raise_sec,
     .sarangmoa_sec,
-    .laya_sec {
+    .laya_sec,
+    .talkie_sec {
         padding: 58px 0;
     }
 
@@ -592,7 +605,8 @@ span.highlight {
     .nexell_sec > h1,
     .raise_sec > h1,
     .sarangmoa_sec > h1,
-    .laya_sec > h1 {
+    .laya_sec > h1,
+    .talkie_sec > h1 {
         width: calc(100% - 32px) !important;
         font-size: 28px !important;
     }
@@ -608,6 +622,7 @@ span.highlight {
     .raise_description,
     .sarangmoa_description,
     .laya_description,
+    .talkie_description,
     .refactor_slide,
     .mall_slide,
     .card_slide,
@@ -615,6 +630,7 @@ span.highlight {
     .raise_slide,
     .sarangmoa_slide,
     .laya_slide,
+    .talkie_slide,
     .sso_image {
         width: calc(100% - 32px) !important;
     }
@@ -633,6 +649,7 @@ span.highlight {
     .raise_description,
     .sarangmoa_description,
     .laya_description,
+    .talkie_description,
     .project_explain_wrap {
         padding: 22px !important;
         border-radius: 12px;
@@ -661,7 +678,8 @@ span.highlight {
     #carouselExampleIndicators_nexell,
     #carouselExampleIndicators_raise,
     #carouselExampleIndicators_sarangmoa,
-    #carouselExampleIndicators_laya {
+    #carouselExampleIndicators_laya,
+    #carouselExampleIndicators_talkie {
         height: 340px !important;
         border-radius: 12px;
     }

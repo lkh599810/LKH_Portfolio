@@ -42,7 +42,7 @@
             <button type="button" data-target=".nexell_sec">Nexell</button>
             <button type="button" data-target=".raise_sec">RAISE Lab</button>
             <button type="button" data-target=".sarangmoa_sec"><span data-lang="ko">사랑모아</span><span data-lang="en">SarangMoa</span></button>
-            <button type="button" data-target=".laya_sec">Reviewer Routing</button>
+            <button type="button" data-target=".laya_sec">LLM Router</button>
         </nav>
         <div class="global-controls" aria-label="Display controls">
             <button type="button" class="control-btn lang-toggle">ENG</button>
@@ -104,8 +104,8 @@
       </section>
       <section class="project-nav-card laya_banner" data-target=".laya_sec">
           <span>09</span>
-          <h3>Adaptive Reviewer Routing</h3>
-          <p><span data-lang="ko">LLM 리뷰 비용 최적화</span><span data-lang="en">LLM review cost optimization</span></p>
+          <h3>Adaptive LLM Router</h3>
+          <p><span data-lang="ko">LLM 하네스 비용 최적화</span><span data-lang="en">LLM harness cost optimization</span></p>
       </section>
     </div>
 
@@ -1458,7 +1458,8 @@
 
 
     <div class="laya_sec">
-        <h1>Adaptive Reviewer Routing</h1>
+        <h1 data-lang="ko">Adaptive LLM Router : Laya 기반 LLM 하네스 비용 최적화</h1>
+        <h1 data-lang="en">Adaptive LLM Router : Cutting LLM Harness Cost with Laya</h1>
         <section class="about_laya">
             <div class="laya_slide">
                 <div id="carouselExampleIndicators_laya" class="carousel slide" data-bs-ride="true">
@@ -1470,13 +1471,13 @@
                       </div>
                       <div class="carousel-inner">
                         <div class="carousel-item active">
-                          <img src="/static/images/laya_design.jpg" class="d-block w-100" alt="Experiment design of the review harness">
+                          <img src="/static/images/laya_structure.jpg" class="d-block w-100" alt="LLM review harness with the Laya decision model">
                         </div>
                         <div class="carousel-item">
-                          <img src="/static/images/laya_cost.jpg" class="d-block w-100" alt="API cost by routing condition">
+                          <img src="/static/images/laya_setup.jpg" class="d-block w-100" alt="Experiment setup">
                         </div>
                         <div class="carousel-item">
-                          <img src="/static/images/laya_calls.jpg" class="d-block w-100" alt="Reviewer calls and latency by condition">
+                          <img src="/static/images/laya_cost.jpg" class="d-block w-100" alt="API cost by condition">
                         </div>
                         <div class="carousel-item">
                           <img src="/static/images/laya_table.jpg" class="d-block w-100" alt="Full results table">
@@ -1493,49 +1494,51 @@
                     </div>
             </div>
             <div class="laya_description">
-                <h3 data-lang="ko">Laya decision model을 결합해 LLM 코드 리뷰 하네스의 API 비용을 최적화한 실험 프로젝트입니다.</h3>
-                <h3 data-lang="en">An experiment that cuts the API cost of an LLM code review harness by adding the Laya decision model.</h3>
+                <h3 data-lang="ko">LLM 코드 리뷰 하네스에 Laya decision model을 라우터로 붙여, 필요한 검사만 호출했을 때 API 비용이 얼마나 줄어드는지 측정한 프로젝트입니다.</h3>
+                <h3 data-lang="en">I added the Laya decision model as a router in front of an LLM code review harness and measured how much API cost drops when only the needed checks are called.</h3>
 
                 <h4 data-lang="ko">배경</h4>
                 <h4 data-lang="en">Background</h4>
                 <ul class="point-list" data-lang="ko">
-                    <li>모든 커밋에 동일한 리뷰어(CA 일치 검토 · VA 보안 검토 · FA 형식 검토)와 고비용 모델을 호출하는 방식의 비용 부담.</li>
-                    <li>커밋 특성에 따라 필요한 검사만 선택하는 리뷰 하네스를 구성.</li>
+                    <li>기존 하네스는 커밋마다 일관성(CA)·보안(VA)·형식(FA) 세 가지 LLM 검사를 항상 고성능 모델로 전부 호출해 비용과 시간이 큼.</li>
+                    <li>하네스 앞단에 의사결정 단계를 두어 커밋별로 필요한 검사와 모델 크기만 고르도록 설계.</li>
                 </ul>
                 <ul class="point-list" data-lang="en">
-                    <li>Calling every reviewer (CA consistency, VA security, FA format) with an expensive model on every commit is costly.</li>
-                    <li>Built a review harness that picks only the checks each commit needs.</li>
+                    <li>The original harness always ran all three LLM checks (consistency CA, security VA, format FA) on a strong model for every commit, which was costly and slow.</li>
+                    <li>Added a decision step in front of the harness to pick only the checks and model size each commit needs.</li>
                 </ul>
 
                 <h4 data-lang="ko">구현</h4>
                 <h4 data-lang="en">Implementation</h4>
                 <ul class="point-list" data-lang="ko">
-                    <li><span class="highlight">Laya 의사결정 모델</span>을 리뷰 하네스에 통합해 보안·형식 검토의 필요 여부를 판단하고, 확신도 0.7 미만이면 검사를 실행하는 보수적 호출 규칙 구현.</li>
-                    <li>변경 줄 수 기반 모델 등급 선택 (5줄 이하 small / 6줄 이상 strong).</li>
-                    <li>공개 커밋 기반 40개 사례와 240개 리뷰 답안 캐시로 고정 호출 · 규칙 기반 · Laya 2종 · 작은 LLM 라우터 5개 조건 비교.</li>
-                    <li>비용 · 호출 수 · 토큰 · CA 정답률/F1 · 처리시간을 함께 계측하는 실험 파이프라인 구성.</li>
+                    <li><span class="highlight">Laya decision model</span>을 하네스의 라우터로 통합 — 로컬 CPU에서 보안·형식 검토 필요 여부를 판단해 라우터 자체의 API 비용은 0.</li>
+                    <li>확신도 0.7 미만이면 검사를 실행하는 보수적 규칙과, 변경 줄 수 기반 모델 선택(5줄 이하 small / 6줄 이상 strong).</li>
+                    <li>라우터 칸만 교체되는 구조로 설계해 기존 하네스 · 규칙 기반 · Laya 2종 · 소형 LLM 라우터 5개 조건을 같은 조건에서 비교.</li>
+                    <li>LLM 출력 비결정성에 대응해 리뷰 결과 240개와 라우터 판단을 캐시, 재실행 시 동일 결과 보장.</li>
+                    <li>공개 커밋 40건을 직접 라벨링해 정답률 · F1 · 보안 검토 누락으로 채점.</li>
                 </ul>
                 <ul class="point-list" data-lang="en">
-                    <li>Integrated the <span class="highlight">Laya decision model</span> to decide whether security and format reviews are needed, running the check whenever confidence is below 0.7.</li>
-                    <li>Picked the model tier by lines changed (≤5 small / ≥6 strong).</li>
-                    <li>Compared five strategies (fixed, rule-based, two Laya variants, small LLM router) on 40 public-commit cases with a shared cache of 240 review answers.</li>
-                    <li>Built an experiment pipeline tracking cost, calls, tokens, CA accuracy/F1, and latency together.</li>
+                    <li>Integrated the <span class="highlight">Laya decision model</span> as the harness router — it runs on local CPU to decide if security/format checks are needed, so the router itself adds no API cost.</li>
+                    <li>Conservative rule (run the check when confidence is below 0.7) and model tier by lines changed (≤5 small / ≥6 strong).</li>
+                    <li>Designed a swappable router slot to compare five conditions under the same setup: original harness, rule-based, two Laya variants, small LLM router.</li>
+                    <li>Cached 240 review results and router decisions to handle LLM non-determinism, so reruns give identical results.</li>
+                    <li>Hand-labeled 40 public commits to score accuracy, F1, and missed security reviews.</li>
                 </ul>
 
                 <h4 data-lang="ko">결과</h4>
                 <h4 data-lang="en">Results</h4>
                 <ul class="point-list" data-lang="ko">
-                    <li>고정 호출 기준선 대비 <span class="highlight">API 비용 40.4~42.1% 절감</span>, 리뷰어 호출 14.2~18.3% 감소 (v1 기준 $0.5534 → $0.3203, 120회 → 98회).</li>
-                    <li>보안 검토 대상 9건 모두에 보안 리뷰어 배정 유지.</li>
-                    <li>CA 정답률 97.5% → 92.5%, 처리시간 증가 등 비용과 판정 성능 사이의 교환관계를 정량화.</li>
+                    <li>기존 하네스 대비 <span class="highlight">API 비용 40.4~42.1% 절감</span>, 리뷰어 호출 14.2~18.3% 감소 (v1 기준 $0.5534 → $0.3203).</li>
+                    <li>보안 검토 대상 9건은 모두 보안 검토 배정 유지.</li>
+                    <li>CA 정답률 97.5% → 92.5%, 처리 시간 증가 등 비용과 성능 사이의 교환관계를 정량화.</li>
                 </ul>
                 <ul class="point-list" data-lang="en">
-                    <li><span class="highlight">Cut API cost by 40.4–42.1%</span> and reviewer calls by 14.2–18.3% vs. the fixed baseline (v1: $0.5534 → $0.3203, 120 → 98 calls).</li>
-                    <li>Kept a security reviewer assigned to all 9 security-flagged cases.</li>
+                    <li><span class="highlight">Cut API cost by 40.4–42.1%</span> and reviewer calls by 14.2–18.3% vs. the original harness (v1: $0.5534 → $0.3203).</li>
+                    <li>All 9 security-relevant commits still got a security review.</li>
                     <li>Quantified the trade-off: CA accuracy 97.5% → 92.5% and longer processing time.</li>
                 </ul>
 
-                <p class="project-meta"><span data-lang="ko">설계 참고: CodeAgent (EMNLP 2024) · 데이터: 공개 커밋 (Zenodo) · Python, LLM API</span><span data-lang="en">Design reference: CodeAgent (EMNLP 2024) · Data: public commits (Zenodo) · Python, LLM API</span></p>
+                <p class="project-meta">Python, Claude API, Laya</p>
             </div>
         </section>
     </div>

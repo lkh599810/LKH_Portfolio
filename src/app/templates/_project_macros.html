@@ -26,7 +26,7 @@
 {%- endmacro %}
 
 {% macro project_card(project) -%}
-<li class="project-card-item" data-category="{{ project.category }}">
+<li class="project-card-item cat-{{ project.category }}" data-category="{{ project.category }}">
     <a class="project-card" href="{{ url_for('project_view.project_detail_page', slug=project.slug) }}">
         <div class="project-card-media">{{ cover(project, thumb_url(project)) }}</div>
         <div class="project-card-body">
@@ -34,7 +34,7 @@
                 <span class="project-card-category">{{ bi(category_label(project.category)) }}</span>
                 {{ tag_list(project) }}
             </div>
-            <h3>{{ bi(project.title) }}</h3>
+            <h4>{{ bi(project.title) }}</h4>
             <p>{{ bi(project.summary) }}</p>
             <ul class="stack-list">
                 {% for item in project.stack[:4] %}<li>{{ item }}</li>{% endfor %}
@@ -53,6 +53,42 @@
 {% else %}
 <ul class="{{ cls }}">{% for item in v %}<li>{{ item|safe }}</li>{% endfor %}</ul>
 {% endif %}
+{%- endmacro %}
+
+{% macro gallery(figures) -%}
+<div class="gallery" data-gallery>
+    <div class="gallery-viewport">
+        <ul class="gallery-track" tabindex="0" aria-label="이미지 {{ figures|length }}장 슬라이드 (좌우 방향키로 이동)">
+            {% for f in figures %}
+            <li class="gallery-slide">
+                <figure>
+                    <a class="gallery-media" href="{{ full_img_url(f.src) }}" target="_blank" rel="noopener">
+                        <img src="{{ img_url(f.src) }}" alt="{{ f.alt }}" loading="lazy" decoding="async">
+                    </a>
+                    <figcaption><span class="gallery-index">{{ '%02d'|format(loop.index) }} / {{ '%02d'|format(loop.length) }}</span>{% if f.caption %}<span>{{ bi(f.caption) }}</span>{% endif %}</figcaption>
+                </figure>
+            </li>
+            {% endfor %}
+        </ul>
+        <button type="button" class="gallery-btn gallery-prev" aria-label="이전 이미지">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg>
+        </button>
+        <button type="button" class="gallery-btn gallery-next" aria-label="다음 이미지">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"></path></svg>
+        </button>
+        <button type="button" class="gallery-full" aria-label="전체 화면으로 보기" hidden>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"></path></svg>
+        </button>
+        <div class="gallery-progress" aria-hidden="true"><span></span></div>
+    </div>
+    <div class="gallery-thumbs" role="group" aria-label="슬라이드 선택">
+        {% for f in figures %}
+        <button type="button" aria-label="{{ loop.index }}번 이미지{% if f.caption %}: {{ plain(f.caption) }}{% endif %}"{% if loop.first %} aria-current="true"{% endif %}>
+            <img src="{{ img_url(f.src) }}" alt="" loading="lazy" decoding="async">
+        </button>
+        {% endfor %}
+    </div>
+</div>
 {%- endmacro %}
 
 {% macro blocks(items) -%}
@@ -85,6 +121,8 @@
                 </tbody>
             </table>
         </div>
+    {% elif block.figures and block.figures|length > 1 %}
+        {{ gallery(block.figures) }}
     {% elif block.figures %}
         <div class="figure-grid count-{{ block.figures|length }}{{ ' wide' if block.wide else '' }}">
             {% for f in block.figures %}

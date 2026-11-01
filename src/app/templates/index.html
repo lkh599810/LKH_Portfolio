@@ -309,6 +309,42 @@
                 <h2><span data-lang="ko">프로젝트</span><span data-lang="en">Projects</span></h2>
                 <p><span data-lang="ko">카테고리를 골라 프로젝트를 둘러보고, 카드를 누르면 설계와 역할, 결과를 자세히 볼 수 있습니다.</span><span data-lang="en">Pick a category to browse, and open a card to see the design, my role, and results.</span></p>
             </div>
+            <div class="orbit-panel">
+                <div class="orbit-legend">
+                    <p class="orbit-kicker">Project Orbit</p>
+                    <h3><span data-lang="ko">카테고리별 궤도</span><span data-lang="en">One orbit per category</span></h3>
+                    <p class="orbit-lead"><span data-lang="ko">안쪽부터 AI 엔지니어링, 데이터 · 연구, 서비스 · 플랫폼 궤도입니다. 행성을 누르면 해당 프로젝트로 이동하고, 마우스를 올리면 궤도가 멈춥니다.</span><span data-lang="en">From the inside: AI engineering, data and research, then services and platforms. Click a planet to open the project; hovering pauses the orbit.</span></p>
+                    <ul class="orbit-keys">
+                        {% for c in CATEGORIES[1:] %}
+                        <li><button type="button" class="orbit-key cat-{{ c.key }}" data-select="{{ c.key }}" aria-controls="project-grid">
+                            <span class="cat-dot" aria-hidden="true"></span>
+                            <span class="orbit-key-text"><strong>{{ m.bi(c.label) }}</strong><small>{{ m.bi(c.desc) }}</small></span>
+                            <span class="orbit-key-count">{{ counts[c.key] }}</span>
+                        </button></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="orbit" data-orbit data-active="all" aria-hidden="true">
+                    <button type="button" class="orbit-sun" data-select="all" tabindex="-1">
+                        <strong>{{ counts['all'] }}</strong><span>Projects</span>
+                    </button>
+                    {% for key, radius, duration, offset in [('ai', 17, 38, 40), ('research', 30, 60, 100), ('service', 44, 110, 0)] %}
+                    {% set ring = projects|selectattr('category', 'equalto', key)|list %}
+                    <div class="orbit-ring cat-{{ key }}" data-category="{{ key }}" style="--r: {{ radius }}cqw; --dur: {{ duration }}s">
+                        {% for project in ring %}
+                        <a class="planet" href="{{ url_for('project_view.project_detail_page', slug=project.slug) }}" tabindex="-1"
+                           style="--a: {{ (offset + 360 / ring|length * loop.index0)|round(1) }}deg">
+                            <span class="planet-body">
+                                {% if thumb_url(project) %}<img src="{{ thumb_url(project) }}" alt="" loading="lazy" width="64" height="64">
+                                {% else %}<span class="planet-initial">{{ m.plain(project.title)[:1] }}</span>{% endif %}
+                                <span class="planet-label">{{ m.bi(project.title) }}</span>
+                            </span>
+                        </a>
+                        {% endfor %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
             <div class="project-tabs" role="tablist" aria-label="Project categories">
                 {% for c in CATEGORIES %}
                 <button type="button" role="tab" class="project-tab" id="project-tab-{{ c.key }}" data-category="{{ c.key }}"
@@ -317,11 +353,21 @@
                 </button>
                 {% endfor %}
             </div>
-            <ul class="project-grid" id="project-grid" role="tabpanel" aria-labelledby="project-tab-all">
-                {% for project in projects %}
-                {{ m.project_card(project) }}
+            <div class="project-groups" id="project-grid" role="tabpanel" aria-labelledby="project-tab-all">
+                {% for c in CATEGORIES[1:] %}
+                <section class="project-group cat-{{ c.key }}" data-category="{{ c.key }}" aria-labelledby="group-{{ c.key }}">
+                    <header class="project-group-head">
+                        <h3 id="group-{{ c.key }}"><span class="cat-dot" aria-hidden="true"></span>{{ m.bi(c.label) }}<span class="project-group-count">{{ counts[c.key] }}</span></h3>
+                        <p>{{ m.bi(c.desc) }}</p>
+                    </header>
+                    <ul class="project-grid">
+                        {% for project in projects if project.category == c.key %}
+                        {{ m.project_card(project) }}
+                        {% endfor %}
+                    </ul>
+                </section>
                 {% endfor %}
-            </ul>
+            </div>
         </section>
     </main>
 </div>

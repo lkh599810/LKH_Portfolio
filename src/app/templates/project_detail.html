@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="/static/css/common.css">
     <link rel="stylesheet" href="/static/css/project-detail.css">
 </head>
-<body class="detail-page">
+<body class="detail-page cat-{{ project.category }}">
 <header class="site-header">
     <a class="logo" href="/">
         <img src="/static/images/KH_LOGO.png" alt="KH logo">
@@ -44,7 +44,7 @@
                 <span aria-hidden="true">←</span> <span data-lang="ko">프로젝트 목록</span><span data-lang="en">All projects</span>
             </a>
             <div class="detail-labels">
-                <span class="detail-category">{{ m.bi(category_label(project.category)) }}</span>
+                <a class="detail-category" href="{{ back_url }}">{{ m.bi(category_label(project.category)) }}</a>
                 {{ m.tag_list(project) }}
             </div>
             <h1>{{ m.bi(project.title) }}</h1>
@@ -152,6 +152,7 @@
         });
     })();
 </script>
+<script src="/static/js/gallery.js" defer></script>
 {% include "_footer.html" %}
 </body>
 </html>

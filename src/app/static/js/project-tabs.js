@@ -1,11 +1,13 @@
-// 메인 Projects 섹션: 카테고리 탭 필터. 선택 상태는 ?category= 로 URL에 남겨 상세 페이지에서 돌아와도 유지
+// 메인 Projects 섹션: 카테고리 탭이 카드 그룹과 궤도(orbit) 강조를 함께 바꾼다.
+// 선택 상태는 ?category= 로 URL에 남겨 상세 페이지에서 돌아와도 유지
 (function () {
     var grid = document.getElementById('project-grid');
     if (!grid) {
         return;
     }
     var tabs = Array.prototype.slice.call(document.querySelectorAll('.project-tab'));
-    var items = Array.prototype.slice.call(grid.querySelectorAll('.project-card-item'));
+    var groups = Array.prototype.slice.call(grid.querySelectorAll('.project-group'));
+    var orbit = document.querySelector('[data-orbit]');
 
     function select(key, updateUrl) {
         var tab = tabs.filter(function (t) { return t.getAttribute('data-category') === key; })[0];
@@ -19,8 +21,14 @@
             t.tabIndex = active ? 0 : -1;
         });
         grid.setAttribute('aria-labelledby', tab.id);
-        items.forEach(function (item) {
-            item.hidden = key !== 'all' && item.getAttribute('data-category') !== key;
+        groups.forEach(function (group) {
+            group.hidden = key !== 'all' && group.getAttribute('data-category') !== key;
+        });
+        if (orbit) {
+            orbit.setAttribute('data-active', key);
+        }
+        Array.prototype.forEach.call(document.querySelectorAll('.orbit-key'), function (button) {
+            button.setAttribute('aria-pressed', button.getAttribute('data-select') === key ? 'true' : 'false');
         });
         // 애니메이션 재시작
         grid.classList.remove('is-switching');
@@ -55,6 +63,15 @@
             }
             event.preventDefault();
             select(next.getAttribute('data-category'), true).focus();
+        });
+    });
+
+    // 궤도 범례·태양을 누르면 같은 카테고리 탭을 고른다 (다시 누르면 전체)
+    Array.prototype.forEach.call(document.querySelectorAll('[data-select]'), function (button) {
+        button.addEventListener('click', function () {
+            var key = button.getAttribute('data-select');
+            var active = orbit ? orbit.getAttribute('data-active') : 'all';
+            select(key === active ? 'all' : key, true);
         });
     });
 

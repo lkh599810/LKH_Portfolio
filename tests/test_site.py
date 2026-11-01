@@ -26,7 +26,8 @@ def test_data_is_consistent():
 def test_index_lists_every_project_once():
     html = client.get('/').get_data(as_text=True)
     for p in PROJECTS:
-        assert html.count(f'href="/projects/{p["slug"]}"') == 1, p['slug']
+        assert html.count(f'class="project-card" href="/projects/{p["slug"]}"') == 1, p['slug']
+        assert html.count(f'class="planet" href="/projects/{p["slug"]}"') == 1, p['slug']
     assert 'id="project-tab-all"' in html
 
 
@@ -43,6 +44,11 @@ def test_index_assets_exist():
     html = client.get('/').get_data(as_text=True)
     for src in set(re.findall(r'(?:src|href)="(/static/[^"]+)"', html)):
         assert (STATIC / src[len('/static/'):]).is_file(), src
+
+
+def test_multi_image_blocks_render_as_gallery():
+    html = client.get('/projects/card24').get_data(as_text=True)
+    assert 'data-gallery' in html and html.count('class="gallery-slide"') == 11
 
 
 def test_unknown_project_and_legacy_url():

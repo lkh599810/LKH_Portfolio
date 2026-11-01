@@ -1,0 +1,157 @@
+{% import "_project_macros.html" as m with context %}
+{% set back_url = url_for('project_view.index_page', category=project.category) + '#projects' %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ m.plain(project.title) }} | LKH Portfolio</title>
+    <meta name="description" content="{{ m.plain(project.summary) }}">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{{ m.plain(project.title) }} | LKH Portfolio">
+    <meta property="og:description" content="{{ m.plain(project.summary) }}">
+    {% if project.cover %}<meta property="og:image" content="{{ request.url_root.rstrip('/') }}{{ thumb_url(project) }}">{% endif %}
+    <link rel="icon" href="/static/images/favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/common.css">
+    <link rel="stylesheet" href="/static/css/project-detail.css">
+</head>
+<body class="detail-page">
+<header class="site-header">
+    <a class="logo" href="/">
+        <img src="/static/images/KH_LOGO.png" alt="KH logo">
+    </a>
+    <nav class="site-nav" id="site-nav" aria-label="Portfolio navigation">
+        <a href="/">Home</a>
+        <a href="{{ back_url }}">Projects</a>
+    </nav>
+    <div class="global-controls" aria-label="Display controls">
+        <button type="button" class="control-btn lang-toggle">ENG</button>
+        <button type="button" class="control-btn theme-toggle">Dark</button>
+    </div>
+    <button type="button" class="menu-toggle" aria-label="Menu" aria-controls="site-nav" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+    </button>
+</header>
+
+<main class="detail-main">
+    <section class="detail-hero">
+        <div class="detail-hero-inner">
+            <a class="detail-back" href="{{ back_url }}" data-back>
+                <span aria-hidden="true">←</span> <span data-lang="ko">프로젝트 목록</span><span data-lang="en">All projects</span>
+            </a>
+            <div class="detail-labels">
+                <span class="detail-category">{{ m.bi(category_label(project.category)) }}</span>
+                {{ m.tag_list(project) }}
+            </div>
+            <h1>{{ m.bi(project.title) }}</h1>
+            <p class="detail-intro">{{ m.bi(project.intro) }}</p>
+
+            <dl class="detail-meta">
+                {% if project.period %}
+                <div><dt><span data-lang="ko">기간</span><span data-lang="en">Period</span></dt><dd>{{ m.bi(project.period) }}</dd></div>
+                {% endif %}
+                <div><dt><span data-lang="ko">역할</span><span data-lang="en">Role</span></dt><dd>{{ m.bi(project.role) }}</dd></div>
+                <div><dt><span data-lang="ko">구성</span><span data-lang="en">Team</span></dt><dd>{{ m.bi(project.team) }}{% if project.org %} · {{ m.bi(project.org) }}{% endif %}</dd></div>
+                <div class="meta-stack"><dt><span data-lang="ko">기술 스택</span><span data-lang="en">Tech stack</span></dt>
+                    <dd><ul class="stack-list">{% for item in project.stack %}<li>{{ item }}</li>{% endfor %}</ul></dd></div>
+            </dl>
+
+            {% if project.links %}
+            <div class="detail-links">
+                {% for link in project.links %}
+                <a href="{{ link.url }}" target="_blank" rel="noopener">{{ m.bi(link.label) }} <span aria-hidden="true">↗</span></a>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </section>
+
+    {% if project.hero %}
+    <figure class="detail-cover">
+        <a href="{{ full_img_url(project.hero) }}" target="_blank" rel="noopener">
+            <img src="{{ img_url(project.hero) }}" alt="{{ m.plain(project.title) }}">
+        </a>
+    </figure>
+    {% endif %}
+
+    <div class="detail-layout">
+        <aside class="detail-toc" aria-label="Sections">
+            <p><span data-lang="ko">목차</span><span data-lang="en">Contents</span></p>
+            <ol>
+                {% for section in project.sections %}
+                <li><a href="#{{ section.id }}">{{ m.bi(section.title) }}</a></li>
+                {% endfor %}
+            </ol>
+        </aside>
+
+        <article class="detail-body">
+            {% for section in project.sections %}
+            <section class="detail-section" id="{{ section.id }}">
+                <h2>{{ m.bi(section.title) }}</h2>
+                {{ m.blocks(section.blocks) }}
+            </section>
+            {% endfor %}
+        </article>
+    </div>
+
+    <nav class="detail-pager" aria-label="Other projects">
+        {% if prev_project %}
+        <a class="pager-prev" href="{{ url_for('project_view.project_detail_page', slug=prev_project.slug) }}">
+            <span><span data-lang="ko">이전 프로젝트</span><span data-lang="en">Previous</span></span>
+            <strong>{{ m.bi(prev_project.title) }}</strong>
+        </a>
+        {% else %}<span></span>{% endif %}
+        {% if next_project %}
+        <a class="pager-next" href="{{ url_for('project_view.project_detail_page', slug=next_project.slug) }}">
+            <span><span data-lang="ko">다음 프로젝트</span><span data-lang="en">Next</span></span>
+            <strong>{{ m.bi(next_project.title) }}</strong>
+        </a>
+        {% endif %}
+    </nav>
+</main>
+
+<script>
+    (function () {
+        function setLanguage(lang) {
+            document.documentElement.lang = lang === 'en' ? 'en' : 'ko';
+            document.querySelector('.lang-toggle').textContent = lang === 'en' ? 'KOR' : 'ENG';
+            try { localStorage.setItem('portfolioLang', lang); } catch (e) {}
+        }
+
+        function setTheme(theme) {
+            document.body.classList.toggle('dark-mode', theme === 'dark');
+            document.querySelector('.theme-toggle').textContent = theme === 'dark' ? 'Light' : 'Dark';
+            try { localStorage.setItem('portfolioTheme', theme); } catch (e) {}
+        }
+
+        function stored(key, fallback) {
+            try { return localStorage.getItem(key) || fallback; } catch (e) { return fallback; }
+        }
+
+        document.querySelector('.lang-toggle').addEventListener('click', function () {
+            setLanguage(document.documentElement.lang === 'en' ? 'ko' : 'en');
+        });
+        document.querySelector('.theme-toggle').addEventListener('click', function () {
+            setTheme(document.body.classList.contains('dark-mode') ? 'light' : 'dark');
+        });
+        setLanguage(stored('portfolioLang', 'ko'));
+        setTheme(stored('portfolioTheme', 'light'));
+
+        // 목록에서 들어왔으면 브라우저 뒤로가기로 돌아가 스크롤 위치와 탭 상태를 그대로 복원
+        document.querySelector('[data-back]').addEventListener('click', function (event) {
+            if (!document.referrer) return;
+            var ref = new URL(document.referrer);
+            if (ref.origin === window.location.origin && ref.pathname === '/' && history.length > 1) {
+                event.preventDefault();
+                history.back();
+            }
+        });
+    })();
+</script>
+{% include "_footer.html" %}
+</body>
+</html>

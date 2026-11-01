@@ -1,4 +1,4 @@
-// index.html, projects.html 공통: 모바일 메뉴, data-target 스크롤 이동, 스크롤 진행 버튼
+// index.html, project_detail.html 공통: 모바일 메뉴, data-target 스크롤 이동, 스크롤 진행 버튼
 (function () {
     var HEADER_OFFSET = 72;
     var body = document.body;
@@ -36,6 +36,7 @@
         if (!target) {
             return;
         }
+        event.preventDefault();
         setNavOpen(false);
         window.scrollTo({
             top: target.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET,

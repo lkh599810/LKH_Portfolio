@@ -1,0 +1,107 @@
+{# 프로젝트 공통 매크로: 한/영 텍스트, 카드, 상세 섹션 블록 #}
+
+{% macro bi(v) -%}
+{%- if v is mapping -%}<span data-lang="ko">{{ v.ko|safe }}</span><span data-lang="en">{{ v.en|safe }}</span>
+{%- else -%}{{ v|safe }}{%- endif -%}
+{%- endmacro %}
+
+{% macro plain(v) -%}{{ v.ko if v is mapping else v }}{%- endmacro %}
+
+{% macro tag_list(project) -%}
+<ul class="project-tags">
+    {% for tag in project.tags %}<li>{{ bi(TAGS[tag]) }}</li>{% endfor %}
+</ul>
+{%- endmacro %}
+
+{% macro cover(project, image_url, loading='lazy') -%}
+{% if project.cover %}
+<img src="{{ image_url }}" alt="" loading="{{ loading }}" width="800" height="500"
+     class="{{ 'fit-contain' if project.cover_fit == 'contain' else '' }}">
+{% else %}
+<div class="type-cover" aria-hidden="true">
+    <strong>{{ plain(project.title) }}</strong>
+    <span>{{ project.cover_note }}</span>
+</div>
+{% endif %}
+{%- endmacro %}
+
+{% macro project_card(project) -%}
+<li class="project-card-item" data-category="{{ project.category }}">
+    <a class="project-card" href="{{ url_for('project_view.project_detail_page', slug=project.slug) }}">
+        <div class="project-card-media">{{ cover(project, thumb_url(project)) }}</div>
+        <div class="project-card-body">
+            <div class="project-card-meta">
+                <span class="project-card-category">{{ bi(category_label(project.category)) }}</span>
+                {{ tag_list(project) }}
+            </div>
+            <h3>{{ bi(project.title) }}</h3>
+            <p>{{ bi(project.summary) }}</p>
+            <ul class="stack-list">
+                {% for item in project.stack[:4] %}<li>{{ item }}</li>{% endfor %}
+                {% if project.stack|length > 4 %}<li class="more">+{{ project.stack|length - 4 }}</li>{% endif %}
+            </ul>
+            <span class="project-card-more"><span data-lang="ko">자세히 보기</span><span data-lang="en">View details</span> <span aria-hidden="true">→</span></span>
+        </div>
+    </a>
+</li>
+{%- endmacro %}
+
+{% macro bilist(v, cls='point-list') -%}
+{% if v is mapping %}
+<ul class="{{ cls }}" data-lang="ko">{% for item in v.ko %}<li>{{ item|safe }}</li>{% endfor %}</ul>
+<ul class="{{ cls }}" data-lang="en">{% for item in v.en %}<li>{{ item|safe }}</li>{% endfor %}</ul>
+{% else %}
+<ul class="{{ cls }}">{% for item in v %}<li>{{ item|safe }}</li>{% endfor %}</ul>
+{% endif %}
+{%- endmacro %}
+
+{% macro blocks(items) -%}
+{% for block in items %}
+    {% if block.p %}
+        <p class="detail-text">{{ bi(block.p) }}</p>
+    {% elif block.ul %}
+        {{ bilist(block.ul) }}
+    {% elif block.note %}
+        <p class="detail-note">{{ bi(block.note) }}</p>
+    {% elif block.steps %}
+        <ol class="flow-steps">
+            {% for step in block.steps %}<li>{{ bi(step) }}</li>{% endfor %}
+        </ol>
+    {% elif block.stats %}
+        <div class="stat-grid">
+            {% for stat in block.stats %}
+            <div class="stat"><strong>{{ stat.value }}</strong><span>{{ bi(stat.label) }}</span></div>
+            {% endfor %}
+        </div>
+    {% elif block.table %}
+        <div class="table-wrap" tabindex="0">
+            <table>
+                {% if block.table.caption %}<caption>{{ bi(block.table.caption) }}</caption>{% endif %}
+                <thead><tr>{% for cell in block.table.head %}<th scope="col">{{ bi(cell) }}</th>{% endfor %}</tr></thead>
+                <tbody>
+                {% for row in block.table.rows %}
+                    <tr>{% for cell in row %}<td>{{ bi(cell) }}</td>{% endfor %}</tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% elif block.figures %}
+        <div class="figure-grid count-{{ block.figures|length }}{{ ' wide' if block.wide else '' }}">
+            {% for f in block.figures %}
+            <figure>
+                <a href="{{ full_img_url(f.src) }}" target="_blank" rel="noopener">
+                    <img src="{{ img_url(f.src) }}" alt="{{ f.alt }}" loading="lazy">
+                </a>
+                {% if f.caption %}<figcaption>{{ bi(f.caption) }}</figcaption>{% endif %}
+            </figure>
+            {% endfor %}
+        </div>
+    {% elif block.sub %}
+        <div class="sub-project">
+            <h3>{{ bi(block.sub.title) }}</h3>
+            {% if block.sub.meta %}<p class="sub-meta">{{ bi(block.sub.meta) }}</p>{% endif %}
+            {{ blocks(block.sub.blocks) }}
+        </div>
+    {% endif %}
+{% endfor %}
+{%- endmacro %}

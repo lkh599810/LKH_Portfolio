@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800" role="img" aria-labelledby="t d">
+  <title id="t">Homelab architecture</title>
+  <desc id="d">Clients reach Caddy in a Gateway LXC over HTTPS. Caddy forwards to Traefik NodePort 30080 in a single-node k3s VM. The Gateway routes by HTTPRoute to Portfolio, Kanglish and AlignFit services. GitHub Actions builds images to GHCR and commits manifest tags; Argo CD syncs apps automatically and the shared Gateway from homelab-infra manually.</desc>
+  <defs>
+    <marker id="a-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#14213d"/></marker>
+    <marker id="a-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#2563eb"/></marker>
+    <marker id="a-orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#d97706"/></marker>
+    <marker id="a-gray" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#94a3b8"/></marker>
+    <style>
+      text { font-family: "Noto Sans KR", "Segoe UI", "Malgun Gothic", Arial, sans-serif; fill: #14213d; }
+      .h { font-size: 15px; font-weight: 700; }
+      .s { font-size: 12px; fill: #475569; }
+      .k { font-size: 11px; font-weight: 700; fill: #2563eb; letter-spacing: .02em; }
+      .g { font-size: 13px; font-weight: 700; fill: #334155; }
+      .box { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.2; }
+      .traffic { stroke: #14213d; stroke-width: 1.8; fill: none; }
+      .deploy { stroke: #2563eb; stroke-width: 1.6; fill: none; stroke-dasharray: 6 5; }
+      .infra { stroke: #d97706; stroke-width: 1.6; fill: none; stroke-dasharray: 6 5; }
+      .pull { stroke: #94a3b8; stroke-width: 1.4; fill: none; stroke-dasharray: 2 4; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="800" fill="#f8fafc"/>
+
+  <!-- Client -->
+  <rect class="box" x="40" y="24" width="230" height="54" rx="10"/>
+  <text class="h" x="155" y="49" text-anchor="middle">Web / Android Client</text>
+  <text class="s" x="155" y="67" text-anchor="middle">browser · AlignFit app</text>
+  <path class="traffic" d="M155 78V158" marker-end="url(#a-ink)"/>
+  <text class="s" x="164" y="124">HTTPS :443</text>
+
+  <!-- Physical host -->
+  <rect x="24" y="104" width="824" height="636" rx="16" fill="#eef2f7" stroke="#94a3b8" stroke-width="1.2"/>
+  <text class="g" x="290" y="128">Intel N100 Mini PC · Proxmox VE</text>
+
+  <!-- Gateway LXC -->
+  <rect x="40" y="160" width="232" height="230" rx="12" fill="#ffffff" stroke="#94a3b8"/>
+  <text class="k" x="56" y="184">GATEWAY LXC</text>
+  <text class="h" x="56" y="210">Caddy</text>
+  <text class="s" x="56" y="232">TLS termination</text>
+  <text class="s" x="56" y="250">reverse proxy</text>
+  <line x1="56" y1="266" x2="256" y2="266" stroke="#e2e8f0"/>
+  <text class="s" x="56" y="288">introduce.leekanghyun.co.kr</text>
+  <text class="s" x="56" y="308">kanglish.leekanghyun.co.kr</text>
+  <text class="s" x="56" y="328">alignfit-api.leekanghyun.co.kr</text>
+  <text class="s" x="56" y="356">→ k3s NodePort :30080</text>
+  <path class="traffic" d="M272 215H318" marker-end="url(#a-ink)"/>
+
+  <!-- k3s VM -->
+  <rect x="300" y="146" width="530" height="580" rx="12" fill="#f8fbff" stroke="#94a3b8"/>
+  <text class="k" x="318" y="170">UBUNTU VM · k3s (SINGLE NODE)</text>
+
+  <rect class="box" x="320" y="188" width="250" height="52" rx="8"/>
+  <text class="h" x="445" y="211" text-anchor="middle">Traefik</text>
+  <text class="s" x="445" y="229" text-anchor="middle">NodePort 30080</text>
+  <path class="traffic" d="M445 240V262" marker-end="url(#a-ink)"/>
+
+  <rect class="box" x="320" y="262" width="250" height="52" rx="8"/>
+  <text class="h" x="445" y="285" text-anchor="middle">Gateway</text>
+  <text class="s" x="445" y="303" text-anchor="middle">default/web-gateway · class traefik</text>
+
+  <!-- Argo CD (off the traffic path) -->
+  <rect x="596" y="188" width="196" height="126" rx="8" fill="#eff6ff" stroke="#2563eb"/>
+  <text class="h" x="694" y="218" text-anchor="middle">Argo CD</text>
+  <text class="s" x="694" y="238" text-anchor="middle">GitOps controller</text>
+  <text class="s" x="694" y="258" text-anchor="middle">4 Applications</text>
+  <text class="s" x="694" y="278" text-anchor="middle">apps: Auto Sync</text>
+  <text class="s" x="694" y="296" text-anchor="middle">gateway: Manual Sync</text>
+  <path class="infra" d="M596 300H572" marker-end="url(#a-orange)"/>
+
+  <!-- Gateway to routes -->
+  <path class="traffic" d="M445 314V336H395V362" marker-end="url(#a-ink)"/>
+  <path class="traffic" d="M445 336H557V362" marker-end="url(#a-ink)"/>
+  <path class="traffic" d="M557 336H719V362" marker-end="url(#a-ink)"/>
+
+  <!-- Portfolio column -->
+  <rect class="box" x="320" y="362" width="150" height="58" rx="8"/>
+  <text class="k" x="332" y="382">HTTPROUTE</text>
+  <text class="s" x="332" y="402">portfolio-route</text>
+  <path class="traffic" d="M395 420V448" marker-end="url(#a-ink)"/>
+  <rect class="box" x="320" y="448" width="150" height="58" rx="8"/>
+  <text class="k" x="332" y="468">SERVICE</text>
+  <text class="s" x="332" y="488">portfolio :80</text>
+  <path class="traffic" d="M395 506V534" marker-end="url(#a-ink)"/>
+  <rect x="320" y="534" width="150" height="58" rx="8" fill="#14213d"/>
+  <text class="k" x="332" y="554" style="fill:#8bb7ff">POD</text>
+  <text class="h" x="332" y="576" style="fill:#ffffff">Portfolio :5001</text>
+  <text class="s" x="332" y="614">ns default</text>
+
+  <!-- Kanglish column -->
+  <rect class="box" x="482" y="362" width="150" height="58" rx="8"/>
+  <text class="k" x="494" y="382">HTTPROUTE</text>
+  <text class="s" x="494" y="402">kanglish route</text>
+  <path class="traffic" d="M557 420V448" marker-end="url(#a-ink)"/>
+  <rect class="box" x="482" y="448" width="150" height="58" rx="8"/>
+  <text class="k" x="494" y="468">SERVICE</text>
+  <text class="s" x="494" y="488">kanglish</text>
+  <path class="traffic" d="M557 506V534" marker-end="url(#a-ink)"/>
+  <rect x="482" y="534" width="150" height="58" rx="8" fill="#14213d"/>
+  <text class="k" x="494" y="554" style="fill:#8bb7ff">POD</text>
+  <text class="h" x="494" y="576" style="fill:#ffffff">Kanglish</text>
+  <text class="s" x="494" y="614">ns default</text>
+
+  <!-- AlignFit column -->
+  <rect class="box" x="644" y="362" width="150" height="58" rx="8"/>
+  <text class="k" x="656" y="382">HTTPROUTE</text>
+  <text class="s" x="656" y="402">alignfit</text>
+  <path class="traffic" d="M719 420V448" marker-end="url(#a-ink)"/>
+  <rect class="box" x="644" y="448" width="150" height="58" rx="8"/>
+  <text class="k" x="656" y="468">SERVICE</text>
+  <text class="s" x="656" y="488">alignfit-api :8000</text>
+  <path class="traffic" d="M719 506V534" marker-end="url(#a-ink)"/>
+  <rect x="644" y="534" width="150" height="58" rx="8" fill="#14213d"/>
+  <text class="k" x="656" y="554" style="fill:#8bb7ff">POD</text>
+  <text class="h" x="656" y="576" style="fill:#ffffff">AlignFit API :8000</text>
+  <text class="s" x="656" y="614">ns alignfit</text>
+
+  <!-- Argo-managed app resources -->
+  <rect x="320" y="640" width="474" height="62" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-dasharray="6 5"/>
+  <text class="g" x="557" y="666" text-anchor="middle">Deployment · Service · HTTPRoute per app</text>
+  <text class="s" x="557" y="686" text-anchor="middle">declared in each service repo · applied by Argo CD Auto Sync</text>
+  <path class="deploy" d="M792 250H812V671H796" marker-end="url(#a-blue)"/>
+
+  <!-- Delivery plane (outside the host) -->
+  <text class="g" x="878" y="128">GitHub · delivery</text>
+  <rect class="box" x="872" y="146" width="300" height="64" rx="10"/>
+  <text class="h" x="888" y="172">GitHub repositories</text>
+  <text class="s" x="888" y="194">LKH_Portfolio · Kanglish · AlignFit</text>
+  <path class="deploy" d="M1022 210V246" marker-end="url(#a-blue)"/>
+
+  <rect class="box" x="872" y="246" width="300" height="64" rx="10"/>
+  <text class="h" x="888" y="272">GitHub Actions</text>
+  <text class="s" x="888" y="294">test · docker build · push</text>
+  <path class="deploy" d="M1022 310V346" marker-end="url(#a-blue)"/>
+  <path class="deploy" d="M1150 310V446" marker-end="url(#a-blue)"/>
+
+  <rect class="box" x="872" y="346" width="240" height="64" rx="10"/>
+  <text class="h" x="888" y="372">GHCR</text>
+  <text class="s" x="888" y="394">image:&lt;commit SHA&gt;</text>
+
+  <rect class="box" x="872" y="446" width="300" height="64" rx="10"/>
+  <text class="h" x="888" y="472">Manifest tag commit</text>
+  <text class="s" x="888" y="494">k3s/*.yaml · [skip ci]</text>
+  <path class="deploy" d="M872 478H852V236H794" marker-end="url(#a-blue)"/>
+
+  <rect x="872" y="560" width="300" height="64" rx="10" fill="#fffbeb" stroke="#d97706"/>
+  <text class="h" x="888" y="586">homelab-infra (private)</text>
+  <text class="s" x="888" y="608">GatewayClass · Gateway · Prune=false</text>
+  <path class="infra" d="M872 592H862V276H794" marker-end="url(#a-orange)"/>
+
+  <path class="pull" d="M1112 378H1186V650H1150" />
+  <path class="pull" d="M1150 650H838V563H796" marker-end="url(#a-gray)"/>
+  <text class="s" x="884" y="644">image pull on rollout</text>
+
+  <!-- Legend -->
+  <g transform="translate(40 762)">
+    <path class="traffic" d="M0 0H34" marker-end="url(#a-ink)"/><text class="s" x="44" y="4">User traffic</text>
+    <path class="deploy" d="M170 0H204" marker-end="url(#a-blue)"/><text class="s" x="214" y="4">Delivery · Auto Sync</text>
+    <path class="infra" d="M380 0H414" marker-end="url(#a-orange)"/><text class="s" x="424" y="4">Shared infra · Manual Sync</text>
+    <path class="pull" d="M620 0H654" marker-end="url(#a-gray)"/><text class="s" x="664" y="4">Image pull</text>
+  </g>
+</svg>

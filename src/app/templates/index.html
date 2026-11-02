@@ -5,26 +5,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LKH Portfolio</title>
+    <meta name="description" content="백엔드 개발자 이강현의 포트폴리오 — 서비스·플랫폼, AI 엔지니어링, 데이터·연구 프로젝트">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="LKH Portfolio">
+    <meta property="og:description" content="백엔드 개발자 이강현의 포트폴리오 — 서비스·플랫폼, AI 엔지니어링, 데이터·연구 프로젝트">
     <link rel="icon" href="/static/images/favicon.png" type="image/png">
-    <link rel="stylesheet" href="/static/css/index.css">
-    <link rel="stylesheet" href="/static/css/common.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-    <meta name="description" content="백엔드 개발자 이강현의 포트폴리오 — 서비스·플랫폼, AI 엔지니어링, 데이터·연구 프로젝트">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/common.css">
+    <script>
+        // 첫 페인트 전에 언어를 적용해 깜빡임 방지
+        try { if (localStorage.getItem('portfolioLang') === 'en') document.documentElement.lang = 'en'; } catch (e) {}
+    </script>
 </head>
 <body>
+<script>
+    try { if (localStorage.getItem('portfolioTheme') === 'dark') document.body.classList.add('dark-mode'); } catch (e) {}
+</script>
 <div id="wrap">
     <header class="site-header">
         <a class="logo" href="/">
             <img src="/static/images/KH_LOGO.png" alt="KH logo">
         </a>
         <nav class="site-nav" id="site-nav" aria-label="Portfolio navigation">
-            <button type="button" data-target="#aboutMe">Profile</button>
+            <button type="button" data-target="#projects">Projects</button>
+            <button type="button" data-target="#experience">Experience</button>
             <button type="button" data-target="#skills">Skills</button>
             <button type="button" data-target="#archiving">Archive</button>
-            <button type="button" data-target="#projects">Projects</button>
         </nav>
         <div class="global-controls" aria-label="Display controls">
             <button type="button" class="control-btn lang-toggle">ENG</button>
@@ -36,407 +45,293 @@
     </header>
 
     <main>
+        <!-- Hero: 소개 + 이 사이트의 실제 배포 파이프라인 -->
         <section id="banner" class="hero">
-            <div class="hero-copy">
-                <p class="eyebrow">Backend Developer Portfolio</p>
-                <h1>긍정의 알고리즘을<br>탑재한 개발자<br>이강현입니다 :)</h1>
-                <p class="hero-description">
-                    안녕하세요, 만나뵙게 되어 반갑습니다.<br>
-                    새로운 기술을 배우고 직접 구현하는 과정을 좋아합니다. 백엔드 개발과 서비스 운영을 경험했고,
-                    최근에는 AI와 LLM을 활용한 개발에도 관심을 갖고 진행하고 있습니다.
-                </p>
-                <div class="hero-actions">
-                    <a class="primary-link" href="#projects" data-target="#projects">프로젝트 보기</a>
-                    <button class="secondary-link" type="button" data-target="#skills">기술 스택</button>
-                </div>
-            </div>
-            <div class="hero-panel" aria-label="Portfolio summary">
-                <strong>What I Do</strong>
-                <p>웹 서비스 개발부터 데이터베이스 설계, 서버 운영까지 경험했습니다. 최근에는 AI 에이전트와 LLM을 활용한 서비스 개발을 진행하고 있습니다.</p>
-            </div>
-        </section>
-
-        <section id="aboutMe" class="section profile-section">
-            <div class="section-heading">
-                <p class="eyebrow">Profile</p>
-                <h2>직접 만들고, 부딪히며 배웠습니다.</h2>
-                <p>처음부터 모든 걸 잘하지는 못했습니다. 서비스를 만들고 운영하면서 예상치 못한 문제도 만나고, 더 나은 방법을 고민하며<br>하나씩 배워왔습니다.</p>
-            </div>
-            <div class="profile-grid">
-                <div class="profile-image-card resume-card">
-                    <div class="resume-toolbar">
-                        <div>
-                            <span class="resume-kicker">Resume</span>
-                            <strong>이강현</strong>
-                        </div>
-                        <div class="resume-pager" aria-label="Resume page navigation">
-                            <button type="button" class="resume-arrow resume-prev" aria-label="Previous resume page">‹</button>
-                            <span class="resume-count">1 / 7</span>
-                            <button type="button" class="resume-arrow resume-next" aria-label="Next resume page">›</button>
-                        </div>
-                    </div>
-
-                    <div class="resume-pages">
-                        <article class="resume-page active">
-                            <div class="resume-hero">
-                                <img src="/static/images/증명사진_2023.jpg" alt="이강현 증명사진">
-                                <div>
-                                    <p class="resume-role">Backend Developer</p>
-                                    <h3>이강현</h3>
-                                    <p>연세대학교 미래캠퍼스 · 컴퓨터공학</p>
-                                </div>
-                            </div>
-                            <div class="resume-section">
-                                <h4>사용 언어</h4>
-                                <div class="resume-tags">
-                                    {% for item in skills[0][1] %}<span>{{ item }}</span>
-                                    {% endfor %}
-                                </div>
-                            </div>
-                            <div class="resume-section">
-                                <h4>기술 스택</h4>
-                                <div class="resume-stack-grid">
-                                    {% for name, items in skills[1:5] %}
-                                    <div>
-                                        <strong>{{ name }}</strong>
-                                        <p>{{ items|join(', ') }}</p>
-                                    </div>
-                                    {% endfor %}
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="resume-page">
-                            <div class="resume-section">
-                                <h4><span data-lang="ko">기술 스택 · 클라우드와 인프라</span><span data-lang="en">Tech Stack · Cloud & Infrastructure</span></h4>
-                                <div class="resume-stack-grid resume-stack-full">
-                                    {% for name, items in skills[5:9] %}
-                                    <div>
-                                        <strong>{{ name }}</strong>
-                                        <p>{{ items|join(', ') }}</p>
-                                    </div>
-                                    {% endfor %}
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="resume-page">
-                            <div class="resume-section">
-                                <h4><span data-lang="ko">기술 스택 · 도구와 AI</span><span data-lang="en">Tech Stack · Tools & AI</span></h4>
-                                <div class="resume-stack-grid resume-stack-full">
-                                    {% for name, items in skills[9:12] %}
-                                    <div>
-                                        <strong>{{ name }}</strong>
-                                        <p>{{ items|join(', ') }}</p>
-                                    </div>
-                                    {% endfor %}
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="resume-page">
-                            <div class="resume-section">
-                                <h4>자격증</h4>
-                                <div class="resume-stack-grid">
-                                    <div>
-                                        <strong>정보처리기사</strong>
-                                        <p>국가기술자격 · 한국산업인력공단</p>
-                                    </div>
-                                    <div>
-                                        <strong>정보처리산업기사</strong>
-                                        <p>국가기술자격 · 한국산업인력공단</p>
-                                    </div>
-                                    <div>
-                                        <strong>네트워크관리사 2급</strong>
-                                        <p>국가공인 민간자격 · 한국정보통신자격협회</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="resume-section">
-                                <h4>어학</h4>
-                                <div class="resume-stack-grid">
-                                    <div>
-                                        <strong>English · OPIc</strong>
-                                        <p><span class="resume-grade">IH</span>Intermediate High</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="resume-page">
-                            <div class="resume-section">
-                                <h4>(주) 에듀토셀</h4>
-                                <p class="resume-period">2021.10 ~ 2023.04</p>
-                                <ul class="resume-list">
-                                    <li>AI 기반 영어 학습 콘텐츠 플랫폼 기획 및 백엔드 개발</li>
-                                    <li>TOSEL Lab 메인 웹사이트 기획, DB 설계, 백엔드 개발</li>
-                                    <li>TOSEL SSO 통합 로그인 및 마이크로서비스 간 S2S API 설계</li>
-                                    <li>Monthly Test 성적 관리 서비스 DB 설계, 자동 채점 스크립트 구현, API 개발</li>
-                                    <li>Self Study, Voca Quiz, Placement Test 콘텐츠 DB 설계 및 API 개발</li>
-                                    <li>TOSEL 신규 SCM 시스템 및 Admin/ERP 기획, 프론트엔드/백엔드 개발</li>
-                                </ul>
-                            </div>
-                        </article>
-
-                        <article class="resume-page">
-                            <div class="resume-section">
-                                <h4>주식회사 앤서시스템</h4>
-                                <p class="resume-period">2023.05 ~ 2023.09</p>
-                                <ul class="resume-list">
-                                    <li>소프트웨어 백신 유지보수 및 기술지원</li>
-                                    <li>공공기관 고객사 환경별 백신 업데이트 및 프로그램 최적화</li>
-                                    <li>내부망, 폐쇄망, 외부망 환경의 네트워크 및 서버 장애 대응</li>
-                                    <li>Windows, Linux, CentOS 환경의 백신 관련 장애 대응 및 복구</li>
-                                </ul>
-                            </div>
-                            <div class="resume-section">
-                                <h4>넥셀시스템 주식회사 (외주)</h4>
-                                <p class="resume-period">2025.02 ~ 2025.06</p>
-                                <ul class="resume-list">
-                                    <li>기존 웹사이트 전체 레이아웃 재정비 및 신규 페이지 구축</li>
-                                    <li>디자인 요소 및 인터랙션 개선을 통한 UI/UX 고도화</li>
-                                    <li>노후 DB 분석 및 Front-end 기반 정적 데이터 처리 구조 재설계</li>
-                                    <li>PHP 기반 레거시 서버 코드 리팩토링 및 응답 속도 개선</li>
-                                </ul>
-                            </div>
-                        </article>
-
-                        <article class="resume-page">
-                            <div class="resume-section">
-                                <h4>연세대학교 미래캠퍼스 RAISE Lab (학부연구생)</h4>
-                                <p class="resume-period">2025.09 ~ 현재</p>
-                                <ul class="resume-list">
-                                    <li>의료·환경 데이터 기반 통계 분석 및 머신러닝 연구</li>
-                                    <li>남성 생식건강–환경인자 연관성 분석: 2018~2024 정액검사 데이터와 대기오염·기상요인 연관성 분석, 데이터셋 구축</li>
-                                    <li>OLS, Ridge, Lasso, Random Forest, XGBoost, GPBoost 모델 비교, Optuna 하이퍼파라미터 최적화, SHAP 변수 중요도 분석</li>
-                                    <li>반복측정 의료데이터 모델링: GEE, GLMM, LMM 및 GPBoost, BiMM 기반 예측 성능 비교, 교란변수 보정 (R, Python)</li>
-                                    <li>부인과질환–환경인자 연관성 분석: HIRA 건강보험 데이터 전처리, Negative Binomial Regression 발생률 모델링</li>
-                                </ul>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="resume-bottom-pager" aria-label="Resume page navigation bottom">
-                        <button type="button" class="resume-arrow resume-prev" aria-label="Previous resume page">‹</button>
-                        <span class="resume-count">1 / 7</span>
-                        <button type="button" class="resume-arrow resume-next" aria-label="Next resume page">›</button>
-                    </div>
-                </div>
-                <div class="profile-summary">
-                    <article>
-                        <span>01</span>
-                        <h3>아이디어를 실제 서비스로</h3>
-                        <p>영어 학습 플랫폼부터 개인 프로젝트까지, 기획 단계의 아이디어가 실제로 동작하는 서비스가 되는 과정을 경험했습니다. 백엔드 개발뿐 아니라 데이터베이스 설계와 배포에도 직접 참여했습니다.</p>
-                    </article>
-                    <article>
-                        <span>02</span>
-                        <h3>불편한 건 하나씩 고쳐가며</h3>
-                        <p>반복되는 성적 처리 업무를 자동화하고, 복잡한 데이터 처리 과정과 기존 서비스 구조를 개선했습니다. 작은 변화라도 실제로 일이 편해지는 순간에 보람을 느낍니다.</p>
-                    </article>
-                    <article>
-                        <span>03</span>
-                        <h3>혼자보다 함께 만드는 개발</h3>
-                        <p>기획자, 디자이너, 다른 개발자들과 의견을 나누며 일해왔습니다. GitHub를 통한 협업부터 서버 배포와 운영까지, 코드 밖의 과정도 중요하게 생각합니다.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section id="skills" class="section skills-section">
-            <div class="section-heading">
-                <p class="eyebrow">Skills</p>
-                <h2>기술 스택</h2>
-                <p>직접 써보고, 시행착오도 겪으며 익숙해진 기술들입니다.</p>
-            </div>
-            <p class="skills-summary"><strong>{{ skills|length }}</strong> <span data-lang="ko">개 분야</span><span data-lang="en">areas</span> · <strong>{{ skill_total }}</strong> <span data-lang="ko">개 기술</span><span data-lang="en">technologies</span></p>
-            <div class="skills-grid">
-                {% for name, items in skills %}
-                <article class="skill-card{{ ' wide' if loop.index > 10 else '' }}">
-                    <div class="skill-card-head">
-                        <span class="skill-index">{{ '%02d'|format(loop.index) }}</span>
-                        <h3>{{ name }}</h3>
-                        <span class="skill-count">{{ items|length }}</span>
-                    </div>
-                    <ul class="skill-chips">
-                        {% for item in items %}
-                        <li>{% if skill_icons[item] %}<img src="/static/images/{{ skill_icons[item] }}" alt="" width="18" height="18" loading="lazy">{% endif %}{{ item }}</li>
-                        {% endfor %}
+            <div class="hero-inner">
+                <div class="hero-copy">
+                    <p class="hero-prompt" aria-hidden="true"><span class="prompt-user">kanghyun@homelab</span>:<span class="prompt-path">~</span>$ whoami</p>
+                    <p class="eyebrow">Backend Developer Portfolio</p>
+                    <h1>
+                        <span data-lang="ko">긍정의 알고리즘을<br>탑재한 개발자<br>이강현입니다 :)</span>
+                        <span data-lang="en">A positive-algorithm-powered developer,<br>Kanghyun Lee.</span>
+                    </h1>
+                    <ul class="hero-roles" aria-label="Focus areas">
+                        <li><span class="role-dot cat-service" aria-hidden="true"></span>Backend</li>
+                        <li><span class="role-dot cat-ai" aria-hidden="true"></span>AI · LLM</li>
+                        <li><span class="role-dot cat-research" aria-hidden="true"></span>Infrastructure</li>
                     </ul>
-                </article>
+                    <p class="hero-description">
+                        <span data-lang="ko">안녕하세요, 만나뵙게 되어 반갑습니다.<br>새로운 기술을 배우고 직접 구현하는 과정을 좋아합니다. 백엔드 개발과 서비스 운영을 경험했고, 최근에는 AI와 LLM을 활용한 개발에도 관심을 갖고 진행하고 있습니다.</span>
+                        <span data-lang="en">Hello, it is a pleasure to meet you.<br>I enjoy learning new technologies and building things myself. I have experience in backend development and service operations, and recently I have been working on development with AI and LLMs.</span>
+                    </p>
+                    <div class="hero-actions">
+                        <a class="primary-link" href="#projects" data-target="#projects"><span data-lang="ko">프로젝트 보기</span><span data-lang="en">View Projects</span> <span aria-hidden="true">→</span></a>
+                        <a class="secondary-link" href="#experience" data-target="#experience"><span data-lang="ko">경력 보기</span><span data-lang="en">Experience</span></a>
+                    </div>
+                    <ul class="hero-links">
+                        {% for link in profile.links %}
+                        <li><a href="{{ link.url }}" target="_blank" rel="noreferrer">{{ link.label }} <span aria-hidden="true">↗</span></a></li>
+                        {% endfor %}
+                        <li><a href="mailto:{{ profile.email }}">{{ profile.email }}</a></li>
+                    </ul>
+                </div>
+
+                <figure class="pipeline" data-pipeline aria-labelledby="pipeline-title">
+                    <div class="pipeline-bar">
+                        <span class="pipeline-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                        <span class="pipeline-title" id="pipeline-title">deploy · introduce.leekanghyun.co.kr</span>
+                    </div>
+                    <div class="pipeline-body">
+                        <p class="pipeline-caption"><span class="mono-muted">#</span> <span data-lang="ko">이 사이트가 실제로 배포되는 과정 · 단계를 누르면 내용을 볼 수 있습니다</span><span data-lang="en">How this site is actually deployed · select a step for details</span></p>
+                        <ol class="pipeline-steps">
+                            {% for step in pipeline %}
+                            <li class="pipeline-step{{ ' is-active' if loop.first else '' }}">
+                                <button type="button" class="pipeline-trigger" aria-expanded="{{ 'true' if loop.first else 'false' }}" aria-controls="pipeline-step-{{ loop.index }}">
+                                    <span class="step-node" aria-hidden="true">{{ loop.index }}</span>
+                                    <span class="step-name">{{ step.name }}</span>
+                                    <span class="step-summary">{{ m.bi(step.summary) }}</span>
+                                </button>
+                                <div class="step-detail" id="pipeline-step-{{ loop.index }}"{% if not loop.first %} hidden{% endif %}>
+                                    <code>{{ step.code }}</code>
+                                    <p>{{ m.bi(step.note) }}</p>
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ol>
+                    </div>
+                    <figcaption class="pipeline-foot">
+                        <span class="pipeline-status"><span class="status-dot" aria-hidden="true"></span>Proxmox VE · k3s · Argo CD</span>
+                        <a href="{{ url_for('project_view.project_detail_page', slug='homelab') }}"><span data-lang="ko">홈랩 구성 보기</span><span data-lang="en">See the homelab</span> <span aria-hidden="true">→</span></a>
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- Projects: Featured 3 + 전체 필터 갤러리 -->
+        <section id="projects" class="section projects-section">
+            <div class="section-head">
+                <p class="section-kicker"><span>01</span> Featured</p>
+                <h2>Projects</h2>
+                <p><span data-lang="ko">상용 서비스 운영, AI·LLM 엔지니어링, 인프라 구축을 대표하는 프로젝트입니다. 카드를 누르면 설계와 역할, 결과를 자세히 볼 수 있습니다.</span><span data-lang="en">One project each for commercial service work, AI/LLM engineering, and infrastructure. Open a card to see the design, my role, and results.</span></p>
+            </div>
+            <div class="featured-grid">
+                {% for f in featured %}
+                {% set related = [] %}
+                {% for slug in f.related %}{% set _ = related.append(by_slug[slug]) %}{% endfor %}
+                {{ m.featured_card(by_slug[f.slug], f.kind, related, loop.first) }}
                 {% endfor %}
             </div>
-        </section>
 
-        <section id="archiving" class="section archive-section">
-            <div class="section-heading">
-                <p class="eyebrow">Archive</p>
-                <h2>기록 및 저장소</h2>
-            </div>
-            <div class="archive-grid">
-                <a class="archive-card" href="https://github.com/lkh599810" target="_blank" rel="noreferrer">
-                    <img src="/static/images/git-hub.png" alt="GitHub">
-                    <strong>GitHub</strong>
-                    <span>프로젝트 소스와 학습 기록을 정리한 저장소입니다.</span>
-                </a>
-                <a class="archive-card" href="https://blog.naver.com/lkh599810" target="_blank" rel="noreferrer">
-                    <img src="/static/images/naverblog.png" alt="Naver Blog">
-                    <strong>Naver Blog</strong>
-                    <span>개발 과정에서 학습한 내용과 문제 해결 과정을 기록했습니다.</span>
-                </a>
-            </div>
-        </section>
-
-        <section id="projects" class="section projects-section">
-            <div class="section-heading">
-                <h2>Projects</h2>
-                <p><span data-lang="ko">카테고리를 골라 프로젝트를 둘러보고, 카드를 누르면 설계와 역할, 결과를 자세히 볼 수 있습니다.</span><span data-lang="en">Pick a category to browse, and open a card to see the design, my role, and results.</span></p>
-            </div>
-            <div class="orbit-panel">
-                <div class="orbit-legend">
-                    <p class="orbit-kicker">Project Orbit</p>
-                    <h3><span data-lang="ko">카테고리별 궤도</span><span data-lang="en">One orbit per category</span></h3>
-                    <p class="orbit-lead"><span data-lang="ko">안쪽부터 AI 엔지니어링, 데이터 · 연구, 서비스 · 플랫폼 궤도입니다. 행성을 누르면 해당 프로젝트로 이동하고, 마우스를 올리면 궤도가 멈춥니다.</span><span data-lang="en">From the inside: AI engineering, data and research, then services and platforms. Click a planet to open the project; hovering pauses the orbit.</span></p>
-                    <ul class="orbit-keys">
-                        {% for c in CATEGORIES[1:] %}
-                        <li><button type="button" class="orbit-key cat-{{ c.key }}" data-select="{{ c.key }}" aria-controls="project-grid">
-                            <span class="cat-dot" aria-hidden="true"></span>
-                            <span class="orbit-key-text"><strong>{{ m.bi(c.label) }}</strong><small>{{ m.bi(c.desc) }}</small></span>
-                            <span class="orbit-key-count">{{ counts[c.key] }}</span>
-                        </button></li>
-                        {% endfor %}
-                    </ul>
-                </div>
-                <div class="orbit" data-orbit data-active="all" aria-hidden="true">
-                    <button type="button" class="orbit-sun" data-select="all" tabindex="-1">
-                        <strong>{{ counts['all'] }}</strong><span>Projects</span>
-                    </button>
-                    {% for key, radius, duration, offset in [('ai', 17, 38, 40), ('research', 30, 60, 100), ('service', 44, 110, 0)] %}
-                    {% set ring = projects|selectattr('category', 'equalto', key)|list %}
-                    <div class="orbit-ring cat-{{ key }}" data-category="{{ key }}" style="--r: {{ radius }}cqw; --dur: {{ duration }}s">
-                        {% for project in ring %}
-                        <a class="planet" href="{{ url_for('project_view.project_detail_page', slug=project.slug) }}" tabindex="-1"
-                           style="--a: {{ (offset + 360 / ring|length * loop.index0)|round(1) }}deg">
-                            <span class="planet-body">
-                                {% if thumb_url(project) %}<img src="{{ thumb_url(project) }}" alt="" loading="lazy" width="64" height="64">
-                                {% else %}<span class="planet-initial">{{ m.plain(project.title)[:1] }}</span>{% endif %}
-                                <span class="planet-label">{{ m.bi(project.title) }}</span>
-                            </span>
-                        </a>
-                        {% endfor %}
-                    </div>
-                    {% endfor %}
-                </div>
+            <div class="section-head section-head-sub" id="all-projects">
+                <p class="section-kicker"><span>02</span> All Projects</p>
+                <h3><span data-lang="ko">전체 프로젝트</span><span data-lang="en">All projects</span> <span class="head-count">{{ counts['all'] }}</span></h3>
             </div>
             <div class="project-tabs" role="tablist" aria-label="Project categories">
                 {% for c in CATEGORIES %}
                 <button type="button" role="tab" class="project-tab" id="project-tab-{{ c.key }}" data-category="{{ c.key }}"
                         aria-controls="project-grid" aria-selected="{{ 'true' if loop.first else 'false' }}" tabindex="{{ 0 if loop.first else -1 }}">
-                    {{ m.bi(c.label) }}<span class="project-tab-count">{{ counts[c.key] }}</span>
+                    {% if c.key != 'all' %}<span class="cat-dot cat-{{ c.key }}" aria-hidden="true"></span>{% endif %}{{ m.bi(c.label) }}<span class="project-tab-count">{{ counts[c.key] }}</span>
                 </button>
                 {% endfor %}
             </div>
-            <div class="project-groups" id="project-grid" role="tabpanel" aria-labelledby="project-tab-all">
-                {% for c in CATEGORIES[1:] %}
-                <section class="project-group cat-{{ c.key }}" data-category="{{ c.key }}" aria-labelledby="group-{{ c.key }}">
-                    <header class="project-group-head">
-                        <h3 id="group-{{ c.key }}"><span class="cat-dot" aria-hidden="true"></span>{{ m.bi(c.label) }}<span class="project-group-count">{{ counts[c.key] }}</span></h3>
-                        <p>{{ m.bi(c.desc) }}</p>
-                    </header>
-                    <ul class="project-grid">
-                        {% for project in projects if project.category == c.key %}
-                        {{ m.project_card(project) }}
+            <p class="project-tab-desc">
+                {% for c in CATEGORIES[1:] %}<span data-desc="{{ c.key }}" hidden>{{ m.bi(c.desc) }}</span>{% endfor %}
+            </p>
+            <ul class="project-grid" id="project-grid" role="tabpanel" aria-labelledby="project-tab-all">
+                {% for project in projects %}
+                {{ m.project_card(project, parent.get(project.slug)) }}
+                {% endfor %}
+            </ul>
+        </section>
+
+        <!-- Experience: 프로필 + 경력 타임라인 -->
+        <section id="experience" class="section experience-section">
+            <div class="section-head">
+                <p class="section-kicker"><span>03</span> Experience</p>
+                <h2><span data-lang="ko">경력</span><span data-lang="en">Experience</span></h2>
+            </div>
+            <div class="experience-layout">
+                <aside class="profile-card">
+                    <div class="profile-top">
+                        <img src="/static/images/{{ profile.photo }}" alt="{{ m.plain(profile.name) }}" width="104" height="130" loading="lazy">
+                        <div class="profile-id">
+                            <p class="profile-role">{{ profile.role }}</p>
+                            <h3>{{ m.bi(profile.name) }}</h3>
+                            <p>{{ m.bi(profile.school) }}</p>
+                        </div>
+                    </div>
+                    <dl class="profile-facts">
+                        <div>
+                            <dt><span data-lang="ko">자격증</span><span data-lang="en">Certifications</span></dt>
+                            {% for cert in profile.certs %}
+                            <dd><strong>{{ m.bi(cert.name) }}</strong><span>{{ m.bi(cert.issuer) }}</span></dd>
+                            {% endfor %}
+                        </div>
+                        <div>
+                            <dt><span data-lang="ko">어학</span><span data-lang="en">Language</span></dt>
+                            <dd><strong>{{ profile.language.name }} <span class="grade">{{ profile.language.grade }}</span></strong><span>{{ profile.language.detail }}</span></dd>
+                        </div>
+                    </dl>
+                    <ul class="profile-links">
+                        {% for link in profile.links %}<li><a href="{{ link.url }}" target="_blank" rel="noreferrer">{{ link.label }} <span aria-hidden="true">↗</span></a></li>{% endfor %}
+                        <li><a href="mailto:{{ profile.email }}">Email</a></li>
+                    </ul>
+                </aside>
+
+                <div class="timeline-wrap">
+                    {% for kind in ['work', 'research'] %}
+                    <h3 class="timeline-title">
+                        <span class="timeline-tag tag-{{ kind }}">{{ kind }}</span>
+                        {% if kind == 'work' %}<span data-lang="ko">실무 경력</span><span data-lang="en">Work experience</span>{% else %}<span data-lang="ko">연구 경험</span><span data-lang="en">Research</span>{% endif %}
+                    </h3>
+                    <ol class="timeline">
+                        {% for job in experience if job.kind == kind %}
+                        <li class="timeline-item">
+                            <div class="timeline-head">
+                                <h4>{{ m.bi(job.org) }}</h4>
+                                <span class="timeline-period">{{ m.bi(job.period) }}</span>
+                            </div>
+                            {{ m.bilist(job['items'], 'timeline-list') }}
+                            {% if job.projects %}
+                            <ul class="timeline-projects" aria-label="Related projects">
+                                {% for slug in job.projects %}<li><a href="{{ url_for('project_view.project_detail_page', slug=slug) }}">{{ m.bi(by_slug[slug].title) }} <span aria-hidden="true">→</span></a></li>{% endfor %}
+                            </ul>
+                            {% endif %}
+                        </li>
+                        {% endfor %}
+                    </ol>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills: 분야별 묶음, 프로젝트에 쓴 기술 먼저 -->
+        <section id="skills" class="section skills-section">
+            <div class="section-head">
+                <p class="section-kicker"><span>04</span> Skills</p>
+                <h2><span data-lang="ko">기술 스택</span><span data-lang="en">Tech Stack</span></h2>
+                <p><span data-lang="ko">직접 써보고, 시행착오도 겪으며 익숙해진 기술들입니다.</span><span data-lang="en">Technologies I have used hands-on and grown comfortable with through trial and error.</span></p>
+                <p class="skills-legend"><span class="legend-used" aria-hidden="true"></span><span data-lang="ko">이 사이트의 프로젝트에 사용한 기술</span><span data-lang="en">Used in a project on this site</span> <span class="mono-muted">· {{ skill_total }} total</span></p>
+            </div>
+            <div class="skills-grid">
+                {% for title, subs in skill_groups %}
+                {% set ns = namespace(used=[], rest=0, total=0) %}
+                {% for sub, items in subs %}{% for item in items %}{% set ns.total = ns.total + 1 %}{% if skill_used(item) %}{% set ns.used = ns.used + [item] %}{% else %}{% set ns.rest = ns.rest + 1 %}{% endif %}{% endfor %}{% endfor %}
+                <article class="skill-card">
+                    <div class="skill-card-head">
+                        <span class="skill-index">{{ '%02d'|format(loop.index) }}</span>
+                        <h3>{{ title }}</h3>
+                        <span class="skill-count">{{ ns.total }}</span>
+                    </div>
+                    {% if ns.used %}
+                    <ul class="skill-chips skill-core">
+                        {% for item in ns.used %}
+                        <li class="is-used">{% if skill_icons[item] %}<img src="/static/images/{{ skill_icons[item] }}" alt="" width="18" height="18" loading="lazy">{% endif %}{{ item }}</li>
                         {% endfor %}
                     </ul>
-                </section>
+                    {% endif %}
+                    {% if ns.rest %}
+                    <details class="skill-more"{% if not ns.used %} open{% endif %}>
+                        <summary><span data-lang="ko">나머지 기술</span><span data-lang="en">Other technologies</span> <span class="mono-muted">+{{ ns.rest }}</span></summary>
+                        {% for sub, items in subs %}
+                        {% set rest = items|reject('in', ns.used)|list %}
+                        {% if rest %}
+                        {% if subs|length > 1 %}<p class="skill-sub">{{ sub }}</p>{% endif %}
+                        <ul class="skill-chips">
+                            {% for item in rest %}<li>{% if skill_icons[item] %}<img src="/static/images/{{ skill_icons[item] }}" alt="" width="18" height="18" loading="lazy">{% endif %}{{ item }}</li>{% endfor %}
+                        </ul>
+                        {% endif %}
+                        {% endfor %}
+                    </details>
+                    {% endif %}
+                </article>
                 {% endfor %}
+            </div>
+        </section>
+
+        <!-- About / Archive / Contact -->
+        <section id="archiving" class="section archive-section">
+            <div class="section-head">
+                <p class="section-kicker"><span>05</span> About · Archive</p>
+                <h2><span data-lang="ko">직접 만들고, 부딪히며 배웠습니다.</span><span data-lang="en">I learned by building things and running into problems.</span></h2>
+                <p><span data-lang="ko">처음부터 모든 걸 잘하지는 못했습니다. 서비스를 만들고 운영하면서 예상치 못한 문제도 만나고, 더 나은 방법을 고민하며 하나씩 배워왔습니다.</span><span data-lang="en">I was not good at everything from the start. While building and running services, I ran into unexpected problems and learned one step at a time by looking for better ways.</span></p>
+            </div>
+            <div class="about-grid">
+                <article>
+                    <span>01</span>
+                    <h3><span data-lang="ko">아이디어를 실제 서비스로</span><span data-lang="en">From Ideas to Real Services</span></h3>
+                    <p><span data-lang="ko">영어 학습 플랫폼부터 개인 프로젝트까지, 기획 단계의 아이디어가 실제로 동작하는 서비스가 되는 과정을 경험했습니다. 백엔드 개발뿐 아니라 데이터베이스 설계와 배포에도 직접 참여했습니다.</span><span data-lang="en">From an English learning platform to personal projects, I have seen ideas from the planning stage become working services. Beyond backend development, I was directly involved in database design and deployment.</span></p>
+                </article>
+                <article>
+                    <span>02</span>
+                    <h3><span data-lang="ko">불편한 건 하나씩 고쳐가며</span><span data-lang="en">Fixing Pain Points One by One</span></h3>
+                    <p><span data-lang="ko">반복되는 성적 처리 업무를 자동화하고, 복잡한 데이터 처리 과정과 기존 서비스 구조를 개선했습니다. 작은 변화라도 실제로 일이 편해지는 순간에 보람을 느낍니다.</span><span data-lang="en">I automated repetitive score processing and improved complex data workflows and existing service structures. Even small changes feel rewarding when they make real work easier.</span></p>
+                </article>
+                <article>
+                    <span>03</span>
+                    <h3><span data-lang="ko">혼자보다 함께 만드는 개발</span><span data-lang="en">Building Together, Not Alone</span></h3>
+                    <p><span data-lang="ko">기획자, 디자이너, 다른 개발자들과 의견을 나누며 일해왔습니다. GitHub를 통한 협업부터 서버 배포와 운영까지, 코드 밖의 과정도 중요하게 생각합니다.</span><span data-lang="en">I have worked closely with planners, designers, and other developers. From collaborating on GitHub to deploying and running servers, I value the work that happens outside the code too.</span></p>
+                </article>
+            </div>
+            <div class="archive-grid">
+                <a class="archive-card" href="https://github.com/lkh599810" target="_blank" rel="noreferrer">
+                    <img src="/static/images/git-hub.png" alt="" width="44" height="44" loading="lazy">
+                    <div>
+                        <strong>GitHub <span aria-hidden="true">↗</span></strong>
+                        <span><span data-lang="ko">프로젝트 소스와 학습 기록을 정리한 저장소입니다.</span><span data-lang="en">Repository for project source code and study records.</span></span>
+                    </div>
+                </a>
+                <a class="archive-card" href="https://blog.naver.com/lkh599810" target="_blank" rel="noreferrer">
+                    <img src="/static/images/naverblog.png" alt="" width="44" height="44" loading="lazy">
+                    <div>
+                        <strong>Naver Blog <span aria-hidden="true">↗</span></strong>
+                        <span><span data-lang="ko">개발 과정에서 학습한 내용과 문제 해결 과정을 기록했습니다.</span><span data-lang="en">Notes about development learnings and problem-solving processes.</span></span>
+                    </div>
+                </a>
+                <a class="archive-card" href="mailto:{{ profile.email }}">
+                    <span class="archive-icon" aria-hidden="true">@</span>
+                    <div>
+                        <strong>Contact</strong>
+                        <span>{{ profile.email }}</span>
+                    </div>
+                </a>
             </div>
         </section>
     </main>
 </div>
 
 <script>
-    $(function () {
-        var resumeIndex = 0;
-        var resumeTotal = $('.resume-page').length;
-
-        function showResumePage(nextIndex) {
-            resumeIndex = (nextIndex + resumeTotal) % resumeTotal;
-            $('.resume-page').removeClass('active').eq(resumeIndex).addClass('active');
-            $('.resume-count').text((resumeIndex + 1) + ' / ' + resumeTotal);
+    // 언어·테마 전환 (상세 페이지와 같은 localStorage 키)
+    (function () {
+        var root = document.documentElement;
+        function stored(key, fallback) {
+            try { return localStorage.getItem(key) || fallback; } catch (e) { return fallback; }
         }
-
-        $('.resume-prev').on('click', function () {
-            showResumePage(resumeIndex - 1);
-        });
-
-        $('.resume-next').on('click', function () {
-            showResumePage(resumeIndex + 1);
-        });
-
-        var translations = {
-            en: [
-                ['.site-nav button:eq(0)', 'Profile'], ['.site-nav button:eq(1)', 'Skills'], ['.site-nav button:eq(2)', 'Archive'], ['.site-nav button:eq(3)', 'Projects'],
-                ['.hero .eyebrow', 'Backend Developer Portfolio'],
-                ['.hero h1', 'A positive-algorithm-powered developer,<br>Kanghyun Lee.', true],
-                ['.hero-description', 'Hello, it is a pleasure to meet you.<br>I enjoy learning new technologies and building things myself. I have experience in backend development and service operations, and recently I have been working on development with AI and LLMs.', true],
-                ['.primary-link:eq(0)', 'View Projects'], ['.secondary-link', 'Tech Stack'],
-                ['.hero-panel strong', 'What I Do'],
-                ['.hero-panel p', 'I have worked from web service development to database design and server operations. Recently, I have been building services with AI agents and LLMs.'],
-                ['#aboutMe .section-heading h2', 'I learned by building things and running into problems.'],
-                ['#aboutMe .section-heading > p:last-child', 'I was not good at everything from the start. While building and running services, I ran into unexpected problems and learned one step at a time by looking for better ways.'],
-                ['.resume-toolbar strong', 'Kanghyun Lee'], ['.resume-role', 'Backend Developer'], ['.resume-hero h3', 'Kanghyun Lee'],
-                ['.resume-hero p:last-child', 'Yonsei University Mirae Campus · Computer Engineering'],
-                ['.resume-page:eq(0) .resume-section:eq(0) h4', 'Languages'], ['.resume-page:eq(0) .resume-section:eq(1) h4', 'Tech Stack'], 
-                ['.resume-page:eq(3) .resume-section:eq(0) h4', 'Certifications'], ['.resume-page:eq(3) .resume-section:eq(1) h4', 'Language'],
-                ['.resume-page:eq(3) .resume-section:eq(0) p:eq(0)', 'National Technical Qualification · HRD Korea'], ['.resume-page:eq(3) .resume-section:eq(0) p:eq(1)', 'National Technical Qualification · HRD Korea'], ['.resume-page:eq(3) .resume-section:eq(0) p:eq(2)', 'Nationally Accredited Private Qualification · ICQA'],
-                ['.resume-page:eq(4) h4', 'Edutosel Co., Ltd.'], ['.resume-page:eq(5) .resume-section:eq(0) h4', 'Answer System Co., Ltd.'], ['.resume-page:eq(5) .resume-section:eq(1) h4', 'Nexel System Co., Ltd. (Outsourced)'],
-                ['.resume-page:eq(6) h4', 'RAISE Lab, Yonsei University Mirae Campus (Undergraduate Researcher)'], ['.resume-page:eq(6) .resume-period', '2025.09 ~ Present'],
-                ['.profile-summary article:eq(0) h3', 'From Ideas to Real Services'], ['.profile-summary article:eq(0) p', 'From an English learning platform to personal projects, I have seen ideas from the planning stage become working services. Beyond backend development, I was directly involved in database design and deployment.'],
-                ['.profile-summary article:eq(1) h3', 'Fixing Pain Points One by One'], ['.profile-summary article:eq(1) p', 'I automated repetitive score processing and improved complex data workflows and existing service structures. Even small changes feel rewarding when they make real work easier.'],
-                ['.profile-summary article:eq(2) h3', 'Building Together, Not Alone'], ['.profile-summary article:eq(2) p', 'I have worked closely with planners, designers, and other developers. From collaborating on GitHub to deploying and running servers, I value the work that happens outside the code too.'],
-                ['#skills .section-heading h2', 'Tech Stack'], ['#skills .section-heading > p:last-child', 'Technologies I have used hands-on and grown comfortable with through trial and error.'],
-                ['#archiving .section-heading h2', 'Archive'], ['.archive-card:eq(0) span', 'Repository for project source code and study records.'], ['.archive-card:eq(1) span', 'Notes about development learnings and problem-solving processes.']
-            ]
-        };
-        // 한국어는 HTML에 쓴 문구를 그대로 사용 (en 목록과 같은 위치)
-        translations.ko = translations.en.map(function (item) {
-            return [item[0], $(item[0]).html(), true];
-        });
-
+        function save(key, value) {
+            try { localStorage.setItem(key, value); } catch (e) {}
+        }
         function setLanguage(lang) {
-            var list = translations[lang] || translations.ko;
-            list.forEach(function (item) {
-                var target = $(item[0]);
-                if (item[2]) {
-                    target.html(item[1]);
-                } else {
-                    target.text(item[1]);
-                }
-            });
-            $('html').attr('lang', lang === 'en' ? 'en' : 'ko');
-            $('.lang-toggle').text(lang === 'en' ? 'KOR' : 'ENG');
-            localStorage.setItem('portfolioLang', lang);
+            root.lang = lang === 'en' ? 'en' : 'ko';
+            document.querySelector('.lang-toggle').textContent = lang === 'en' ? 'KOR' : 'ENG';
+            save('portfolioLang', lang);
         }
-
         function setTheme(theme) {
-            $('body').toggleClass('dark-mode', theme === 'dark');
-            $('.theme-toggle').text(theme === 'dark' ? 'Light' : 'Dark');
-            localStorage.setItem('portfolioTheme', theme);
+            document.body.classList.toggle('dark-mode', theme === 'dark');
+            document.querySelector('.theme-toggle').textContent = theme === 'dark' ? 'Light' : 'Dark';
+            save('portfolioTheme', theme);
         }
-
-        $('.lang-toggle').on('click', function () {
-            setLanguage(localStorage.getItem('portfolioLang') === 'en' ? 'ko' : 'en');
+        document.querySelector('.lang-toggle').addEventListener('click', function () {
+            setLanguage(root.lang === 'en' ? 'ko' : 'en');
         });
-
-        $('.theme-toggle').on('click', function () {
-            setTheme($('body').hasClass('dark-mode') ? 'light' : 'dark');
+        document.querySelector('.theme-toggle').addEventListener('click', function () {
+            setTheme(document.body.classList.contains('dark-mode') ? 'light' : 'dark');
         });
-
-        setLanguage(localStorage.getItem('portfolioLang') || 'ko');
-        setTheme(localStorage.getItem('portfolioTheme') || 'light');
-        showResumePage(0);
-    });
+        setLanguage(stored('portfolioLang', 'ko'));
+        setTheme(stored('portfolioTheme', 'light'));
+    })();
 </script>
 <script src="/static/js/project-tabs.js"></script>
+<script src="/static/js/pipeline.js"></script>
 {% include "_footer.html" %}
 </body>
 </html>

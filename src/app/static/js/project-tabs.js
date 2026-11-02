@@ -1,13 +1,12 @@
-// 메인 Projects 섹션: 카테고리 탭이 카드 그룹과 궤도(orbit) 강조를 함께 바꾼다.
-// 선택 상태는 ?category= 로 URL에 남겨 상세 페이지에서 돌아와도 유지
+// 메인 All Projects: 카테고리 탭 필터. 선택 상태는 ?category= 로 URL에 남겨 상세 페이지에서 돌아와도 유지
 (function () {
     var grid = document.getElementById('project-grid');
     if (!grid) {
         return;
     }
     var tabs = Array.prototype.slice.call(document.querySelectorAll('.project-tab'));
-    var groups = Array.prototype.slice.call(grid.querySelectorAll('.project-group'));
-    var orbit = document.querySelector('[data-orbit]');
+    var items = Array.prototype.slice.call(grid.querySelectorAll('.project-card-item'));
+    var descs = Array.prototype.slice.call(document.querySelectorAll('[data-desc]'));
 
     function select(key, updateUrl) {
         var tab = tabs.filter(function (t) { return t.getAttribute('data-category') === key; })[0];
@@ -21,16 +20,13 @@
             t.tabIndex = active ? 0 : -1;
         });
         grid.setAttribute('aria-labelledby', tab.id);
-        groups.forEach(function (group) {
-            group.hidden = key !== 'all' && group.getAttribute('data-category') !== key;
+        items.forEach(function (item) {
+            item.hidden = key !== 'all' && item.getAttribute('data-category') !== key;
         });
-        if (orbit) {
-            orbit.setAttribute('data-active', key);
-        }
-        Array.prototype.forEach.call(document.querySelectorAll('.orbit-key'), function (button) {
-            button.setAttribute('aria-pressed', button.getAttribute('data-select') === key ? 'true' : 'false');
+        descs.forEach(function (d) {
+            d.hidden = d.getAttribute('data-desc') !== key;
         });
-        // 애니메이션 재시작
+        // 카드 등장 애니메이션 재시작
         grid.classList.remove('is-switching');
         void grid.offsetWidth;
         grid.classList.add('is-switching');
@@ -42,7 +38,7 @@
             } else {
                 url.searchParams.set('category', key);
             }
-            url.hash = 'projects';
+            url.hash = 'all-projects';
             history.replaceState(null, '', url);
         }
         return tab;
@@ -66,14 +62,13 @@
         });
     });
 
-    // 궤도 범례·태양을 누르면 같은 카테고리 탭을 고른다 (다시 누르면 전체)
-    Array.prototype.forEach.call(document.querySelectorAll('[data-select]'), function (button) {
-        button.addEventListener('click', function () {
-            var key = button.getAttribute('data-select');
-            var active = orbit ? orbit.getAttribute('data-active') : 'all';
-            select(key === active ? 'all' : key, true);
+    var initial = new URLSearchParams(window.location.search).get('category');
+    select(initial || 'all', false);
+    // 상세 페이지에서 카테고리를 지정해 돌아오면 필터 위치로 이동
+    if (initial && window.location.hash === '#projects') {
+        var target = document.getElementById('all-projects');
+        requestAnimationFrame(function () {
+            window.scrollTo(0, target.getBoundingClientRect().top + window.scrollY - 80);
         });
-    });
-
-    select(new URLSearchParams(window.location.search).get('category') || 'all', false);
+    }
 })();

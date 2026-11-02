@@ -3,7 +3,11 @@ from pathlib import Path
 from flask import Blueprint, abort, redirect, render_template, request, url_for
 
 from ...projects import CATEGORIES, PROJECTS, PROJECTS_BY_SLUG, TAGS, category_counts, category_label
-from ...skills import SKILL_ICONS, SKILL_TOTAL, SKILLS
+from ...profile import EXPERIENCE, FEATURED, PIPELINE, PROFILE
+from ...skills import SKILL_GROUPS, SKILL_ICONS, SKILL_TOTAL, is_used
+
+# TOSEL Lab처럼 상위 프로젝트가 있는 카드에 '관련 프로젝트' 표시
+PARENT = {slug: PROJECTS_BY_SLUG[f['slug']] for f in FEATURED for slug in f['related']}
 
 bp = Blueprint(name='project_view', url_prefix='/', import_name="project_view")
 
@@ -42,8 +46,11 @@ def project_context():
 
 @bp.route('/')
 def index_page():
-    return render_template("index.html", projects=PROJECTS, counts=category_counts(),
-                           skills=SKILLS, skill_icons=SKILL_ICONS, skill_total=SKILL_TOTAL)
+    return render_template(
+        "index.html", projects=PROJECTS, counts=category_counts(), by_slug=PROJECTS_BY_SLUG,
+        featured=FEATURED, parent=PARENT, pipeline=PIPELINE, profile=PROFILE, experience=EXPERIENCE,
+        skill_groups=SKILL_GROUPS, skill_icons=SKILL_ICONS, skill_total=SKILL_TOTAL, skill_used=is_used,
+    )
 
 
 @bp.route('/projects')

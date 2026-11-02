@@ -27,7 +27,6 @@ def test_index_lists_every_project_once():
     html = client.get('/').get_data(as_text=True)
     for p in PROJECTS:
         assert html.count(f'class="project-card" href="/projects/{p["slug"]}"') == 1, p['slug']
-        assert html.count(f'class="planet" href="/projects/{p["slug"]}"') == 1, p['slug']
     assert 'id="project-tab-all"' in html
 
 
@@ -44,6 +43,14 @@ def test_index_assets_exist():
     html = client.get('/').get_data(as_text=True)
     for src in set(re.findall(r'(?:src|href)="(/static/[^"]+)"', html)):
         assert (STATIC / src[len('/static/'):]).is_file(), src
+
+
+def test_index_sections_and_featured():
+    html = client.get('/').get_data(as_text=True)
+    for anchor in ['id="projects"', 'id="experience"', 'id="skills"', 'id="archiving"', 'data-pipeline']:
+        assert anchor in html, anchor
+    assert html.count('class="featured-card') == 3
+    assert 'class="orbit' not in html and 'resume-page' not in html
 
 
 def test_multi_image_blocks_render_as_gallery():

@@ -25,25 +25,51 @@
 {% endif %}
 {%- endmacro %}
 
-{% macro project_card(project) -%}
+{% macro project_card(project, parent=None) -%}
 <li class="project-card-item cat-{{ project.category }}" data-category="{{ project.category }}">
     <a class="project-card" href="{{ url_for('project_view.project_detail_page', slug=project.slug) }}">
-        <div class="project-card-media">{{ cover(project, thumb_url(project)) }}</div>
-        <div class="project-card-body">
-            <div class="project-card-meta">
-                <span class="project-card-category">{{ bi(category_label(project.category)) }}</span>
-                {{ tag_list(project) }}
-            </div>
-            <h4>{{ bi(project.title) }}</h4>
-            <p>{{ bi(project.summary) }}</p>
-            <ul class="stack-list">
-                {% for item in project.stack[:4] %}<li>{{ item }}</li>{% endfor %}
-                {% if project.stack|length > 4 %}<li class="more">+{{ project.stack|length - 4 }}</li>{% endif %}
-            </ul>
-            <span class="project-card-more"><span data-lang="ko">자세히 보기</span><span data-lang="en">View details</span> <span aria-hidden="true">→</span></span>
+        <div class="project-card-meta">
+            <span class="project-card-category"><span class="cat-dot" aria-hidden="true"></span>{{ bi(category_label(project.category)) }}</span>
+            {{ tag_list(project) }}
+        </div>
+        <h4>{{ bi(project.title) }}</h4>
+        {% if parent %}<p class="project-card-parent"><span data-lang="ko">{{ plain(parent.title) }} 관련 프로젝트</span><span data-lang="en">Related to {{ plain(parent.title) }}</span></p>{% endif %}
+        <p class="project-card-summary">{{ bi(project.summary) }}</p>
+        <ul class="stack-list">
+            {% for item in project.stack[:4] %}<li>{{ item }}</li>{% endfor %}
+            {% if project.stack|length > 4 %}<li class="more">+{{ project.stack|length - 4 }}</li>{% endif %}
+        </ul>
+        <div class="project-card-foot">
+            {% if project.period %}<span class="project-card-period">{{ bi(project.period) }}</span>{% endif %}
+            <span class="project-card-more" aria-hidden="true">→</span>
         </div>
     </a>
 </li>
+{%- endmacro %}
+
+{% macro featured_card(project, kind, related, big=False) -%}
+<article class="featured-card cat-{{ project.category }}{{ ' is-big' if big else '' }}">
+    <a class="featured-media" href="{{ url_for('project_view.project_detail_page', slug=project.slug) }}" tabindex="-1" aria-hidden="true">
+        {{ cover(project, thumb_url(project)) }}
+    </a>
+    <div class="featured-body">
+        <p class="featured-kind">{{ bi(kind) }}</p>
+        <h3><a href="{{ url_for('project_view.project_detail_page', slug=project.slug) }}">{{ bi(project.title) }}</a></h3>
+        <p class="featured-summary">{{ bi(project.summary) }}</p>
+        <ul class="stack-list">
+            {% for item in project.stack[:5] %}<li>{{ item }}</li>{% endfor %}
+        </ul>
+        {% if related %}
+        <div class="featured-related">
+            <span><span data-lang="ko">함께 진행한 TOSEL 프로젝트</span><span data-lang="en">Related TOSEL projects</span></span>
+            <ul>
+                {% for r in related %}<li><a href="{{ url_for('project_view.project_detail_page', slug=r.slug) }}">{{ bi(r.title) }}</a></li>{% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        <a class="featured-link" href="{{ url_for('project_view.project_detail_page', slug=project.slug) }}"><span data-lang="ko">자세히 보기</span><span data-lang="en">View project</span> <span aria-hidden="true">→</span></a>
+    </div>
+</article>
 {%- endmacro %}
 
 {% macro bilist(v, cls='point-list') -%}

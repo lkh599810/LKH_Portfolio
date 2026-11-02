@@ -3,6 +3,7 @@ from pathlib import Path
 from flask import Blueprint, abort, redirect, render_template, request, url_for
 
 from ...projects import CATEGORIES, PROJECTS, PROJECTS_BY_SLUG, TAGS, category_counts, category_label
+from ...skills import SKILL_ICONS, SKILL_TOTAL, SKILLS
 
 bp = Blueprint(name='project_view', url_prefix='/', import_name="project_view")
 
@@ -41,7 +42,8 @@ def project_context():
 
 @bp.route('/')
 def index_page():
-    return render_template("index.html", projects=PROJECTS, counts=category_counts())
+    return render_template("index.html", projects=PROJECTS, counts=category_counts(),
+                           skills=SKILLS, skill_icons=SKILL_ICONS, skill_total=SKILL_TOTAL)
 
 
 @bp.route('/projects')

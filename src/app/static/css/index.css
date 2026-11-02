@@ -1179,6 +1179,94 @@ a {
     }
 }
 
+/* Skills: 분야별 카드 + 기술 칩 (skills.py) */
+.skills-summary {
+    width: min(1120px, 100%);
+    margin: -18px auto 24px;
+    color: var(--muted);
+    font-size: 15px;
+    text-align: center;
+}
+
+.skills-summary strong {
+    color: var(--blue);
+    font-size: 18px;
+}
+
+.skill-card {
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(37, 99, 235, 0.35);
+}
+
+.skill-card-head {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.skill-card-head h3 {
+    margin: 0;
+}
+
+.skill-index {
+    color: var(--blue);
+    font-family: Consolas, 'SFMono-Regular', Menlo, monospace;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.skill-count {
+    margin-left: auto;
+    min-width: 26px;
+    padding: 0 8px;
+    border-radius: 999px;
+    color: var(--blue);
+    background: var(--soft-blue);
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 22px;
+    text-align: center;
+}
+
+.skill-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.skill-chips li {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--ink);
+    background: var(--paper);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.skill-chips img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+
+.resume-stack-grid p {
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+}
+
 @media (max-width: 1199px) {
     .hero {
         min-height: 680px;

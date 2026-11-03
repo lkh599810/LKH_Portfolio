@@ -51,6 +51,10 @@ def test_index_sections_and_featured():
         assert anchor in html, anchor
     assert html.count('class="featured-card') == 3
     assert 'class="orbit' not in html and 'resume-page' not in html
+    # 히어로 터미널: 칩으로 노출한 명령어마다 출력 template이 있어야 함
+    for cmd in ['help', 'introduce', 'whoami', 'projects', 'experience', 'skills', 'contact']:
+        assert f'<template data-cmd="{cmd}">' in html, cmd
+    assert "{'ko'" not in html
 
 
 def test_multi_image_blocks_render_as_gallery():

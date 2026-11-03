@@ -68,12 +68,81 @@
                         <a class="primary-link" href="#projects" data-target="#projects"><span data-lang="ko">프로젝트 보기</span><span data-lang="en">View Projects</span> <span aria-hidden="true">→</span></a>
                         <a class="secondary-link" href="#experience" data-target="#experience"><span data-lang="ko">경력 보기</span><span data-lang="en">Experience</span></a>
                     </div>
-                    <ul class="hero-links">
-                        {% for link in profile.links %}
-                        <li><a href="{{ link.url }}" target="_blank" rel="noreferrer">{{ link.label }} <span aria-hidden="true">↗</span></a></li>
-                        {% endfor %}
-                        <li><a href="mailto:{{ profile.email }}">{{ profile.email }}</a></li>
-                    </ul>
+                    <!-- 히어로 미니 터미널: 명령어를 입력하면 아래 template 내용을 출력 (term.js) -->
+                    <div class="hero-term" data-term>
+                        <div class="term-log" role="log" aria-live="polite" aria-label="Terminal output">
+                            <p class="term-hint"><span class="term-accent">typing!</span> : <span data-lang="ko">명령어를 입력해 보세요. 처음이라면</span><span data-lang="en">type a command. New here? Try</span> <code>help</code></p>
+                        </div>
+                        <form class="term-line" autocomplete="off">
+                            <label for="term-input"><span class="prompt-host"><span class="prompt-user">kanghyun@homelab</span>:</span><span class="prompt-path">~</span>$</label>
+                            <input id="term-input" type="text" name="cmd" spellcheck="false" autocapitalize="off" autocorrect="off" enterkeyhint="send" placeholder="help" aria-describedby="term-chips-label">
+                        </form>
+                        <div class="term-chips">
+                            <span id="term-chips-label" class="visually-hidden"><span data-lang="ko">자주 쓰는 명령어</span><span data-lang="en">Common commands</span></span>
+                            {% for c in ['introduce', 'projects', 'experience', 'skills', 'contact', 'help'] %}
+                            <button type="button" data-run="{{ c }}">{{ c }}</button>
+                            {% endfor %}
+                        </div>
+
+                        <template data-cmd="help">
+                            <dl class="term-help">
+                                <dt>introduce</dt><dd><span data-lang="ko">저를 소개합니다</span><span data-lang="en">About me</span></dd>
+                                <dt>whoami</dt><dd><span data-lang="ko">이름 · 직무 · 학력</span><span data-lang="en">Name · role · education</span></dd>
+                                <dt>projects</dt><dd><span data-lang="ko">전체 프로젝트 목록 (ls)</span><span data-lang="en">All projects (ls)</span></dd>
+                                <dt>experience</dt><dd><span data-lang="ko">경력 · 연구 이력</span><span data-lang="en">Work · research history</span></dd>
+                                <dt>skills</dt><dd><span data-lang="ko">프로젝트에서 사용한 기술</span><span data-lang="en">Skills used in projects</span></dd>
+                                <dt>contact</dt><dd><span data-lang="ko">이메일 · GitHub · 블로그</span><span data-lang="en">Email · GitHub · blog</span></dd>
+                                <dt>github · blog</dt><dd><span data-lang="ko">새 탭으로 열기</span><span data-lang="en">Open in a new tab</span></dd>
+                                <dt>clear</dt><dd><span data-lang="ko">화면 지우기</span><span data-lang="en">Clear the screen</span></dd>
+                            </dl>
+                            <p class="term-muted">Tab: <span data-lang="ko">자동완성</span><span data-lang="en">autocomplete</span> · ↑↓: <span data-lang="ko">이전 명령</span><span data-lang="en">history</span></p>
+                        </template>
+                        <template data-cmd="introduce">
+                            <p><span data-lang="ko">안녕하세요, 긍정의 알고리즘을 탑재한 개발자 이강현입니다 :)</span><span data-lang="en">Hello, I'm Kanghyun Lee, a positive-algorithm-powered developer :)</span></p>
+                            <p><span data-lang="ko">새로운 기술을 배우고 직접 구현하는 과정을 좋아합니다. 백엔드 개발과 서비스 운영을 경험했고, 최근에는 AI와 LLM을 활용한 개발에도 관심을 갖고 진행하고 있습니다.</span><span data-lang="en">I enjoy learning new technologies and building things myself. I have experience in backend development and service operations, and recently I have been working on development with AI and LLMs.</span></p>
+                            <ul class="term-list">
+                                <li><span data-lang="ko">아이디어를 실제 서비스로</span><span data-lang="en">From ideas to real services</span></li>
+                                <li><span data-lang="ko">불편한 건 하나씩 고쳐가며</span><span data-lang="en">Fixing pain points one by one</span></li>
+                                <li><span data-lang="ko">혼자보다 함께 만드는 개발</span><span data-lang="en">Building together, not alone</span></li>
+                            </ul>
+                            <p class="term-muted"><span data-lang="ko">더 보기:</span><span data-lang="en">More:</span> <a href="#archiving" data-target="#archiving">About ↓</a></p>
+                        </template>
+                        <template data-cmd="whoami">
+                            <p>{{ m.bi(profile.name) }} · {{ profile.role }}</p>
+                            <p class="term-muted">{{ m.bi(profile.school) }}</p>
+                        </template>
+                        <template data-cmd="projects">
+                            <ul class="term-list term-projects">
+                                {% for p in projects %}
+                                <li><a href="{{ url_for('project_view.project_detail_page', slug=p.slug) }}">{{ p.slug }}</a> <span class="term-muted">{{ m.plain(p.title) }}</span></li>
+                                {% endfor %}
+                            </ul>
+                        </template>
+                        <template data-cmd="experience">
+                            <ul class="term-list">
+                                {% for e in experience %}
+                                <li><span class="term-accent">{{ m.bi(e.period) }}</span> {{ m.bi(e.org) }} <span class="term-muted">[{{ e.kind }}]</span></li>
+                                {% endfor %}
+                            </ul>
+                            <p class="term-muted"><a href="#experience" data-target="#experience">Experience ↓</a></p>
+                        </template>
+                        <template data-cmd="skills">
+                            <ul class="term-list">
+                                {% for title, subs in skill_groups %}
+                                <li><span class="term-accent">{{ title }}</span> {% set tn = namespace(u=[]) %}{% for sub, items in subs %}{% for item in items if skill_used(item) %}{% set tn.u = tn.u + [item] %}{% endfor %}{% endfor %}{{ tn.u|join(', ') }}</li>
+                                {% endfor %}
+                            </ul>
+                            <p class="term-muted"><a href="#skills" data-target="#skills">Skills ↓</a></p>
+                        </template>
+                        <template data-cmd="contact">
+                            <ul class="term-list">
+                                <li>email&nbsp; <a href="mailto:{{ profile.email }}">{{ profile.email }}</a></li>
+                                {% for link in profile.links %}
+                                <li>{{ link.label|lower }}&nbsp; <a href="{{ link.url }}" target="_blank" rel="noreferrer">{{ link.url }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </template>
+                    </div>
                 </div>
 
                 <figure class="pipeline" data-pipeline aria-labelledby="pipeline-title">
@@ -331,6 +400,7 @@
     })();
 </script>
 <script src="/static/js/project-tabs.js"></script>
+<script src="/static/js/term.js"></script>
 <script src="/static/js/pipeline.js"></script>
 {% include "_footer.html" %}
 </body>

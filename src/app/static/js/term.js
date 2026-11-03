@@ -157,6 +157,12 @@
         }
     });
 
+    // 처음엔 help 결과를 미리 보여주고(기록에는 남기지 않음) 맨 위부터 보이게
+    run('help');
+    history = [];
+    cursor = 0;
+    log.scrollTop = 0;
+
     // 로그 빈 곳을 누르면 입력창으로 (링크·선택 중일 때는 제외)
     log.addEventListener('click', function (event) {
         if (!event.target.closest('a') && !String(window.getSelection())) {

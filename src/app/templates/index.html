@@ -38,8 +38,8 @@
             <img src="/static/images/KH_LOGO.png" alt="KH logo">
         </a>
         <nav class="site-nav" id="site-nav" aria-label="Portfolio navigation">
-            <button type="button" data-target="#projects">Projects</button>
             <button type="button" data-target="#experience">Experience</button>
+            <button type="button" data-target="#projects">Projects</button>
             <button type="button" data-target="#skills">Skills</button>
             <button type="button" data-target="#archiving">Archive</button>
         </nav>
@@ -60,8 +60,8 @@
                     <p class="hero-prompt" aria-hidden="true"><span class="prompt-user">kanghyun@homelab</span>:<span class="prompt-path">~</span>$ whoami</p>
                     <p class="eyebrow">Backend Developer Portfolio</p>
                     <h1>
-                        <span data-lang="ko">긍정의 알고리즘을<br>탑재한 개발자<br>이강현입니다 :)</span>
-                        <span data-lang="en">A positive-algorithm-powered developer,<br>Kanghyun Lee.</span>
+                        <span data-lang="ko">긍정의 알고리즘을<br><span class="h1-sub">탑재한 개발자 이강현입니다 :)</span></span>
+                        <span data-lang="en">A positive-algorithm-powered<br><span class="h1-sub">developer, Kanghyun Lee.</span></span>
                     </h1>
                     <ul class="hero-roles" aria-label="Focus areas">
                         <li><span class="role-dot cat-service" aria-hidden="true"></span>Backend</li>
@@ -76,116 +76,121 @@
                         <a class="primary-link" href="#projects" data-target="#projects"><span data-lang="ko">프로젝트 보기</span><span data-lang="en">View Projects</span> <span aria-hidden="true">→</span></a>
                         <a class="secondary-link" href="#experience" data-target="#experience"><span data-lang="ko">경력 보기</span><span data-lang="en">Experience</span></a>
                     </div>
-                    <!-- 히어로 미니 터미널: 명령어를 입력하면 아래 template 내용을 출력 (term.js) -->
-                    <div class="hero-term" data-term>
-                        <div class="term-log" role="log" aria-live="polite" aria-label="Terminal output">
-                            <p class="term-hint"><span class="term-accent">typing!</span> : <span data-lang="ko">명령어를 입력해 보세요. 처음이라면</span><span data-lang="en">type a command. New here? Try</span> <code>help</code></p>
-                        </div>
-                        <form class="term-line" autocomplete="off">
-                            <label for="term-input"><span class="prompt-host"><span class="prompt-user">kanghyun@homelab</span>:</span><span class="prompt-path">~</span>$</label>
-                            <input id="term-input" type="text" name="cmd" spellcheck="false" autocapitalize="off" autocorrect="off" enterkeyhint="send" placeholder="help" aria-describedby="term-chips-label">
-                        </form>
-                        <div class="term-chips">
-                            <span id="term-chips-label" class="visually-hidden"><span data-lang="ko">자주 쓰는 명령어</span><span data-lang="en">Common commands</span></span>
-                            {% for c in ['introduce', 'projects', 'experience', 'skills', 'contact', 'help'] %}
-                            <button type="button" data-run="{{ c }}">{{ c }}</button>
-                            {% endfor %}
-                        </div>
+                </div>
 
-                        <template data-cmd="help">
-                            <dl class="term-help">
-                                <dt>introduce</dt><dd><span data-lang="ko">저를 소개합니다</span><span data-lang="en">About me</span></dd>
-                                <dt>whoami</dt><dd><span data-lang="ko">이름 · 직무 · 학력</span><span data-lang="en">Name · role · education</span></dd>
-                                <dt>projects</dt><dd><span data-lang="ko">전체 프로젝트 목록 (ls)</span><span data-lang="en">All projects (ls)</span></dd>
-                                <dt>experience</dt><dd><span data-lang="ko">경력 · 연구 이력</span><span data-lang="en">Work · research history</span></dd>
-                                <dt>skills</dt><dd><span data-lang="ko">프로젝트에서 사용한 기술</span><span data-lang="en">Skills used in projects</span></dd>
-                                <dt>contact</dt><dd><span data-lang="ko">이메일 · GitHub · 블로그</span><span data-lang="en">Email · GitHub · blog</span></dd>
-                                <dt>featured</dt><dd><span data-lang="ko">대표 프로젝트 3개</span><span data-lang="en">Three featured projects</span></dd>
-                                <dt>open &lt;slug&gt;</dt><dd><span data-lang="ko">프로젝트 상세로 이동 (cd)</span><span data-lang="en">Go to a project page (cd)</span></dd>
-                                <dt>certs</dt><dd><span data-lang="ko">자격증 · 어학</span><span data-lang="en">Certifications · language</span></dd>
-                                <dt>deploy</dt><dd><span data-lang="ko">이 사이트 배포 과정</span><span data-lang="en">How this site is deployed</span></dd>
-                                <dt>uname</dt><dd><span data-lang="ko">이 사이트가 도는 환경</span><span data-lang="en">Where this site runs</span></dd>
-                                <dt>theme · lang</dt><dd><span data-lang="ko">다크 모드 · 한/영 전환</span><span data-lang="en">Toggle dark mode · language</span></dd>
-                                <dt>history · date · echo</dt><dd><span data-lang="ko">입력 기록 · 현재 시각 · 따라 말하기</span><span data-lang="en">Command history · current time · echo</span></dd>
-                                <dt>github · blog</dt><dd><span data-lang="ko">새 탭으로 열기</span><span data-lang="en">Open in a new tab</span></dd>
-                                <dt>clear</dt><dd><span data-lang="ko">화면 지우기</span><span data-lang="en">Clear the screen</span></dd>
-                            </dl>
-                            <p class="term-muted">Tab: <span data-lang="ko">자동완성</span><span data-lang="en">autocomplete</span> · ↑↓: <span data-lang="ko">이전 명령</span><span data-lang="en">history</span></p>
-                        </template>
-                        <template data-cmd="introduce">
-                            <p><span data-lang="ko">안녕하세요, 긍정의 알고리즘을 탑재한 개발자 이강현입니다 :)</span><span data-lang="en">Hello, I'm Kanghyun Lee, a positive-algorithm-powered developer :)</span></p>
-                            <p><span data-lang="ko">새로운 기술을 배우고 직접 구현하는 과정을 좋아합니다. 백엔드 개발과 서비스 운영을 경험했고, 최근에는 AI와 LLM을 활용한 개발에도 관심을 갖고 진행하고 있습니다.</span><span data-lang="en">I enjoy learning new technologies and building things myself. I have experience in backend development and service operations, and recently I have been working on development with AI and LLMs.</span></p>
-                            <ul class="term-list">
-                                <li><span data-lang="ko">아이디어를 실제 서비스로</span><span data-lang="en">From ideas to real services</span></li>
-                                <li><span data-lang="ko">불편한 건 하나씩 고쳐가며</span><span data-lang="en">Fixing pain points one by one</span></li>
-                                <li><span data-lang="ko">혼자보다 함께 만드는 개발</span><span data-lang="en">Building together, not alone</span></li>
-                            </ul>
-                            <p class="term-muted"><span data-lang="ko">더 보기:</span><span data-lang="en">More:</span> <a href="#archiving" data-target="#archiving">About ↓</a></p>
-                        </template>
-                        <template data-cmd="whoami">
-                            <p>{{ m.bi(profile.name) }} · {{ profile.role }}</p>
-                            <p class="term-muted">{{ m.bi(profile.school) }}</p>
-                        </template>
-                        <template data-cmd="projects">
-                            <ul class="term-list term-projects">
-                                {% for p in projects %}
-                                <li><a href="{{ url_for('project_view.project_detail_page', slug=p.slug) }}">{{ p.slug }}</a> <span class="term-muted">{{ m.plain(p.title) }}</span></li>
-                                {% endfor %}
-                            </ul>
-                        </template>
-                        <template data-cmd="experience">
-                            <ul class="term-list">
-                                {% for e in experience %}
-                                <li><span class="term-accent">{{ m.bi(e.period) }}</span> {{ m.bi(e.org) }} <span class="term-muted">[{{ e.kind }}]</span></li>
-                                {% endfor %}
-                            </ul>
-                            <p class="term-muted"><a href="#experience" data-target="#experience">Experience ↓</a></p>
-                        </template>
-                        <template data-cmd="skills">
-                            <ul class="term-list">
-                                {% for title, subs in skill_groups %}
-                                <li><span class="term-accent">{{ title }}</span> {% set tn = namespace(u=[]) %}{% for sub, items in subs %}{% for item in items if skill_used(item) %}{% set tn.u = tn.u + [item] %}{% endfor %}{% endfor %}{{ tn.u|join(', ') }}</li>
-                                {% endfor %}
-                            </ul>
-                            <p class="term-muted"><a href="#skills" data-target="#skills">Skills ↓</a></p>
-                        </template>
-                        <template data-cmd="featured">
-                            <ul class="term-list">
-                                {% for f in featured %}{% set p = by_slug[f.slug] %}
-                                <li><a href="{{ url_for('project_view.project_detail_page', slug=p.slug) }}">{{ p.slug }}</a> <span class="term-muted">{{ m.plain(p.title) }} · {{ m.bi(f.kind) }}</span></li>
-                                {% endfor %}
-                            </ul>
-                            <p class="term-muted"><span data-lang="ko">이동:</span><span data-lang="en">Go:</span> open tosel-lab</p>
-                        </template>
-                        <template data-cmd="certs">
-                            <ul class="term-list">
-                                {% for c in profile.certs %}
-                                <li>{{ m.bi(c.name) }} <span class="term-muted">{{ m.bi(c.issuer) }}</span></li>
-                                {% endfor %}
-                                <li>{{ profile.language.name }} <span class="term-accent">{{ profile.language.grade }}</span> <span class="term-muted">{{ profile.language.detail }}</span></li>
-                            </ul>
-                        </template>
-                        <template data-cmd="deploy">
-                            <ol class="term-list term-steps">
-                                {% for step in pipeline %}
-                                <li><span class="term-accent">{{ step.name }}</span> <span class="term-muted">{{ m.bi(step.summary) }}</span></li>
-                                {% endfor %}
-                            </ol>
-                            <p class="term-muted"><a href="{{ url_for('project_view.project_detail_page', slug='homelab') }}"><span data-lang="ko">홈랩 구성 보기</span><span data-lang="en">See the homelab</span> →</a></p>
-                        </template>
-                        <template data-cmd="uname">
-                            <p>Linux · python:3.11-slim-bookworm · Flask · k3s on Proxmox VE</p>
-                            <p class="term-muted">Caddy → Traefik Gateway (HTTPRoute) → Service portfolio :80 → Pod :5001</p>
-                        </template>
-                        <template data-cmd="contact">
-                            <ul class="term-list">
-                                <li>email&nbsp; <a href="mailto:{{ profile.email }}">{{ profile.email }}</a></li>
-                                {% for link in profile.links %}
-                                <li>{{ link.label|lower }}&nbsp; <a href="{{ link.url }}" target="_blank" rel="noreferrer">{{ link.url }}</a></li>
-                                {% endfor %}
-                            </ul>
-                        </template>
+                <!-- 히어로 미니 터미널: 명령어를 입력하면 아래 template 내용을 출력 (term.js) -->
+                <div class="hero-term" data-term>
+                    <div class="term-bar">
+                        <span class="pipeline-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                        <span class="term-title">kanghyun@homelab: ~</span>
                     </div>
+                    <div class="term-log" role="log" aria-live="polite" aria-label="Terminal output">
+                        <p class="term-hint"><span class="term-accent">typing!</span> : <span data-lang="ko">명령어를 입력해 보세요. 처음이라면</span><span data-lang="en">type a command. New here? Try</span> <code>help</code></p>
+                    </div>
+                    <form class="term-line" autocomplete="off">
+                        <label for="term-input"><span class="prompt-host"><span class="prompt-user">kanghyun@homelab</span>:</span><span class="prompt-path">~</span>$</label>
+                        <input id="term-input" type="text" name="cmd" spellcheck="false" autocapitalize="off" autocorrect="off" enterkeyhint="send" placeholder="help" aria-describedby="term-chips-label">
+                    </form>
+                    <div class="term-chips">
+                        <span id="term-chips-label" class="visually-hidden"><span data-lang="ko">자주 쓰는 명령어</span><span data-lang="en">Common commands</span></span>
+                        {% for c in ['introduce', 'projects', 'experience', 'skills', 'contact', 'help'] %}
+                        <button type="button" data-run="{{ c }}">{{ c }}</button>
+                        {% endfor %}
+                    </div>
+
+                    <template data-cmd="help">
+                        <dl class="term-help">
+                            <dt>introduce</dt><dd><span data-lang="ko">저를 소개합니다</span><span data-lang="en">About me</span></dd>
+                            <dt>whoami</dt><dd><span data-lang="ko">이름 · 직무 · 학력</span><span data-lang="en">Name · role · education</span></dd>
+                            <dt>projects</dt><dd><span data-lang="ko">전체 프로젝트 목록 (ls)</span><span data-lang="en">All projects (ls)</span></dd>
+                            <dt>experience</dt><dd><span data-lang="ko">경력 · 연구 이력</span><span data-lang="en">Work · research history</span></dd>
+                            <dt>skills</dt><dd><span data-lang="ko">프로젝트에서 사용한 기술</span><span data-lang="en">Skills used in projects</span></dd>
+                            <dt>contact</dt><dd><span data-lang="ko">이메일 · GitHub · 블로그</span><span data-lang="en">Email · GitHub · blog</span></dd>
+                            <dt>featured</dt><dd><span data-lang="ko">대표 프로젝트 3개</span><span data-lang="en">Three featured projects</span></dd>
+                            <dt>open &lt;slug&gt;</dt><dd><span data-lang="ko">프로젝트 상세로 이동 (cd)</span><span data-lang="en">Go to a project page (cd)</span></dd>
+                            <dt>certs</dt><dd><span data-lang="ko">자격증 · 어학</span><span data-lang="en">Certifications · language</span></dd>
+                            <dt>deploy</dt><dd><span data-lang="ko">이 사이트 배포 과정</span><span data-lang="en">How this site is deployed</span></dd>
+                            <dt>uname</dt><dd><span data-lang="ko">이 사이트가 도는 환경</span><span data-lang="en">Where this site runs</span></dd>
+                            <dt>theme · lang</dt><dd><span data-lang="ko">다크 모드 · 한/영 전환</span><span data-lang="en">Toggle dark mode · language</span></dd>
+                            <dt>history · date · echo</dt><dd><span data-lang="ko">입력 기록 · 현재 시각 · 따라 말하기</span><span data-lang="en">Command history · current time · echo</span></dd>
+                            <dt>github · blog</dt><dd><span data-lang="ko">새 탭으로 열기</span><span data-lang="en">Open in a new tab</span></dd>
+                            <dt>clear</dt><dd><span data-lang="ko">화면 지우기</span><span data-lang="en">Clear the screen</span></dd>
+                        </dl>
+                        <p class="term-muted">Tab: <span data-lang="ko">자동완성</span><span data-lang="en">autocomplete</span> · ↑↓: <span data-lang="ko">이전 명령</span><span data-lang="en">history</span></p>
+                    </template>
+                    <template data-cmd="introduce">
+                        <p><span data-lang="ko">안녕하세요, 긍정의 알고리즘을 탑재한 개발자 이강현입니다 :)</span><span data-lang="en">Hello, I'm Kanghyun Lee, a positive-algorithm-powered developer :)</span></p>
+                        <p><span data-lang="ko">새로운 기술을 배우고 직접 구현하는 과정을 좋아합니다. 백엔드 개발과 서비스 운영을 경험했고, 최근에는 AI와 LLM을 활용한 개발에도 관심을 갖고 진행하고 있습니다.</span><span data-lang="en">I enjoy learning new technologies and building things myself. I have experience in backend development and service operations, and recently I have been working on development with AI and LLMs.</span></p>
+                        <ul class="term-list">
+                            <li><span data-lang="ko">아이디어를 실제 서비스로</span><span data-lang="en">From ideas to real services</span></li>
+                            <li><span data-lang="ko">불편한 건 하나씩 고쳐가며</span><span data-lang="en">Fixing pain points one by one</span></li>
+                            <li><span data-lang="ko">혼자보다 함께 만드는 개발</span><span data-lang="en">Building together, not alone</span></li>
+                        </ul>
+                        <p class="term-muted"><span data-lang="ko">더 보기:</span><span data-lang="en">More:</span> <a href="#archiving" data-target="#archiving">About ↓</a></p>
+                    </template>
+                    <template data-cmd="whoami">
+                        <p>{{ m.bi(profile.name) }} · {{ profile.role }}</p>
+                        <p class="term-muted">{{ m.bi(profile.school) }}</p>
+                    </template>
+                    <template data-cmd="projects">
+                        <ul class="term-list term-projects">
+                            {% for p in projects %}
+                            <li><a href="{{ url_for('project_view.project_detail_page', slug=p.slug) }}">{{ p.slug }}</a> <span class="term-muted">{{ m.plain(p.title) }}</span></li>
+                            {% endfor %}
+                        </ul>
+                    </template>
+                    <template data-cmd="experience">
+                        <ul class="term-list">
+                            {% for e in experience %}
+                            <li><span class="term-accent">{{ m.bi(e.period) }}</span> {{ m.bi(e.org) }} <span class="term-muted">[{{ e.kind }}]</span></li>
+                            {% endfor %}
+                        </ul>
+                        <p class="term-muted"><a href="#experience" data-target="#experience">Experience ↓</a></p>
+                    </template>
+                    <template data-cmd="skills">
+                        <ul class="term-list">
+                            {% for title, subs in skill_groups %}
+                            <li><span class="term-accent">{{ title }}</span> {% set tn = namespace(u=[]) %}{% for sub, items in subs %}{% for item in items if skill_used(item) %}{% set tn.u = tn.u + [item] %}{% endfor %}{% endfor %}{{ tn.u|join(', ') }}</li>
+                            {% endfor %}
+                        </ul>
+                        <p class="term-muted"><a href="#skills" data-target="#skills">Skills ↓</a></p>
+                    </template>
+                    <template data-cmd="featured">
+                        <ul class="term-list">
+                            {% for f in featured %}{% set p = by_slug[f.slug] %}
+                            <li><a href="{{ url_for('project_view.project_detail_page', slug=p.slug) }}">{{ p.slug }}</a> <span class="term-muted">{{ m.plain(p.title) }} · {{ m.bi(f.kind) }}</span></li>
+                            {% endfor %}
+                        </ul>
+                        <p class="term-muted"><span data-lang="ko">이동:</span><span data-lang="en">Go:</span> open tosel-lab</p>
+                    </template>
+                    <template data-cmd="certs">
+                        <ul class="term-list">
+                            {% for c in profile.certs %}
+                            <li>{{ m.bi(c.name) }} <span class="term-muted">{{ m.bi(c.issuer) }}</span></li>
+                            {% endfor %}
+                            <li>{{ profile.language.name }} <span class="term-accent">{{ profile.language.grade }}</span> <span class="term-muted">{{ profile.language.detail }}</span></li>
+                        </ul>
+                    </template>
+                    <template data-cmd="deploy">
+                        <ol class="term-list term-steps">
+                            {% for step in pipeline %}
+                            <li><span class="term-accent">{{ step.name }}</span> <span class="term-muted">{{ m.bi(step.summary) }}</span></li>
+                            {% endfor %}
+                        </ol>
+                        <p class="term-muted"><a href="{{ url_for('project_view.project_detail_page', slug='homelab') }}"><span data-lang="ko">홈랩 구성 보기</span><span data-lang="en">See the homelab</span> →</a></p>
+                    </template>
+                    <template data-cmd="uname">
+                        <p>Linux · python:3.11-slim-bookworm · Flask · k3s on Proxmox VE</p>
+                        <p class="term-muted">Caddy → Traefik Gateway (HTTPRoute) → Service portfolio :80 → Pod :5001</p>
+                    </template>
+                    <template data-cmd="contact">
+                        <ul class="term-list">
+                            <li>email&nbsp; <a href="mailto:{{ profile.email }}">{{ profile.email }}</a></li>
+                            {% for link in profile.links %}
+                            <li>{{ link.label|lower }}&nbsp; <a href="{{ link.url }}" target="_blank" rel="noreferrer">{{ link.url }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </template>
                 </div>
 
                 <figure class="pipeline" data-pipeline aria-labelledby="pipeline-title">
@@ -219,47 +224,10 @@
             </div>
         </section>
 
-        <!-- Projects: Featured 3 + 전체 필터 갤러리 -->
-        <section id="projects" class="section projects-section">
-            <div class="section-head">
-                <p class="section-kicker"><span>01</span> Featured</p>
-                <h2>Projects</h2>
-                <p><span data-lang="ko">상용 서비스 운영, AI·LLM 엔지니어링, 인프라 구축을 대표하는 프로젝트입니다. 카드를 누르면 설계와 역할, 결과를 자세히 볼 수 있습니다.</span><span data-lang="en">One project each for commercial service work, AI/LLM engineering, and infrastructure. Open a card to see the design, my role, and results.</span></p>
-            </div>
-            <div class="featured-grid">
-                {% for f in featured %}
-                {% set related = [] %}
-                {% for slug in f.related %}{% set _ = related.append(by_slug[slug]) %}{% endfor %}
-                {{ m.featured_card(by_slug[f.slug], f.kind, related, loop.first) }}
-                {% endfor %}
-            </div>
-
-            <div class="section-head section-head-sub" id="all-projects">
-                <p class="section-kicker"><span>02</span> All Projects</p>
-                <h3><span data-lang="ko">전체 프로젝트</span><span data-lang="en">All projects</span> <span class="head-count">{{ counts['all'] }}</span></h3>
-            </div>
-            <div class="project-tabs" role="tablist" aria-label="Project categories">
-                {% for c in CATEGORIES %}
-                <button type="button" role="tab" class="project-tab" id="project-tab-{{ c.key }}" data-category="{{ c.key }}"
-                        aria-controls="project-grid" aria-selected="{{ 'true' if loop.first else 'false' }}" tabindex="{{ 0 if loop.first else -1 }}">
-                    {% if c.key != 'all' %}<span class="cat-dot cat-{{ c.key }}" aria-hidden="true"></span>{% endif %}{{ m.bi(c.label) }}<span class="project-tab-count">{{ counts[c.key] }}</span>
-                </button>
-                {% endfor %}
-            </div>
-            <p class="project-tab-desc">
-                {% for c in CATEGORIES[1:] %}<span data-desc="{{ c.key }}" hidden>{{ m.bi(c.desc) }}</span>{% endfor %}
-            </p>
-            <ul class="project-grid" id="project-grid" role="tabpanel" aria-labelledby="project-tab-all">
-                {% for project in projects %}
-                {{ m.project_card(project, parent.get(project.slug)) }}
-                {% endfor %}
-            </ul>
-        </section>
-
         <!-- Experience: 프로필 + 경력 타임라인 -->
         <section id="experience" class="section experience-section">
             <div class="section-head">
-                <p class="section-kicker"><span>03</span> Experience</p>
+                <p class="section-kicker"><span>01</span> Experience</p>
                 <h2><span data-lang="ko">경력</span><span data-lang="en">Experience</span></h2>
             </div>
             <div class="experience-layout">
@@ -317,7 +285,45 @@
             </div>
         </section>
 
-        <!-- Skills: 분야별 묶음, 프로젝트에 쓴 기술 먼저 -->
+        <!-- Projects: Featured 3 + 전체 필터 갤러리 -->
+        <section id="projects" class="section projects-section">
+            <div class="section-head">
+                <p class="section-kicker"><span>02</span> Featured</p>
+                <h2>Projects</h2>
+                <p><span data-lang="ko">상용 서비스 운영, AI·LLM 엔지니어링, 인프라 구축을 대표하는 프로젝트입니다. 카드를 누르면 설계와 역할, 결과를 자세히 볼 수 있습니다.</span><span data-lang="en">One project each for commercial service work, AI/LLM engineering, and infrastructure. Open a card to see the design, my role, and results.</span></p>
+            </div>
+            <div class="featured-grid">
+                {% for f in featured %}
+                {% set related = [] %}
+                {% for slug in f.related %}{% set _ = related.append(by_slug[slug]) %}{% endfor %}
+                {{ m.featured_card(by_slug[f.slug], f.kind, related, loop.first) }}
+                {% endfor %}
+            </div>
+
+            <div class="section-head section-head-sub" id="all-projects">
+                <p class="section-kicker"><span>03</span> All Projects</p>
+                <h3><span data-lang="ko">전체 프로젝트</span><span data-lang="en">All projects</span> <span class="head-count">{{ counts['all'] }}</span></h3>
+            </div>
+            <div class="project-tabs" role="tablist" aria-label="Project categories">
+                {% for c in CATEGORIES %}
+                <button type="button" role="tab" class="project-tab" id="project-tab-{{ c.key }}" data-category="{{ c.key }}"
+                        aria-controls="project-grid" aria-selected="{{ 'true' if loop.first else 'false' }}" tabindex="{{ 0 if loop.first else -1 }}">
+                    {% if c.key != 'all' %}<span class="cat-dot cat-{{ c.key }}" aria-hidden="true"></span>{% endif %}{{ m.bi(c.label) }}<span class="project-tab-count">{{ counts[c.key] }}</span>
+                </button>
+                {% endfor %}
+            </div>
+            <p class="project-tab-desc">
+                {% for c in CATEGORIES[1:] %}<span data-desc="{{ c.key }}" hidden>{{ m.bi(c.desc) }}</span>{% endfor %}
+            </p>
+            <ul class="project-grid" id="project-grid" role="tabpanel" aria-labelledby="project-tab-all">
+                {% for project in projects %}
+                {{ m.project_card(project, parent.get(project.slug)) }}
+                {% endfor %}
+            </ul>
+        </section>
+
+
+        <!-- Skills: 분야별 전체 목록, 최신·핵심 기술을 앞에 -->
         <section id="skills" class="section skills-section">
             <div class="section-head">
                 <p class="section-kicker"><span>04</span> Skills</p>
@@ -327,35 +333,18 @@
             </div>
             <div class="skills-grid">
                 {% for title, subs in skill_groups %}
-                {% set ns = namespace(used=[], rest=0, total=0) %}
-                {% for sub, items in subs %}{% for item in items %}{% set ns.total = ns.total + 1 %}{% if skill_used(item) %}{% set ns.used = ns.used + [item] %}{% else %}{% set ns.rest = ns.rest + 1 %}{% endif %}{% endfor %}{% endfor %}
                 <article class="skill-card">
                     <div class="skill-card-head">
                         <span class="skill-index">{{ '%02d'|format(loop.index) }}</span>
                         <h3>{{ title }}</h3>
-                        <span class="skill-count">{{ ns.total }}</span>
+                        <span class="skill-count">{{ subs|map(attribute=1)|map('length')|sum }}</span>
                     </div>
-                    {% if ns.used %}
-                    <ul class="skill-chips skill-core">
-                        {% for item in ns.used %}
-                        <li class="is-used">{% if skill_icons[item] %}<img src="/static/images/{{ skill_icons[item] }}" alt="" width="18" height="18" loading="lazy">{% endif %}{{ item }}</li>
-                        {% endfor %}
+                    {% for sub, items in subs %}
+                    {% if subs|length > 1 %}<p class="skill-sub">{{ sub }}</p>{% endif %}
+                    <ul class="skill-chips">
+                        {% for item in items %}<li{% if skill_used(item) %} class="is-used"{% endif %}>{% if skill_icons[item] %}<img src="/static/images/{{ skill_icons[item] }}" alt="" width="18" height="18" loading="lazy">{% endif %}{{ item }}</li>{% endfor %}
                     </ul>
-                    {% endif %}
-                    {% if ns.rest %}
-                    <details class="skill-more"{% if not ns.used %} open{% endif %}>
-                        <summary><span data-lang="ko">나머지 기술</span><span data-lang="en">Other technologies</span> <span class="mono-muted">+{{ ns.rest }}</span></summary>
-                        {% for sub, items in subs %}
-                        {% set rest = items|reject('in', ns.used)|list %}
-                        {% if rest %}
-                        {% if subs|length > 1 %}<p class="skill-sub">{{ sub }}</p>{% endif %}
-                        <ul class="skill-chips">
-                            {% for item in rest %}<li>{% if skill_icons[item] %}<img src="/static/images/{{ skill_icons[item] }}" alt="" width="18" height="18" loading="lazy">{% endif %}{{ item }}</li>{% endfor %}
-                        </ul>
-                        {% endif %}
-                        {% endfor %}
-                    </details>
-                    {% endif %}
+                    {% endfor %}
                 </article>
                 {% endfor %}
             </div>

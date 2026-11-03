@@ -144,7 +144,9 @@ code {
 .pipeline-trigger:focus-visible,
 .archive-card:focus-visible,
 .timeline-projects a:focus-visible,
-.profile-links a:focus-visible {
+.profile-links a:focus-visible,
+.pipeline-open:focus-visible,
+.featured-link:focus-visible {
     outline: 2px solid var(--accent-bright);
     outline-offset: 3px;
 }
@@ -247,12 +249,6 @@ code {
     line-height: 1.35;
 }
 
-.hero-prompt {
-    margin-bottom: 18px;
-    color: rgba(255, 255, 255, 0.5);
-    font-family: var(--mono);
-    font-size: 13px;
-}
 
 .prompt-user {
     color: var(--accent-bright);
@@ -362,10 +358,6 @@ code {
     margin: 0 0 6px;
 }
 
-.term-hint code {
-    color: var(--accent-bright);
-    font-family: inherit;
-}
 
 .term-accent {
     color: var(--accent-bright);
@@ -555,6 +547,21 @@ code {
     background: rgba(255, 255, 255, 0.16);
 }
 
+.pipeline-open {
+    margin-left: auto;
+    width: 28px;
+    height: 28px;
+    display: grid;
+    place-items: center;
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.pipeline-open:hover {
+    color: var(--accent-bright);
+    background: rgba(255, 255, 255, 0.06);
+}
+
 .pipeline-title {
     overflow: hidden;
     color: rgba(255, 255, 255, 0.6);
@@ -567,16 +574,7 @@ code {
     padding: 12px 14px 10px;
 }
 
-.pipeline-caption {
-    margin-bottom: 10px;
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 11.5px;
-    line-height: 1.6;
-}
 
-.pipeline-caption span:not(.mono-muted) {
-    font-family: 'Noto Sans KR', sans-serif;
-}
 
 /* 가로 한 줄 단계: li를 풀어서(display: contents) 버튼은 1행, 펼친 설명은 2행 전체 폭 */
 .pipeline-steps {
@@ -710,45 +708,11 @@ code {
     to { opacity: 1; transform: none; }
 }
 
-.pipeline-foot {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px 16px;
-    padding: 6px 14px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    font-size: 11.5px;
-}
 
-.pipeline-status {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: rgba(255, 255, 255, 0.5);
-}
 
-.status-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--accent-bright);
-}
 
-.pipeline-foot a {
-    display: inline-flex;
-    align-items: center;
-    min-height: 32px;
-    color: var(--accent-bright);
-}
 
-.pipeline-foot a span {
-    font-family: 'Noto Sans KR', sans-serif;
-}
 
-.pipeline-foot a:hover {
-    text-decoration: underline;
-}
 
 /* ---------------------------------------------------------------- Sections */
 .section {
@@ -1010,18 +974,22 @@ code {
 
 .featured-link {
     margin-top: auto;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
+    width: 44px;
+    height: 44px;
+    display: inline-grid;
+    place-items: center;
     align-self: flex-start;
-    min-height: 40px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
     color: var(--accent);
-    font-weight: 700;
+    transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
 .featured-link:hover {
-    text-decoration: underline;
+    border-color: var(--accent);
+    transform: translateX(2px);
 }
+
 
 /* ---------------------------------------------------------------- All projects */
 .project-tabs {
@@ -1073,12 +1041,6 @@ body.dark-mode .project-tab[aria-selected="true"] {
     opacity: 0.7;
 }
 
-.project-tab-desc {
-    min-height: 24px;
-    margin-bottom: 18px;
-    color: var(--muted);
-    font-size: 14px;
-}
 
 .project-grid {
     display: grid;
@@ -1308,11 +1270,10 @@ body.dark-mode .project-tab[aria-selected="true"] {
 }
 
 .profile-links a {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    min-height: 36px;
-    padding: 0 12px;
+    width: 40px;
+    height: 40px;
+    display: inline-grid;
+    place-items: center;
     border: 1px solid var(--line);
     border-radius: 8px;
     background: var(--white);
@@ -1461,22 +1422,7 @@ body.dark-mode .tag-research {
 }
 
 /* ---------------------------------------------------------------- Skills */
-.skills-legend {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px;
-    margin-top: 14px;
-    font-size: 13px;
-}
 
-.legend-used {
-    width: 12px;
-    height: 12px;
-    border: 1px solid var(--accent);
-    border-radius: 3px;
-    background: var(--accent-soft);
-}
 
 .skills-grid {
     display: grid;
@@ -1539,16 +1485,7 @@ body.dark-mode .tag-research {
     line-height: 1.35;
 }
 
-.skill-chips li.is-used {
-    color: var(--ink);
-    border-color: rgba(15, 118, 110, 0.35);
-    background: var(--accent-soft);
-    font-weight: 700;
-}
 
-body.dark-mode .skill-chips li.is-used {
-    border-color: rgba(94, 234, 212, 0.35);
-}
 
 .skill-chips img {
     width: 16px;
@@ -1642,9 +1579,6 @@ body.dark-mode .archive-card img {
     place-items: center;
     color: var(--accent);
     background: var(--accent-soft);
-    font-family: var(--mono);
-    font-size: 20px;
-    font-weight: 600;
 }
 
 .archive-card strong {

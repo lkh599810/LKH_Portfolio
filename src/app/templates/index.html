@@ -44,8 +44,8 @@
             <button type="button" data-target="#archiving">Archive</button>
         </nav>
         <div class="global-controls" aria-label="Display controls">
-            <button type="button" class="control-btn lang-toggle">ENG</button>
-            <button type="button" class="control-btn theme-toggle">Dark</button>
+            <button type="button" class="control-btn icon-btn lang-toggle" aria-label="English">{{ m.icon('globe') }}</button>
+            <button type="button" class="control-btn icon-btn theme-toggle" aria-label="Dark mode">{{ m.icon('theme') }}</button>
         </div>
         <button type="button" class="menu-toggle" aria-label="Menu" aria-controls="site-nav" aria-expanded="false">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
@@ -57,7 +57,6 @@
         <section id="banner" class="hero">
             <div class="hero-inner">
                 <div class="hero-copy">
-                    <p class="hero-prompt" aria-hidden="true"><span class="prompt-user">kanghyun@homelab</span>:<span class="prompt-path">~</span>$ whoami</p>
                     <p class="eyebrow">Backend Developer Portfolio</p>
                     <h1>
                         <span data-lang="ko">긍정의 알고리즘<span class="h1-sub">을 탑재한 개발자 이강현입니다 :)</span></span>
@@ -85,11 +84,10 @@
                         <span class="term-title">kanghyun@homelab: ~</span>
                     </div>
                     <div class="term-log" role="log" aria-live="polite" aria-label="Terminal output">
-                        <p class="term-hint"><span class="term-accent">typing!</span> : <span data-lang="ko">명령어를 입력해 보세요. 처음이라면</span><span data-lang="en">type a command. New here? Try</span> <code>help</code></p>
                     </div>
                     <form class="term-line" autocomplete="off">
                         <label for="term-input"><span class="prompt-host"><span class="prompt-user">kanghyun@homelab</span>:</span><span class="prompt-path">~</span>$</label>
-                        <input id="term-input" type="text" name="cmd" spellcheck="false" autocapitalize="off" autocorrect="off" enterkeyhint="send" placeholder="help" aria-describedby="term-chips-label">
+                        <input id="term-input" type="text" name="cmd" spellcheck="false" autocapitalize="off" autocorrect="off" enterkeyhint="send" aria-describedby="term-chips-label">
                     </form>
                     <div class="term-chips">
                         <span id="term-chips-label" class="visually-hidden"><span data-lang="ko">자주 쓰는 명령어</span><span data-lang="en">Common commands</span></span>
@@ -116,7 +114,6 @@
                             <dt>github · blog</dt><dd><span data-lang="ko">새 탭으로 열기</span><span data-lang="en">Open in a new tab</span></dd>
                             <dt>clear</dt><dd><span data-lang="ko">화면 지우기</span><span data-lang="en">Clear the screen</span></dd>
                         </dl>
-                        <p class="term-muted">Tab: <span data-lang="ko">자동완성</span><span data-lang="en">autocomplete</span> · ↑↓: <span data-lang="ko">이전 명령</span><span data-lang="en">history</span></p>
                     </template>
                     <template data-cmd="introduce">
                         <p><span data-lang="ko">안녕하세요, 긍정의 알고리즘을 탑재한 개발자 이강현입니다 :)</span><span data-lang="en">Hello, I'm Kanghyun Lee, a positive-algorithm-powered developer :)</span></p>
@@ -126,7 +123,7 @@
                             <li><span data-lang="ko">불편한 건 하나씩 고쳐가며</span><span data-lang="en">Fixing pain points one by one</span></li>
                             <li><span data-lang="ko">혼자보다 함께 만드는 개발</span><span data-lang="en">Building together, not alone</span></li>
                         </ul>
-                        <p class="term-muted"><span data-lang="ko">더 보기:</span><span data-lang="en">More:</span> <a href="#archiving" data-target="#archiving">About ↓</a></p>
+                        <p class="term-muted"><a href="#archiving" data-target="#archiving">About ↓</a></p>
                     </template>
                     <template data-cmd="whoami">
                         <p>{{ m.bi(profile.name) }} · {{ profile.role }}</p>
@@ -161,7 +158,6 @@
                             <li><a href="{{ url_for('project_view.project_detail_page', slug=p.slug) }}">{{ p.slug }}</a> <span class="term-muted">{{ m.plain(p.title) }} · {{ m.bi(f.kind) }}</span></li>
                             {% endfor %}
                         </ul>
-                        <p class="term-muted"><span data-lang="ko">이동:</span><span data-lang="en">Go:</span> open tosel-lab</p>
                     </template>
                     <template data-cmd="certs">
                         <ul class="term-list">
@@ -197,9 +193,9 @@
                     <div class="pipeline-bar">
                         <span class="pipeline-dots" aria-hidden="true"><i></i><i></i><i></i></span>
                         <span class="pipeline-title" id="pipeline-title">deploy · introduce.leekanghyun.co.kr</span>
+                        <a class="pipeline-open" href="{{ url_for('project_view.project_detail_page', slug='homelab') }}" aria-label="Homelab">{{ m.icon('external') }}</a>
                     </div>
                     <div class="pipeline-body">
-                        <p class="pipeline-caption"><span class="mono-muted">#</span> <span data-lang="ko">이 사이트의 실제 배포 과정 · 단계 클릭 시 상세</span><span data-lang="en">How this site is actually deployed · click a step for details</span></p>
                         <ol class="pipeline-steps">
                             {% for step in pipeline %}
                             <li class="pipeline-step{{ ' is-active' if loop.first else '' }}">
@@ -216,10 +212,6 @@
                             {% endfor %}
                         </ol>
                     </div>
-                    <figcaption class="pipeline-foot">
-                        <span class="pipeline-status"><span class="status-dot" aria-hidden="true"></span>Proxmox VE · k3s · Argo CD</span>
-                        <a href="{{ url_for('project_view.project_detail_page', slug='homelab') }}"><span data-lang="ko">홈랩 구성 보기</span><span data-lang="en">See the homelab</span> <span aria-hidden="true">→</span></a>
-                    </figcaption>
                 </figure>
             </div>
         </section>
@@ -253,8 +245,8 @@
                         </div>
                     </dl>
                     <ul class="profile-links">
-                        {% for link in profile.links %}<li><a href="{{ link.url }}" target="_blank" rel="noreferrer">{{ link.label }} <span aria-hidden="true">↗</span></a></li>{% endfor %}
-                        <li><a href="mailto:{{ profile.email }}">Email</a></li>
+                        {% for link in profile.links %}<li><a href="{{ link.url }}" target="_blank" rel="noreferrer" aria-label="{{ link.label }}">{{ m.icon(link.label|lower) }}</a></li>{% endfor %}
+                        <li><a href="mailto:{{ profile.email }}" aria-label="Email">{{ m.icon('mail') }}</a></li>
                     </ul>
                 </aside>
 
@@ -290,7 +282,6 @@
             <div class="section-head">
                 <p class="section-kicker"><span>02</span> Featured</p>
                 <h2>Projects</h2>
-                <p><span data-lang="ko">상용 서비스 운영, AI·LLM 엔지니어링, 인프라 구축을 대표하는 프로젝트입니다. 카드를 누르면 설계와 역할, 결과를 자세히 볼 수 있습니다.</span><span data-lang="en">One project each for commercial service work, AI/LLM engineering, and infrastructure. Open a card to see the design, my role, and results.</span></p>
             </div>
             <div class="featured-grid">
                 {% for f in featured %}
@@ -312,9 +303,6 @@
                 </button>
                 {% endfor %}
             </div>
-            <p class="project-tab-desc">
-                {% for c in CATEGORIES[1:] %}<span data-desc="{{ c.key }}" hidden>{{ m.bi(c.desc) }}</span>{% endfor %}
-            </p>
             <ul class="project-grid" id="project-grid" role="tabpanel" aria-labelledby="project-tab-all">
                 {% for project in projects %}
                 {{ m.project_card(project, parent.get(project.slug)) }}
@@ -329,7 +317,6 @@
                 <p class="section-kicker"><span>04</span> Skills</p>
                 <h2><span data-lang="ko">기술 스택</span><span data-lang="en">Tech Stack</span></h2>
                 <p><span data-lang="ko">직접 써보고, 시행착오도 겪으며 익숙해진 기술들입니다.</span><span data-lang="en">Technologies I have used hands-on and grown comfortable with through trial and error.</span></p>
-                <p class="skills-legend"><span class="legend-used" aria-hidden="true"></span><span data-lang="ko">이 사이트의 프로젝트에 사용한 기술</span><span data-lang="en">Used in a project on this site</span> <span class="mono-muted">· {{ skill_total }} total</span></p>
             </div>
             <div class="skills-grid">
                 {% for title, subs in skill_groups %}
@@ -342,7 +329,7 @@
                     {% for sub, items in subs %}
                     {% if subs|length > 1 %}<p class="skill-sub">{{ sub }}</p>{% endif %}
                     <ul class="skill-chips">
-                        {% for item in items %}<li{% if skill_used(item) %} class="is-used"{% endif %}>{% if skill_icons[item] %}<img src="/static/images/{{ skill_icons[item] }}" alt="" width="18" height="18" loading="lazy">{% endif %}{{ item }}</li>{% endfor %}
+                        {% for item in items %}<li>{% if skill_icons[item] %}<img src="/static/images/{{ skill_icons[item] }}" alt="" width="18" height="18" loading="lazy">{% endif %}{{ item }}</li>{% endfor %}
                     </ul>
                     {% endfor %}
                 </article>
@@ -390,7 +377,7 @@
                     </div>
                 </a>
                 <a class="archive-card" href="mailto:{{ profile.email }}">
-                    <span class="archive-icon" aria-hidden="true">@</span>
+                    <span class="archive-icon" aria-hidden="true">{{ m.icon("mail") }}</span>
                     <div>
                         <strong>Contact</strong>
                         <span>{{ profile.email }}</span>
@@ -413,12 +400,12 @@
         }
         function setLanguage(lang) {
             root.lang = lang === 'en' ? 'en' : 'ko';
-            document.querySelector('.lang-toggle').textContent = lang === 'en' ? 'KOR' : 'ENG';
+            document.querySelector('.lang-toggle').setAttribute('aria-label', lang === 'en' ? '한국어' : 'English');
             save('portfolioLang', lang);
         }
         function setTheme(theme) {
             document.body.classList.toggle('dark-mode', theme === 'dark');
-            document.querySelector('.theme-toggle').textContent = theme === 'dark' ? 'Light' : 'Dark';
+            document.querySelector('.theme-toggle').setAttribute('aria-label', theme === 'dark' ? 'Light mode' : 'Dark mode');
             save('portfolioTheme', theme);
         }
         document.querySelector('.lang-toggle').addEventListener('click', function () {

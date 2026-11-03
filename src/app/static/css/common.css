@@ -72,6 +72,40 @@ html:not([lang="en"]) [data-lang="en"] {
     transition: 0.2s ease;
 }
 
+.icon {
+    width: 20px;
+    height: 20px;
+    flex: none;
+    display: block;
+}
+
+img.icon {
+    border-radius: 4px;
+    object-fit: contain;
+}
+
+.icon-btn {
+    min-width: 0;
+    width: 38px;
+    padding: 0;
+    display: inline-grid;
+    place-items: center;
+}
+
+.icon-btn .icon {
+    width: 18px;
+    height: 18px;
+}
+
+.icon-sun,
+body.dark-mode .icon-moon {
+    display: none;
+}
+
+body.dark-mode .icon-sun {
+    display: block;
+}
+
 .control-btn:hover {
     background: rgba(255, 255, 255, 0.18);
 }
@@ -208,6 +242,17 @@ body.dark-mode .scroll-top {
     text-decoration: none;
 }
 
+.footer-contact {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.footer-contact .icon {
+    width: 16px;
+    height: 16px;
+}
+
 .footer-contact a:hover {
     text-decoration: underline;
 }
@@ -219,7 +264,11 @@ body.dark-mode .scroll-top {
 }
 
 .footer-links a {
-    padding: 8px 14px;
+    width: 40px;
+    height: 40px;
+    display: inline-grid;
+    place-items: center;
+    padding: 0;
     border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: 999px;
     color: #ffffff;
@@ -266,10 +315,10 @@ body.dark-mode .scroll-top {
     }
 
     .control-btn {
-        min-width: 50px;
+        min-width: 0;
+        width: 36px;
         height: 34px;
-        padding: 0 10px;
-        font-size: 14px;
+        padding: 0;
     }
 
     .menu-toggle {

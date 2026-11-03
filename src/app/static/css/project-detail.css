@@ -20,10 +20,12 @@
 }
 
 .detail-back {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    min-height: 44px;
+    width: 44px;
+    height: 44px;
+    display: inline-grid;
+    place-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
     margin-bottom: 18px;
     color: rgba(255, 255, 255, 0.72);
     font-size: 15px;
@@ -450,9 +452,13 @@
 }
 
 .detail-pager a > span {
-    display: block;
+    display: flex;
+    margin-bottom: 6px;
     color: var(--muted);
-    font-size: 13px;
+}
+
+.detail-pager .pager-next > span {
+    justify-content: flex-end;
 }
 
 .detail-pager strong {

@@ -1,3 +1,4 @@
+{% import "_project_macros.html" as icons %}
 <div class="nav-backdrop"></div>
 
 <button type="button" class="scroll-top" aria-label="Back to top">
@@ -15,12 +16,12 @@
             <div>
                 <strong><span data-lang="ko">이강현</span><span data-lang="en">Kanghyun Lee</span></strong>
                 <p>Backend Developer</p>
-                <p class="footer-contact">Contact : <a href="mailto:lkh599810@naver.com">lkh599810@naver.com</a></p>
+                <p class="footer-contact">{{ icons.icon('mail') }}<a href="mailto:lkh599810@naver.com">lkh599810@naver.com</a></p>
             </div>
         </div>
         <div class="footer-links">
-            <a href="https://github.com/lkh599810" target="_blank" rel="noreferrer">GitHub</a>
-            <a href="https://blog.naver.com/lkh599810" target="_blank" rel="noreferrer">Blog</a>        </div>
+            <a href="https://github.com/lkh599810" target="_blank" rel="noreferrer" aria-label="GitHub">{{ icons.icon('github') }}</a>
+            <a href="https://blog.naver.com/lkh599810" target="_blank" rel="noreferrer" aria-label="Blog">{{ icons.icon('blog') }}</a>        </div>
     </div>
     <p class="footer-copy">© 2026 Kanghyun Lee. All rights reserved.</p>
 </footer>

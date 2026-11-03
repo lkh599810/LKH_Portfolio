@@ -9,12 +9,9 @@ def T(ko, en):
 
 CATEGORIES = [
     {"key": "all", "label": T("전체", "All")},
-    {"key": "service", "label": T("서비스 · 플랫폼", "Services · Platforms"),
-     "desc": T("직접 설계·개발하고 운영한 웹 서비스와 인프라", "Web services and infrastructure I designed, built, and ran")},
-    {"key": "ai", "label": T("AI 엔지니어링", "AI Engineering"),
-     "desc": T("LLM과 ML 모델을 서비스·개발 도구에 붙인 작업", "Putting LLMs and ML models into products and dev tools")},
-    {"key": "research", "label": T("데이터 · 연구", "Data · Research"),
-     "desc": T("데이터로 가설을 세우고 검증한 연구와 실험", "Research and experiments that test hypotheses with data")},
+    {"key": "service", "label": T("서비스 · 플랫폼", "Services · Platforms")},
+    {"key": "ai", "label": T("AI 엔지니어링", "AI Engineering")},
+    {"key": "research", "label": T("데이터 · 연구", "Data · Research")},
 ]
 
 TAGS = {

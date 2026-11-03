@@ -6,7 +6,6 @@
     }
     var tabs = Array.prototype.slice.call(document.querySelectorAll('.project-tab'));
     var items = Array.prototype.slice.call(grid.querySelectorAll('.project-card-item'));
-    var descs = Array.prototype.slice.call(document.querySelectorAll('[data-desc]'));
 
     function select(key, updateUrl) {
         var tab = tabs.filter(function (t) { return t.getAttribute('data-category') === key; })[0];
@@ -22,9 +21,6 @@
         grid.setAttribute('aria-labelledby', tab.id);
         items.forEach(function (item) {
             item.hidden = key !== 'all' && item.getAttribute('data-category') !== key;
-        });
-        descs.forEach(function (d) {
-            d.hidden = d.getAttribute('data-desc') !== key;
         });
         // 카드 등장 애니메이션 재시작
         grid.classList.remove('is-switching');

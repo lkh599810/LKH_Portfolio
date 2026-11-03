@@ -1556,16 +1556,16 @@ body.dark-mode .skill-chips img {
 }
 
 .skills-chevron {
-    width: 8px;
-    height: 8px;
-    border-right: 2px solid currentColor;
-    border-bottom: 2px solid currentColor;
-    transform: translateY(-2px) rotate(45deg);
+    width: 14px;
+    height: 14px;
+    border-right: 2.5px solid currentColor;
+    border-bottom: 2.5px solid currentColor;
+    transform: translateY(-3px) rotate(45deg);
     transition: transform 0.2s ease;
 }
 
 .skills-toggle[aria-expanded="true"] .skills-chevron {
-    transform: translateY(2px) rotate(-135deg);
+    transform: translateY(3px) rotate(-135deg);
 }
 
 /* ---------------------------------------------------------------- About / Archive */

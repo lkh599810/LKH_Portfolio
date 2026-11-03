@@ -20,7 +20,6 @@ TAGS = {
     "team": T("팀", "Team"),
     "research": T("연구", "Research"),
     "outsourced": T("외주", "Freelance"),
-    "school": T("학교", "Coursework"),
 }
 
 TOSEL_WEB_STACK = "Python · Flask · MariaDB · Jinja2 · jQuery"
@@ -968,7 +967,7 @@ PROJECTS = [
     {
         "slug": "sarangmoa",
         "category": "service",
-        "tags": ["school"],
+        "tags": ["personal"],
         "title": T("연세 사랑모아", "Yonsei SarangMoa"),
         "summary": T(
             "연세대 구성원이 안 쓰는 물품을 기부하고 판매 수익금으로 나눔을 실천하는 웹 플랫폼. 권한 등급과 기부 물품 상태 워크플로를 설계했습니다.",
@@ -983,7 +982,7 @@ PROJECTS = [
         "hero": "sarangmoa_category.jpg",
         "period": "2024.11 ~ 2024.12",
         "role": T("웹 개발", "Web development"),
-        "team": T("학교 프로젝트", "University project"),
+        "team": T("개인 프로젝트", "Solo project"),
         "sections": [
             {
                 "id": "service",
@@ -1122,7 +1121,7 @@ PROJECTS = [
     {
         "slug": "alignfit",
         "category": "ai",
-        "tags": ["school"],
+        "tags": ["personal"],
         "title": "AlignFit",
         "summary": T(
             "사진으로 자세 정렬을 분석하고 운동 영상을 평가해 홈케어 운동을 추천하는 앱. Android·FastAPI·MediaPipe·PyTorch로 구성했습니다.",
@@ -1138,7 +1137,7 @@ PROJECTS = [
         "hero": None,
         "period": "2026.05 ~",
         "role": T("앱 · 백엔드 · 모델 학습 · 배포", "App · backend · model training · deployment"),
-        "team": T("학교 프로젝트 (모바일프로그래밍 · 지능형멀티미디어시스템)", "Coursework (Mobile Programming · Intelligent Multimedia Systems)"),
+        "team": T("개인 프로젝트 (모바일프로그래밍 · 지능형멀티미디어시스템)", "Solo project (Mobile Programming · Intelligent Multimedia Systems)"),
         "sections": [
             {
                 "id": "problem",
@@ -1383,7 +1382,7 @@ PROJECTS = [
     {
         "slug": "talkiebridge",
         "category": "research",
-        "tags": ["team", "school"],
+        "tags": ["team", "personal"],
         "title": "TalkieBridge",
         "summary": T(
             "1931년 이전 텍스트로만 학습된 Talkie-1930에게 현대 용어를 기능 설명으로 바꿔 물었을 때 응답이 나아지는지 검증한 팀 실험입니다.",

@@ -239,10 +239,10 @@ code {
 }
 
 .hero h1 .h1-sub {
-    display: inline-block;
+    display: block;
     margin-top: 8px;
     color: rgba(255, 255, 255, 0.86);
-    font-size: 0.56em;
+    font-size: 0.5em;
     font-weight: 700;
     line-height: 1.35;
 }
@@ -318,7 +318,7 @@ code {
 /* 히어로 미니 터미널 */
 .hero-term {
     grid-area: term;
-    align-self: stretch;
+    align-self: center;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -346,11 +346,9 @@ code {
     font-size: 12px;
 }
 
-/* 높이는 왼쪽 열에 맞추고, 넘치면 로그 안에서만 스크롤 */
+/* 높이 고정, 넘치면 로그 안에서만 스크롤 */
 .term-log {
-    flex: 1 1 0;
-    height: 0;
-    min-height: 300px;
+    height: 300px;
     overflow-y: auto;
     overscroll-behavior: contain;
     padding: 14px 16px 0;
@@ -514,9 +512,7 @@ code {
     }
 
     .term-log {
-        min-height: 0;
-        height: 340px;
-        flex: none;
+        height: 280px;
     }
 
     .term-chips button {

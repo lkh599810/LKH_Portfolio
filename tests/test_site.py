@@ -55,6 +55,9 @@ def test_index_sections_and_featured():
     for cmd in ['help', 'introduce', 'whoami', 'projects', 'experience', 'skills', 'contact']:
         assert f'<template data-cmd="{cmd}">' in html, cmd
     assert "{'ko'" not in html
+    # 카톡 등 링크 미리보기: 프로필 사진 대신 KH 로고, 절대 https 주소
+    assert 'og:image" content="https://introduce.leekanghyun.co.kr/static/images/og-image.png"' in html
+    assert (ROOT / 'src/app/static/images/og-image.png').exists()
 
 
 def test_multi_image_blocks_render_as_gallery():

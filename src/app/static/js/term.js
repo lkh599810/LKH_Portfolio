@@ -15,8 +15,50 @@
     Array.prototype.forEach.call(templates.contact.content.querySelectorAll('a[target]'), function (a) {
         links[a.textContent.indexOf('github') > -1 ? 'github' : 'blog'] = a.href;
     });
-    var aliases = { ls: 'projects', about: 'introduce', '?': 'help', 'cat introduce': 'introduce' };
-    var names = Object.keys(templates).concat(['github', 'blog', 'clear']);
+    // 프로젝트 slug → 상세 주소 (open/cd 용)
+    var projects = {};
+    Array.prototype.forEach.call(templates.projects.content.querySelectorAll('a'), function (a) {
+        projects[a.textContent.trim()] = a.getAttribute('href');
+    });
+    var aliases = { ls: 'projects', 'ls projects': 'projects', about: 'introduce', '?': 'help', 'cat introduce': 'introduce',
+        'uname -a': 'uname', 'cat contact': 'contact', 'whoami --help': 'help' };
+    var isEn = function () { return document.documentElement.lang === 'en'; };
+    // template 없이 바로 처리하는 명령어. 문자열을 돌려주면 출력, null이면 출력 없음
+    var builtins = {
+        pwd: function () { return '/home/kanghyun'; },
+        date: function () { return new Date().toLocaleString(isEn() ? 'en-US' : 'ko-KR'); },
+        echo: function (arg) { return arg; },
+        history: function () {
+            return history.map(function (h, i) { return (i + 1) + '  ' + h; }).join('\n');
+        },
+        theme: function () {
+            document.querySelector('.theme-toggle').click();
+            return 'theme: ' + (document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+        },
+        lang: function () {
+            document.querySelector('.lang-toggle').click();
+            return 'lang: ' + document.documentElement.lang;
+        },
+        open: function (arg) {
+            if (!arg) {
+                return isEn() ? 'usage: open <slug>  (see: projects)' : '사용법: open <slug>  (목록: projects)';
+            }
+            if (!projects[arg]) {
+                return 'open: ' + arg + ': no such project';
+            }
+            window.location.href = projects[arg];
+            return 'opening ' + arg + ' ...';
+        },
+        sudo: function () { return 'kanghyun is not in the sudoers file. This incident will be reported.'; },
+        exit: function () { return isEn() ? 'There is no exit. Scroll down instead ↓' : '나가는 문은 없어요. 대신 아래로 스크롤해 보세요 ↓'; }
+    };
+    builtins.cd = function (arg) {
+        if (!arg || arg === '~' || arg === '/') {
+            return null;
+        }
+        return builtins.open(arg.replace(/\/$/, ''));
+    };
+    var names = Object.keys(templates).concat(['github', 'blog', 'clear'], Object.keys(builtins));
     var history = [];
     var cursor = 0;
 
@@ -43,8 +85,21 @@
         line('term-echo', '$ ' + raw.trim());
         var out = document.createElement('div');
         out.className = 'term-out';
+        var word = cmd.split(' ')[0];
+        // echo는 대소문자 그대로 출력
+        var arg = raw.trim().replace(/^\S+\s*/, '');
+        if (word !== 'echo') {
+            arg = arg.toLowerCase();
+        }
         if (templates[cmd]) {
             out.appendChild(templates[cmd].content.cloneNode(true));
+        } else if (builtins[word]) {
+            var result = builtins[word](arg);
+            if (result === null) {
+                return;
+            }
+            out.classList.add('is-text');
+            out.textContent = result;
         } else if (links[cmd]) {
             window.open(links[cmd], '_blank', 'noopener');
             out.textContent = 'opening ' + links[cmd] + ' ...';
@@ -72,12 +127,22 @@
             cursor = Math.max(0, Math.min(history.length, cursor + (event.key === 'ArrowUp' ? -1 : 1)));
             input.value = history[cursor] || '';
         } else if (event.key === 'Tab' && input.value.trim()) {
-            var hits = names.filter(function (n) { return n.indexOf(input.value.trim().toLowerCase()) === 0; });
+            var typed = input.value.replace(/^\s+/, '').toLowerCase();
+            // open/cd 뒤에서는 프로젝트 slug 자동완성
+            var m = typed.match(/^(open|cd)\s+(.*)$/);
+            var prefix = m ? m[1] + ' ' : '';
+            var pool = m ? Object.keys(projects) : names;
+            var hits = pool.filter(function (n) { return n.indexOf(m ? m[2] : typed) === 0; });
             if (hits.length) {
                 event.preventDefault();
-                if (hits.length === 1) {
-                    input.value = hits[0];
-                } else {
+                // 후보들의 공통 앞부분까지 채우고, 여러 개면 목록도 보여줌
+                var common = hits.reduce(function (a, b) {
+                    var i = 0;
+                    while (i < a.length && a[i] === b[i]) i++;
+                    return a.slice(0, i);
+                });
+                input.value = prefix + common;
+                if (hits.length > 1) {
                     line('term-muted', hits.join('  '));
                     log.scrollTop = log.scrollHeight;
                 }

@@ -349,6 +349,10 @@ code {
     overflow-wrap: anywhere;
 }
 
+.term-out.is-text {
+    white-space: pre-wrap;
+}
+
 .term-out.is-error {
     color: #fca5a5;
 }

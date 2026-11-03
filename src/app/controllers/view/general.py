@@ -39,9 +39,15 @@ def thumb_url(project):
     return img_url(project['cover'])
 
 
+# 링크 미리보기(og:image)는 절대 https 주소여야 함. 프록시 뒤라 request.url_root는 http로 나옴
+SITE_URL = 'https://introduce.leekanghyun.co.kr'
+OG_IMAGE = SITE_URL + '/static/images/og-image.png'
+
+
 @bp.app_context_processor
 def project_context():
-    return {'CATEGORIES': CATEGORIES, 'TAGS': TAGS, 'category_label': category_label}
+    return {'CATEGORIES': CATEGORIES, 'TAGS': TAGS, 'category_label': category_label,
+            'SITE_URL': SITE_URL, 'OG_IMAGE': OG_IMAGE}
 
 
 @bp.route('/')

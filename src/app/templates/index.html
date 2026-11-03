@@ -9,6 +9,14 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="LKH Portfolio">
     <meta property="og:description" content="백엔드 개발자 이강현의 포트폴리오 — 서비스·플랫폼, AI 엔지니어링, 데이터·연구 프로젝트">
+    <meta property="og:url" content="{{ SITE_URL }}/">
+    <meta property="og:image" content="{{ OG_IMAGE }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="KH logo">
+    <meta property="og:site_name" content="LKH Portfolio">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="apple-touch-icon" href="/static/images/favicon.png">
     <link rel="icon" href="/static/images/favicon.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -92,6 +100,13 @@
                                 <dt>experience</dt><dd><span data-lang="ko">경력 · 연구 이력</span><span data-lang="en">Work · research history</span></dd>
                                 <dt>skills</dt><dd><span data-lang="ko">프로젝트에서 사용한 기술</span><span data-lang="en">Skills used in projects</span></dd>
                                 <dt>contact</dt><dd><span data-lang="ko">이메일 · GitHub · 블로그</span><span data-lang="en">Email · GitHub · blog</span></dd>
+                                <dt>featured</dt><dd><span data-lang="ko">대표 프로젝트 3개</span><span data-lang="en">Three featured projects</span></dd>
+                                <dt>open &lt;slug&gt;</dt><dd><span data-lang="ko">프로젝트 상세로 이동 (cd)</span><span data-lang="en">Go to a project page (cd)</span></dd>
+                                <dt>certs</dt><dd><span data-lang="ko">자격증 · 어학</span><span data-lang="en">Certifications · language</span></dd>
+                                <dt>deploy</dt><dd><span data-lang="ko">이 사이트 배포 과정</span><span data-lang="en">How this site is deployed</span></dd>
+                                <dt>uname</dt><dd><span data-lang="ko">이 사이트가 도는 환경</span><span data-lang="en">Where this site runs</span></dd>
+                                <dt>theme · lang</dt><dd><span data-lang="ko">다크 모드 · 한/영 전환</span><span data-lang="en">Toggle dark mode · language</span></dd>
+                                <dt>history · date · echo</dt><dd><span data-lang="ko">입력 기록 · 현재 시각 · 따라 말하기</span><span data-lang="en">Command history · current time · echo</span></dd>
                                 <dt>github · blog</dt><dd><span data-lang="ko">새 탭으로 열기</span><span data-lang="en">Open in a new tab</span></dd>
                                 <dt>clear</dt><dd><span data-lang="ko">화면 지우기</span><span data-lang="en">Clear the screen</span></dd>
                             </dl>
@@ -133,6 +148,34 @@
                                 {% endfor %}
                             </ul>
                             <p class="term-muted"><a href="#skills" data-target="#skills">Skills ↓</a></p>
+                        </template>
+                        <template data-cmd="featured">
+                            <ul class="term-list">
+                                {% for f in featured %}{% set p = by_slug[f.slug] %}
+                                <li><a href="{{ url_for('project_view.project_detail_page', slug=p.slug) }}">{{ p.slug }}</a> <span class="term-muted">{{ m.plain(p.title) }} · {{ m.bi(f.kind) }}</span></li>
+                                {% endfor %}
+                            </ul>
+                            <p class="term-muted"><span data-lang="ko">이동:</span><span data-lang="en">Go:</span> open tosel-lab</p>
+                        </template>
+                        <template data-cmd="certs">
+                            <ul class="term-list">
+                                {% for c in profile.certs %}
+                                <li>{{ m.bi(c.name) }} <span class="term-muted">{{ m.bi(c.issuer) }}</span></li>
+                                {% endfor %}
+                                <li>{{ profile.language.name }} <span class="term-accent">{{ profile.language.grade }}</span> <span class="term-muted">{{ profile.language.detail }}</span></li>
+                            </ul>
+                        </template>
+                        <template data-cmd="deploy">
+                            <ol class="term-list term-steps">
+                                {% for step in pipeline %}
+                                <li><span class="term-accent">{{ step.name }}</span> <span class="term-muted">{{ m.bi(step.summary) }}</span></li>
+                                {% endfor %}
+                            </ol>
+                            <p class="term-muted"><a href="{{ url_for('project_view.project_detail_page', slug='homelab') }}"><span data-lang="ko">홈랩 구성 보기</span><span data-lang="en">See the homelab</span> →</a></p>
+                        </template>
+                        <template data-cmd="uname">
+                            <p>Linux · python:3.11-slim-bookworm · Flask · k3s on Proxmox VE</p>
+                            <p class="term-muted">Caddy → Traefik Gateway (HTTPRoute) → Service portfolio :80 → Pod :5001</p>
                         </template>
                         <template data-cmd="contact">
                             <ul class="term-list">

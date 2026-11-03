@@ -311,7 +311,7 @@
         </section>
 
 
-        <!-- Skills: 분야별 전체 목록, 최신·핵심 기술을 앞에 -->
+        <!-- Skills: 분야별 핵심만, 나머지는 펼치기 -->
         <section id="skills" class="section skills-section">
             <div class="section-head">
                 <p class="section-kicker"><span>04</span> Skills</p>
@@ -326,12 +326,26 @@
                         <h3>{{ title }}</h3>
                         <span class="skill-count">{{ subs|map(attribute=1)|map('length')|sum }}</span>
                     </div>
-                    {% for sub, items in subs %}
-                    {% if subs|length > 1 %}<p class="skill-sub">{{ sub }}</p>{% endif %}
-                    <ul class="skill-chips">
-                        {% for item in items %}<li>{% if skill_icons[item] %}<img src="/static/images/{{ skill_icons[item] }}" alt="" width="18" height="18" loading="lazy">{% endif %}{{ item }}</li>{% endfor %}
+                    {% set per = 6 if subs|length == 1 else 3 %}
+                    {% set ns = namespace(all=[], core=[]) %}{% for sub, items in subs %}{% set ns.all = ns.all + items %}{% if loop.index <= 2 %}{% set ns.core = ns.core + items[:per] %}{% endif %}{% endfor %}
+                    {% set core = ns.core %}
+                    <ul class="skill-chips skill-core">
+                        {% for item in core %}<li>{% if skill_icons[item] %}<img src="/static/images/{{ skill_icons[item] }}" alt="" width="18" height="18" loading="lazy">{% endif %}{{ item }}</li>{% endfor %}
                     </ul>
-                    {% endfor %}
+                    {% if ns.all|length > core|length %}
+                    <details class="skill-more">
+                        <summary>+{{ ns.all|length - core|length }}</summary>
+                        {% for sub, items in subs %}
+                        {% set rest = items|reject('in', core)|list %}
+                        {% if rest %}
+                        {% if subs|length > 1 %}<p class="skill-sub">{{ sub }}</p>{% endif %}
+                        <ul class="skill-chips">
+                            {% for item in rest %}<li>{% if skill_icons[item] %}<img src="/static/images/{{ skill_icons[item] }}" alt="" width="18" height="18" loading="lazy">{% endif %}{{ item }}</li>{% endfor %}
+                        </ul>
+                        {% endif %}
+                        {% endfor %}
+                    </details>
+                    {% endif %}
                 </article>
                 {% endfor %}
             </div>

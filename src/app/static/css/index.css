@@ -145,6 +145,7 @@ code {
 .archive-card:focus-visible,
 .timeline-projects a:focus-visible,
 .profile-links a:focus-visible,
+.skill-more summary:focus-visible,
 .pipeline-open:focus-visible,
 .featured-link:focus-visible {
     outline: 2px solid var(--accent-bright);
@@ -1500,8 +1501,53 @@ body.dark-mode .tag-research {
     font-size: 11.5px;
 }
 
-.skill-card-head + .skill-sub {
-    margin-top: 0;
+.skill-more {
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--line);
+}
+
+.skill-more summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 32px;
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    list-style: none;
+}
+
+.skill-more summary::-webkit-details-marker {
+    display: none;
+}
+
+.skill-more summary::after {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: translateY(-2px) rotate(45deg);
+    transition: transform 0.2s ease;
+}
+
+.skill-more[open] summary::after {
+    transform: translateY(2px) rotate(-135deg);
+}
+
+.skill-more summary:hover {
+    color: var(--ink);
+}
+
+.skill-more summary + .skill-sub {
+    margin-top: 6px;
+}
+
+.skill-more summary + .skill-chips {
+    margin-top: 6px;
 }
 
 /* ---------------------------------------------------------------- About / Archive */

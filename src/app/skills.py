@@ -63,6 +63,19 @@ def is_used(skill):
 
 SKILL_TOTAL = sum(len(items) for _, subs in SKILL_GROUPS for _, items in subs)
 
+# 접힌 상태에서 카드마다 보여줄 6개: 난도 높고 실무 깊이가 드러나는 기술
+SKILL_CORE = {
+    "Languages & Backend": ["Java", "Kotlin", "Python", "Spring Boot", "FastAPI", "NestJS"],
+    "Infrastructure / DevOps": ["Kubernetes", "Argo CD", "Terraform", "Kubernetes Gateway API", "Proxmox VE",
+                                "ECS Fargate"],
+    "LLM / Agent Engineering": ["Multi-Agent Systems", "Efficient LLM Routing", "Model Cascading", "LLM-as-a-Judge",
+                                "Confidence-based Routing", "Cost-Aware Inference"],
+    "AI / ML": ["PyTorch", "Transformer", "Attention", "LSTM", "XGBoost", "GPBoost"],
+    "Database & Messaging": ["PostgreSQL", "Apache Kafka", "Redis Streams", "RabbitMQ", "Redis", "MySQL"],
+    "Frontend & Tools": ["Next.js", "React", "Playwright", "pytest", "Git", "GitHub"],
+}
+SKILL_REST = SKILL_TOTAL - sum(len(v) for v in SKILL_CORE.values())
+
 SKILL_ICONS = {
     "Java": "java.png", "Python": "python_image.png", "JavaScript": "js_image.png",
     "HTML5": "html_image.png", "CSS3": "css_image.png", "React": "react_image.svg", "jQuery": "jQuery_image.png",
@@ -75,4 +88,7 @@ SKILL_ICONS = {
 if __name__ == "__main__":
     assert SKILL_TOTAL == 98, SKILL_TOTAL
     assert is_used("Flask") and is_used("Kubernetes") and not is_used("Apache Kafka")
+    for title, subs in SKILL_GROUPS:
+        every = [i for _, items in subs for i in items]
+        assert len(SKILL_CORE[title]) == 6 and set(SKILL_CORE[title]) <= set(every), title
     print("ok", SKILL_TOTAL)

@@ -145,7 +145,6 @@ code {
 .archive-card:focus-visible,
 .timeline-projects a:focus-visible,
 .profile-links a:focus-visible,
-.skill-more summary:focus-visible,
 .pipeline-open:focus-visible,
 .featured-link:focus-visible {
     outline: 2px solid var(--accent-bright);
@@ -1429,21 +1428,30 @@ body.dark-mode .tag-research {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 16px;
-    align-items: start;
 }
 
 .skill-card {
-    padding: 22px;
+    position: relative;
+    padding: 24px 22px 22px;
     border: 1px solid var(--line);
-    border-radius: 14px;
+    border-radius: 16px;
     background: var(--white);
+    overflow: hidden;
+}
+
+.skill-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-bright));
 }
 
 .skill-card-head {
     display: flex;
     align-items: baseline;
     gap: 10px;
-    margin-bottom: 14px;
+    margin-bottom: 16px;
 }
 
 .skill-card-head h3 {
@@ -1455,6 +1463,7 @@ body.dark-mode .tag-research {
     color: var(--accent);
     font-family: var(--mono);
     font-size: 12px;
+    font-weight: 700;
 }
 
 .skill-count {
@@ -1467,7 +1476,7 @@ body.dark-mode .tag-research {
 .skill-chips {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 8px;
     padding: 0;
     margin: 0;
     list-style: none;
@@ -1476,78 +1485,87 @@ body.dark-mode .tag-research {
 .skill-chips li {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 5px 10px;
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    color: var(--muted);
-    background: var(--paper);
-    font-size: 13px;
+    gap: 7px;
+    padding: 7px 12px;
+    border: 1px solid color-mix(in srgb, var(--accent) 22%, var(--line));
+    border-radius: 10px;
+    color: var(--ink);
+    background: color-mix(in srgb, var(--accent) 6%, var(--white));
+    font-size: 13.5px;
+    font-weight: 600;
     line-height: 1.35;
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-
+.skill-chips li:hover {
+    border-color: var(--accent);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px color-mix(in srgb, var(--accent) 18%, transparent);
+}
 
 .skill-chips img {
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
     object-fit: contain;
 }
 
+body.dark-mode .skill-chips img {
+    padding: 1px;
+    border-radius: 4px;
+    background: #fff;
+}
+
+.skill-more {
+    margin-top: 16px;
+    padding-top: 4px;
+    border-top: 1px dashed var(--line);
+}
+
 .skill-sub {
-    margin: 14px 0 6px;
+    margin: 12px 0 8px;
     color: var(--muted);
     font-family: var(--mono);
     font-size: 11.5px;
 }
 
-.skill-more {
-    margin-top: 12px;
-    padding-top: 10px;
-    border-top: 1px dashed var(--line);
-}
-
-.skill-more summary {
-    display: inline-flex;
+.skills-toggle {
+    display: flex;
     align-items: center;
-    gap: 6px;
-    min-height: 32px;
-    color: var(--muted);
+    gap: 10px;
+    margin: 24px auto 0;
+    min-height: 44px;
+    padding: 0 22px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--ink);
+    background: var(--white);
     font-family: var(--mono);
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 700;
     cursor: pointer;
-    list-style: none;
+    transition: border-color 0.2s ease;
 }
 
-.skill-more summary::-webkit-details-marker {
-    display: none;
+.skills-toggle:hover {
+    border-color: var(--accent);
 }
 
-.skill-more summary::after {
-    content: "";
-    width: 7px;
-    height: 7px;
+.skills-toggle:focus-visible {
+    outline: 2px solid var(--accent-bright);
+    outline-offset: 3px;
+}
+
+.skills-chevron {
+    width: 8px;
+    height: 8px;
     border-right: 2px solid currentColor;
     border-bottom: 2px solid currentColor;
     transform: translateY(-2px) rotate(45deg);
     transition: transform 0.2s ease;
 }
 
-.skill-more[open] summary::after {
+.skills-toggle[aria-expanded="true"] .skills-chevron {
     transform: translateY(2px) rotate(-135deg);
-}
-
-.skill-more summary:hover {
-    color: var(--ink);
-}
-
-.skill-more summary + .skill-sub {
-    margin-top: 6px;
-}
-
-.skill-more summary + .skill-chips {
-    margin-top: 6px;
 }
 
 /* ---------------------------------------------------------------- About / Archive */

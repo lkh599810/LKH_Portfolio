@@ -4,7 +4,7 @@ from flask import Blueprint, abort, redirect, render_template, request, url_for
 
 from ...projects import CATEGORIES, PROJECTS, PROJECTS_BY_SLUG, TAGS, category_counts, category_label
 from ...profile import EXPERIENCE, FEATURED, PIPELINE, PROFILE
-from ...skills import SKILL_GROUPS, SKILL_ICONS, SKILL_TOTAL, is_used
+from ...skills import SKILL_CORE, SKILL_GROUPS, SKILL_ICONS, SKILL_REST, SKILL_TOTAL, is_used
 
 # TOSEL Lab처럼 상위 프로젝트가 있는 카드에 '관련 프로젝트' 표시
 PARENT = {slug: PROJECTS_BY_SLUG[f['slug']] for f in FEATURED for slug in f['related']}
@@ -56,6 +56,7 @@ def index_page():
         "index.html", projects=PROJECTS, counts=category_counts(), by_slug=PROJECTS_BY_SLUG,
         featured=FEATURED, parent=PARENT, pipeline=PIPELINE, profile=PROFILE, experience=EXPERIENCE,
         skill_groups=SKILL_GROUPS, skill_icons=SKILL_ICONS, skill_total=SKILL_TOTAL, skill_used=is_used,
+        skill_core=SKILL_CORE, skill_rest=SKILL_REST,
     )
 
 

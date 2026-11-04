@@ -36,6 +36,131 @@
     color: #ffffff;
 }
 
+.detail-parent {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 14px;
+    padding: 6px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 999px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.detail-parent:hover {
+    border-color: var(--cyan);
+    color: var(--cyan);
+}
+
+.detail-children-badge {
+    padding: 4px 12px;
+    border-radius: 999px;
+    color: #06231f;
+    background: var(--cyan);
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.detail-children {
+    max-width: 1120px;
+    margin: 32px auto 0;
+    padding: 28px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: var(--white);
+    scroll-margin-top: 90px;
+}
+
+.detail-children-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 6px 16px;
+    margin-bottom: 18px;
+}
+
+.detail-children-head h2 {
+    font-size: 22px;
+}
+
+.detail-children-head h2 strong {
+    color: var(--accent);
+    font-family: var(--mono);
+}
+
+.detail-children-head p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.detail-children-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.detail-children-list a {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 18px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--paper);
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.detail-children-list a:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.detail-children-list strong {
+    font-size: 16px;
+    line-height: 1.4;
+    word-break: keep-all;
+}
+
+.child-summary {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    color: var(--muted);
+    font-size: 13.5px;
+    line-height: 1.6;
+}
+
+.child-period {
+    margin-top: auto;
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 12px;
+}
+
+.detail-children-list .child-arrow {
+    align-self: flex-end;
+    color: var(--accent);
+}
+
+@media (max-width: 1023px) {
+    .detail-children {
+        margin: 24px 20px 0;
+        padding: 20px;
+    }
+
+    .detail-children-list {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
 .detail-labels {
     display: flex;
     flex-wrap: wrap;

@@ -7,7 +7,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'src'))
 
 from app import server  # noqa: E402
-from app.projects import CATEGORIES, PROJECTS, TAGS  # noqa: E402
+from app.projects import CATEGORIES, CHILDREN, PROJECTS, PROJECTS_BY_SLUG, TAGS, TOP_PROJECTS  # noqa: E402
 
 STATIC = ROOT / 'src' / 'app' / 'static'
 client = server.test_client()
@@ -23,11 +23,32 @@ def test_data_is_consistent():
         assert re.fullmatch(r'[a-z0-9-]+', p['slug'])
 
 
-def test_index_lists_every_project_once():
-    html = client.get('/').get_data(as_text=True)
-    for p in PROJECTS:
+def test_projects_page_lists_every_project_once():
+    html = client.get('/projects').get_data(as_text=True)
+    for p in TOP_PROJECTS:
         assert html.count(f'class="project-card" href="/projects/{p["slug"]}"') == 1, p['slug']
+    # 하위 프로젝트는 상위 카드 안의 목록으로만 나온다
+    for children in CHILDREN.values():
+        for c in children:
+            assert html.count(f'href="/projects/{c["slug"]}"') == 1, c['slug']
     assert 'id="project-tab-all"' in html
+    assert 'id="project-tab-ai"' not in html
+    assert client.get('/projects?category=research').status_code == 200
+
+
+def test_index_links_to_projects_page():
+    html = client.get('/').get_data(as_text=True)
+    assert 'class="all-projects-link" href="/projects"' in html
+    assert 'id="project-grid"' not in html
+
+
+def test_sub_projects_are_linked_both_ways():
+    lab = client.get('/projects/tosel-lab').get_data(as_text=True)
+    assert 'id="sub-projects"' in lab
+    for c in CHILDREN['tosel-lab']:
+        assert f'href="/projects/{c["slug"]}"' in lab
+        child = client.get(f'/projects/{c["slug"]}').get_data(as_text=True)
+        assert 'class="detail-parent" href="/projects/tosel-lab"' in child
 
 
 def test_detail_pages_and_their_assets():
@@ -65,12 +86,9 @@ def test_multi_image_blocks_render_as_gallery():
     assert 'data-gallery' in html and html.count('class="gallery-slide"') == 11
 
 
-def test_unknown_project_and_legacy_url():
+def test_unknown_project():
     assert client.get('/projects/nope').status_code == 404
     assert client.get('/no-such-page').status_code == 404
-    res = client.get('/projects?category=ai')
-    assert res.status_code == 302
-    assert res.headers['Location'].endswith('/?category=ai#projects')
 
 
 if __name__ == '__main__':

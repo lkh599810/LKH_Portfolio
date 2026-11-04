@@ -1,4 +1,4 @@
-// 메인 All Projects: 카테고리 탭 필터. 선택 상태는 ?category= 로 URL에 남겨 상세 페이지에서 돌아와도 유지
+// /projects 카테고리 탭 필터. 선택 상태는 ?category= 로 URL에 남겨 상세 페이지에서 돌아와도 유지
 (function () {
     var grid = document.getElementById('project-grid');
     if (!grid) {
@@ -34,7 +34,6 @@
             } else {
                 url.searchParams.set('category', key);
             }
-            url.hash = 'all-projects';
             history.replaceState(null, '', url);
         }
         return tab;
@@ -58,13 +57,5 @@
         });
     });
 
-    var initial = new URLSearchParams(window.location.search).get('category');
-    select(initial || 'all', false);
-    // 상세 페이지에서 카테고리를 지정해 돌아오면 필터 위치로 이동
-    if (initial && window.location.hash === '#projects') {
-        var target = document.getElementById('all-projects');
-        requestAnimationFrame(function () {
-            window.scrollTo(0, target.getBoundingClientRect().top + window.scrollY - 80);
-        });
-    }
+    select(new URLSearchParams(window.location.search).get('category') || 'all', false);
 })();

@@ -25,15 +25,15 @@
 {% endif %}
 {%- endmacro %}
 
-{% macro project_card(project, parent=None) -%}
-<li class="project-card-item cat-{{ project.category }}" data-category="{{ project.category }}">
+{% macro project_card(project, children=[]) -%}
+<li class="project-card-item cat-{{ project.category }}{{ ' has-children' if children else '' }}" data-category="{{ project.category }}">
     <a class="project-card" href="{{ url_for('project_view.project_detail_page', slug=project.slug) }}">
         <div class="project-card-meta">
             <span class="project-card-category"><span class="cat-dot" aria-hidden="true"></span>{{ bi(category_label(project.category)) }}</span>
             {{ tag_list(project) }}
         </div>
         <h4>{{ bi(project.title) }}</h4>
-        {% if parent %}<p class="project-card-parent"><span data-lang="ko">{{ plain(parent.title) }} 관련 프로젝트</span><span data-lang="en">Related to {{ plain(parent.title) }}</span></p>{% endif %}
+        {% if children %}<p class="project-card-parent"><span data-lang="ko">하위 프로젝트 {{ children|length }}개</span><span data-lang="en">{{ children|length }} sub-projects</span></p>{% endif %}
         <p class="project-card-summary">{{ bi(project.summary) }}</p>
         <ul class="stack-list">
             {% for item in project.stack[:4] %}<li>{{ item }}</li>{% endfor %}
@@ -44,6 +44,13 @@
             <span class="project-card-more" aria-hidden="true">→</span>
         </div>
     </a>
+    {% if children %}
+    <ol class="project-children">
+        {% for c in children %}
+        <li><a href="{{ url_for('project_view.project_detail_page', slug=c.slug) }}"><span class="child-index">{{ '%02d'|format(loop.index) }}</span>{{ bi(c.title) }}<span class="child-arrow" aria-hidden="true">→</span></a></li>
+        {% endfor %}
+    </ol>
+    {% endif %}
 </li>
 {%- endmacro %}
 
@@ -61,7 +68,7 @@
         </ul>
         {% if related %}
         <div class="featured-related">
-            <span><span data-lang="ko">함께 진행한 TOSEL 프로젝트</span><span data-lang="en">Related TOSEL projects</span></span>
+            <span><span data-lang="ko">하위 프로젝트 {{ related|length }}개</span><span data-lang="en">{{ related|length }} sub-projects</span></span>
             <ul>
                 {% for r in related %}<li><a href="{{ url_for('project_view.project_detail_page', slug=r.slug) }}">{{ bi(r.title) }}</a></li>{% endfor %}
             </ul>

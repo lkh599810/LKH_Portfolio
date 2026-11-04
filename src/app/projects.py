@@ -10,8 +10,7 @@ def T(ko, en):
 CATEGORIES = [
     {"key": "all", "label": T("전체", "All")},
     {"key": "service", "label": T("서비스 · 플랫폼", "Services · Platforms")},
-    {"key": "ai", "label": T("AI 엔지니어링", "AI Engineering")},
-    {"key": "research", "label": T("데이터 · 연구", "Data · Research")},
+    {"key": "research", "label": T("AI · Research", "AI · Research")},
 ]
 
 TAGS = {
@@ -677,6 +676,7 @@ PROJECTS = [
     {
         "slug": "tosel-sso",
         "category": "service",
+        "parent": "tosel-lab",
         "tags": ["work", "team"],
         "title": "TOSEL SSO",
         "summary": T(
@@ -746,6 +746,7 @@ PROJECTS = [
     {
         "slug": "tosel-refactoring",
         "category": "service",
+        "parent": "tosel-lab",
         "tags": ["work", "team"],
         "title": "Business Model Refactoring",
         "summary": T(
@@ -832,6 +833,7 @@ PROJECTS = [
     {
         "slug": "tosel-book-mall",
         "category": "service",
+        "parent": "tosel-lab",
         "tags": ["work", "team"],
         "title": T("TOSEL 교재몰 (SCM)", "TOSEL Book Mall (SCM)"),
         "summary": T(
@@ -1120,7 +1122,7 @@ PROJECTS = [
     # ------------------------------------------------------------------ AI 엔지니어링
     {
         "slug": "alignfit",
-        "category": "ai",
+        "category": "service",
         "tags": ["personal"],
         "title": "AlignFit",
         "summary": T(
@@ -1250,7 +1252,7 @@ PROJECTS = [
     },
     {
         "slug": "llm-routing",
-        "category": "ai",
+        "category": "research",
         "tags": ["personal"],
         "title": "LLM Routing & Agent Harness",
         "summary": T(
@@ -1767,11 +1769,19 @@ PROJECTS = [
 
 PROJECTS_BY_SLUG = {p["slug"]: p for p in PROJECTS}
 
+# 하위 프로젝트("parent" 지정)는 목록에서 상위 프로젝트 카드 안에 묶고, 상세 페이지 순서도 상위 바로 뒤에 둔다
+CHILDREN = {}
+for _p in PROJECTS:
+    if _p.get("parent"):
+        CHILDREN.setdefault(_p["parent"], []).append(_p)
+TOP_PROJECTS = [p for p in PROJECTS if not p.get("parent")]
+PROJECTS[:] = [q for p in TOP_PROJECTS for q in [p] + CHILDREN.get(p["slug"], [])]
+
 
 def category_counts():
     counts = {c["key"]: 0 for c in CATEGORIES}
-    counts["all"] = len(PROJECTS)
-    for p in PROJECTS:
+    counts["all"] = len(TOP_PROJECTS)
+    for p in TOP_PROJECTS:
         counts[p["category"]] += 1
     return counts
 

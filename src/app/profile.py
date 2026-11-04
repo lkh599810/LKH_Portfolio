@@ -115,10 +115,9 @@ EXPERIENCE = [
 
 # 메인 Featured: 서로 다른 경험을 보여주는 대표 프로젝트 3개 (kind는 UI 라벨)
 FEATURED = [
-    {"slug": "tosel-lab", "kind": T("상용 서비스 개발 · 운영", "Commercial service · operations"),
-     "related": ["tosel-sso", "tosel-refactoring", "tosel-book-mall"]},
-    {"slug": "llm-routing", "kind": T("AI · LLM 엔지니어링", "AI · LLM engineering"), "related": []},
-    {"slug": "homelab", "kind": T("인프라 · 배포 자동화", "Infrastructure · deployment automation"), "related": []},
+    {"slug": "tosel-lab", "kind": T("상용 서비스 개발 · 운영", "Commercial service · operations")},
+    {"slug": "llm-routing", "kind": T("AI · LLM 엔지니어링", "AI · LLM engineering")},
+    {"slug": "homelab", "kind": T("인프라 · 배포 자동화", "Infrastructure · deployment automation")},
 ]
 
 # Hero 배포 파이프라인: 이 사이트의 실제 배포 과정 (.github/workflows, k3s/portfolio.yaml, 홈랩 문서 기준)

@@ -1,0 +1,102 @@
+{% import "_project_macros.html" as m with context %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | LKH Portfolio</title>
+    <meta name="description" content="이강현의 전체 프로젝트 · 서비스 · 플랫폼과 AI · Research">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Projects | LKH Portfolio">
+    <meta property="og:description" content="이강현의 전체 프로젝트 · 서비스 · 플랫폼과 AI · Research">
+    <meta property="og:url" content="{{ SITE_URL }}{{ url_for('project_view.project_page') }}">
+    <meta property="og:image" content="{{ OG_IMAGE }}">
+    <meta property="og:site_name" content="LKH Portfolio">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="apple-touch-icon" href="/static/images/favicon.png">
+    <link rel="icon" href="/static/images/favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/common.css">
+    <link rel="stylesheet" href="/static/css/project-detail.css">
+</head>
+<body class="detail-page projects-page">
+<header class="site-header">
+    <a class="logo" href="/">
+        <img src="/static/images/KH_LOGO.png" alt="KH logo">
+    </a>
+    <nav class="site-nav" id="site-nav" aria-label="Portfolio navigation">
+        <a href="/#experience">Experience</a>
+        <a href="{{ url_for('project_view.project_page') }}" aria-current="page">Projects</a>
+        <a href="/#skills">Skills</a>
+        <a href="/#archiving">Archive</a>
+    </nav>
+    <div class="global-controls" aria-label="Display controls">
+        <button type="button" class="control-btn icon-btn lang-toggle" aria-label="English">{{ m.icon('globe') }}</button>
+        <button type="button" class="control-btn icon-btn theme-toggle" aria-label="Dark mode">{{ m.icon('theme') }}</button>
+    </div>
+    <button type="button" class="menu-toggle" aria-label="Menu" aria-controls="site-nav" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+    </button>
+</header>
+
+<main class="detail-main">
+    <section class="detail-hero">
+        <div class="detail-hero-inner">
+            <a class="detail-back" href="/#projects" aria-label="Home">{{ m.icon('left') }}</a>
+            <h1>Projects <span class="head-count">{{ counts['all'] }}</span></h1>
+            <p class="detail-intro"><span data-lang="ko">실무 서비스부터 개인 프로젝트, AI · 연구까지 전체 프로젝트입니다.</span><span data-lang="en">Every project, from production services and personal builds to AI and research.</span></p>
+        </div>
+    </section>
+
+    <section class="section projects-list" id="all-projects">
+        <div class="project-tabs" role="tablist" aria-label="Project categories">
+            {% for c in CATEGORIES %}
+            <button type="button" role="tab" class="project-tab" id="project-tab-{{ c.key }}" data-category="{{ c.key }}"
+                    aria-controls="project-grid" aria-selected="{{ 'true' if loop.first else 'false' }}" tabindex="{{ 0 if loop.first else -1 }}">
+                {% if c.key != 'all' %}<span class="cat-dot cat-{{ c.key }}" aria-hidden="true"></span>{% endif %}{{ m.bi(c.label) }}<span class="project-tab-count">{{ counts[c.key] }}</span>
+            </button>
+            {% endfor %}
+        </div>
+        <ul class="project-grid" id="project-grid" role="tabpanel" aria-labelledby="project-tab-all">
+            {% for project in projects %}
+            {{ m.project_card(project, children.get(project.slug, [])) }}
+            {% endfor %}
+        </ul>
+    </section>
+</main>
+
+<script>
+    (function () {
+        function setLanguage(lang) {
+            document.documentElement.lang = lang === 'en' ? 'en' : 'ko';
+            document.querySelector('.lang-toggle').setAttribute('aria-label', lang === 'en' ? '한국어' : 'English');
+            try { localStorage.setItem('portfolioLang', lang); } catch (e) {}
+        }
+
+        function setTheme(theme) {
+            document.body.classList.toggle('dark-mode', theme === 'dark');
+            document.querySelector('.theme-toggle').setAttribute('aria-label', theme === 'dark' ? 'Light mode' : 'Dark mode');
+            try { localStorage.setItem('portfolioTheme', theme); } catch (e) {}
+        }
+
+        function stored(key, fallback) {
+            try { return localStorage.getItem(key) || fallback; } catch (e) { return fallback; }
+        }
+
+        document.querySelector('.lang-toggle').addEventListener('click', function () {
+            setLanguage(document.documentElement.lang === 'en' ? 'ko' : 'en');
+        });
+        document.querySelector('.theme-toggle').addEventListener('click', function () {
+            setTheme(document.body.classList.contains('dark-mode') ? 'light' : 'dark');
+        });
+        setLanguage(stored('portfolioLang', 'ko'));
+        setTheme(stored('portfolioTheme', 'light'));
+    })();
+</script>
+<script src="/static/js/project-tabs.js"></script>
+{% include "_footer.html" %}
+</body>
+</html>

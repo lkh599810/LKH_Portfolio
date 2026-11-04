@@ -1,13 +1,12 @@
 from pathlib import Path
 
-from flask import Blueprint, abort, redirect, render_template, request, url_for
+from flask import Blueprint, abort, render_template
 
-from ...projects import CATEGORIES, PROJECTS, PROJECTS_BY_SLUG, TAGS, category_counts, category_label
+from ...projects import (CATEGORIES, CHILDREN, PROJECTS, PROJECTS_BY_SLUG, TAGS, TOP_PROJECTS, category_counts,
+                         category_label)
 from ...profile import EXPERIENCE, FEATURED, PIPELINE, PROFILE
 from ...skills import SKILL_CORE, SKILL_GROUPS, SKILL_ICONS, SKILL_REST, SKILL_TOTAL, is_used
 
-# TOSEL Lab처럼 상위 프로젝트가 있는 카드에 '관련 프로젝트' 표시
-PARENT = {slug: PROJECTS_BY_SLUG[f['slug']] for f in FEATURED for slug in f['related']}
 
 bp = Blueprint(name='project_view', url_prefix='/', import_name="project_view")
 
@@ -54,7 +53,7 @@ def project_context():
 def index_page():
     return render_template(
         "index.html", projects=PROJECTS, counts=category_counts(), by_slug=PROJECTS_BY_SLUG,
-        featured=FEATURED, parent=PARENT, pipeline=PIPELINE, profile=PROFILE, experience=EXPERIENCE,
+        featured=FEATURED, children=CHILDREN, pipeline=PIPELINE, profile=PROFILE, experience=EXPERIENCE,
         skill_groups=SKILL_GROUPS, skill_icons=SKILL_ICONS, skill_total=SKILL_TOTAL, skill_used=is_used,
         skill_core=SKILL_CORE, skill_rest=SKILL_REST,
     )
@@ -62,9 +61,8 @@ def index_page():
 
 @bp.route('/projects')
 def project_page():
-    # 예전 단일 프로젝트 페이지 링크 호환: 메인 Projects 섹션으로 이동
-    category = request.args.get('category')
-    return redirect(url_for('project_view.index_page', category=category) + '#projects')
+    # 전체 프로젝트: 카테고리 탭(?category=)으로 거르고, 하위 프로젝트는 상위 카드 안에 묶는다
+    return render_template("projects.html", projects=TOP_PROJECTS, children=CHILDREN, counts=category_counts())
 
 
 @bp.route('/projects/<slug>')
@@ -76,6 +74,8 @@ def project_detail_page(slug):
     return render_template(
         "project_detail.html",
         project=project,
+        parent=PROJECTS_BY_SLUG.get(project.get('parent')),
+        children=CHILDREN.get(slug, []),
         prev_project=PROJECTS[index - 1] if index > 0 else None,
         next_project=PROJECTS[index + 1] if index + 1 < len(PROJECTS) else None,
     )

@@ -285,29 +285,15 @@
             </div>
             <div class="featured-grid">
                 {% for f in featured %}
-                {% set related = [] %}
-                {% for slug in f.related %}{% set _ = related.append(by_slug[slug]) %}{% endfor %}
-                {{ m.featured_card(by_slug[f.slug], f.kind, related, loop.first) }}
+                {{ m.featured_card(by_slug[f.slug], f.kind, children.get(f.slug, []), loop.first) }}
                 {% endfor %}
             </div>
 
-            <div class="section-head section-head-sub" id="all-projects">
-                <p class="section-kicker"><span>03</span> All Projects</p>
-                <h3><span data-lang="ko">전체 프로젝트</span><span data-lang="en">All projects</span> <span class="head-count">{{ counts['all'] }}</span></h3>
-            </div>
-            <div class="project-tabs" role="tablist" aria-label="Project categories">
-                {% for c in CATEGORIES %}
-                <button type="button" role="tab" class="project-tab" id="project-tab-{{ c.key }}" data-category="{{ c.key }}"
-                        aria-controls="project-grid" aria-selected="{{ 'true' if loop.first else 'false' }}" tabindex="{{ 0 if loop.first else -1 }}">
-                    {% if c.key != 'all' %}<span class="cat-dot cat-{{ c.key }}" aria-hidden="true"></span>{% endif %}{{ m.bi(c.label) }}<span class="project-tab-count">{{ counts[c.key] }}</span>
-                </button>
-                {% endfor %}
-            </div>
-            <ul class="project-grid" id="project-grid" role="tabpanel" aria-labelledby="project-tab-all">
-                {% for project in projects %}
-                {{ m.project_card(project, parent.get(project.slug)) }}
-                {% endfor %}
-            </ul>
+            <a class="all-projects-link" href="{{ url_for('project_view.project_page') }}">
+                <span data-lang="ko">전체 프로젝트 보기</span><span data-lang="en">View all projects</span>
+                <span class="head-count">{{ counts['all'] }}</span>
+                <span aria-hidden="true">→</span>
+            </a>
         </section>
 
 
@@ -436,7 +422,6 @@
         setTheme(stored('portfolioTheme', 'light'));
     })();
 </script>
-<script src="/static/js/project-tabs.js"></script>
 <script src="/static/js/term.js"></script>
 <script src="/static/js/pipeline.js"></script>
 {% include "_footer.html" %}

@@ -242,12 +242,41 @@ code {
 
 .hero h1 .h1-sub {
     display: block;
-    margin-top: 8px;
-    color: rgba(255, 255, 255, 0.86);
-    font-size: 0.5em;
-    font-weight: 700;
-    line-height: 1.35;
 }
+
+/* 첫 진입: 소개 문구가 순서대로 아래에서 떠오르고, 터미널·배포 패널이 옆·아래에서 들어온다 */
+@keyframes hero-rise {
+    from {
+        opacity: 0;
+        transform: translateY(32px);
+        filter: blur(6px);
+    }
+}
+
+@keyframes hero-slide {
+    from {
+        opacity: 0;
+        transform: translateX(56px);
+        filter: blur(6px);
+    }
+}
+
+.hero-copy > *,
+.hero h1 .h1-sub,
+.pipeline {
+    animation: hero-rise 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.hero-term {
+    animation: hero-slide 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 0.35s both;
+}
+
+.hero-copy > :nth-child(2) { animation-delay: 0.1s; }
+.hero h1 .h1-sub { animation-delay: 0.25s; }
+.hero-copy > :nth-child(3) { animation-delay: 0.4s; }
+.hero-copy > :nth-child(4) { animation-delay: 0.5s; }
+.hero-copy > :nth-child(5) { animation-delay: 0.6s; }
+.pipeline { animation-delay: 0.7s; }
 
 
 .prompt-user {
@@ -1659,6 +1688,13 @@ body.dark-mode .archive-card img {
 
 /* ---------------------------------------------------------------- Motion */
 @media (prefers-reduced-motion: reduce) {
+    .hero-copy > *,
+    .hero h1 .h1-sub,
+    .hero-term,
+    .pipeline {
+        animation: none;
+    }
+
     .project-grid.is-switching .project-card-item,
     .step-detail {
         animation: none;

@@ -105,6 +105,23 @@
     list-style: none;
 }
 
+.child-media {
+    aspect-ratio: 16 / 9;
+    margin: -18px -18px 4px;
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+    border-radius: 13px 13px 0 0;
+    background: var(--white);
+}
+
+.child-media img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: top center;
+}
+
 .detail-children-list a {
     height: 100%;
     display: flex;

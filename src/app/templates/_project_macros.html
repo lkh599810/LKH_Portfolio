@@ -28,6 +28,9 @@
 {% macro project_card(project, children=[]) -%}
 <li class="project-card-item cat-{{ project.category }}{{ ' has-children' if children else '' }}" data-category="{{ project.category }}">
     <a class="project-card" href="{{ url_for('project_view.project_detail_page', slug=project.slug) }}">
+        <div class="project-card-media{{ ' is-empty' if not project.cover else '' }}">
+            {% if project.cover %}<img src="{{ thumb_url(project) }}" alt="" loading="lazy" width="800" height="450" class="{{ 'fit-contain' if project.cover_fit == 'contain' else '' }}">{% endif %}
+        </div>
         <div class="project-card-meta">
             <span class="project-card-category"><span class="cat-dot" aria-hidden="true"></span>{{ bi(category_label(project.category)) }}</span>
             {{ tag_list(project) }}
@@ -47,7 +50,7 @@
     {% if children %}
     <ol class="project-children">
         {% for c in children %}
-        <li><a href="{{ url_for('project_view.project_detail_page', slug=c.slug) }}"><span class="child-index">{{ '%02d'|format(loop.index) }}</span>{{ bi(c.title) }}<span class="child-arrow" aria-hidden="true">→</span></a></li>
+        <li><a href="{{ url_for('project_view.project_detail_page', slug=c.slug) }}"><span class="child-thumb">{% if thumb_url(c) %}<img src="{{ thumb_url(c) }}" alt="" loading="lazy" width="80" height="45">{% endif %}</span><span class="child-index">{{ '%02d'|format(loop.index) }}</span>{{ bi(c.title) }}<span class="child-arrow" aria-hidden="true">→</span></a></li>
         {% endfor %}
     </ol>
     {% endif %}

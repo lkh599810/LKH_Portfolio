@@ -36,7 +36,7 @@ PROJECTS = [
         "tags": ["work", "team"],
         "title": "TOSEL Lab Platform",
         "summary": T(
-            "TOSEL 지정교육기관과 원생을 위한 영어 학습 콘텐츠 플랫폼. 메인 사이트와 4개 학습 콘텐츠의 DB 설계·백엔드 API를 개발했습니다.",
+            "TOSEL 지정교육기관과 원생을 위한 영어 학습 콘텐츠 플랫폼. 메인 사이트와 4개 학습 콘텐츠의 DB 설계·백엔드 API 개발.",
             "English learning platform for TOSEL-designated academies. I designed the DB and built backend APIs for the main site and four learning contents.",
         ),
         "intro": T(
@@ -338,7 +338,7 @@ PROJECTS = [
         "tags": ["personal"],
         "title": "Kanglish",
         "summary": T(
-            "단어 학습, 빈칸 문제 풀이, 오답노트를 제공하는 영어 학습 PWA. FastAPI·Next.js로 직접 만들고 홈랩 Kubernetes에 배포해 운영합니다.",
+            "단어 학습, 빈칸 문제 풀이, 오답노트를 제공하는 영어 학습 PWA. FastAPI·Next.js로 직접 만들어 홈랩 Kubernetes에서 운영 중.",
             "An English learning PWA with vocabulary study, fill-in-the-blank quizzes, and review notes. Built with FastAPI and Next.js and deployed on my homelab Kubernetes.",
         ),
         "intro": T(
@@ -514,7 +514,7 @@ PROJECTS = [
         "tags": ["personal"],
         "title": T("홈랩 구축 및 서비스 인프라 운영", "Homelab & Service Infrastructure"),
         "summary": T(
-            "미니PC 한 대에 Proxmox·k3s·Caddy를 올리고 Argo CD GitOps로 포트폴리오·Kanglish·AlignFit을 직접 배포·운영하는 셀프 호스팅 환경입니다.",
+            "미니PC 한 대에 Proxmox·k3s·Caddy를 올리고 Argo CD GitOps로 포트폴리오·Kanglish·AlignFit을 직접 배포·운영하는 셀프 호스팅 환경.",
             "A self-hosted setup on one mini PC: Proxmox, k3s, and Caddy, with Argo CD GitOps deploying and running this portfolio, Kanglish, and AlignFit.",
         ),
         "intro": T(
@@ -680,7 +680,7 @@ PROJECTS = [
         "tags": ["work", "team"],
         "title": "TOSEL SSO",
         "summary": T(
-            "TOSEL 서비스들의 학습-평가-분석 사이클을 잇는 통합 유저 관리 서비스. JWT 쿠키 발급과 S2S REST API를 담당했습니다.",
+            "TOSEL 서비스들의 학습-평가-분석 사이클을 잇는 통합 유저 관리 서비스. JWT 쿠키 발급, S2S REST API 담당.",
             "An integrated user service linking the learn-assess-analyze cycle across TOSEL services. I handled JWT cookie issuing and the S2S REST APIs.",
         ),
         "intro": T(
@@ -750,7 +750,7 @@ PROJECTS = [
         "tags": ["work", "team"],
         "title": "Business Model Refactoring",
         "summary": T(
-            "10년간 유지보수만 이어 온 TOSEL 시험 사이트를 분석하고, 시험·학습 서비스를 Microservices 구조로 재설계한 프로젝트입니다.",
+            "10년간 유지보수만 이어 온 TOSEL 시험 사이트 분석, 시험·학습 서비스를 Microservices 구조로 재설계.",
             "Analyzed a TOSEL test site maintained for a decade and redesigned test and learning services as microservices.",
         ),
         "intro": T(
@@ -837,7 +837,7 @@ PROJECTS = [
         "tags": ["work", "team"],
         "title": T("TOSEL 교재몰 (SCM)", "TOSEL Book Mall (SCM)"),
         "summary": T(
-            "공급망관리시스템(SCM)과 쇼핑몰 역할을 함께 하는 교재몰. 교재 DB, 유저별 권한 관리, S2S API를 설계·개발했습니다.",
+            "공급망관리시스템(SCM)과 쇼핑몰 역할을 함께 하는 교재몰. 교재 DB, 유저별 권한 관리, S2S API 설계·개발.",
             "A book mall that works as both a supply chain system and an online shop. I designed the book DB, per-user permissions, and S2S APIs.",
         ),
         "intro": T(
@@ -917,7 +917,7 @@ PROJECTS = [
         "tags": ["outsourced"],
         "title": T("넥셀시스템 웹사이트 리뉴얼", "Nexel System Website Renewal"),
         "summary": T(
-            "노후화된 기업 웹사이트를 전면 리뉴얼한 외주 프로젝트. 레이아웃 재정비, PHP 레거시 리팩토링, 응답 속도 개선을 맡았습니다.",
+            "노후화된 기업 웹사이트를 전면 리뉴얼한 외주 프로젝트. 레이아웃 재정비, PHP 레거시 리팩토링, 응답 속도 개선 담당.",
             "Freelance renewal of an aging corporate website: layout overhaul, legacy PHP refactoring, and faster responses.",
         ),
         "intro": T(
@@ -972,7 +972,7 @@ PROJECTS = [
         "tags": ["personal"],
         "title": T("연세 사랑모아", "Yonsei SarangMoa"),
         "summary": T(
-            "연세대 구성원이 안 쓰는 물품을 기부하고 판매 수익금으로 나눔을 실천하는 웹 플랫폼. 권한 등급과 기부 물품 상태 워크플로를 설계했습니다.",
+            "연세대 구성원이 안 쓰는 물품을 기부하고 판매 수익금으로 나눔을 실천하는 웹 플랫폼. 권한 등급과 기부 물품 상태 워크플로 설계.",
             "A web platform where Yonsei members donate unused items and proceeds go to good causes. I designed role levels and the donated-item workflow.",
         ),
         "intro": T(
@@ -1052,7 +1052,7 @@ PROJECTS = [
         "tags": ["team"],
         "title": "CARD 24",
         "summary": T(
-            "사용자 조건에 맞는 카드와 카드사를 추천하는 웹사이트. Spring Boot로 만든 첫 팀 프로젝트로, AWS EC2·RDS에 배포했습니다.",
+            "사용자 조건에 맞는 카드와 카드사를 추천하는 웹사이트. Spring Boot로 만든 첫 팀 프로젝트, AWS EC2·RDS 배포.",
             "A website that recommends cards and issuers for each user's conditions. My first team project, built with Spring Boot and deployed on AWS EC2/RDS.",
         ),
         "intro": T(
@@ -1126,7 +1126,7 @@ PROJECTS = [
         "tags": ["personal"],
         "title": "AlignFit",
         "summary": T(
-            "사진으로 자세 정렬을 분석하고 운동 영상을 평가해 홈케어 운동을 추천하는 앱. Android·FastAPI·MediaPipe·PyTorch로 구성했습니다.",
+            "사진으로 자세 정렬을 분석하고 운동 영상을 평가해 홈케어 운동을 추천하는 앱. Android · FastAPI · MediaPipe · PyTorch.",
             "An app that analyzes posture from photos and evaluates exercise videos to recommend home-care exercises. Android, FastAPI, MediaPipe, PyTorch.",
         ),
         "intro": T(
@@ -1254,9 +1254,9 @@ PROJECTS = [
         "slug": "llm-routing",
         "category": "research",
         "tags": ["personal"],
-        "title": "LLM Routing & Agent Harness",
+        "title": "Cost-Aware Efficient Routing",
         "summary": T(
-            "LLM 코드 리뷰 하네스 앞에 Laya decision model 라우터를 붙여, 커밋마다 필요한 검사만 호출했을 때 API 비용이 40.4~42.1% 줄어드는 것을 측정했습니다.",
+            "LLM 코드 리뷰 하네스 앞에 Laya decision model 라우터를 붙여 커밋마다 필요한 검사만 호출. API 비용 40.4~42.1% 절감.",
             "Put a Laya decision-model router in front of an LLM code-review harness and measured a 40.4–42.1% API cost drop when only the needed checks run per commit.",
         ),
         "intro": T(
@@ -1387,7 +1387,7 @@ PROJECTS = [
         "tags": ["team", "personal"],
         "title": "TalkieBridge",
         "summary": T(
-            "1931년 이전 텍스트로만 학습된 Talkie-1930에게 현대 용어를 기능 설명으로 바꿔 물었을 때 응답이 나아지는지 검증한 팀 실험입니다.",
+            "1931년 이전 텍스트로만 학습된 Talkie-1930에게 현대 용어를 기능 설명으로 바꿔 물으면 응답이 나아지는지 검증한 팀 실험.",
             "A team experiment testing whether Talkie-1930, trained only on pre-1931 text, answers better when modern terms are rewritten as functional descriptions.",
         ),
         "intro": T(
@@ -1397,7 +1397,7 @@ PROJECTS = [
         "stack": ["Python", "OpenAI API", "Talkie-1930", "LLM-as-a-Judge", "McNemar · Binomial test"],
         "cover": "talkie_structure.jpg",
         "hero": "talkie_structure.jpg",
-        "period": None,
+        "period": "2026.05",
         "role": T("기획 참여 · 테스트/평가 설계 · 결과 분석", "Planning · test & evaluation design · result analysis"),
         "team": T("팀 프로젝트 (기계학습개론)", "Team project (Intro to Machine Learning)"),
         "sections": [
@@ -1530,7 +1530,7 @@ PROJECTS = [
         "tags": ["research"],
         "title": T("정자질 및 환경인자 관계 분석", "Semen Quality vs. Environmental Factors"),
         "summary": T(
-            "2018~2024 정액검사 데이터와 대기오염·기상 요인의 연관성을 회귀·트리 모델과 반복측정 모델로 비교 분석한 RAISE Lab 연구입니다.",
+            "2018~2024 정액검사 데이터와 대기오염·기상 요인의 연관성을 회귀·트리 모델과 반복측정 모델로 비교 분석한 RAISE Lab 연구.",
             "RAISE Lab research relating 2018–2024 semen test data to air pollution and weather, comparing regression, tree, and repeated-measures models.",
         ),
         "intro": T(
@@ -1648,7 +1648,7 @@ PROJECTS = [
         "tags": ["research"],
         "title": T("부인과질환 및 환경인자 관계 분석", "Gynecologic Disease vs. Environmental Factors"),
         "summary": T(
-            "HIRA·NHIS 의료 통계로 자궁내막증·자궁근종·다낭성난소증후군과 대기환경 인자의 연관성을 음이항 회귀로 분석한 연구입니다.",
+            "HIRA·NHIS 의료 통계로 자궁내막증·자궁근종·다낭성난소증후군과 대기환경 인자의 연관성을 음이항 회귀로 분석.",
             "Used HIRA/NHIS statistics and negative binomial regression to study links between endometriosis, fibroids, PCOS, and air quality.",
         ),
         "intro": T(

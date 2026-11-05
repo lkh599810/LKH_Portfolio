@@ -85,12 +85,13 @@
     <section class="detail-children" id="sub-projects">
         <div class="detail-children-head">
             <h2><span data-lang="ko">하위 프로젝트</span><span data-lang="en">Sub-projects</span> <strong>{{ children|length }}</strong></h2>
-            <p><span data-lang="ko">{{ m.plain(project.title) }}에서 함께 진행한 프로젝트입니다.</span><span data-lang="en">Projects carried out as part of {{ m.plain(project.title) }}.</span></p>
+            <p><span data-lang="ko">{{ m.plain(project.title) }} 안에서 함께 진행</span><span data-lang="en">Projects carried out as part of {{ m.plain(project.title) }}.</span></p>
         </div>
         <ol class="detail-children-list">
             {% for c in children %}
             <li>
                 <a href="{{ url_for('project_view.project_detail_page', slug=c.slug) }}">
+                    <span class="child-media">{% if thumb_url(c) %}<img src="{{ thumb_url(c) }}" alt="" loading="lazy" width="400" height="225">{% endif %}</span>
                     <span class="child-index">{{ '%02d'|format(loop.index) }}</span>
                     <strong>{{ m.bi(c.title) }}</strong>
                     <span class="child-summary">{{ m.bi(c.summary) }}</span>

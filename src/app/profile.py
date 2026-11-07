@@ -70,7 +70,7 @@ EXPERIENCE = [
     },
     {
         "kind": "work",
-        "org": T("넥셀시스템 주식회사 (외주)", "Nexel System Co., Ltd. (Outsourced)"),
+        "org": T("넥셀시스템 주식회사 (외주)", "Nexel System Co., Ltd. (Contract Development)"),
         "period": "2025.02 ~ 2025.06",
         "items": T(
             [

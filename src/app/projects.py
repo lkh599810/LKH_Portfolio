@@ -18,14 +18,15 @@ TAGS = {
     "personal": T("개인", "Personal"),
     "team": T("팀", "Team"),
     "research": T("연구", "Research"),
-    "outsourced": T("외주", "Freelance"),
+    "outsourced": T("외주", "Contract Development"),
 }
 
 TOSEL_WEB_STACK = "Python · Flask · MariaDB · Jinja2 · jQuery"
 
 
-def fig(src, caption=None, alt=None):
-    return {"src": src, "caption": caption, "alt": alt or (caption["ko"] if caption else src)}
+def fig(src, caption=None, alt=None, thumb=None):
+    # thumb: 갤러리 하단 썸네일용 작은 정지 이미지 (애니메이션 원본을 썸네일로 받지 않게)
+    return {"src": src, "caption": caption, "alt": alt or (caption["ko"] if caption else src), "thumb": thumb}
 
 
 PROJECTS = [
@@ -53,7 +54,7 @@ PROJECTS = [
         "sections": [
             {
                 "id": "background",
-                "title": T("배경과 요구사항", "Background & requirements"),
+                "title": T("배경 · 요구사항", "Background & requirements"),
                 "blocks": [
                     {"ul": T(
                         [
@@ -71,7 +72,7 @@ PROJECTS = [
             },
             {
                 "id": "architecture",
-                "title": T("시스템 구조", "System architecture"),
+                "title": T("아키텍처", "Architecture"),
                 "blocks": [
                     {"p": T(
                         "기존 시험 사이트 리뉴얼까지 고려해 <span class=\"highlight\">TOSEL Lab 메인 사이트 + 4개 디지털 콘텐츠</span>를 각각 독립 서비스로 두는 Microservices 구조로 설계했습니다. 사용자 인증은 별도 SSO 서비스가 담당하고, 서비스 간 데이터는 S2S REST API로 주고받습니다.",
@@ -279,7 +280,7 @@ PROJECTS = [
             },
             {
                 "id": "problems",
-                "title": T("기술적 문제와 해결", "Technical problems & solutions"),
+                "title": T("문제 해결", "Problem solving"),
                 "blocks": [
                     {"ul": T(
                         [
@@ -397,7 +398,7 @@ PROJECTS = [
             },
             {
                 "id": "db",
-                "title": T("DB 설계 포인트", "Database design"),
+                "title": T("DB 설계", "Database design"),
                 "blocks": [
                     {"p": T(
                         "문제는 <code>questions → question_blanks → question_options</code>로 나누고, 정답은 <code>question_answers</code>에 둡니다. 애플리케이션 검증에 기대지 않고 DB 제약으로 잘못된 데이터를 막는 데 집중했습니다.",
@@ -451,7 +452,7 @@ PROJECTS = [
             },
             {
                 "id": "problems",
-                "title": T("기술적 문제와 해결", "Technical problems & solutions"),
+                "title": T("문제 해결", "Problem solving"),
                 "blocks": [
                     {"ul": T(
                         [
@@ -471,7 +472,7 @@ PROJECTS = [
             },
             {
                 "id": "results",
-                "title": T("운영과 검증", "Operations & testing"),
+                "title": T("운영 · 검증", "Operations & testing"),
                 "blocks": [
                     {"ul": T(
                         [
@@ -487,7 +488,7 @@ PROJECTS = [
             },
             {
                 "id": "limits",
-                "title": T("한계와 개선 방향", "Limitations & next steps"),
+                "title": T("한계 · 개선", "Limits & next steps"),
                 "blocks": [
                     {"ul": T(
                         [
@@ -591,7 +592,7 @@ PROJECTS = [
             },
             {
                 "id": "gitops",
-                "title": T("CI/CD와 GitOps", "CI/CD & GitOps"),
+                "title": T("CI/CD · GitOps", "CI/CD & GitOps"),
                 "blocks": [
                     {"steps": [
                         T("git push (main)", "git push (main)"),
@@ -619,7 +620,7 @@ PROJECTS = [
             },
             {
                 "id": "problems",
-                "title": T("운영하며 정리한 것", "What I worked through"),
+                "title": T("트러블슈팅", "Troubleshooting"),
                 "blocks": [
                     {"ul": T(
                         [
@@ -652,7 +653,7 @@ PROJECTS = [
             },
             {
                 "id": "limits",
-                "title": T("한계와 개선 방향", "Limitations & next steps"),
+                "title": T("한계 · 개선", "Limits & next steps"),
                 "blocks": [
                     {"ul": T(
                         [
@@ -785,7 +786,7 @@ PROJECTS = [
             },
             {
                 "id": "problems",
-                "title": T("문제점", "Problems"),
+                "title": T("문제 정의", "Problem"),
                 "blocks": [
                     {"ul": T(
                         [
@@ -811,7 +812,7 @@ PROJECTS = [
             },
             {
                 "id": "solution",
-                "title": T("해결과 역할", "Solution & role"),
+                "title": T("해결 · 역할", "Solution & role"),
                 "blocks": [
                     {"ul": T(
                         [
@@ -854,7 +855,7 @@ PROJECTS = [
         "sections": [
             {
                 "id": "requirements",
-                "title": T("요구사항 — 왜 SCM으로 기획했나", "Requirements — why SCM"),
+                "title": T("요구사항 · SCM 선택", "Requirements · why SCM"),
                 "blocks": [
                     {"ul": T(
                         [
@@ -876,7 +877,7 @@ PROJECTS = [
             },
             {
                 "id": "design",
-                "title": T("설계와 구현", "Design & implementation"),
+                "title": T("설계 · 구현", "Design & implementation"),
                 "blocks": [
                     {"ul": T(
                         [
@@ -918,7 +919,7 @@ PROJECTS = [
         "title": T("넥셀시스템 웹사이트 리뉴얼", "Nexel System Website Renewal"),
         "summary": T(
             "노후화된 기업 웹사이트를 전면 리뉴얼한 외주 프로젝트. 레이아웃 재정비, PHP 레거시 리팩토링, 응답 속도 개선 담당.",
-            "Freelance renewal of an aging corporate website: layout overhaul, legacy PHP refactoring, and faster responses.",
+            "Contract development renewing an aging corporate website: layout overhaul, legacy PHP refactoring, and faster responses.",
         ),
         "intro": T(
             "넥셀시스템 주식회사의 기업 웹사이트를 리뉴얼한 외주 프로젝트입니다.",
@@ -929,7 +930,7 @@ PROJECTS = [
         "hero": "nexell_new.png",
         "period": "2025.02 ~ 2025.06",
         "role": T("웹 개발 (외주)", "Web development (freelance)"),
-        "team": T("외주", "Freelance"),
+        "team": T("외주", "Contract Development"),
         "sections": [
             {
                 "id": "work",
@@ -1099,7 +1100,7 @@ PROJECTS = [
             },
             {
                 "id": "lessons",
-                "title": T("극복한 점", "What I worked through"),
+                "title": T("트러블슈팅", "Troubleshooting"),
                 "blocks": [
                     {"ul": T(
                         [
@@ -1143,7 +1144,7 @@ PROJECTS = [
         "sections": [
             {
                 "id": "problem",
-                "title": T("해결하려던 문제", "Problem"),
+                "title": T("문제 정의", "Problem"),
                 "blocks": [
                     {"p": T(
                         "통증 부위와 자세 사진만으로 어깨·골반 높이 차이 같은 정렬 상태를 확인하고, 운동 영상을 올리면 동작이 올바른지와 어떤 운동인지 판별해 집에서 할 수 있는 운동을 추천하는 것이 목표였습니다.",
@@ -1160,7 +1161,7 @@ PROJECTS = [
                         "Pick where it hurts → full-body photo analysis → result → consultation memo and exercises → movement evaluation.",
                     )},
                     {"portrait": True, "figures": [
-                        fig("projects/alignfit-flow.webp", T("전체 흐름", "Full flow")),
+                        fig("projects/alignfit-flow.webp", T("전체 흐름", "Full flow"), thumb="projects/alignfit-flow-thumb.webp"),
                         fig("projects/alignfit-home.webp", T("홈", "Home")),
                         fig("projects/alignfit-pain.webp", T("불편한 부위 선택", "Choose where it hurts")),
                         fig("projects/alignfit-body-map.webp", T("바디맵으로 부위 확인", "Body map")),
@@ -1177,8 +1178,39 @@ PROJECTS = [
                 ],
             },
             {
+                "id": "exercises",
+                "title": T("추천 운동 동작", "Exercise library"),
+                "blocks": [
+                    {"p": T(
+                        "분석 결과에 따라 추천되는 운동 19종. 목·어깨 → 허리·코어 → 하체 순서.",
+                        "The 19 exercises the app recommends from the analysis, ordered neck and shoulders → back and core → lower body.",
+                    )},
+                    {"figures": [
+                        fig("projects/alignfit-ex/chin-tuck.webp", T("턱 당기기", "Chin tuck"), thumb="projects/alignfit-ex/chin-tuck-thumb.webp"),
+                        fig("projects/alignfit-ex/neck-side-stretch.webp", T("목 옆 스트레칭", "Neck side stretch"), thumb="projects/alignfit-ex/neck-side-stretch-thumb.webp"),
+                        fig("projects/alignfit-ex/scapular-retraction.webp", T("견갑 모으기", "Scapular retraction"), thumb="projects/alignfit-ex/scapular-retraction-thumb.webp"),
+                        fig("projects/alignfit-ex/wall-angel.webp", T("월 엔젤", "Wall angel"), thumb="projects/alignfit-ex/wall-angel-thumb.webp"),
+                        fig("projects/alignfit-ex/pec-stretch.webp", T("가슴 스트레칭", "Pec stretch"), thumb="projects/alignfit-ex/pec-stretch-thumb.webp"),
+                        fig("projects/alignfit-ex/thoracic-extension.webp", T("흉추 신전", "Thoracic extension"), thumb="projects/alignfit-ex/thoracic-extension-thumb.webp"),
+                        fig("projects/alignfit-ex/cat-camel.webp", T("고양이-낙타", "Cat-camel"), thumb="projects/alignfit-ex/cat-camel-thumb.webp"),
+                        fig("projects/alignfit-ex/pelvic-tilt.webp", T("골반 기울이기", "Pelvic tilt"), thumb="projects/alignfit-ex/pelvic-tilt-thumb.webp"),
+                        fig("projects/alignfit-ex/dead-bug.webp", T("데드버그", "Dead bug"), thumb="projects/alignfit-ex/dead-bug-thumb.webp"),
+                        fig("projects/alignfit-ex/bird-dog.webp", T("버드독", "Bird dog"), thumb="projects/alignfit-ex/bird-dog-thumb.webp"),
+                        fig("projects/alignfit-ex/side-plank.webp", T("사이드 플랭크", "Side plank"), thumb="projects/alignfit-ex/side-plank-thumb.webp"),
+                        fig("projects/alignfit-ex/glute-bridge.webp", T("엉덩이 들기 (글루트 브릿지)", "Glute bridge"), thumb="projects/alignfit-ex/glute-bridge-thumb.webp"),
+                        fig("projects/alignfit-ex/hip-flexor-stretch.webp", T("고관절 굴곡근 스트레칭", "Hip flexor stretch"), thumb="projects/alignfit-ex/hip-flexor-stretch-thumb.webp"),
+                        fig("projects/alignfit-ex/hamstring-stretch.webp", T("햄스트링 스트레칭", "Hamstring stretch"), thumb="projects/alignfit-ex/hamstring-stretch-thumb.webp"),
+                        fig("projects/alignfit-ex/quad-strengthening.webp", T("허벅지 앞 근육 강화", "Quad strengthening"), thumb="projects/alignfit-ex/quad-strengthening-thumb.webp"),
+                        fig("projects/alignfit-ex/clamshell.webp", T("클램쉘", "Clamshell"), thumb="projects/alignfit-ex/clamshell-thumb.webp"),
+                        fig("projects/alignfit-ex/calf-stretch.webp", T("종아리 스트레칭", "Calf stretch"), thumb="projects/alignfit-ex/calf-stretch-thumb.webp"),
+                        fig("projects/alignfit-ex/ankle-mobility.webp", T("발목 가동성", "Ankle mobility"), thumb="projects/alignfit-ex/ankle-mobility-thumb.webp"),
+                        fig("projects/alignfit-ex/single-leg-balance.webp", T("한 발 서기", "Single-leg balance"), thumb="projects/alignfit-ex/single-leg-balance-thumb.webp"),
+                    ]},
+                ],
+            },
+            {
                 "id": "architecture",
-                "title": T("시스템 구조와 데이터 흐름", "Architecture & data flow"),
+                "title": T("아키텍처 · 데이터 흐름", "Architecture & data flow"),
                 "blocks": [
                     {"steps": [
                         T("Android 앱 (Compose · Retrofit)", "Android app (Compose · Retrofit)"),
@@ -1200,7 +1232,7 @@ PROJECTS = [
             },
             {
                 "id": "ai",
-                "title": T("AI 활용 방식", "How AI is used"),
+                "title": T("AI 활용", "AI usage"),
                 "blocks": [
                     {"ul": T(
                         [
@@ -1220,7 +1252,7 @@ PROJECTS = [
             },
             {
                 "id": "results",
-                "title": T("테스트 및 결과", "Testing & results"),
+                "title": T("테스트 · 결과", "Testing & results"),
                 "blocks": [
                     {"p": T(
                         "MobiPhysio 데이터셋(24명, 534개 시퀀스)을 피험자 단위로 train/val/test 분할해, 같은 사람이 학습과 평가에 동시에 들어가지 않도록 했습니다. 지표는 클래스 불균형을 고려해 macro-F1을 기준으로 봤습니다.",
@@ -1292,7 +1324,7 @@ PROJECTS = [
         "sections": [
             {
                 "id": "problem",
-                "title": T("해결하려던 문제", "Problem"),
+                "title": T("문제 정의", "Problem"),
                 "blocks": [
                     {"p": T(
                         "CodeAgent(EMNLP 2024)의 CA·VA·FA 리뷰 과제를 참고해 단순한 리뷰 하네스를 만들었습니다. 모든 커밋에 세 리뷰어를 strong 모델로 호출하면 비용과 시간이 커서, 하네스 앞단에 의사결정 단계를 두어 커밋별로 필요한 검사만 고르도록 했습니다.",
@@ -1302,7 +1334,7 @@ PROJECTS = [
             },
             {
                 "id": "architecture",
-                "title": T("시스템 구조와 처리 흐름", "Architecture & flow"),
+                "title": T("아키텍처 · 처리 흐름", "Architecture & flow"),
                 "blocks": [
                     {"steps": [
                         T("커밋 (메시지 · diff · 문맥)", "Commit (message · diff · context)"),
@@ -1374,7 +1406,7 @@ PROJECTS = [
             },
             {
                 "id": "limits",
-                "title": T("해석과 한계", "Interpretation & limits"),
+                "title": T("해석 · 한계", "Interpretation & limits"),
                 "blocks": [
                     {"ul": T(
                         [
@@ -1423,7 +1455,7 @@ PROJECTS = [
         "sections": [
             {
                 "id": "question",
-                "title": T("연구 배경과 문제 정의", "Background & research question"),
+                "title": T("배경 · 문제 정의", "Background & question"),
                 "blocks": [
                     {"p": T(
                         "Talkie에게 GPS의 쓸모를 물으면 GPS를 눈으로 보는 방향 계기처럼 설명합니다. 질문은 이해했지만 단어를 모르는 상황입니다. 현대 용어가 들어간 질문에 엉뚱하게 답할 때, 추론을 못 한 것인지 단어를 몰라서인지 구분되지 않는다는 점이 출발점이었습니다.",
@@ -1468,7 +1500,7 @@ PROJECTS = [
             },
             {
                 "id": "metrics",
-                "title": T("데이터와 평가 지표", "Data & metrics"),
+                "title": T("데이터 · 평가 지표", "Data & metrics"),
                 "blocks": [
                     {"ul": T(
                         [
@@ -1513,7 +1545,7 @@ PROJECTS = [
             },
             {
                 "id": "limits",
-                "title": T("해석과 한계", "Interpretation & limits"),
+                "title": T("해석 · 한계", "Interpretation & limits"),
                 "blocks": [
                     {"ul": T(
                         [
@@ -1566,7 +1598,7 @@ PROJECTS = [
         "sections": [
             {
                 "id": "question",
-                "title": T("연구 배경과 문제 정의", "Background & question"),
+                "title": T("배경 · 문제 정의", "Background & question"),
                 "blocks": [
                     {"p": T(
                         "대기오염과 기상 요인이 남성 생식건강 지표와 관련이 있는지를 실제 검사 데이터로 확인하는 것이 목표입니다. 같은 환자가 여러 번 검사를 받은 반복측정 데이터라 관측치가 독립이 아니라는 점을 분석 설계의 핵심 조건으로 두었습니다.",
@@ -1576,7 +1608,7 @@ PROJECTS = [
             },
             {
                 "id": "data",
-                "title": T("데이터와 실험 설계", "Data & design"),
+                "title": T("데이터 · 실험 설계", "Data & design"),
                 "blocks": [
                     {"ul": T(
                         [
@@ -1643,7 +1675,7 @@ PROJECTS = [
             },
             {
                 "id": "limits",
-                "title": T("해석과 한계", "Interpretation & limits"),
+                "title": T("해석 · 한계", "Interpretation & limits"),
                 "blocks": [
                     {"ul": T(
                         [
@@ -1762,7 +1794,7 @@ PROJECTS = [
             },
             {
                 "id": "limits",
-                "title": T("해석과 한계", "Interpretation & limits"),
+                "title": T("해석 · 한계", "Interpretation & limits"),
                 "blocks": [
                     {"note": T(
                         "이 결과는 지역 단위 통계의 <strong>상관관계</strong>이며, 환경인자가 질환을 일으킨다는 인과관계를 뜻하지 않습니다.",

@@ -120,7 +120,7 @@
     <div class="gallery-thumbs" role="group" aria-label="슬라이드 선택">
         {% for f in figures %}
         <button type="button" aria-label="{{ loop.index }}번 이미지{% if f.caption %}: {{ plain(f.caption) }}{% endif %}"{% if loop.first %} aria-current="true"{% endif %}>
-            <img src="{{ img_url(f.src) }}" alt="" loading="lazy" decoding="async">
+            <img src="{{ img_url(f.thumb or f.src) }}" alt="" loading="lazy" decoding="async">
         </button>
         {% endfor %}
     </div>

@@ -120,6 +120,7 @@
             input.value = input.value.replace(/\s*\n\s*/g, ' ');
         }
         var at = input.selectionStart == null ? input.value.length : input.selectionStart;
+        form.classList.toggle('is-empty', !input.value);
         before.textContent = input.value.slice(0, at);
         after.textContent = input.value.slice(at);
     }

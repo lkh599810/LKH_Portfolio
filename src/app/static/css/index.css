@@ -213,7 +213,7 @@ code {
 /* ---------------------------------------------------------------- Hero */
 .hero {
     position: relative;
-    padding: 132px 6vw 88px;
+    padding: 108px 6vw 48px;
     color: #ffffff;
     background:
         linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px) 0 0 / 44px 44px,
@@ -227,8 +227,8 @@ code {
     margin: 0 auto;
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    grid-template-areas: "copy term" "pipe term";
-    align-items: start;
+    grid-template-areas: "copy term";
+    align-items: center;
     gap: 28px 56px;
 }
 
@@ -510,6 +510,18 @@ code {
     background: transparent;
     caret-color: transparent;
     font-weight: 600;
+}
+
+.term-field textarea::placeholder {
+    color: transparent;
+}
+
+/* 빈 입력칸: 커서 뒤에 안내 문구 (textarea 자체 placeholder는 커서와 겹쳐서 숨김) */
+.term-line.is-empty .term-mirror::after {
+    content: attr(data-placeholder);
+    margin-left: 1.1em;
+    color: rgba(255, 255, 255, 0.38);
+    font-weight: 400;
 }
 
 .term-field textarea::selection {
@@ -1942,7 +1954,7 @@ body.dark-mode .archive-card img {
 @media (max-width: 1023px) {
     .hero-inner {
         grid-template-columns: minmax(0, 1fr);
-        grid-template-areas: "copy" "term" "pipe";
+        grid-template-areas: "copy" "term";
         gap: 32px;
     }
 
@@ -1978,7 +1990,7 @@ body.dark-mode .archive-card img {
 
 @media (max-width: 767px) {
     .hero {
-        padding: 100px 20px 56px;
+        padding: 88px 20px 36px;
     }
 
     .hero h1 {

@@ -76,6 +76,7 @@ def project_detail_page(slug):
         project=project,
         parent=PROJECTS_BY_SLUG.get(project.get('parent')),
         children=CHILDREN.get(slug, []),
+        pipeline=PIPELINE if slug == 'homelab' else None,
         prev_project=PROJECTS[index - 1] if index > 0 else None,
         next_project=PROJECTS[index + 1] if index + 1 < len(PROJECTS) else None,
     )

@@ -71,6 +71,32 @@
                     <dd><ul class="stack-list">{% for item in project.stack %}<li>{{ item }}</li>{% endfor %}</ul></dd></div>
             </dl>
 
+            {% if pipeline %}
+            <figure class="pipeline" data-pipeline aria-labelledby="pipeline-title">
+                    <div class="pipeline-bar">
+                        <span class="pipeline-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                        <span class="pipeline-title" id="pipeline-title">deploy · introduce.leekanghyun.co.kr</span>
+                    </div>
+                    <div class="pipeline-body">
+                        <ol class="pipeline-steps">
+                            {% for step in pipeline %}
+                            <li class="pipeline-step{{ ' is-active' if loop.first else '' }}">
+                                <button type="button" class="pipeline-trigger" aria-expanded="{{ 'true' if loop.first else 'false' }}" aria-controls="pipeline-step-{{ loop.index }}">
+                                    <span class="step-node" aria-hidden="true">{{ loop.index }}</span>
+                                    <span class="step-name">{{ step.name }}</span>
+                                    <span class="step-summary">{{ m.bi(step.summary) }}</span>
+                                </button>
+                                <div class="step-detail" id="pipeline-step-{{ loop.index }}"{% if not loop.first %} hidden{% endif %}>
+                                    <code>{{ step.code }}</code>
+                                    <p>{{ m.bi(step.note) }}</p>
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ol>
+                    </div>
+                </figure>
+            {% endif %}
+
             {% if project.links %}
             <div class="detail-links">
                 {% for link in project.links %}
@@ -187,6 +213,7 @@
     })();
 </script>
 <script src="/static/js/gallery.js" defer></script>
+{% if pipeline %}<script src="/static/js/pipeline.js" defer></script>{% endif %}
 {% include "_footer.html" %}
 </body>
 </html>

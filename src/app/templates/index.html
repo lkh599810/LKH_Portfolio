@@ -85,11 +85,11 @@
                     </div>
                     <div class="term-log" role="log" aria-live="polite" aria-label="Terminal output">
                     </div>
-                    <form class="term-line" autocomplete="off">
+                    <form class="term-line is-empty" autocomplete="off">
                         <label for="term-input"><span class="prompt-host"><span class="prompt-user">kanghyun@homelab</span>:</span><span class="prompt-path">~</span>$</label>
                         <div class="term-field">
-                            <div class="term-mirror" aria-hidden="true"><span class="tm-before"></span><span class="term-cursor"></span><span class="tm-after"></span></div>
-                            <textarea id="term-input" name="cmd" rows="1" spellcheck="false" autocapitalize="off" autocorrect="off" enterkeyhint="send" aria-describedby="term-chips-label"></textarea>
+                            <div class="term-mirror" aria-hidden="true" data-placeholder="Type a command here (try help)"><span class="tm-before"></span><span class="term-cursor"></span><span class="tm-after"></span></div>
+                            <textarea id="term-input" name="cmd" rows="1" placeholder="Type a command here (try help)" spellcheck="false" autocapitalize="off" autocorrect="off" enterkeyhint="send" aria-describedby="term-chips-label"></textarea>
                         </div>
                     </form>
                     <div class="term-chips">
@@ -198,30 +198,6 @@
                     </template>
                 </div>
 
-                <figure class="pipeline" data-pipeline aria-labelledby="pipeline-title">
-                    <div class="pipeline-bar">
-                        <span class="pipeline-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-                        <span class="pipeline-title" id="pipeline-title">deploy · introduce.leekanghyun.co.kr</span>
-                        <a class="pipeline-open" href="{{ url_for('project_view.project_detail_page', slug='homelab') }}" aria-label="Homelab">{{ m.icon('external') }}</a>
-                    </div>
-                    <div class="pipeline-body">
-                        <ol class="pipeline-steps">
-                            {% for step in pipeline %}
-                            <li class="pipeline-step{{ ' is-active' if loop.first else '' }}">
-                                <button type="button" class="pipeline-trigger" aria-expanded="{{ 'true' if loop.first else 'false' }}" aria-controls="pipeline-step-{{ loop.index }}">
-                                    <span class="step-node" aria-hidden="true">{{ loop.index }}</span>
-                                    <span class="step-name">{{ step.name }}</span>
-                                    <span class="step-summary">{{ m.bi(step.summary) }}</span>
-                                </button>
-                                <div class="step-detail" id="pipeline-step-{{ loop.index }}"{% if not loop.first %} hidden{% endif %}>
-                                    <code>{{ step.code }}</code>
-                                    <p>{{ m.bi(step.note) }}</p>
-                                </div>
-                            </li>
-                            {% endfor %}
-                        </ol>
-                    </div>
-                </figure>
             </div>
         </section>
 
@@ -432,7 +408,6 @@
     })();
 </script>
 <script src="/static/js/term.js"></script>
-<script src="/static/js/pipeline.js"></script>
 {% include "_footer.html" %}
 </body>
 </html>

@@ -68,8 +68,12 @@ def test_index_assets_exist():
 
 def test_index_sections_and_featured():
     html = client.get('/').get_data(as_text=True)
-    for anchor in ['id="projects"', 'id="experience"', 'id="skills"', 'id="archiving"', 'data-pipeline']:
+    for anchor in ['id="projects"', 'id="experience"', 'id="skills"', 'id="archiving"']:
         assert anchor in html, anchor
+    # 배포 파이프라인 패널은 히어로가 아니라 홈랩 상세에만
+    assert 'data-pipeline' not in html
+    assert 'data-pipeline' in client.get('/projects/homelab').get_data(as_text=True)
+    assert 'data-pipeline' not in client.get('/projects/kanglish').get_data(as_text=True)
     assert html.count('class="featured-card') == 3
     assert 'class="orbit' not in html and 'resume-page' not in html
     # 히어로 터미널: 칩으로 노출한 명령어마다 출력 template이 있어야 함

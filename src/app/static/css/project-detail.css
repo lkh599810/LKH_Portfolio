@@ -273,7 +273,7 @@
     box-sizing: content-box;
 }
 
-.detail-cover a {
+.detail-cover-frame {
     display: block;
     overflow: hidden;
     border: 1px solid var(--line);
@@ -525,7 +525,7 @@
     margin: 0;
 }
 
-.figure-grid a {
+.figure-grid .figure-media {
     display: block;
     overflow: hidden;
     border: 1px solid var(--line);
@@ -786,7 +786,6 @@
     background:
         radial-gradient(circle at 1px 1px, rgba(99, 112, 131, 0.16) 1px, transparent 0) 0 0 / 18px 18px,
         var(--soft-blue);
-    cursor: zoom-in;
 }
 
 .gallery-media img {

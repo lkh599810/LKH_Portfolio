@@ -25,11 +25,6 @@ def img_url(name):
 
 
 @bp.app_template_global()
-def full_img_url(name):
-    return '/static/images/' + name
-
-
-@bp.app_template_global()
 def thumb_url(project):
     if not project.get('cover'):
         return None

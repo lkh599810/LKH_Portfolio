@@ -98,9 +98,9 @@
             {% for f in figures %}
             <li class="gallery-slide">
                 <figure>
-                    <a class="gallery-media" href="{{ full_img_url(f.src) }}" target="_blank" rel="noopener">
+                    <div class="gallery-media">
                         <img src="{{ img_url(f.src) }}" alt="{{ f.alt }}" loading="lazy" decoding="async">
-                    </a>
+                    </div>
                     <figcaption><span class="gallery-index">{{ '%02d'|format(loop.index) }} / {{ '%02d'|format(loop.length) }}</span>{% if f.caption %}<span>{{ bi(f.caption) }}</span>{% endif %}</figcaption>
                 </figure>
             </li>
@@ -163,9 +163,9 @@
         <div class="figure-grid count-{{ block.figures|length }}{{ ' wide' if block.wide else '' }}">
             {% for f in block.figures %}
             <figure>
-                <a href="{{ full_img_url(f.src) }}" target="_blank" rel="noopener">
+                <div class="figure-media">
                     <img src="{{ img_url(f.src) }}" alt="{{ f.alt }}" loading="lazy">
-                </a>
+                </div>
                 {% if f.caption %}<figcaption>{{ bi(f.caption) }}</figcaption>{% endif %}
             </figure>
             {% endfor %}

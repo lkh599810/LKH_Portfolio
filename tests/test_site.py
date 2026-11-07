@@ -90,6 +90,13 @@ def test_multi_image_blocks_render_as_gallery():
     assert 'data-gallery' in html and html.count('class="gallery-slide"') == 11
 
 
+def test_images_cannot_be_opened_directly():
+    url = '/static/images/thumbs/kanglish.webp'
+    assert client.get(url, headers={'Sec-Fetch-Dest': 'document'}).status_code == 404
+    assert client.get(url, headers={'Sec-Fetch-Dest': 'image'}).status_code == 200
+    assert client.get(url).status_code == 200
+
+
 def test_unknown_project():
     assert client.get('/projects/nope').status_code == 404
     assert client.get('/no-such-page').status_code == 404

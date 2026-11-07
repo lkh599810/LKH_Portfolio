@@ -41,7 +41,7 @@ PROJECTS = [
             "English learning platform for TOSEL-designated academies. I designed the DB and built backend APIs for the main site and four learning contents.",
         ),
         "intro": T(
-            "20여 년간 영어능력 인증시험을 운영해 온 TOSEL의 신규 학습 콘텐츠 플랫폼입니다. 2022년 8월 정식 출시된 상용 서비스로, 기획부터 개발·배포·운영까지 참여했습니다.",
+            "20여 년간 영어능력 인증시험을 운영해 온 TOSEL의 신규 학습 콘텐츠 플랫폼. 2022년 8월 정식 출시한 상용 서비스로, 기획부터 개발·배포·운영까지 참여.",
             "TOSEL's new learning content platform, built on 20 years of running an English proficiency test. It launched commercially in August 2022, and I worked on it from planning through development, deployment, and operations.",
         ),
         "stack": ["Python", "Flask", "MariaDB", "JWT", "jQuery", "Jinja2", "OpenCV", "pytesseract"],
@@ -75,7 +75,7 @@ PROJECTS = [
                 "title": T("아키텍처", "Architecture"),
                 "blocks": [
                     {"p": T(
-                        "기존 시험 사이트 리뉴얼까지 고려해 <span class=\"highlight\">TOSEL Lab 메인 사이트 + 4개 디지털 콘텐츠</span>를 각각 독립 서비스로 두는 Microservices 구조로 설계했습니다. 사용자 인증은 별도 SSO 서비스가 담당하고, 서비스 간 데이터는 S2S REST API로 주고받습니다.",
+                        "기존 시험 사이트 리뉴얼까지 고려해 <span class=\"highlight\">TOSEL Lab 메인 사이트 + 4개 디지털 콘텐츠</span>를 각각 독립 서비스로 두는 Microservices 구조로 설계. 사용자 인증은 별도 SSO 서비스가 맡고, 서비스 간 데이터는 S2S REST API로 주고받음.",
                         "Planning ahead for the renewal of the old test site, I designed a microservices layout: <span class=\"highlight\">the TOSEL Lab main site plus four digital contents</span>, each as its own service. A separate SSO service handles authentication, and services exchange data through S2S REST APIs.",
                     )},
                     {"steps": [
@@ -343,7 +343,7 @@ PROJECTS = [
             "An English learning PWA with vocabulary study, fill-in-the-blank quizzes, and review notes. Built with FastAPI and Next.js and deployed on my homelab Kubernetes.",
         ),
         "intro": T(
-            "TOEIC 단어장 프로젝트로 시작해 Kanglish로 이어진 개인 서비스입니다. 단어·문제 콘텐츠는 모든 사용자가 공유하고, 풀이 기록과 오답노트만 사용자별로 분리합니다.",
+            "TOEIC 단어장 프로젝트로 시작해 Kanglish로 이어진 개인 서비스. 단어·문제 콘텐츠는 모든 사용자가 공유하고, 풀이 기록과 오답노트만 사용자별로 분리.",
             "A personal service that started as a TOEIC vocabulary project and became Kanglish. Words and questions are shared by everyone; attempts and review notes are kept per user.",
         ),
         "stack": ["FastAPI", "Next.js", "TypeScript", "SQLAlchemy", "Alembic", "SQLite", "Tailwind CSS", "Docker"],
@@ -401,7 +401,7 @@ PROJECTS = [
                 "title": T("DB 설계", "Database design"),
                 "blocks": [
                     {"p": T(
-                        "문제는 <code>questions → question_blanks → question_options</code>로 나누고, 정답은 <code>question_answers</code>에 둡니다. 애플리케이션 검증에 기대지 않고 DB 제약으로 잘못된 데이터를 막는 데 집중했습니다.",
+                        "문제는 <code>questions → question_blanks → question_options</code>로 나누고, 정답은 <code>question_answers</code>에 분리. 애플리케이션 검증에 기대지 않고 DB 제약으로 잘못된 데이터를 막는 데 집중.",
                         "Questions are split into <code>questions → question_blanks → question_options</code>, with answers in <code>question_answers</code>. The focus was on rejecting bad data with DB constraints rather than relying on application checks.",
                     )},
                     {"ul": T(
@@ -519,7 +519,7 @@ PROJECTS = [
             "A self-hosted setup on one mini PC: Proxmox, k3s, and Caddy, with Argo CD GitOps deploying and running this portfolio, Kanglish, and AlignFit.",
         ),
         "intro": T(
-            "Intel N100 미니PC의 Proxmox VE 위에 Caddy 리버스 프록시(LXC)와 단일 노드 Kubernetes(k3s, VM)를 분리해 두고, Traefik Gateway API와 Argo CD로 개인 서비스 3개를 배포·운영합니다.",
+            "Intel N100 미니PC의 Proxmox VE 위에 Caddy 리버스 프록시(LXC)와 단일 노드 Kubernetes(k3s, VM)를 분리해 두고, Traefik Gateway API와 Argo CD로 개인 서비스 3개를 배포·운영.",
             "On an Intel N100 mini PC running Proxmox VE, a Caddy reverse proxy (LXC) and a single-node Kubernetes cluster (k3s, VM) are kept separate, and three personal services are deployed and run with the Traefik Gateway API and Argo CD.",
         ),
         "stack": ["Proxmox VE", "k3s", "Caddy", "Traefik", "Gateway API", "Argo CD", "GitHub Actions", "GHCR", "Docker"],
@@ -577,7 +577,7 @@ PROJECTS = [
                 "title": T("요청 라우팅", "Request routing"),
                 "blocks": [
                     {"p": T(
-                        "Caddy는 세 서비스의 HTTPS 요청을 모두 하나의 Traefik NodePort <code>30080</code>으로 넘깁니다. Traefik은 Gateway API 리소스에 따라 Host와 Path를 매칭해 Service를 고릅니다. 새 서비스는 NodePort를 추가하지 않고 서비스 저장소에 HTTPRoute를 추가하는 방식으로 붙입니다.",
+                        "Caddy는 세 서비스의 HTTPS 요청을 모두 하나의 Traefik NodePort <code>30080</code>으로 전달. Traefik이 Gateway API 리소스 기준으로 Host·Path를 매칭해 Service 선택. 새 서비스는 NodePort 추가 없이 서비스 저장소에 HTTPRoute만 추가해 연결.",
                         "Caddy forwards HTTPS for all three services to a single Traefik NodePort, <code>30080</code>. Traefik matches Host and Path from Gateway API resources to pick the Service. A new service is added by putting an HTTPRoute in its own repository, not by opening another NodePort.",
                     )},
                     {"table": {
@@ -646,7 +646,7 @@ PROJECTS = [
                         {"value": "200", "label": T("세 도메인 HTTPS 응답", "HTTPS status on all three domains")},
                     ]},
                     {"note": T(
-                        "위 결과는 인프라 연결과 준비 상태를 확인한 것입니다. 부하 테스트, 장애 복구 성능, 모든 앱의 E2E 테스트까지 검증한 것은 아닙니다.",
+                        "위 결과는 인프라 연결과 준비 상태 확인까지. 부하 테스트, 장애 복구 성능, 모든 앱의 E2E 테스트는 검증 범위 밖.",
                         "These checks confirm connectivity and readiness only. Load testing, failure recovery, and end-to-end tests for every app were not part of this verification.",
                     )},
                 ],
@@ -685,7 +685,7 @@ PROJECTS = [
             "An integrated user service linking the learn-assess-analyze cycle across TOSEL services. I handled JWT cookie issuing and the S2S REST APIs.",
         ),
         "intro": T(
-            "TOSEL Lab과 콘텐츠 서비스들이 한 번의 로그인으로 사용자 정보와 데이터 접근 권한을 공유하도록 만든 SSO 서비스입니다.",
+            "TOSEL Lab과 콘텐츠 서비스들이 한 번의 로그인으로 사용자 정보와 데이터 접근 권한을 공유하도록 만든 SSO 서비스.",
             "An SSO service that lets TOSEL Lab and its content services share user identity and data access rights from a single login.",
         ),
         "stack": ["Python", "Flask", "JWT", "CORS", "MariaDB"],
@@ -736,7 +736,7 @@ PROJECTS = [
                 "title": T("배운 점", "Lessons"),
                 "blocks": [
                     {"p": T(
-                        "통합 회원 DB는 모든 서비스가 공통으로 쓰는 회원 정보를 먼저 파악한 뒤 설계해야 한다는 점을 체감했습니다.",
+                        "통합 회원 DB는 모든 서비스가 공통으로 쓰는 회원 정보를 먼저 파악한 뒤 설계해야 한다는 점을 체감.",
                         "I learned that an integrated member DB has to start from the member data every service shares.",
                     )},
                 ],
@@ -755,7 +755,7 @@ PROJECTS = [
             "Analyzed a TOSEL test site maintained for a decade and redesigned test and learning services as microservices.",
         ),
         "intro": T(
-            "TOSEL Business Process Model을 Microservices Architecture 기반으로 재설계한 프로젝트입니다. TOSEL Lab 개발과 같은 기간에 진행했습니다.",
+            "TOSEL Business Process Model을 Microservices Architecture 기반으로 재설계한 프로젝트. TOSEL Lab 개발과 같은 기간에 진행.",
             "A redesign of TOSEL's business process model on a microservices architecture, carried out alongside TOSEL Lab.",
         ),
         "stack": ["Microservices", "DB Modeling", "ERD", "REST API"],
@@ -842,7 +842,7 @@ PROJECTS = [
             "A book mall that works as both a supply chain system and an online shop. I designed the book DB, per-user permissions, and S2S APIs.",
         ),
         "intro": T(
-            "전화·팩스·이메일로 흩어져 있던 교재 주문과 엑셀 수기 재고 관리를 하나로 묶은 TOSEL 교재몰입니다.",
+            "전화·팩스·이메일로 흩어져 있던 교재 주문과 엑셀 수기 재고 관리를 하나로 묶은 TOSEL 교재몰.",
             "The TOSEL book mall, consolidating textbook orders that arrived by phone, fax, and email, and stock tracked by hand in Excel.",
         ),
         "stack": ["DB Design", "REST API", "Web · Mobile"],
@@ -904,7 +904,7 @@ PROJECTS = [
                 "title": T("배운 점", "Lessons"),
                 "blocks": [
                     {"p": T(
-                        "기존 사업 구조를 빠르게 파악해 필요한 기능을 정의하고 개발하는 경험을 했습니다.",
+                        "기존 사업 구조를 빠르게 파악해 필요한 기능을 정의하고 개발한 경험.",
                         "I practiced learning an existing business quickly and turning it into a feature list.",
                     )},
                 ],
@@ -922,7 +922,7 @@ PROJECTS = [
             "Contract development renewing an aging corporate website: layout overhaul, legacy PHP refactoring, and faster responses.",
         ),
         "intro": T(
-            "넥셀시스템 주식회사의 기업 웹사이트를 리뉴얼한 외주 프로젝트입니다.",
+            "넥셀시스템 주식회사의 기업 웹사이트를 리뉴얼한 외주 프로젝트.",
             "A freelance project to renew Nexel System's corporate website.",
         ),
         "stack": ["PHP", "JavaScript", "HTML/CSS"],
@@ -977,7 +977,7 @@ PROJECTS = [
             "A web platform where Yonsei members donate unused items and proceeds go to good causes. I designed role levels and the donated-item workflow.",
         ),
         "intro": T(
-            "학생·교직원이 기부한 물품을 저렴하게 판매하고, 수익금은 교내외 봉사단체와 프로젝트 지원에 쓰는 교내 기부·나눔 플랫폼입니다.",
+            "학생·교직원이 기부한 물품을 저렴하게 판매하고, 수익금은 교내외 봉사단체와 프로젝트 지원에 쓰는 교내 기부·나눔 플랫폼.",
             "A campus donation platform: items donated by students and staff are sold cheaply, and proceeds support volunteer groups and projects.",
         ),
         "stack": ["Django", "SQLite", "jQuery", "AJAX"],
@@ -1057,7 +1057,7 @@ PROJECTS = [
             "A website that recommends cards and issuers for each user's conditions. My first team project, built with Spring Boot and deployed on AWS EC2/RDS.",
         ),
         "intro": T(
-            "웹 개발을 배운 뒤 처음 진행한 팀 프로젝트입니다. 메타데이터 기반으로 사용자 조건별 카드·카드사를 추천합니다.",
+            "웹 개발을 배운 뒤 처음 진행한 팀 프로젝트. 메타데이터 기반으로 사용자 조건별 카드·카드사 추천.",
             "My first team project after learning web development: metadata-based card and issuer recommendations for each user.",
         ),
         "stack": ["Java", "Spring Boot", "Spring Security", "OAuth2", "MariaDB", "AWS EC2/RDS"],
@@ -1131,7 +1131,7 @@ PROJECTS = [
             "An app that analyzes posture from photos and evaluates exercise videos to recommend home-care exercises. Android, FastAPI, MediaPipe, PyTorch.",
         ),
         "intro": T(
-            "Android 앱이 사진·영상을 올리면 FastAPI 백엔드가 MediaPipe로 포즈 랜드마크를 뽑아 정렬 상태를 분석하거나, 학습한 MLP로 동작 품질과 운동 종류를 판별합니다. 의료기기가 아니며 진단을 하지 않습니다.",
+            "Android 앱이 사진·영상을 올리면 FastAPI 백엔드가 MediaPipe로 포즈 랜드마크를 뽑아 정렬 상태를 분석하거나, 학습한 MLP로 동작 품질과 운동 종류를 판별. 의료기기가 아니며 진단 기능 없음.",
             "The Android app uploads a photo or video; the FastAPI backend extracts pose landmarks with MediaPipe to analyze alignment, or uses trained MLPs to judge movement quality and exercise type. It is not a medical device and does not diagnose.",
         ),
         "stack": ["Kotlin", "Jetpack Compose", "FastAPI", "MediaPipe", "PyTorch", "OpenCV", "SQLite", "Docker"],
@@ -1147,7 +1147,7 @@ PROJECTS = [
                 "title": T("문제 정의", "Problem"),
                 "blocks": [
                     {"p": T(
-                        "통증 부위와 자세 사진만으로 어깨·골반 높이 차이 같은 정렬 상태를 확인하고, 운동 영상을 올리면 동작이 올바른지와 어떤 운동인지 판별해 집에서 할 수 있는 운동을 추천하는 것이 목표였습니다.",
+                        "통증 부위와 자세 사진만으로 어깨·골반 높이 차이 같은 정렬 상태를 확인하고, 운동 영상을 올리면 동작이 올바른지와 어떤 운동인지 판별해 집에서 할 수 있는 운동을 추천하는 것이 목표.",
                         "The goal: from pain areas and a posture photo, show alignment issues such as shoulder or hip height differences; from an exercise video, judge whether the movement is correct and which exercise it is, then recommend home exercises.",
                     )},
                 ],
@@ -1157,7 +1157,7 @@ PROJECTS = [
                 "title": T("앱 화면", "App screens"),
                 "blocks": [
                     {"p": T(
-                        "불편한 부위 선택 → 전신 사진 분석 → 결과 확인 → 상담 메모 · 맞춤 운동 → 움직임 평가 순서로 이어집니다.",
+                        "불편한 부위 선택 → 전신 사진 분석 → 결과 확인 → 상담 메모 · 맞춤 운동 → 움직임 평가 순서.",
                         "Pick where it hurts → full-body photo analysis → result → consultation memo and exercises → movement evaluation.",
                     )},
                     {"portrait": True, "figures": [
@@ -1255,7 +1255,7 @@ PROJECTS = [
                 "title": T("테스트 · 결과", "Testing & results"),
                 "blocks": [
                     {"p": T(
-                        "MobiPhysio 데이터셋(24명, 534개 시퀀스)을 피험자 단위로 train/val/test 분할해, 같은 사람이 학습과 평가에 동시에 들어가지 않도록 했습니다. 지표는 클래스 불균형을 고려해 macro-F1을 기준으로 봤습니다.",
+                        "MobiPhysio 데이터셋(24명, 534개 시퀀스)을 피험자 단위로 train/val/test 분할해, 같은 사람이 학습과 평가에 동시에 들어가지 않게 함. 클래스 불균형을 고려해 macro-F1을 기준 지표로 사용.",
                         "The MobiPhysio dataset (24 subjects, 534 sequences) was split by subject into train/val/test so no person appears in both training and evaluation. Macro-F1 is the headline metric because of class imbalance.",
                     )},
                     {"table": {
@@ -1312,7 +1312,7 @@ PROJECTS = [
             "Put a Laya decision-model router in front of an LLM code-review harness and measured a 40.4–42.1% API cost drop when only the needed checks run per commit.",
         ),
         "intro": T(
-            "커밋마다 일관성(CA)·보안(VA)·형식(FA) 리뷰어를 항상 고성능 모델로 전부 부르는 대신, 라우터가 필요한 검사와 모델 크기를 고르게 했을 때 비용·호출 수·판정 성능·시간이 어떻게 달라지는지 비교한 실험입니다.",
+            "커밋마다 일관성(CA)·보안(VA)·형식(FA) 리뷰어를 항상 고성능 모델로 전부 부르는 대신, 라우터가 필요한 검사와 모델 크기를 고르게 했을 때 비용·호출 수·판정 성능·시간이 어떻게 달라지는지 비교한 실험.",
             "Instead of always calling consistency (CA), security (VA), and format (FA) reviewers on a strong model for every commit, a router picks the checks and model size; the experiment compares cost, calls, accuracy, and time.",
         ),
         "stack": ["Python", "Claude API", "Laya", "Structured Output"],
@@ -1327,7 +1327,7 @@ PROJECTS = [
                 "title": T("문제 정의", "Problem"),
                 "blocks": [
                     {"p": T(
-                        "CodeAgent(EMNLP 2024)의 CA·VA·FA 리뷰 과제를 참고해 단순한 리뷰 하네스를 만들었습니다. 모든 커밋에 세 리뷰어를 strong 모델로 호출하면 비용과 시간이 커서, 하네스 앞단에 의사결정 단계를 두어 커밋별로 필요한 검사만 고르도록 했습니다.",
+                        "CodeAgent(EMNLP 2024)의 CA·VA·FA 리뷰 과제를 참고해 단순한 리뷰 하네스 구현. 모든 커밋에 세 리뷰어를 strong 모델로 호출하면 비용과 시간이 커서, 하네스 앞단에 의사결정 단계를 두고 커밋별로 필요한 검사만 고르게 함.",
                         "Based on the CA/VA/FA review tasks from CodeAgent (EMNLP 2024), I built a simple review harness. Calling all three reviewers on a strong model for every commit is costly and slow, so a decision step in front of the harness picks only the checks each commit needs.",
                     )},
                 ],
@@ -1443,7 +1443,7 @@ PROJECTS = [
             "A team experiment testing whether Talkie-1930, trained only on pre-1931 text, answers better when modern terms are rewritten as functional descriptions.",
         ),
         "intro": T(
-            "시대적 지식 격차가 LLM 응답 품질에 미치는 영향을 다룬 기계학습개론 팀 프로젝트입니다. 모델을 재학습시키지 않고, 질문(입력)을 전처리하는 방식의 효과만 평가했습니다.",
+            "시대적 지식 격차가 LLM 응답 품질에 미치는 영향을 다룬 기계학습개론 팀 프로젝트. 모델 재학습 없이 질문(입력) 전처리 방식의 효과만 평가.",
             "An Intro to Machine Learning team project on how a time-bound knowledge gap affects LLM answers. The model was not retrained; only the effect of preprocessing the input question was evaluated.",
         ),
         "stack": ["Python", "OpenAI API", "Talkie-1930", "LLM-as-a-Judge", "McNemar · Binomial test"],
@@ -1458,7 +1458,7 @@ PROJECTS = [
                 "title": T("배경 · 문제 정의", "Background & question"),
                 "blocks": [
                     {"p": T(
-                        "Talkie에게 GPS의 쓸모를 물으면 GPS를 눈으로 보는 방향 계기처럼 설명합니다. 질문은 이해했지만 단어를 모르는 상황입니다. 현대 용어가 들어간 질문에 엉뚱하게 답할 때, 추론을 못 한 것인지 단어를 몰라서인지 구분되지 않는다는 점이 출발점이었습니다.",
+                        "Talkie에게 GPS의 쓸모를 물으면 GPS를 눈으로 보는 방향 계기처럼 설명함. 질문은 이해했지만 단어를 모르는 상황. 현대 용어가 들어간 질문에 엉뚱하게 답할 때, 추론을 못 한 것인지 단어를 몰라서인지 구분되지 않는다는 점이 출발점.",
                         "Asked what GPS is useful for, Talkie describes a direction instrument you look at — it understood the question but not the word. When a modern question gets an odd answer, you cannot tell whether reasoning failed or the word was unknown. That was the starting point.",
                     )},
                     {"note": T(
@@ -1479,7 +1479,7 @@ PROJECTS = [
                         T("Talkie-1930 질의", "Query Talkie-1930"),
                     ]},
                     {"p": T(
-                        "원문(raw)과만 비교하면 좋아졌는지는 알아도 왜 좋아졌는지는 모릅니다. 그래서 다른 원인을 하나씩 떼어 낸 대조 조건을 같은 100문항(6개 분야)에 함께 적용했습니다.",
+                        "원문(raw)과만 비교하면 좋아졌는지는 알아도 왜 좋아졌는지는 알 수 없음. 그래서 다른 원인을 하나씩 떼어 낸 대조 조건을 같은 100문항(6개 분야)에 함께 적용.",
                         "Comparing only with the raw question shows whether it got better, not why. So control conditions that remove one cause at a time were run on the same 100 questions (6 domains).",
                     )},
                     {"table": {
@@ -1568,7 +1568,7 @@ PROJECTS = [
                 "title": T("담당 역할", "My role"),
                 "blocks": [
                     {"p": T(
-                        "팀 프로젝트에서 주제 기획에 참여했고, 대조 조건 구성과 객관식·서술형 평가 방식 등 <span class=\"highlight\">테스트·평가 설계</span>와 결과 분석을 중심으로 맡았습니다.",
+                        "팀 프로젝트에서 주제 기획에 참여했고, 대조 조건 구성과 객관식·서술형 평가 방식 등 <span class=\"highlight\">테스트·평가 설계</span>와 결과 분석 담당.",
                         "In this team project I took part in planning, and focused on <span class=\"highlight\">test and evaluation design</span> — control conditions, multiple-choice and open-ended evaluation — and on result analysis.",
                     )},
                 ],
@@ -1586,7 +1586,7 @@ PROJECTS = [
             "RAISE Lab research relating 2018–2024 semen test data to air pollution and weather, comparing regression, tree, and repeated-measures models.",
         ),
         "intro": T(
-            "연세대학교 미래캠퍼스 RAISE Lab 학부연구생으로 참여한 연구입니다. 정액검사 결과(정액량, 정자 수, 운동성 등)와 대기환경 인자 간의 연관성을 분석했습니다.",
+            "연세대학교 미래캠퍼스 RAISE Lab 학부연구생으로 참여한 연구. 정액검사 결과(정액량, 정자 수, 운동성 등)와 대기환경 인자 간의 연관성 분석.",
             "Research done as an undergraduate researcher at RAISE Lab, Yonsei University Mirae Campus, relating semen test results (volume, count, motility, etc.) to environmental factors.",
         ),
         "stack": ["Python", "R", "XGBoost", "GPBoost", "Optuna", "SHAP", "GEE · GLMM · LMM"],
@@ -1601,7 +1601,7 @@ PROJECTS = [
                 "title": T("배경 · 문제 정의", "Background & question"),
                 "blocks": [
                     {"p": T(
-                        "대기오염과 기상 요인이 남성 생식건강 지표와 관련이 있는지를 실제 검사 데이터로 확인하는 것이 목표입니다. 같은 환자가 여러 번 검사를 받은 반복측정 데이터라 관측치가 독립이 아니라는 점을 분석 설계의 핵심 조건으로 두었습니다.",
+                        "대기오염과 기상 요인이 남성 생식건강 지표와 관련이 있는지를 실제 검사 데이터로 확인하는 것이 목표. 같은 환자가 여러 번 검사를 받은 반복측정 데이터라, 관측치가 독립이 아니라는 점을 분석 설계의 핵심 조건으로 둠.",
                         "The goal is to check with real test data whether air pollution and weather relate to male reproductive health markers. Many patients were tested more than once, so observations are not independent — a core constraint in the analysis design.",
                     )},
                 ],
@@ -1704,7 +1704,7 @@ PROJECTS = [
             "Used HIRA/NHIS statistics and negative binomial regression to study links between endometriosis, fibroids, PCOS, and air quality.",
         ),
         "intro": T(
-            "부인과질환 3종(자궁내막증, 자궁근종, 다낭성난소증후군)의 시도별 환자 수와 환경인자의 관계를 분석했습니다. RAISE Lab 헬스케어 요청 과제로 진행했습니다.",
+            "부인과질환 3종(자궁내막증, 자궁근종, 다낭성난소증후군)의 시도별 환자 수와 환경인자의 관계 분석. RAISE Lab 헬스케어 요청 과제로 진행.",
             "Analyzed regional patient counts for three gynecologic diseases (endometriosis, uterine fibroids, PCOS) against environmental factors, as a RAISE Lab healthcare request.",
         ),
         "stack": ["Python", "R", "Negative Binomial Regression", "Cluster-Robust SE", "HIRA · NHIS · KOSIS"],
@@ -1731,7 +1731,7 @@ PROJECTS = [
                         ],
                     )},
                     {"note": T(
-                        "환경인자 간 상관 확인 결과 PM10–PM2.5는 매우 강한 양의 상관, NO2–O3는 강한 음의 상관(-0.76)이 있었습니다. 다중공선성을 피하려고 환경인자는 한 번에 하나씩 모델에 넣었습니다.",
+                        "환경인자 간 상관 확인 결과 PM10–PM2.5는 매우 강한 양의 상관, NO2–O3는 강한 음의 상관(-0.76). 다중공선성을 피하려고 환경인자는 한 번에 하나씩 모델에 투입.",
                         "Checking correlations first: PM10–PM2.5 were very strongly positive and NO2–O3 strongly negative (-0.76). To avoid multicollinearity, each factor entered the model on its own.",
                     )},
                 ],
@@ -1797,7 +1797,7 @@ PROJECTS = [
                 "title": T("해석 · 한계", "Interpretation & limits"),
                 "blocks": [
                     {"note": T(
-                        "이 결과는 지역 단위 통계의 <strong>상관관계</strong>이며, 환경인자가 질환을 일으킨다는 인과관계를 뜻하지 않습니다.",
+                        "이 결과는 지역 단위 통계의 <strong>상관관계</strong>이며, 환경인자가 질환을 일으킨다는 인과관계를 뜻하지 않음.",
                         "These are <strong>associations</strong> in regional statistics; they do not show that environmental factors cause the diseases.",
                     )},
                     {"ul": T(

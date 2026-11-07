@@ -671,7 +671,7 @@ PROJECTS = [
             },
         ],
         "links": [
-            {"label": T("배포 매니페스트 (이 저장소)", "Manifests (this repo)"), "url": "https://github.com/lkh599810/LKH_Portfolio/tree/main/k3s"},
+            {"label": T("배포 매니페스트", "Deployment manifests"), "url": "https://github.com/lkh599810/LKH_Portfolio/tree/main/k3s"},
         ],
     },
     {

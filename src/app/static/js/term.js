@@ -6,7 +6,9 @@
     }
     var log = root.querySelector('.term-log');
     var form = root.querySelector('.term-line');
-    var input = form.querySelector('input');
+    var input = form.querySelector('textarea');
+    var before = form.querySelector('.tm-before');
+    var after = form.querySelector('.tm-after');
     var templates = {};
     Array.prototype.forEach.call(root.querySelectorAll('template[data-cmd]'), function (t) {
         templates[t.getAttribute('data-cmd')] = t;
@@ -112,13 +114,37 @@
         log.scrollTop = log.scrollHeight;
     }
 
+    // 미러에 입력값을 그대로 그려 깜빡이는 커서를 캐럿 위치에 표시. 줄이 넘치면 미러가 높이를 늘린다
+    function paint() {
+        if (/\n/.test(input.value)) {
+            input.value = input.value.replace(/\s*\n\s*/g, ' ');
+        }
+        var at = input.selectionStart == null ? input.value.length : input.selectionStart;
+        before.textContent = input.value.slice(0, at);
+        after.textContent = input.value.slice(at);
+    }
+    ['input', 'keyup', 'click', 'select', 'focus'].forEach(function (type) {
+        input.addEventListener(type, paint);
+    });
+    document.addEventListener('selectionchange', function () {
+        if (document.activeElement === input) {
+            paint();
+        }
+    });
+
     form.addEventListener('submit', function (event) {
         event.preventDefault();
         run(input.value);
         input.value = '';
+        paint();
     });
 
     input.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter' && !event.isComposing) {
+            event.preventDefault();
+            form.requestSubmit ? form.requestSubmit() : form.dispatchEvent(new Event('submit', { cancelable: true }));
+            return;
+        }
         if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
             if (!history.length) {
                 return;
@@ -126,6 +152,7 @@
             event.preventDefault();
             cursor = Math.max(0, Math.min(history.length, cursor + (event.key === 'ArrowUp' ? -1 : 1)));
             input.value = history[cursor] || '';
+            paint();
         } else if (event.key === 'Tab' && input.value.trim()) {
             var typed = input.value.replace(/^\s+/, '').toLowerCase();
             // open/cd 뒤에서는 프로젝트 slug 자동완성
@@ -142,6 +169,7 @@
                     return a.slice(0, i);
                 });
                 input.value = prefix + common;
+                paint();
                 if (hits.length > 1) {
                     line('term-muted', hits.join('  '));
                     log.scrollTop = log.scrollHeight;

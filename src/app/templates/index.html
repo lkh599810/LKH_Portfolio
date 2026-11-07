@@ -87,7 +87,10 @@
                     </div>
                     <form class="term-line" autocomplete="off">
                         <label for="term-input"><span class="prompt-host"><span class="prompt-user">kanghyun@homelab</span>:</span><span class="prompt-path">~</span>$</label>
-                        <input id="term-input" type="text" name="cmd" spellcheck="false" autocapitalize="off" autocorrect="off" enterkeyhint="send" aria-describedby="term-chips-label">
+                        <div class="term-field">
+                            <div class="term-mirror" aria-hidden="true"><span class="tm-before"></span><span class="term-cursor"></span><span class="tm-after"></span></div>
+                            <textarea id="term-input" name="cmd" rows="1" spellcheck="false" autocapitalize="off" autocorrect="off" enterkeyhint="send" aria-describedby="term-chips-label"></textarea>
+                        </div>
                     </form>
                     <div class="term-chips">
                         <span id="term-chips-label" class="visually-hidden"><span data-lang="ko">자주 쓰는 명령어</span><span data-lang="en">Common commands</span></span>
@@ -99,7 +102,8 @@
                     <template data-cmd="help">
                         <dl class="term-help">
                             <dt>introduce</dt><dd><span data-lang="ko">자기소개</span><span data-lang="en">About me</span></dd>
-                            <dt>whoami</dt><dd><span data-lang="ko">이름 · 직무 · 학력</span><span data-lang="en">Name · role · education</span></dd>
+                            <dt>whoami</dt><dd><span data-lang="ko">한 줄 소개</span><span data-lang="en">Who I am, in one line</span></dd>
+                            <dt>what_is_positive_algorithm</dt><dd><span data-lang="ko">긍정의 알고리즘이란?</span><span data-lang="en">What is the positive algorithm?</span></dd>
                             <dt>projects</dt><dd><span data-lang="ko">전체 프로젝트 목록 (ls)</span><span data-lang="en">All projects (ls)</span></dd>
                             <dt>experience</dt><dd><span data-lang="ko">경력 · 연구 이력</span><span data-lang="en">Work · research history</span></dd>
                             <dt>skills</dt><dd><span data-lang="ko">프로젝트에서 사용한 기술</span><span data-lang="en">Skills used in projects</span></dd>
@@ -126,8 +130,15 @@
                         <p class="term-muted"><a href="#archiving" data-target="#archiving">About ↓</a></p>
                     </template>
                     <template data-cmd="whoami">
-                        <p>{{ m.bi(profile.name) }} · {{ profile.role }}</p>
-                        <p class="term-muted">{{ m.bi(profile.school) }}</p>
+                        <p>{{ m.bi(profile.name) }} — <span class="term-accent"><span data-lang="ko">긍정의 알고리즘을 탑재한 개발자</span><span data-lang="en">a developer running on a positive algorithm</span></span></p>
+                        <p class="term-muted">{{ profile.role }} · positive_algorithm: <span class="term-accent">loaded ✓</span></p>
+                    </template>
+                    <template data-cmd="what_is_positive_algorithm">
+                        <p><span data-lang="ko">개발자는 무언가를 만들어 내고, 문제를 해결하는 사람이라고 생각합니다.</span><span data-lang="en">To me, a developer is someone who builds things and solves problems.</span></p>
+                        <p><span data-lang="ko">그런데 '이거 안 될 것 같은데' 하는 마음으로 시작하면, 될 일도 이상하게 잘 안 풀리더라고요.</span><span data-lang="en">But when I start with "this probably won't work," even the doable things somehow stop working out.</span></p>
+                        <p><span data-lang="ko">그래서 저 스스로에게 긍정의 알고리즘을 주입하기로 했습니다.</span><span data-lang="en">So I decided to install a positive algorithm in myself.</span></p>
+                        <p class="term-muted"><span data-lang="ko">막히면 '왜 안 되지?' 대신 '어떻게 하면 되지?'부터.</span><span data-lang="en">When I'm stuck, I ask "how can this work?" before "why doesn't it?"</span></p>
+                        <p class="term-accent">while (problem) { stay_positive(); solve(); }</p>
                     </template>
                     <template data-cmd="projects">
                         <ul class="term-list term-projects">
@@ -181,7 +192,7 @@
                     </template>
                     <template data-cmd="contact">
                         <ul class="term-list">
-                            <li>email&nbsp; <a href="mailto:{{ profile.email }}">{{ profile.email }}</a></li>
+                            <li>email&nbsp; {{ profile.email }}</li>
                             {% for link in profile.links %}
                             <li>{{ link.label|lower }}&nbsp; <a href="{{ link.url }}" target="_blank" rel="noreferrer">{{ link.url }}</a></li>
                             {% endfor %}
@@ -372,13 +383,13 @@
                         <span><span data-lang="ko">개발 과정에서 학습한 내용과 문제 해결 과정을 기록했습니다.</span><span data-lang="en">Notes about development learnings and problem-solving processes.</span></span>
                     </div>
                 </a>
-                <a class="archive-card" href="mailto:{{ profile.email }}">
+                <div class="archive-card is-static">
                     <span class="archive-icon" aria-hidden="true">{{ m.icon("mail") }}</span>
                     <div>
                         <strong>Contact</strong>
                         <span>{{ profile.email }}</span>
                     </div>
-                </a>
+                </div>
             </div>
         </section>
     </main>

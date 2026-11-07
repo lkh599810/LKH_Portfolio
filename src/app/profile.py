@@ -112,6 +112,8 @@ EXPERIENCE = [
         "projects": ["semen-quality-environment", "gynecologic-disease-environment"],
     },
 ]
+# 최신 경력이 위로 (period 앞 'YYYY.MM'으로 정렬, 실무·연구는 템플릿에서 따로 묶음)
+EXPERIENCE.sort(key=lambda e: (e["period"]["ko"] if isinstance(e["period"], dict) else e["period"])[:7], reverse=True)
 
 # 메인 Featured: 서로 다른 경험을 보여주는 대표 프로젝트 3개 (kind는 UI 라벨)
 FEATURED = [

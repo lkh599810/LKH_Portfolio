@@ -73,7 +73,7 @@ def test_index_sections_and_featured():
     assert html.count('class="featured-card') == 3
     assert 'class="orbit' not in html and 'resume-page' not in html
     # 히어로 터미널: 칩으로 노출한 명령어마다 출력 template이 있어야 함
-    for cmd in ['help', 'introduce', 'whoami', 'projects', 'experience', 'skills', 'contact']:
+    for cmd in ['help', 'introduce', 'whoami', 'projects', 'experience', 'skills', 'contact', 'what_is_positive_algorithm']:
         assert f'<template data-cmd="{cmd}">' in html, cmd
     assert "{'ko'" not in html
     # 카톡 등 링크 미리보기: 프로필 사진 대신 KH 로고, 절대 https 주소

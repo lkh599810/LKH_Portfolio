@@ -292,7 +292,7 @@ code {
 }
 
 .hero .hero-copy > h1 .h1-sub {
-    animation: hero-fade 1.6s ease-out 0.9s both;
+    animation: none;
 }
 
 

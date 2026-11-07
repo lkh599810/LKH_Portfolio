@@ -74,7 +74,7 @@ def test_index_sections_and_featured():
     assert 'data-pipeline' not in html
     assert 'data-pipeline' in client.get('/projects/homelab').get_data(as_text=True)
     assert 'data-pipeline' not in client.get('/projects/kanglish').get_data(as_text=True)
-    assert html.count('class="featured-card') == 3
+    assert html.count('class="featured-card') == 4
     assert 'class="orbit' not in html and 'resume-page' not in html
     # 히어로 터미널: 칩으로 노출한 명령어마다 출력 template이 있어야 함
     for cmd in ['help', 'introduce', 'whoami', 'projects', 'experience', 'skills', 'contact', 'what_is_positive_algorithm']:

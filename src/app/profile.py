@@ -115,9 +115,10 @@ EXPERIENCE = [
 # 최신 경력이 위로 (period 앞 'YYYY.MM'으로 정렬, 실무·연구는 템플릿에서 따로 묶음)
 EXPERIENCE.sort(key=lambda e: (e["period"]["ko"] if isinstance(e["period"], dict) else e["period"])[:7], reverse=True)
 
-# 메인 Featured: 서로 다른 경험을 보여주는 대표 프로젝트 3개 (kind는 UI 라벨)
+# 메인 Featured: 서로 다른 경험을 보여주는 대표 프로젝트 4개 (첫 카드는 크게, kind는 UI 라벨)
 FEATURED = [
     {"slug": "tosel-lab", "kind": T("상용 서비스 개발 · 운영", "Commercial service · operations")},
+    {"slug": "alignfit", "kind": T("모바일 앱 · AI 서비스", "Mobile app · AI service")},
     {"slug": "llm-routing", "kind": T("AI · LLM 엔지니어링", "AI · LLM engineering")},
     {"slug": "homelab", "kind": T("인프라 · 배포 자동화", "Infrastructure · deployment automation")},
 ]

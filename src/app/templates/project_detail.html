@@ -133,7 +133,10 @@
     {% if project.hero %}
     <figure class="detail-cover">
         <a href="{{ full_img_url(project.hero) }}" target="_blank" rel="noopener">
-            <img src="{{ img_url(project.hero) }}" alt="{{ m.plain(project.title) }}">
+            <picture>
+                {% if project.hero_mobile %}<source media="(max-width: 767px)" srcset="{{ img_url(project.hero_mobile) }}">{% endif %}
+                <img src="{{ img_url(project.hero) }}" alt="{{ m.plain(project.title) }}">
+            </picture>
         </a>
     </figure>
     {% endif %}

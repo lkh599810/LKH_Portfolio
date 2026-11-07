@@ -15,7 +15,7 @@ _INFRA = ["Proxmox VE", "Traefik", "Kubernetes Gateway API", "Caddy", "Nginx", "
 _OS_NETWORK = ["Linux", "Ubuntu", "Debian", "Cloudflare Tunnel", "Tailscale", "Cloudflare", "SSH", "Reverse Proxy",
                "CORS", "CentOS", "Windows Server"]
 _TOOLS = ["Git", "GitHub", "Playwright", "pytest", "Google Colab", "Obsidian"]
-_AI_ML = ["PyTorch", "Transformer", "Attention", "XGBoost", "GPBoost", "scikit-learn", "LSTM", "CNN", "RNN",
+_AI_ML = ["PyTorch", "LLM", "Transformer", "Attention", "XGBoost", "GPBoost", "scikit-learn", "LSTM", "CNN", "RNN",
           "Random Forest", "Decision Tree", "Linear Regression", "Ridge", "Lasso"]
 _LLM = ["Efficient LLM Routing", "Multi-Agent Systems", "LLM-as-a-Judge",
         "Harness Engineering (Prompt / Context / Loop / Graph Engineering)", "System-1 Decision Models (Jev, Laya)",
@@ -39,6 +39,8 @@ _ALIASES = {
     "gateway api": ["Kubernetes Gateway API"],
     "k3s": ["k3s", "Kubernetes"],
     "laya": ["Efficient LLM Routing", "System-1 Decision Models (Jev, Laya)"],
+    "claude api": ["LLM"],
+    "openai api": ["LLM"],
 }
 # 이력서 RAISE Lab 경력에 적힌 모델 비교 (OLS, Ridge, Lasso, Random Forest)
 _RESEARCH_USED = ["Linear Regression", "Ridge", "Lasso", "Random Forest"]
@@ -70,7 +72,7 @@ SKILL_CORE = {
                                 "ECS Fargate"],
     "LLM / Agent Engineering": ["Multi-Agent Systems", "Efficient LLM Routing", "Model Cascading", "LLM-as-a-Judge",
                                 "Confidence-based Routing", "Cost-Aware Inference"],
-    "AI / ML": ["PyTorch", "Transformer", "Attention", "LSTM", "XGBoost", "GPBoost"],
+    "AI / ML": ["PyTorch", "LLM", "Transformer", "Attention", "XGBoost", "GPBoost"],
     "Database & Messaging": ["PostgreSQL", "Apache Kafka", "Redis Streams", "RabbitMQ", "Redis", "MySQL"],
     "Frontend & Tools": ["Next.js", "React", "Playwright", "pytest", "Git", "GitHub"],
 }
@@ -86,7 +88,7 @@ SKILL_ICONS = {
 }
 
 if __name__ == "__main__":
-    assert SKILL_TOTAL == 98, SKILL_TOTAL
+    assert SKILL_TOTAL == 99, SKILL_TOTAL
     assert is_used("Flask") and is_used("Kubernetes") and not is_used("Apache Kafka")
     for title, subs in SKILL_GROUPS:
         every = [i for _, items in subs for i in items]

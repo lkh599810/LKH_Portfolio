@@ -1051,3 +1051,27 @@ a.detail-category::before {
 a.detail-category:hover {
     text-decoration: underline;
 }
+
+/* 세로 스크린샷 갤러리 (앱 화면) */
+.gallery.is-portrait .gallery-media {
+    aspect-ratio: 4 / 3;
+    max-height: 78vh;
+}
+
+.gallery.is-portrait .gallery-progress {
+    top: calc(min(100cqw * 3 / 4, 78vh) - 3px);
+}
+
+@media (max-width: 767px) {
+    .gallery.is-portrait .gallery-media {
+        aspect-ratio: 3 / 4;
+    }
+
+    .gallery.is-portrait .gallery-progress {
+        top: calc(min(100cqw * 4 / 3, 78vh) - 3px);
+    }
+
+    .gallery.is-portrait .gallery-media img {
+        padding: 8px;
+    }
+}

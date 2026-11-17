@@ -1,3 +1,5 @@
+import hashlib
+from functools import lru_cache
 from pathlib import Path
 
 from flask import Blueprint, abort, render_template
@@ -22,6 +24,14 @@ def img_url(name):
     if '/' not in name and webp in OPTIMIZED:
         return '/static/images/opt/' + webp
     return '/static/images/' + name
+
+
+# CSS/JS 주소에 내용 해시를 붙여, 파일이 바뀌면 브라우저가 예전 캐시 대신 새로 받게 한다
+@bp.app_template_global()
+@lru_cache(maxsize=None)
+def asset(path):
+    digest = hashlib.md5((IMAGES_DIR.parent / path).read_bytes()).hexdigest()[:8]
+    return '/static/' + path + '?v=' + digest
 
 
 @bp.app_template_global()

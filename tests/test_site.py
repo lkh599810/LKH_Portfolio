@@ -57,13 +57,13 @@ def test_detail_pages_and_their_assets():
         assert res.status_code == 200, p['slug']
         html = res.get_data(as_text=True)
         for src in set(re.findall(r'(?:src|href)="(/static/[^"]+)"', html)):
-            assert (STATIC / src[len('/static/'):]).is_file(), (p['slug'], src)
+            assert (STATIC / src[len('/static/'):].split('?')[0]).is_file(), (p['slug'], src)
 
 
 def test_index_assets_exist():
     html = client.get('/').get_data(as_text=True)
     for src in set(re.findall(r'(?:src|href)="(/static/[^"]+)"', html)):
-        assert (STATIC / src[len('/static/'):]).is_file(), src
+        assert (STATIC / src[len('/static/'):].split('?')[0]).is_file(), src
 
 
 def test_index_sections_and_featured():

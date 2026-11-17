@@ -21,8 +21,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/css/index.css">
-    <link rel="stylesheet" href="/static/css/common.css">
+    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/common.css') }}">
     <script>
         // 첫 페인트 전에 언어를 적용해 깜빡임 방지
         try { if (localStorage.getItem('portfolioLang') === 'en') document.documentElement.lang = 'en'; } catch (e) {}
@@ -408,7 +408,7 @@
         setTheme(stored('portfolioTheme', 'light'));
     })();
 </script>
-<script src="/static/js/term.js"></script>
+<script src="{{ asset('js/term.js') }}"></script>
 {% include "_footer.html" %}
 </body>
 </html>

@@ -19,9 +19,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/css/index.css">
-    <link rel="stylesheet" href="/static/css/common.css">
-    <link rel="stylesheet" href="/static/css/project-detail.css">
+    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/common.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/project-detail.css') }}">
 </head>
 <body class="detail-page cat-{{ project.category }}">
 <header class="site-header">
@@ -215,8 +215,8 @@
         });
     })();
 </script>
-<script src="/static/js/gallery.js" defer></script>
-{% if pipeline %}<script src="/static/js/pipeline.js" defer></script>{% endif %}
+<script src="{{ asset('js/gallery.js') }}" defer></script>
+{% if pipeline %}<script src="{{ asset('js/pipeline.js') }}" defer></script>{% endif %}
 {% include "_footer.html" %}
 </body>
 </html>

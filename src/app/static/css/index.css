@@ -406,6 +406,10 @@ code {
 
 
 .term-accent {
+    color: var(--accent-bright);
+}
+
+.term-lead {
     color: #fcd34d;
 }
 

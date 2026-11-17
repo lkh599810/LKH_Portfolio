@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: portfolio
-          image: ghcr.io/lkh599810/lkh-portfolio:7b1895a6b4aa0af9bd94ee8653dbe8e33f2a1d3a
+          image: ghcr.io/lkh599810/lkh-portfolio:afdeed56c6281c65b051fde14c8d157b014aa9cd
           imagePullPolicy: Always
           ports:
             - containerPort: 5001

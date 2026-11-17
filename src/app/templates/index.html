@@ -173,7 +173,7 @@
                             {% for c in profile.certs %}
                             <li>{{ m.bi(c.name) }} <span class="term-muted">{{ m.bi(c.issuer) }}</span></li>
                             {% endfor %}
-                            <li>{{ profile.language.name }} <span class="term-accent">{{ profile.language.grade }}</span> <span class="term-muted">{{ profile.language.detail }}</span></li>
+                            <li>{{ profile.language.name }} {{ profile.language.grade }} <span class="term-muted">{{ profile.language.detail }}</span></li>
                         </ul>
                     </template>
                     <template data-cmd="deploy">

@@ -5,7 +5,7 @@ from flask import Blueprint, abort, render_template
 from ...projects import (CATEGORIES, CHILDREN, PROJECTS, PROJECTS_BY_SLUG, TAGS, TOP_PROJECTS, category_counts,
                          category_label)
 from ...profile import EXPERIENCE, FEATURED, PIPELINE, PROFILE
-from ...skills import SKILL_CORE, SKILL_GROUPS, SKILL_ICONS, SKILL_REST, SKILL_TOTAL, is_used
+from ...skills import SKILL_CORE, SKILL_GROUPS, SKILL_ICONS, SKILL_REST, SKILL_TOTAL
 
 
 bp = Blueprint(name='project_view', url_prefix='/', import_name="project_view")
@@ -49,7 +49,7 @@ def index_page():
     return render_template(
         "index.html", projects=PROJECTS, counts=category_counts(), by_slug=PROJECTS_BY_SLUG,
         featured=FEATURED, children=CHILDREN, pipeline=PIPELINE, profile=PROFILE, experience=EXPERIENCE,
-        skill_groups=SKILL_GROUPS, skill_icons=SKILL_ICONS, skill_total=SKILL_TOTAL, skill_used=is_used,
+        skill_groups=SKILL_GROUPS, skill_icons=SKILL_ICONS, skill_total=SKILL_TOTAL,
         skill_core=SKILL_CORE, skill_rest=SKILL_REST,
     )
 

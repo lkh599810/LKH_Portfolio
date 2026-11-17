@@ -1,6 +1,4 @@
-# 기술 스택 단일 원본 (메인 Skills 섹션).
-# "프로젝트에 사용" 강조는 손으로 고르지 않고, projects.py의 stack과 이력서 연구 경력에 실제로 나온 기술만 자동으로 표시한다.
-from .projects import PROJECTS
+# 기술 스택 단일 원본 (메인 Skills 섹션 + 터미널 skills).
 
 # 분야별 목록. 각 목록 안에서 최신·핵심 기술을 앞에 둔다 (화면에 이 순서 그대로 표시)
 _LANGUAGES = ["Python", "Java", "TypeScript", "JavaScript", "SQL", "Kotlin", "C", "C++", "PHP"]
@@ -32,37 +30,6 @@ SKILL_GROUPS = [
     ("Frontend & Tools", [("Frontend", _FRONTEND), ("Testing / Tools", _TOOLS)]),
 ]
 
-# 프로젝트 stack 표기 → 기술 이름 (표기가 다른 경우만)
-_ALIASES = {
-    "aws ec2/rds": ["AWS", "EC2", "RDS"],
-    "html/css": ["HTML5", "CSS3"],
-    "gateway api": ["Kubernetes Gateway API"],
-    "k3s": ["k3s", "Kubernetes"],
-    "laya": ["Efficient LLM Routing", "System-1 Decision Models (Jev, Laya)"],
-    "claude api": ["LLM"],
-    "openai api": ["LLM"],
-}
-# 이력서 RAISE Lab 경력에 적힌 모델 비교 (OLS, Ridge, Lasso, Random Forest)
-_RESEARCH_USED = ["Linear Regression", "Ridge", "Lasso", "Random Forest"]
-
-
-def _used_in_projects():
-    used = set(_RESEARCH_USED)
-    for project in PROJECTS:
-        for item in project["stack"]:
-            key = item.lower()
-            used.update(_ALIASES.get(key, []))
-            used.add(key)
-    return used
-
-
-_USED = _used_in_projects()
-
-
-def is_used(skill):
-    return skill in _USED or skill.lower() in _USED
-
-
 SKILL_TOTAL = sum(len(items) for _, subs in SKILL_GROUPS for _, items in subs)
 
 # 접힌 상태에서 카드마다 보여줄 6개: 난도 높고 실무 깊이가 드러나는 기술
@@ -89,7 +56,6 @@ SKILL_ICONS = {
 
 if __name__ == "__main__":
     assert SKILL_TOTAL == 99, SKILL_TOTAL
-    assert is_used("Flask") and is_used("Kubernetes") and not is_used("Apache Kafka")
     for title, subs in SKILL_GROUPS:
         every = [i for _, items in subs for i in items]
         assert len(SKILL_CORE[title]) == 6 and set(SKILL_CORE[title]) <= set(every), title

@@ -106,7 +106,7 @@
                             <dt>what_is_positive_algorithm</dt><dd><span data-lang="ko">긍정의 알고리즘이란?</span><span data-lang="en">What is the positive algorithm?</span></dd>
                             <dt>projects (ls)</dt><dd><span data-lang="ko">전체 프로젝트 목록</span><span data-lang="en">All projects</span></dd>
                             <dt>experience</dt><dd><span data-lang="ko">경력 · 연구 이력</span><span data-lang="en">Work · research history</span></dd>
-                            <dt>skills</dt><dd><span data-lang="ko">프로젝트에서 사용한 기술</span><span data-lang="en">Skills used in projects</span></dd>
+                            <dt>skills</dt><dd><span data-lang="ko">기술 스택</span><span data-lang="en">Tech stack</span></dd>
                             <dt>contact</dt><dd><span data-lang="ko">이메일 · GitHub · 블로그</span><span data-lang="en">Email · GitHub · blog</span></dd>
                             <dt>featured</dt><dd><span data-lang="ko">대표 프로젝트 4개</span><span data-lang="en">Four featured projects</span></dd>
                             <dt>open &lt;slug&gt;</dt><dd><span data-lang="ko">프로젝트 상세로 이동 (cd)</span><span data-lang="en">Go to a project page (cd)</span></dd>
@@ -156,7 +156,8 @@
                     <template data-cmd="skills">
                         <ul class="term-list">
                             {% for title, subs in skill_groups %}
-                            <li><span class="term-accent">{{ title }}</span> {% set tn = namespace(u=[]) %}{% for sub, items in subs %}{% for item in items if skill_used(item) %}{% set tn.u = tn.u + [item] %}{% endfor %}{% endfor %}{{ tn.u|join(', ') }}</li>
+                            {% set core = skill_core[title] %}{% set more = subs|map(attribute=1)|map('length')|sum - core|length %}
+                            <li><span class="term-accent">{{ title }}</span> {{ core|join(', ') }}{% if more %} <span class="term-muted">+{{ more }}</span>{% endif %}</li>
                             {% endfor %}
                         </ul>
                         <p class="term-muted"><a href="#skills" data-target="#skills">Skills ↓</a></p>

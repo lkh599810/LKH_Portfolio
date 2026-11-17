@@ -95,7 +95,7 @@
                     <div class="term-chips">
                         <span id="term-chips-label" class="visually-hidden"><span data-lang="ko">자주 쓰는 명령어</span><span data-lang="en">Common commands</span></span>
                         {% for c in ['introduce', 'projects', 'experience', 'skills', 'contact', 'help'] %}
-                        <button type="button" data-run="{{ c }}">{{ c }}</button>
+                        <button type="button" data-run="{{ c }}">{{ 'projects (ls)' if c == 'projects' else c }}</button>
                         {% endfor %}
                     </div>
 

@@ -4,3 +4,5 @@
 /raise_lab/
 /dgist_decisionmodel_laya_summary/
 /IML_TalkieBridge_portfolio-assets/
+__pycache__/
+*.pyc

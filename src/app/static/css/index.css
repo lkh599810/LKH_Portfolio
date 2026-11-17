@@ -544,7 +544,7 @@ code {
     left: 0;
     width: 0.6em;
     height: 1.25em;
-    background: #ffffff;
+    background: #fcd34d;
     opacity: 0.45;
     animation: term-blink 1.05s steps(1) infinite;
 }
